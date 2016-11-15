@@ -12,6 +12,7 @@ namespace Reolin.DataAccess.Domain
         public Location Location { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
+        public Profile Profile { get; set; }
     }
 
 }

@@ -8,6 +8,8 @@ namespace Reolin.DataAccess.EntityFramework.Config
         public AcademyConfig()
         {
             this.HasKey(a => a.Id);
+
+            //TODO: complete config for academy class
         }
     }
 }
