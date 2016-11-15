@@ -11,5 +11,6 @@ namespace Reolin.DataAccess.Domain
         public string Description { get; set; }
         public string Url { get; set; }
         public List<User> Users { get; set; }
+        public List<Profile> Profiles { get; set; }        
     }
 }

@@ -17,6 +17,8 @@ namespace Reolin.DataAccess.Domain
         public List<Certificate> Certificates { get; set; }
         public List<Skill> Skills { get; set; }
         public List<Profile> Profiles { get; set; }
+
+        // thumbs up that user has done.
         public List<Like> Likes { get; set; }
         
         public bool Confirmed { get; set; }

@@ -12,12 +12,11 @@ namespace Reolin.DataAccess.Domain
         public bool Confirmed { get; set; }
         public Address Address { get; set; }
         public ProfileType Type { get; set; }
-        public Image Image { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Like> Likes { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Certificate> Certificates { get; set; }
-        public Image ProfileImage { get; set; }
+        public List<Image> Images { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
     }
