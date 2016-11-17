@@ -1,5 +1,4 @@
-﻿
-namespace Reolin.DataAccess.Services
+﻿namespace Reolin.DataAccess.Services.Core
 {
     public interface IUserService
     {
