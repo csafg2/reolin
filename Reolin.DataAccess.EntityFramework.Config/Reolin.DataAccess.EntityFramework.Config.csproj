@@ -50,8 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcademyConfig.cs" />
+    <Compile Include="AddressConfig.cs" />
+    <Compile Include="CertificateConfig.cs" />
+    <Compile Include="CommentConfig.cs" />
+    <Compile Include="ImageConfig.cs" />
+    <Compile Include="LikeConfig.cs" />
     <Compile Include="ProfileConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillConfig.cs" />
+    <Compile Include="TagConfig.cs" />
     <Compile Include="UserConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>

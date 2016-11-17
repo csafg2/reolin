@@ -10,6 +10,10 @@ namespace Reolin.DataAccess.EntityFramework.Config
             this.HasKey(a => a.Id);
 
             //TODO: complete config for academy class
+            this.HasRequired(a => a.Address)
+                .WithOptional(ad => ad.Academy);
+
         }
     }
+
 }

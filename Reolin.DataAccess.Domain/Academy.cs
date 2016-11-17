@@ -7,6 +7,7 @@ namespace Reolin.DataAccess.Domain
         public int Id { get; set; }
         public Address Address { get; set; }
         public string Name { get; set; }
+        
     }
 
 }
