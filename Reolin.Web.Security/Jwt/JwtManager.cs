@@ -33,7 +33,7 @@ namespace Reolin.Web.Security.Jwt
                 }
             }
 
-            public const string SecretKey = "SDFLKSJFLSDJFJSDLFJKSDLFJSDLSDFLKJSDFHSDL";
+            public const string SecretKey = "QWERASDZXCVFRTGBNHYUJMKIUOKLPO";
             public static SymmetricSecurityKey SigningKey
             {
                 get

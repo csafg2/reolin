@@ -14,10 +14,10 @@ namespace Reolin.Web.Security.Jwt
                 throw new ArgumentException("sub (username) claim can not be null");
             }
          
-            var now = DateTime.UtcNow;
+            DateTime now = DateTime.UtcNow;
 
             // Create the JWT and write it to a string
-            var jwt = new JwtSecurityToken(
+            JwtSecurityToken jwt = new JwtSecurityToken(
                 issuer: options.Issuer,
                 audience: options.Audience,
                 claims: options.Claims,

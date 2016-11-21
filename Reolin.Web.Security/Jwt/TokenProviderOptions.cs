@@ -7,10 +7,6 @@ namespace Reolin.Web.Security.Jwt
 {
     public class TokenProviderOptions
     {
-        public TokenProviderOptions()
-        {
-
-        }
         public string SecretKey { get; set; }
         public string Issuer { get; set; }
         public string Audience { get; set; }
