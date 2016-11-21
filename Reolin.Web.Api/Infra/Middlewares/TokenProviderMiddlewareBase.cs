@@ -46,18 +46,18 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
         }
 
-        private async Task WriteError(HttpContext context, string message)
-        {
-            await context.Response.WriteAsync(message);
-        }
-
-
         protected virtual void OnTokenCreating(HttpContext context, TokenProviderOptions options)
         {
             // allow sub class to incoporate
         }
 
         const string Json_MimeType = "application/json";
+
+
+        private async Task WriteError(HttpContext context, string message)
+        {
+            await context.Response.WriteAsync(message);
+        }
 
         private async Task WriteToken(HttpContext context, string jwtResponse)
         {

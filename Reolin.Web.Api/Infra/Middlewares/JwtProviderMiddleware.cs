@@ -20,7 +20,10 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
             string userName = context.Request.Form["userName"];
             string password = context.Request.Form["password"];
-
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            {
+                throw new InvalidOperationException("username and password is required");
+            }
 
             options.Claims =  new List<Claim>();
             foreach (var item in GetClaims(userName))
