@@ -15,6 +15,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
         }
 
+
         protected override void OnTokenCreating(HttpContext context, TokenProviderOptions options)
         {
             string userName = context.Request.Form["userName"];
