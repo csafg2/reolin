@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Reolin.Web.Api.Infra;
+using Reolin.Web.Api.Infra.Middlewares;
+using Reolin.Web.Security.Jwt;
+using System;
+using System.Text;
 
 namespace Reolin.Web.Api
 {
@@ -36,7 +39,11 @@ namespace Reolin.Web.Api
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            app.UseMvc();
+            app.AddJwtValidation();
+            app.AddJwtEndPoint();
+            app.UseMvcWithDefaultRoute();
+            
+            //app.UseMvc();
         }
     }
 }
