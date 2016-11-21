@@ -42,7 +42,6 @@ namespace Reolin.Web.Security.Jwt
                 }
             }
 
-
             public static SigningCredentials SigningCredentials
             {
                 get
@@ -53,7 +52,6 @@ namespace Reolin.Web.Security.Jwt
 
         }
 
-
         public static string CreateResponseString(string jwt, TimeSpan expiry)
         {
             return JsonConvert.SerializeObject(
@@ -63,8 +61,5 @@ namespace Reolin.Web.Security.Jwt
                     expires_in = expiry
                 });
         }
-
-       
-
     }
 }
