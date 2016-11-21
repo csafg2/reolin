@@ -3,11 +3,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Reolin.Web.Security.Jwt;
 using System;
-using System.Text;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
-
     public static class JwtHelpers
     {
         public static IApplicationBuilder AddJwtValidation(this IApplicationBuilder source)
@@ -41,9 +39,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 Expiration = JwtManager.Configuration.Expiry
             });
 
-            string path = "/Auth";
-
-            return source.UseMiddleware<JwtProviderMiddleware>(options, path);
+            return source.UseMiddleware<JwtProviderMiddleware>(options, ConfigurationManager.TokenEndPoint);
         }
     }
 }

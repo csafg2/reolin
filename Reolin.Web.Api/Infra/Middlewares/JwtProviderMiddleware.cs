@@ -10,7 +10,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
 {
     public class JwtProviderMiddleware : TokenProviderMiddlewareBase
     {
-        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path) 
+        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path)
             : base(next, options, path)
         {
         }
@@ -22,10 +22,9 @@ namespace Reolin.Web.Api.Infra.Middlewares
             string password = context.Request.Form["password"];
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException("username and password is required");
+                throw new InvalidOperationException("username and password are required");
             }
-
-            options.Claims =  new List<Claim>();
+            options.Claims = new List<Claim>();
             foreach (var item in GetClaims(userName))
             {
                 options.Claims.Add(item);
@@ -37,7 +36,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
             return new Claim[]
                    {
-
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
