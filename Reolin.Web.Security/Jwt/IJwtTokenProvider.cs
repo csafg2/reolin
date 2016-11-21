@@ -1,8 +1,9 @@
-﻿namespace Reolin.Web.Security.Jwt
+﻿
+namespace Reolin.Web.Security.Jwt
 {
 
     public interface IJwtTokenProvider
     {
-        string ProvideToken(TokenProviderOptions options);
+        string ProvideJwt(TokenProviderOptions options);
     }
 }

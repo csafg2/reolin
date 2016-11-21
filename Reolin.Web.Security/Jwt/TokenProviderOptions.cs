@@ -17,6 +17,7 @@ namespace Reolin.Web.Security.Jwt
 
         internal bool IsValid()
         {
+            //TODO: check required options parameters..
             return true;
         }
     }
