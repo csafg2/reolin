@@ -12,6 +12,7 @@ namespace Reolin.DataAccess.Domain
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public byte[] Password { get; set; }
         public List<Tag> Tags { get; set; }
         public Address Address { get; set; }
         public List<Certificate> Certificates { get; set; }

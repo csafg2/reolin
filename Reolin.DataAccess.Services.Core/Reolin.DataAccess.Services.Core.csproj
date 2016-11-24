@@ -44,6 +44,12 @@
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reolin.DataAccess.Domain\Reolin.DataAccess.Domain.csproj">
+      <Project>{EE086738-1A3B-498B-AF9A-279D7FDA9A4D}</Project>
+      <Name>Reolin.DataAccess.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,7 @@
+﻿{
+  "Data": {
+    "DefautConnection": {
+      "connectionString": "Server=.\\DefaultInstance;Database=EfSample;User Id=sa;Password=123"
+    }
+  }
+}
