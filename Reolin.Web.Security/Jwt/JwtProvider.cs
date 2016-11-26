@@ -11,12 +11,11 @@ namespace Reolin.Web.Security.Jwt
             string sub = options.Claims?.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
             if (string.IsNullOrEmpty(sub))
             {
-                throw new ArgumentException("sub (username) claim can not be null");
+                throw new ArgumentException("sub '(username)' claim can not be null");
             }
          
             DateTime now = DateTime.UtcNow;
-
-            // Create the JWT and write it to a string
+            
             JwtSecurityToken jwt = new JwtSecurityToken(
                 issuer: options.Issuer,
                 audience: options.Audience,
@@ -25,6 +24,7 @@ namespace Reolin.Web.Security.Jwt
                 expires: now.Add(options.Expiration),
                 signingCredentials: options.SigningCredentials);
 
+            // write the jwt to a string for further processing.
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
     }

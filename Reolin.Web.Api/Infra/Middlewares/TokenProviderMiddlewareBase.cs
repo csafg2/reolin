@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
-
     public class TokenProviderMiddlewareBase
     {
         private readonly RequestDelegate _next;
@@ -52,8 +51,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
         }
 
         const string Json_MimeType = "application/json";
-
-
         private async Task WriteError(HttpContext context, string message)
         {
             await context.Response.WriteAsync(message);

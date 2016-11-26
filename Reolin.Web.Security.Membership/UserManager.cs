@@ -21,7 +21,4 @@ namespace Reolin.Web.Security.Membership
     {
 
     }
-
-
-
 }

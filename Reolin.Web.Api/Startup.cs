@@ -3,13 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Reolin.Web.Api.Infra;
 using Reolin.Web.Api.Infra.Middlewares;
-using Reolin.Web.Security.Jwt;
-using System;
-using System.Text;
 
 namespace Reolin.Web.Api
 {
@@ -42,7 +36,7 @@ namespace Reolin.Web.Api
             app.AddJwtEndPoint();
             app.UseMvcWithDefaultRoute();
             
-            //app.UseMvc();
+            app.UseMvc();
         }
     }
 }

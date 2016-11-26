@@ -29,7 +29,9 @@
   },
 
   "frameworks": {
-    "net461": {}
+    "net461": {
+
+    }
     //"netcoreapp1.0.1": {
     //  "imports": [
     //    "dotnet5.6",

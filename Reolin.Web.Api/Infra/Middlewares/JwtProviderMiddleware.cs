@@ -24,12 +24,19 @@ namespace Reolin.Web.Api.Infra.Middlewares
             {
                 throw new InvalidOperationException("username and password are required");
             }
+            VaildateUserIdentity(userName, password);
             options.Claims = new List<Claim>();
             foreach (var item in GetClaims(userName))
             {
                 options.Claims.Add(item);
             }
+            
             //TODO: add claims like role and username
+        }
+
+        private void VaildateUserIdentity(string userName, string password)
+        {
+            throw new NotImplementedException();
         }
 
         private IEnumerable<Claim> GetClaims(string userName)
