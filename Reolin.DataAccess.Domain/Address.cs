@@ -17,6 +17,6 @@ namespace Reolin.DataAccess.Domain
         public List<Tag> Tags { get; set; }
 
         [NotMapped]
-        public const int LocationSRID = 4326;
+        public const int Geo_SRID = 4326;
     }
 }
