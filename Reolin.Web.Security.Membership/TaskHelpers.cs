@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Reolin.Web.Security.Membership
 {
 
-    public static class TaskHelpers
+    internal static class TaskHelpers
     {
         public static Task FromException(Exception ex)
         {

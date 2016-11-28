@@ -1,9 +1,8 @@
-﻿using Reolin.Web.Security.Membership.Core;
-using System;
+﻿using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Reolin.Web.Security.Membership
+namespace Reolin.Web.Security.Membership.Core
 {
     public class SHA1PasswordHasher : IUserPasswordHasher
     {

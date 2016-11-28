@@ -2,46 +2,30 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Reolin.Web.Security.Membership.Core;
 
 namespace Reolin.Web.Security.Membership
 {
-
-
     public class UserManager<TUser, TKey> : IUserSecurityManager<TUser, TKey> where TUser : IUser<TKey> where TKey : struct
     {
-        private IUserSecurityStore<TUser, TKey> _store;
+        private readonly IUserSecurityStore<TUser, TKey> _store;
+        private readonly IEnumerable<IUserValidator<TUser, TKey>> _validators;
 
-        public UserManager(IUserSecurityStore<TUser, TKey> userStore)
+        public UserManager(IUserSecurityStore<TUser, TKey> userStore,
+            IEnumerable<IUserValidator<TUser, TKey>> validators)
         {
             _store = userStore;
+            _validators = validators;
         }
 
-        public IUserPasswordHasher PasswordHasher
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public IUserSecurityStore<TUser, TKey> Store
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public IUserPasswordHasher PasswordHasher { get; set; }
+        public IUserSecurityStore<TUser, TKey> Store { get { return _store; } }
 
         public IEnumerable<IUserValidator<TUser, TKey>> Validators
         {
             get
             {
-                throw new NotImplementedException();
+                return _validators;
             }
         }
 
@@ -65,6 +49,11 @@ namespace Reolin.Web.Security.Membership
         }
 
         public Task<IdentityResult> CreateAsync(TUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IdentityResult> CreateAsync(string userName, string password, string email)
         {
             throw new NotImplementedException();
         }

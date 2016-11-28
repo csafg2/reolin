@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Reolin.Web.Security.Membership
+namespace Reolin.Web.Security.Membership.Core
 {
 
     public interface IPasswordValidator<TUser, TKey> :

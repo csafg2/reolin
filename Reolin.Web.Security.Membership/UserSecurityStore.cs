@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using EntityFramework.Extensions;
 using System.Linq.Expressions;
+using Reolin.Web.Security.Membership.Core;
+using Reolin.DataAccess;
+using Reolin.DataAccess.Domain;
 
 namespace Reolin.Web.Security.Membership
 {

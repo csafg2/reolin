@@ -2,10 +2,8 @@
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 
-namespace Reolin.Web.Security.Membership
+namespace Reolin.Web.Security.Membership.Core
 {
-
-
     public interface IUserSecurityStore<TUser, TKey> where TUser : IUser<TKey> where TKey : struct
     {
         // create
@@ -16,7 +14,7 @@ namespace Reolin.Web.Security.Membership
 
         // update
         Task Update(TUser user);
-        Task Update(Expression<Func<User, bool>> filter, User user);
+        Task Update(Expression<Func<TUser, bool>> filter, TUser user);
 
         // delete
         Task Delete(TKey id);
