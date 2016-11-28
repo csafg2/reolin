@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using Reolin.Web.Security.Membership.Core;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserManager<TUser, TKey>
-        : IUserSecurityManager<TUser, TKey>
+    public class UserManager<TUser, TKey> : IUserSecurityManager<TUser, TKey>
         where TUser : IUser<TKey>, new()
         where TKey : struct
     {
@@ -23,24 +21,16 @@ namespace Reolin.Web.Security.Membership
 
         public IUserPasswordHasher PasswordHasher { get; set; }
         public IUserSecurityStore<TUser, TKey> Store { get { return _store; } }
-
-        public IEnumerable<IUserValidator<TUser, TKey>> Validators
-        {
-            get
-            {
-                return _validators;
-            }
-        }
+        public IEnumerable<IUserValidator<TUser, TKey>> Validators { get { return _validators; } }
 
         public async Task ChangePasswordAsync(TKey id, string oldPassword, string newPassword)
         {
             TUser user = await this.Store.GetByIdAsync(id);
-            foreach (var item in this.Validators.Where(v => v.Type == ValidatorType.PasswordValidator))
+            foreach (var validator in this.Validators)
             {
-                IPasswordValidator<TUser, TKey> validator = (IPasswordValidator<TUser, TKey>)item;
                 await validator.ValidateChangePassword(this, user, oldPassword, newPassword);
             }
-            
+
             user.Password = this.PasswordHasher.ComputeHash(newPassword);
             await Store.Update(user);
         }
@@ -52,11 +42,11 @@ namespace Reolin.Web.Security.Membership
 
         public async Task CreateAsync(string userName, string password, string email)
         {
-            foreach(var item in this.Validators.Where(v => v.Type == ValidatorType.PasswordValidator))
+            foreach (var item in this.Validators)
             {
-                var validator = (IPasswordValidator<TUser, TKey>)item;
-                await validator.ValidateStringPassword(password);
+                await item.ValidateStringPassword(password);
             }
+
             await CreateAsync(new TUser()
             {
                 UserName = userName,
