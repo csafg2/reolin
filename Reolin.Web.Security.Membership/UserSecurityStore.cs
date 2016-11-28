@@ -10,8 +10,6 @@ using Reolin.DataAccess.Domain;
 
 namespace Reolin.Web.Security.Membership
 {
-
-
     public class UserSecurityStore : IUserSecurityStore<User, int>
     {
         private readonly DataContext _context;

@@ -11,7 +11,7 @@ namespace Reolin.Web.Security.Membership.Core
 
         // read
         Task<TUser> GetByIdAsync(TKey id);
-
+        Task<TUser> GetByEmailAsync(string email);
         // update
         Task Update(TUser user);
         Task Update(Expression<Func<TUser, bool>> filter, TUser user);

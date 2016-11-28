@@ -2,6 +2,6 @@
 {
     public interface IUserPasswordHasher
     {
-        byte[] Hash(string password);
+        byte[] ComputeHash(string password);
     }
 }

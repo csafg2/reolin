@@ -7,7 +7,7 @@ namespace Reolin.Web.Security.Membership
 {
     public class SHA1PasswordHasher : IUserPasswordHasher
     {
-        public byte[] Hash(string password)
+        public byte[] ComputeHash(string password)
         {
             if (password == null)
             {

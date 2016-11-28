@@ -5,6 +5,7 @@
     {
         TKey Id { get; }
         string UserName { get; set; }
+        string Email { get; set; }
         byte[] Password { get; set; }
     }
 }
