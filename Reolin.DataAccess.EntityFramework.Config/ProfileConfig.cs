@@ -30,7 +30,7 @@ namespace Reolin.DataAccess.EntityFramework.Config
             // user can place many images from it.
             // but a profile of type "personal" is allowed to only have on image
             this.HasMany(p => p.Images)
-                .WithOptional(img => img.Profile)
+                .WithRequired(img => img.Profile)
                 .HasForeignKey(img => img.ProfileId);
 
 

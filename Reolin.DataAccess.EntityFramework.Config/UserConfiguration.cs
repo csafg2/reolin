@@ -25,7 +25,7 @@ namespace Reolin.DataAccess.EntityFramework.Config
                 .WithMany(s => s.Users)
                 .Map(t => t.MapLeftKey("UserId")
                         .MapRightKey("SkillId")
-                        .ToTable("User_Skill"));
+                        .ToTable("UserSkill"));
 
             // user must set a location
             // but an address object might not be accuired just by a user
@@ -60,7 +60,7 @@ namespace Reolin.DataAccess.EntityFramework.Config
                 .WithMany(t => t.Users)
                 .Map(t => t.MapLeftKey("UserId")
                         .MapRightKey("TagId")
-                        .ToTable("User_Tag"));
+                        .ToTable("UserTag"));
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Reolin.Web.Api
         {
             // Add framework services.
             services.AddMvc();
+            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

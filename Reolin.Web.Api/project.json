@@ -1,13 +1,5 @@
 {
   "dependencies": {
-    //"Microsoft.NETCore.App": {
-    //  "version": "1.0",
-    //  "type": "platform"
-    //},
-    //"NETStandard.Library": {
-    //  "version": "2",
-    //  "type": "platform"
-    //  },
       "Microsoft.AspNetCore.Mvc": "1.0.1",
       "Microsoft.AspNetCore.Routing": "1.0.1",
       "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
@@ -32,12 +24,6 @@
     "net461": {
 
     }
-    //"netcoreapp1.0.1": {
-    //  "imports": [
-    //    "dotnet5.6",
-    //    "portable-net45+win8"
-    //  ]
-    //}
   },
 
   "buildOptions": {
