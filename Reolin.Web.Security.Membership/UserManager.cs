@@ -35,7 +35,11 @@ namespace Reolin.Web.Security.Membership
             User user = await this.UserService.GetByIdAsync(id);
             foreach (var validator in this.Validators)
             {
-                await validator.ValidateChangePassword(this, user, oldPassword, newPassword);
+                IdentityResult result = await validator.ValidateChangePassword(this, user, oldPassword, newPassword);
+                if (!result.Succeeded)
+                {
+                    throw new InvalidOperationException(result.Message);
+                }
             }
 
             user.Password = this.PasswordHasher.ComputeHash(newPassword);
