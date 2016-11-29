@@ -4,20 +4,13 @@
   "dependencies": {
     "EntityFramework": "6.1.3",
     "EntityFramework.Extended": "6.1.0.168",
-    "Reolin.Web.Security.Membership.Core": "1.0.0-*" //,
-    // "NETStandard.Library": "1.6.0"
+    "Reolin.Data.Services.Core": "1.0.0-*",
+    "Reolin.Web.Security.Membership.Core": "1.0.0-*"
   },
 
   "frameworks": {
-    //"netstandard1.6": {
-    //  "imports": "dnxcore50"
-    //},
     "net461": {
       "dependencies": {
-        //"Microsoft.AspNet.Identity.Core": "2.2.1",
-        "Reolin.DataAccess": {
-          "target": "project"
-        }
       }
     }
   }

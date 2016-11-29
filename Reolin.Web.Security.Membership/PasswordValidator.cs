@@ -1,19 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
 using System.Text.RegularExpressions;
+using Reolin.Domain;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserEmailValidator<TUser, TKey> : IUserValidator<TUser, TKey>
-        where TUser : IUser<TKey>
-        where TKey : struct
+    public class UserEmailValidator
     {
-        public Task<IdentityResult> Validate(TUser user)
+        public Task<IdentityResult> Validate(User user)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
 
-        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager<TUser, TKey> manager, TUser user, string oldPassword, string currentPassord)
+        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager manager, User user, string oldPassword, string currentPassord)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
@@ -33,17 +32,15 @@ namespace Reolin.Web.Security.Membership
         }
     }
 
-    public class ChangePasswordValidator<TUser, TKey> : IUserValidator<TUser, TKey>
-        where TUser : IUser<TKey>
-        where TKey : struct
+    public class ChangePasswordValidator
     {
-        public Task<IdentityResult> Validate(TUser user)
+        public Task<IdentityResult> Validate(User user)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
 
-        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager<TUser, TKey> manager,
-            TUser user,
+        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager manager,
+            User user,
             string oldPassword,
             string currentPassord)
         {
@@ -81,18 +78,16 @@ namespace Reolin.Web.Security.Membership
         }
     }
 
-    public class PasswordLengthValidator<TUser, TKey> : IUserValidator<TUser, TKey>
-        where TUser : IUser<TKey>
-        where TKey : struct
+    public class PasswordLengthValidator
     {
 
-        public Task<IdentityResult> Validate(TUser user)
+        public Task<IdentityResult> Validate(User user)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
 
-        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager<TUser, TKey> manager,
-            TUser user,
+        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager manager,
+            User user,
             string oldPassword, 
             string currentPassord)
         {

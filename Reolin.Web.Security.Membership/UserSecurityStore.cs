@@ -1,60 +1,62 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Linq;
-using EntityFramework.Extensions;
-using System.Linq.Expressions;
 using Reolin.Web.Security.Membership.Core;
-using Reolin.DataAccess;
-using Reolin.DataAccess.Domain;
+using Reolin.Domain;
+using Reolin.Data.Services.Core;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserSecurityStore : IUserSecurityStore<User, int>
-    {
-        private readonly DataContext _context;
-        public UserSecurityStore(DataContext context)
-        {
-            this._context = context;
-        }
+    //public class UserSecurityStore : IUserSecurityStore
+    //{
+    //    private readonly IUserService _userSrvice;
 
-        private DataContext Context
-        {
-            get
-            {
-                return _context;
-            }
-        }
+    //    public UserSecurityStore(IUserService service)
+    //    {
+    //        this._userSrvice = service;
+    //    }
 
-        public Task CreateAsync(User user)
-        {
-            Context.Users.Add(user);
-            return Context.SaveChangesAsync();
-        }
+    //    private IUserService UserService
+    //    {
+    //        get
+    //        {
+    //            return _userSrvice;
+    //        }
+    //    }
 
-        public Task Delete(int id)
-        {
-            return Context.Users.Where(u => u.Id == id).DeleteAsync();
-        }
+    //    public Task CreateAsync(User user)
+    //    {
+    //        if (user == null)
+    //        {
+    //            throw new ArgumentNullException(nameof(user));
+    //        }
 
-        public Task<User> GetByIdAsync(int id)
-        {
-            return Context.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
-        }
+    //        return this.UserService.CreateAsync(user);
+    //    }
 
-        public Task Update(User user)
-        {
-            if (Context.Entry(user).State == EntityState.Detached)
-            {
-                Context.Users.Attach(user);
-            }
+    //    public Task DeleteAsync(int id)
+    //    {
+    //        return this.UserService.DeleteAsync(id);
+    //    }
 
-            return Context.SaveChangesAsync();
-        }
+    //    public Task DeleteAsync(User user)
+    //    {
+    //        return this.UserService.DeleteAsync(user);
+    //    }
 
-        public Task Update(Expression<Func<User, bool>> filter, User user)
-        {
-            return Context.Users.Where(filter).UpdateAsync(u => user);
-        }
-    }
+    //    public Task<User> GetByEmailAsync(string email)
+    //    {
+    //        return this.UserService.Query(u => u.Email == email).FirstOrDefaultAsync();
+    //    }
+
+    //    public Task<User> GetByIdAsync(int id)
+    //    {
+    //        return this.UserService.GetByIdAsync(id);
+    //    }
+
+    //    public Task UpdateAsync(User user)
+    //    {
+    //        return this.UserService.UpdateAsync(user);
+    //    }
+    //}
 }

@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using Reolin.Domain;
+using System.Threading.Tasks;
 
 namespace Reolin.Web.Security.Membership.Core
 {
 
-    public interface IUserValidator<TUser, TKey> where TUser : IUser<TKey> where TKey : struct
+    public interface IUserValidator
     {
-        Task<IdentityResult> Validate(TUser user);
-        Task<IdentityResult> ValidateChangePassword(IUserSecurityManager<TUser, TKey> manager,
-            TUser user,
+        Task<IdentityResult> Validate(User user);
+        Task<IdentityResult> ValidateChangePassword(IUserSecurityManager manager,
+            User user,
             string oldPassword,
             string currentPassord);
 

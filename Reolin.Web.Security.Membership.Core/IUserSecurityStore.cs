@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using Reolin.Domain;
 
 namespace Reolin.Web.Security.Membership.Core
 {
-    public interface IUserSecurityStore<TUser, TKey> where TUser : IUser<TKey> where TKey : struct
-    {
-        // create
-        Task CreateAsync(TUser user);
+    //public interface IUserSecurityStore
+    //{
+    //    // create
+    //    Task CreateAsync(User user);
 
-        // read
-        Task<TUser> GetByIdAsync(TKey id);
-        Task<TUser> GetByEmailAsync(string email);
-        // update
-        Task Update(TUser user);
-        Task Update(Expression<Func<TUser, bool>> filter, TUser user);
+    //    // read
+    //    Task<User> GetByIdAsync(int id);
+    //    Task<User> GetByEmailAsync(string email);
+    //    // update
+    //    Task UpdateAsync(User user);
 
-        // delete
-        Task Delete(TKey id);
-    }
+    //    // delete
+    //    Task DeleteAsync(User user);
+    //    Task DeleteAsync(int id);
+    //}
 }

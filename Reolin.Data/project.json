@@ -2,12 +2,15 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "EntityFramework": "6.1.3",
     "NETStandard.Library": "1.6.0",
     "Reolin.Data.Domain": "1.0.0-*",
-    "Reolin.Data.Services": "1.0.0-*"
+    "Reolin.Data.EfConfig": "1.0.0-*"
   },
 
   "frameworks": {
-    "net461": {}
+    "net461": {
+
+    }
   }
 }

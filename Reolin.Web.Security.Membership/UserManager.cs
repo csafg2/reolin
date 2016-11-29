@@ -2,42 +2,49 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
+using Reolin.Data.Services.Core;
+using Reolin.Domain;
+using System.Data.Entity;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserManager<TUser, TKey> : IUserSecurityManager<TUser, TKey>
-        where TUser : IUser<TKey>, new()
-        where TKey : struct
+    public class UserManager: IUserSecurityManager
     {
-        private readonly IUserSecurityStore<TUser, TKey> _store;
-        private readonly IEnumerable<IUserValidator<TUser, TKey>> _validators;
+        private readonly IEnumerable<IUserValidator> _validators;
+        private readonly IUserService _service;
 
-        public UserManager(IUserSecurityStore<TUser, TKey> userStore,
-            IEnumerable<IUserValidator<TUser, TKey>> validators)
+        public UserManager(IUserService service, IEnumerable<IUserValidator> validators)
         {
-            _store = userStore;
-            _validators = validators;
+            this._service = service;
+            this._validators = validators;
         }
 
         public IUserPasswordHasher PasswordHasher { get; set; }
-        public IUserSecurityStore<TUser, TKey> Store { get { return _store; } }
-        public IEnumerable<IUserValidator<TUser, TKey>> Validators { get { return _validators; } }
+        public IEnumerable<IUserValidator> Validators { get { return _validators; } }
 
-        public async Task ChangePasswordAsync(TKey id, string oldPassword, string newPassword)
+        private IUserService UserService
         {
-            TUser user = await this.Store.GetByIdAsync(id);
+            get
+            {
+                return _service;
+            }
+        }
+     
+        public async Task ChangePasswordAsync(int id, string oldPassword, string newPassword)
+        {
+            User user = await this.UserService.GetByIdAsync(id);
             foreach (var validator in this.Validators)
             {
                 await validator.ValidateChangePassword(this, user, oldPassword, newPassword);
             }
 
             user.Password = this.PasswordHasher.ComputeHash(newPassword);
-            await Store.Update(user);
+            await this.UserService.UpdateAsync(user);
         }
 
-        private Task CreateAsync(TUser user)
+        private Task CreateAsync(User user)
         {
-            return this.Store.CreateAsync(user);
+            return this.UserService.CreateAsync(user);
         }
 
         public async Task CreateAsync(string userName, string password, string email)
@@ -47,7 +54,7 @@ namespace Reolin.Web.Security.Membership
                 await item.ValidateStringPassword(password);
             }
 
-            await CreateAsync(new TUser()
+            await CreateAsync(new User()
             {
                 UserName = userName,
                 Password = this.PasswordHasher.ComputeHash(password),
@@ -55,17 +62,17 @@ namespace Reolin.Web.Security.Membership
             });
         }
 
-        public Task<TUser> GetUserByEmailAsync(string email)
+        public Task<User> GetUserByEmailAsync(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
                 throw new ArgumentNullException(nameof(email));
             }
 
-            return Store.GetByEmailAsync(email);
+            return UserService.Query(u => u.Email == email).FirstOrDefaultAsync();
         }
 
-        public Task<IdentityResult> ValidateAsync(TUser user)
+        public Task<IdentityResult> ValidateAsync(User user)
         {
             foreach (var validator in this.Validators)
             {

@@ -1,9 +1,8 @@
 ﻿namespace Reolin.Web.Security.Membership.Core
 {
-
-    public interface IUser<TKey> where TKey : struct
+    public interface IUser
     {
-        TKey Id { get; }
+        int Id { get; }
         string UserName { get; set; }
         string Email { get; set; }
         byte[] Password { get; set; }
