@@ -8,7 +8,6 @@ namespace Reolin.Data.EntityFramework.Config
 {
     public class UserConfiguration: EntityTypeConfiguration<User>
     {
-
         public UserConfiguration()
         {
             this.HasKey(u => u.Id);
@@ -30,9 +29,8 @@ namespace Reolin.Data.EntityFramework.Config
             // user must set a location
             // but an address object might not be accuired just by a user
             // may be university or a restaurent profile
-            this.HasRequired(u => u.Address)
-                .WithOptional(a => a.User);
-
+            this.HasOptional(u => u.Address)
+                .WithOptionalDependent(a => a.User);
 
             // many:many 
             // maybe a certificate like mcsd is earned by multiple users
