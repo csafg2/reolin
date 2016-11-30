@@ -13,6 +13,10 @@ namespace Reolin.Data
         {
             get
             {
+                if (true)
+                {
+
+                }
                 var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("project.json")
