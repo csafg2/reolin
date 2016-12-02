@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Reolin.Domain;
 using System.Linq.Expressions;
 using EntityFramework.Extensions;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
 namespace Reolin.Data.Services
 {
-    public class UserService : IUserService
+    public class UserService : IUserService, IDisposable
     {
         private DataContext _context;
 
         public UserService(DataContext context)
         {
+            
             this._context = context;
         }
 
@@ -54,6 +54,7 @@ namespace Reolin.Data.Services
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
         }
 
+     
         public Task<User> GetByIdAsync(int id)
         {
             return this.Context.Users.FirstOrDefaultAsync(u => u.Id == id);
@@ -61,8 +62,8 @@ namespace Reolin.Data.Services
 
         public IQueryable<User> Query(Expression<Func<User, bool>> filter, params string[] includes)
         {
-            DbQuery<User> query = null;
-            includes.ForEach(inc => query = this.Context.Users.Include(inc));
+            DbQuery<User> query = this.Context.Users;
+            includes.ForEach(inc => query = query.Include(inc));
             return query.Where(filter);
         }
 
@@ -74,6 +75,10 @@ namespace Reolin.Data.Services
             }
 
             return Context.SaveChangesAsync();
+        }
+        public void Dispose()
+        {
+            this._context.Dispose();
         }
     }
 }
