@@ -2,42 +2,29 @@
 using Reolin.Domain;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace Reolin.Data
 {
-    public static class DbConfiguration
+    public class DataContext : DbContext
     {
-        public static string CurrentConnectionString
+        public DbSet<Academy> Academies { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Certificate> Certificates { get; set; }
+        //public DbSet<City> Cities { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        //public DbSet<Country> Countries { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        public DataContext(): base("Default")
         {
-            get
-            {
-                if (true)
-                {
 
-                }
-                var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("project.json")
-                .Build();
-
-                return builder["ConnectionStrings:Default"];
-            }
         }
 
-        
-    }
-
-    public class DataContext: DbContext
-    {
-        public DataContext(): base(@"Server=127.0.0.1\DefaultInstance;
-                                        Database = ReolinDb; 
-                                        User Id=sa;
-                                        Password=123;")
-        { }
-
-        public DbSet<User> Users { get; set; } 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

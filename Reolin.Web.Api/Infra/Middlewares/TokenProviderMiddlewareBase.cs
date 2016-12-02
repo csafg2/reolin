@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Security.Jwt;
+using Reolin.Web.Security.Membership.Core;
 using System;
 using System.Threading.Tasks;
 
@@ -11,12 +12,25 @@ namespace Reolin.Web.Api.Infra.Middlewares
         private readonly RequestDelegate _next;
         private readonly TokenProviderOptions _options;
         private readonly string _path;
+        private readonly IUserSecurityManager _userManager;
 
-        public TokenProviderMiddlewareBase(RequestDelegate next, IOptions<TokenProviderOptions> options, string path)
+        public TokenProviderMiddlewareBase(RequestDelegate next,
+            IOptions<TokenProviderOptions> options,
+            string path,
+            IUserSecurityManager userManager)
         {
-            _next = next;
-            _options = options.Value;
+            this._next = next;
+            this._options = options.Value;
             this._path = path;
+            this._userManager = userManager;
+        }
+        
+        protected IUserSecurityManager UserManager
+        {
+            get
+            {
+                return _userManager;
+            }
         }
 
         public Task Invoke(HttpContext context)
@@ -32,25 +46,28 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 return context.Response.WriteAsync("Bad request.");
             }
 
-            try
+            bool cancel = false;
+            this.OnTokenCreating(context, _options, cancel);
+
+            if(cancel == true)
             {
-                this.OnTokenCreating(context, _options);
-                string jwt = new JwtProvider().ProvideJwt(_options);
-                string response = JwtManager.CreateResponseString(jwt, this._options.Expiration);
-                return WriteToken(context, response);
+                return Task.FromResult(0);
             }
-            catch (Exception ex)
-            {
-                return WriteError(context, ex.Message);
-            }
+            
+            string jwt = new JwtProvider().ProvideJwt(_options);
+            string response = JwtManager.CreateResponseString(jwt, this._options.Expiration);
+            return WriteToken(context, response);
         }
 
-        protected virtual void OnTokenCreating(HttpContext context, TokenProviderOptions options)
+        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, bool cancel)
         {
-            // allow sub class to incoporate
+            return Task.FromResult(0);
         }
-
+        
         const string Json_MimeType = "application/json";
+
+    
+
         private async Task WriteError(HttpContext context, string message)
         {
             await context.Response.WriteAsync(message);

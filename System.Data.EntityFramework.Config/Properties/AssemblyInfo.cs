@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Reolin.Data.Domain")]
+[assembly: AssemblyTitle("System.Data.EntityFramework.Config")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Reolin.Data.Domain")]
+[assembly: AssemblyProduct("System.Data.EntityFramework.Config")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0993a7c6-e21b-496d-8933-8860ccf33b63")]
+[assembly: Guid("850546bb-303d-4ecc-8384-053bba2d7cf0")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -3,11 +3,16 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Reolin.Data.Domain": "1.0.0-*",
     "Reolin.Data.Services": "1.0.0-*"
   },
 
   "frameworks": {
-    "net461": {}
+    "net461": {
+      "dependencies": {
+        "Reolin.Data.Domain": {
+          "target": "project"
+        }
+      }
+    }
   }
 }

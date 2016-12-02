@@ -12,6 +12,9 @@
   "frameworks": {
     "net461": {
       "dependencies": {
+        "Reolin.Data.Domain": {
+          "target": "project"
+        }
       }
     }
   }

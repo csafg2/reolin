@@ -2,8 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
-    "Reolin.Data.Domain": "1.0.0-*"
+    "NETStandard.Library": "1.6.0"
   },
 
   "frameworks": {
@@ -11,7 +10,11 @@
     //  "imports": "dnxcore50"
     //},
     "net461": {
-
+      "dependencies": {
+        "Reolin.Data.Domain": {
+          "target": "project"
+        }
+      }
     }
   }
 }

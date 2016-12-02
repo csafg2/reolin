@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +11,17 @@ using Reolin.Web.Api.Infra.Middlewares;
 
 namespace Reolin.Web.Api
 {
+
+    class Requirement : AuthorizationHandler<Requirement>, IAuthorizationRequirement
+    {
+        
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, 
+            Requirement requirement)
+        {
+            return Task.FromResult(0);
+        }
+    }
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -23,6 +38,13 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(o =>
+            {
+                o.AddPolicy("TokenValidation", p =>
+                {
+                    
+                });
+            });
             // Add framework services.
             services.AddMvc();
             

@@ -27,6 +27,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 }
             });
 
+            
         }
 
         public static IApplicationBuilder AddJwtEndPoint(this IApplicationBuilder source)

@@ -13,5 +13,6 @@ namespace Reolin.Web.Security.Membership.Core
         Task<IdentityResult> ValidateAsync(User user);
         Task ChangePasswordAsync(int id, string oldPassword, string newPassword);
         Task<User> GetUserByEmailAsync(string email);
+        Task<User> GetByUserNameAsync(string userName);
     }
 }

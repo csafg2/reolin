@@ -8,12 +8,12 @@ using System.Data.Entity;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserManager: IUserSecurityManager
+    public class UserSecurityManager: IUserSecurityManager
     {
         private readonly IEnumerable<IUserValidator> _validators;
         private readonly IUserService _service;
 
-        public UserManager(IUserService service, IEnumerable<IUserValidator> validators)
+        public UserSecurityManager(IUserService service, IEnumerable<IUserValidator> validators)
         {
             this._service = service;
             this._validators = validators;
@@ -84,6 +84,16 @@ namespace Reolin.Web.Security.Membership
             }
 
             return Task.FromResult(IdentityResult.FromSucceeded());
+        }
+
+        public Task<User> GetByUserNameAsync(string userName)
+        {
+            if (userName == null)
+            {
+                throw new ArgumentNullException(nameof(userName));
+            }
+
+            return this._service.Query(user => user.UserName == user.UserName).FirstOrDefaultAsync();
         }
     }
 }

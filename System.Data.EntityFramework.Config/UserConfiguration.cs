@@ -29,10 +29,11 @@ namespace Reolin.Data.EntityFramework.Config
             // user must set a location
             // but an address object might not be accuired just by a user
             // may be university or a restaurent profile
+            // allow the user to log once.
             this.HasOptional(u => u.Address)
                 .WithOptionalDependent(a => a.User);
 
-            // many:many 
+            // *:*
             // maybe a certificate like mcsd is earned by multiple users
             // providing intelisence to user when selecting certificate is necessary
             this.HasMany(u => u.Certificates)
