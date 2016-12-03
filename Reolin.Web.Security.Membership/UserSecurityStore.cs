@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 using Reolin.Data.Services.Core;
 
 namespace Reolin.Web.Security.Membership

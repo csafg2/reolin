@@ -1,4 +1,6 @@
-﻿using Reolin.Domain;
+﻿using Reolin.Data.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 
 /// <summary>
@@ -11,7 +13,26 @@ namespace Reolin.Data.EntityFramework.Config
         public UserConfiguration()
         {
             this.HasKey(u => u.Id);
-            
+
+            this.Property(u => u.Password).IsRequired();
+            this.Property(u => u.UserName).HasMaxLength(50).IsRequired();
+            this.Property(u => u.Email).HasMaxLength(254).IsRequired();
+
+            this.Property(u => u.UserName)
+                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
+                     new IndexAnnotation(new IndexAttribute("IX_USERNAME", 1)
+                     {
+                         IsUnique = true
+                     }));
+
+            this.Property(u => u.Email)
+                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
+                     new IndexAnnotation(new IndexAttribute("IX_EMAIL", 2)
+                     {
+                         IsUnique = true
+                     }));
+
+
             // 1:* intellisence is necessary
             this.HasMany(u => u.Certificates)
                 .WithMany(c => c.Users)

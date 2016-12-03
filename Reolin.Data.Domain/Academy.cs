@@ -1,5 +1,5 @@
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
 
     public class Academy

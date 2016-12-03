@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership.Core;
 using System;

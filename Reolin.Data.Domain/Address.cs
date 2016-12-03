@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
     public class Address
     {

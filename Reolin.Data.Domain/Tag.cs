@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
 
     public class Tag

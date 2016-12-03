@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 
 namespace Reolin.Web.Security.Membership.Core
 {

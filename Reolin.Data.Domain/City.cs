@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
     [Obsolete("this class should not be used, because address class now uses hashtags")]
     public class City

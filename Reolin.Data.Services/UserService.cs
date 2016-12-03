@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 using System.Linq.Expressions;
 using EntityFramework.Extensions;
 using System.Data.Entity;
@@ -31,7 +31,8 @@ namespace Reolin.Data.Services
 
         public Task CreateAsync(User user)
         {
-            throw new NotImplementedException();
+            this.Context.Users.Add(user);
+            return this.Context.SaveChangesAsync();
         }
 
         public Task CreateAsync(string userName, byte[] password, string email)
@@ -63,7 +64,7 @@ namespace Reolin.Data.Services
         public IQueryable<User> Query(Expression<Func<User, bool>> filter, params string[] includes)
         {
             DbQuery<User> query = this.Context.Users;
-            includes.ForEach(inc => query = query.Include(inc));
+            includes?.ForEach(inc => query = query.Include(inc));
             return query.Where(filter);
         }
 

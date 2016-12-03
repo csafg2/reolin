@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
 using Reolin.Data.Services.Core;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 using System.Data.Entity;
 
 namespace Reolin.Web.Security.Membership

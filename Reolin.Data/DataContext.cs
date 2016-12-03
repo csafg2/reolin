@@ -1,5 +1,5 @@
 ﻿using Reolin.Data.EntityFramework.Config;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 

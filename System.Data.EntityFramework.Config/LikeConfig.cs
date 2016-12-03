@@ -1,4 +1,4 @@
-﻿using Reolin.Domain;
+﻿using Reolin.Data.Domain;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Reolin.Data.EntityFramework.Config

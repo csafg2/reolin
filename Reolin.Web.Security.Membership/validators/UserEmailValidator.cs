@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
 using System.Text.RegularExpressions;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 
 namespace Reolin.Web.Security.Membership.Validators
 {

@@ -1,7 +1,7 @@
 
 using System;
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
     [Obsolete("address class now recognize the city and country by #tag")]
     public class Country

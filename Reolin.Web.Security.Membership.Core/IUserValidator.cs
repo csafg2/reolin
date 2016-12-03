@@ -1,4 +1,4 @@
-﻿using Reolin.Domain;
+﻿using Reolin.Data.Domain;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Security.Membership.Core

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
-using Reolin.Domain;
+using Reolin.Data.Domain;
 
 namespace Reolin.Web.Security.Membership.Validators
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Reolin.Domain
+namespace Reolin.Data.Domain
 {
     /// <summary>
     /// this class holds central user states
