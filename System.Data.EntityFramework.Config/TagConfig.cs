@@ -8,6 +8,8 @@ namespace Reolin.Data.EntityFramework.Config
         public TagConfig()
         {
             this.HasKey(t => t.Id);
+
+            this.Property(t => t.Name).IsRequired();
         }
     }
 }

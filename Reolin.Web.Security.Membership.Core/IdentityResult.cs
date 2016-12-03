@@ -11,12 +11,12 @@ namespace Reolin.Web.Security.Membership.Core
         public Exception Exception { get; set; }
         public static IdentityResult Failed()
         {
-            return Failed(string.Empty);
+            return Failed(new Exception());
         }
-
-        public static IdentityResult Failed(string message)
+        
+        public static IdentityResult Failed(Exception ex)
         {
-            return new Failed() { Message = message };
+            return new Failed() { Exception = ex };
         }
 
         public static IdentityResult FromSucceeded(string message)

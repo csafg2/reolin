@@ -8,11 +8,11 @@ using System.Text;
 namespace DatabaseTest
 {
     [TestClass]
-    public class UnitTest1
+    public class DataContextTest
     {
         DataContext context = new DataContext();
 
-        public UnitTest1()
+        public DataContextTest()
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
         }

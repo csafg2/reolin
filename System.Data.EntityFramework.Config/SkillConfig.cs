@@ -9,6 +9,7 @@ namespace Reolin.Data.EntityFramework.Config
         public SkillConfig()
         {
             this.HasKey(s => s.Id);
+            this.Property(s => s.Name).IsRequired();
         }
     }
 }

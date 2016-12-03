@@ -19,29 +19,25 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
         }
 
-        protected async override Task OnTokenCreating(HttpContext context, TokenProviderOptions options, bool cancel)
+        protected async override Task OnTokenCreating(HttpContext context, TokenProviderOptions options, bool cancel, string reason)
         {
             string userName = context.Request.Form["userName"];
             string password = context.Request.Form["password"];
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException("username and password are required");
-            }
-            User currentUser = await GetUser(userName);
-            if (currentUser == null)
-            {
-                // write error to response
                 cancel = true;
-                return;
-            }
-
-            if((currentUser = await VaildateUserIdentity(userName, password)) == null)
-            {
-                // write error to response
-                cancel = true;
+                reason = "Username or password can not be empty";
                 return;
             }
             
+            User user = await this.UserManager.GetLoginInfo(userName, password);
+            if(user == null)
+            {
+                cancel = true;
+                reason = "user can not be found";
+                return;
+            }
+
             options.Claims = new List<Claim>();
             foreach (var item in GetClaims(userName, null))
             {
@@ -51,17 +47,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
             //TODO: add claims like role and username
         }
 
-        private Task<User> GetUser(string userName)
-        {
-            
-            throw new NotImplementedException();
-        }
-
-        private Task<User> VaildateUserIdentity(string userName, string password)
-        {
-            throw new NotImplementedException();
-            // hashpassword
-        }
 
         private IEnumerable<Claim> GetClaims(string userName, string[] roles)
         {
@@ -83,6 +68,5 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
             return sb.ToString().Remove(sb.Length - 1);
         }
-
     }
 }

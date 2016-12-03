@@ -5,21 +5,26 @@ using Reolin.Web.Security.Membership.Core;
 using Reolin.Data.Services.Core;
 using Reolin.Data.Domain;
 using System.Data.Entity;
+using System.Text;
+using Reolin.Web.Security.Membership.exceptions;
 
 namespace Reolin.Web.Security.Membership
 {
-    public class UserSecurityManager: IUserSecurityManager
+    public class UserSecurityManager : IUserSecurityManager
     {
         private readonly IEnumerable<IUserValidator> _validators;
         private readonly IUserService _service;
+        private readonly IUserPasswordHasher _passwordHasher;
 
-        public UserSecurityManager(IUserService service, IEnumerable<IUserValidator> validators)
+        public UserSecurityManager(IUserService service,
+            IEnumerable<IUserValidator> validators, IUserPasswordHasher passwordhasher)
         {
             this._service = service;
             this._validators = validators;
+            this._passwordHasher = passwordhasher;
         }
 
-        public IUserPasswordHasher PasswordHasher { get; set; }
+        public IUserPasswordHasher PasswordHasher { get { return _passwordHasher; } }
         public IEnumerable<IUserValidator> Validators { get { return _validators; } }
 
         private IUserService UserService
@@ -29,7 +34,8 @@ namespace Reolin.Web.Security.Membership
                 return _service;
             }
         }
-     
+
+
         public async Task ChangePasswordAsync(int id, string oldPassword, string newPassword)
         {
             User user = await this.UserService.GetByIdAsync(id);
@@ -55,7 +61,12 @@ namespace Reolin.Web.Security.Membership
         {
             foreach (var item in this.Validators)
             {
-                await item.ValidateStringPassword(password);
+                IdentityResult result = await item.ValidateStringPassword(password);
+
+                if (!result.Succeeded)
+                {
+                    throw result.Exception;
+                }
             }
 
             await CreateAsync(new User()
@@ -66,25 +77,55 @@ namespace Reolin.Web.Security.Membership
             });
         }
 
-        public Task<User> GetUserByEmailAsync(string email)
+        public async Task<User> GetUserByEmailAsync(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
                 throw new ArgumentNullException(nameof(email));
             }
 
-            return UserService.Query(u => u.Email == email).FirstOrDefaultAsync();
+            foreach (var item in this.Validators)
+            {
+                IdentityResult result = await item.ValidateEmail(email);
+                if (!result.Succeeded)
+                {
+                    throw result.Exception;
+                }
+            }
+            return await UserService.Query(u => u.Email == email).FirstOrDefaultAsync();
         }
 
-        public Task<IdentityResult> ValidateAsync(User user)
+        // check the username and password provided
+        public async Task<IdentityResult> ValidateUserPasswordAsync(string userName, string password)
         {
-            foreach (var validator in this.Validators)
+            if (string.IsNullOrEmpty(userName))
             {
-                validator.Validate(user);
+                throw new ArgumentNullException(nameof(userName));
             }
 
-            return Task.FromResult(IdentityResult.FromSucceeded());
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+
+            User user = await this._service.GetByUserName(userName);
+            if(user != null)
+            {
+                if (!user.Password.IsEqualTo(Encoding.UTF8.GetBytes(password)))
+                {
+                    return IdentityResult.Failed(new PasswordNotValidException("Password is not valid"));
+                }
+            }
+            else
+            {
+                return IdentityResult.Failed
+                    (new PasswordNotValidException($"username {userName} dose not exist."));
+            }
+
+            return IdentityResult.FromSucceeded();
         }
+
+
 
         public Task<User> GetByUserNameAsync(string userName)
         {
@@ -94,6 +135,16 @@ namespace Reolin.Web.Security.Membership
             }
 
             return this._service.Query(user => user.UserName == user.UserName).FirstOrDefaultAsync();
+        }
+
+        public async Task<User> GetLoginInfo(string userName, string password)
+        {
+            User user = await this.UserService.GetUserTokenInfo(userName);
+            if(user == null)
+            {
+                return null;
+            }
+            return user;
         }
     }
 }

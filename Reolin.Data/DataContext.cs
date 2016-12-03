@@ -19,7 +19,7 @@ namespace Reolin.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Role> Roles { get; set; }
         public DataContext(): base("Default")
         {
 

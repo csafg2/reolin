@@ -9,7 +9,7 @@ namespace Reolin.Data.EntityFramework.Config
         public CommentConfig()
         {
             this.HasKey(c => c.Id);
-
+            this.Property(c => c.Body).IsRequired();
         }
     }
 }

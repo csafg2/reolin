@@ -10,13 +10,13 @@ using System.Data.Entity.Infrastructure;
 
 namespace Reolin.Data.Services
 {
+
     public class UserService : IUserService, IDisposable
     {
         private DataContext _context;
 
         public UserService(DataContext context)
         {
-            
             this._context = context;
         }
 
@@ -28,14 +28,13 @@ namespace Reolin.Data.Services
             }
         }
 
-
-        public Task CreateAsync(User user)
+        public Task<int> CreateAsync(User user)
         {
             this.Context.Users.Add(user);
             return this.Context.SaveChangesAsync();
         }
 
-        public Task CreateAsync(string userName, byte[] password, string email)
+        public Task<int> CreateAsync(string userName, byte[] password, string email)
         {
             return CreateAsync(new User()
             {
@@ -45,16 +44,19 @@ namespace Reolin.Data.Services
             });
         }
 
-        public Task DeleteAsync(User user)
+        public Task<int> DeleteAsync(User user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
             return this.DeleteAsync(user.Id);
         }
 
-        public Task DeleteAsync(int id)
+        public Task<int> DeleteAsync(int id)
         {
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
         }
-
      
         public Task<User> GetByIdAsync(int id)
         {
@@ -70,16 +72,29 @@ namespace Reolin.Data.Services
 
         public Task UpdateAsync(User user)
         {
-            if (Context.Entry(user).State == EntityState.Deleted)
+            if (Context.Entry(user).State == EntityState.Detached)
             {
                 Context.Users.Attach(user);
             }
 
             return Context.SaveChangesAsync();
         }
+
+        public Task<User> GetByUserName(string userName)
+        {
+            return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+        }
+
+        public Task<User> GetUserTokenInfo(string userName)
+        {
+            return this.Query(u => u.UserName == userName, "Roles").FirstOrDefaultAsync();
+        }
+
+
         public void Dispose()
         {
             this._context.Dispose();
         }
+
     }
 }

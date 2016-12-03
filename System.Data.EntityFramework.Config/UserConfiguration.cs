@@ -10,13 +10,16 @@ namespace Reolin.Data.EntityFramework.Config
 {
     public class UserConfiguration: EntityTypeConfiguration<User>
     {
+        const int USERNAME_LENGTH = 50;
+        const int EMAIL_LENGTH = 254;
+
         public UserConfiguration()
         {
             this.HasKey(u => u.Id);
 
             this.Property(u => u.Password).IsRequired();
-            this.Property(u => u.UserName).HasMaxLength(50).IsRequired();
-            this.Property(u => u.Email).HasMaxLength(254).IsRequired();
+            this.Property(u => u.UserName).HasMaxLength(USERNAME_LENGTH).IsRequired();
+            this.Property(u => u.Email).HasMaxLength(EMAIL_LENGTH).IsRequired();
 
             this.Property(u => u.UserName)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
@@ -81,6 +84,14 @@ namespace Reolin.Data.EntityFramework.Config
                 .Map(t => t.MapLeftKey("UserId")
                         .MapRightKey("TagId")
                         .ToTable("UserTag"));
+
+
+            // 1:* Intelissence is necessary
+            this.HasMany(u => u.Roles)
+                .WithMany(r => r.Users)
+                .Map(t => t.MapLeftKey("UserId")
+                        .MapRightKey("RoleId")
+                        .ToTable("UserRole"));
         }
     }
 }

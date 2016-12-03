@@ -14,5 +14,6 @@ namespace Reolin.Web.Security.Membership.Core
 
         Task<IdentityResult> ValidateStringPassword(string password);
         Task<IdentityResult> ValidateEmail(string email);
+        Task<IdentityResult> ValidateUserName(string userName);
     }
 }

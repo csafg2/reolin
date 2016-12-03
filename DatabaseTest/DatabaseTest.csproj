@@ -81,6 +81,10 @@
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\System.Data.EntityFramework.Config\System.Data.EntityFramework.Config.csproj">
+      <Project>{850546BB-303D-4ECC-8384-053BBA2D7CF0}</Project>
+      <Name>System.Data.EntityFramework.Config</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">

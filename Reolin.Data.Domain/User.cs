@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Reolin.Data.Domain
 {
@@ -8,6 +9,7 @@ namespace Reolin.Data.Domain
     public class User
     {
         public int Id { get; set; }
+        [RegularExpression(pattern: @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,7 +22,7 @@ namespace Reolin.Data.Domain
 
         // thumbs up s that user has done.
         public List<Like> Likes { get; set; }
-        
+        public List<Role> Roles { get; set; }
         public bool Confirmed { get; set; }
 
         public string UserName { get; set; }

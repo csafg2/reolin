@@ -47,11 +47,13 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
 
             bool cancel = false;
-            this.OnTokenCreating(context, _options, cancel);
+            string reason = string.Empty;
+
+            this.OnTokenCreating(context, _options, cancel, reason);
 
             if(cancel == true)
             {
-                return Task.FromResult(0);
+                return Task.FromException(new Exception(reason));
             }
             
             string jwt = new JwtProvider().ProvideJwt(_options);
@@ -59,15 +61,12 @@ namespace Reolin.Web.Api.Infra.Middlewares
             return WriteToken(context, response);
         }
 
-        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, bool cancel)
+        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, bool cancel, string reason)
         {
             return Task.FromResult(0);
         }
         
         const string Json_MimeType = "application/json";
-
-    
-
         private async Task WriteError(HttpContext context, string message)
         {
             await context.Response.WriteAsync(message);
