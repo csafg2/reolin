@@ -29,15 +29,15 @@ namespace Reolin.Data.Services
             }
         }
 
-        public Task<int> CreateAsync(User user)
+        public async Task<int> CreateAsync(User user)
         {
             if (user.Roles == null || user.Roles.Count < 1)
             {
-                throw new InvalidOperationException("user must have at least one role");
+                user.Roles = new List<Role>() { await InitializeDefaultRole() };
             }
 
             this.Context.Users.Add(user);
-            return this.Context.SaveChangesAsync();
+            return await this.Context.SaveChangesAsync();
         }
 
         public async Task<int> CreateAsync(string userName, byte[] password, string email, params string[] roles)
@@ -58,7 +58,8 @@ namespace Reolin.Data.Services
 
         private async Task<Role> InitializeDefaultRole()
         {
-            Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Name == Role.Default().Name);
+            Role defaultRole = Role.Default();
+            Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Name == defaultRole.Name);
             if (role == null)
             {
                 role = Role.Default();

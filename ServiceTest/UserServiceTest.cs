@@ -36,7 +36,6 @@ namespace ServiceTest_
             };
 
             this.Service.CreateAsync(user).Wait();
-        
         }
 
         [TestMethod]

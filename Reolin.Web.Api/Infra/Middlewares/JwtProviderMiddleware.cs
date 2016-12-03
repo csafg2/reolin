@@ -46,12 +46,13 @@ namespace Reolin.Web.Api.Infra.Middlewares
 
         private List<Claim> GetClaims(string userName, IEnumerable<string> roles)
         {
+            const string roleClaimName = "roles";
             return new List<Claim>()
                    {
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
-                        new Claim("roles", GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
                    };
         }
 
