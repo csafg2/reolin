@@ -96,5 +96,14 @@ namespace Reolin.Data.Services
             this._context.Dispose();
         }
 
+        public Task<int> AddToRole(int userId, int roleId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddToRole(int userId, string role)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

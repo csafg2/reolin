@@ -9,6 +9,12 @@ namespace Reolin.Web.Api.Infra.Middlewares
 {
     public class TokenProviderMiddlewareBase
     {
+        protected class TokenArgs
+        {
+            public bool Cnaceled { get; set; }
+            public string Reason { get; set; }
+        }
+
         private readonly RequestDelegate _next;
         private readonly TokenProviderOptions _options;
         private readonly string _path;
@@ -45,23 +51,29 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 context.Response.StatusCode = 400;
                 return context.Response.WriteAsync("Bad request.");
             }
-
-            bool cancel = false;
-            string reason = string.Empty;
-
-            this.OnTokenCreating(context, _options, cancel, reason);
-
-            if(cancel == true)
+            
+            try
             {
-                return Task.FromException(new Exception(reason));
+                TokenArgs args = new TokenArgs();
+                this.OnTokenCreating(context, _options, args);
+
+                if (args.Cnaceled == true)
+                {
+                    return WriteError(context, args.Reason);
+                }
             }
+            catch(Exception ex)
+            {
+                return WriteError(context, ex.Message);
+            }
+            
             
             string jwt = new JwtProvider().ProvideJwt(_options);
             string response = JwtManager.CreateResponseString(jwt, this._options.Expiration);
             return WriteToken(context, response);
         }
 
-        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, bool cancel, string reason)
+        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, TokenArgs args)
         {
             return Task.FromResult(0);
         }

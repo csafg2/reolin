@@ -21,13 +21,14 @@ namespace Reolin.Data.EntityFramework.Config
             this.Property(u => u.UserName).HasMaxLength(USERNAME_LENGTH).IsRequired();
             this.Property(u => u.Email).HasMaxLength(EMAIL_LENGTH).IsRequired();
 
+            // username has to be unique
             this.Property(u => u.UserName)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
                      new IndexAnnotation(new IndexAttribute("IX_USERNAME", 1)
                      {
                          IsUnique = true
                      }));
-
+            // user email has to be unique
             this.Property(u => u.Email)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
                      new IndexAnnotation(new IndexAttribute("IX_EMAIL", 2)

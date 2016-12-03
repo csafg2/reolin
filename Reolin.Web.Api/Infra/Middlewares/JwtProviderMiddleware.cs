@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
@@ -19,34 +20,31 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
         }
 
-        protected async override Task OnTokenCreating(HttpContext context, TokenProviderOptions options, bool cancel, string reason)
+        protected async override Task OnTokenCreating(HttpContext context, TokenProviderOptions options, TokenArgs args)
         {
             string userName = context.Request.Form["userName"];
             string password = context.Request.Form["password"];
+
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                cancel = true;
-                reason = "Username or password can not be empty";
+                args.Cnaceled = true;
+                args.Reason = "Username or password can not be empty";
                 return;
             }
             
             User user = await this.UserManager.GetLoginInfo(userName, password);
             if(user == null)
             {
-                cancel = true;
-                reason = "user can not be found";
+                args.Cnaceled = true;
+                args.Reason = "user dose not exist";
                 return;
             }
-
-            options.Claims = new List<Claim>();
-            foreach (var item in GetClaims(userName, null))
-            {
-                options.Claims.Add(item);
-            }
             
-            //TODO: add claims like role and username
-        }
+            string[] roles = user.Roles.Select(r => r.Name).ToArray();
 
+            options.Claims = GetClaims(userName, roles).ToList();
+        }
+        
 
         private IEnumerable<Claim> GetClaims(string userName, string[] roles)
         {
