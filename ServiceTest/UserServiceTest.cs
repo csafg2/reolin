@@ -7,6 +7,7 @@ using Reolin.Data.Domain;
 using System.Security.Cryptography;
 using System.Text;
 using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace ServiceTest_
 {
@@ -35,7 +36,11 @@ namespace ServiceTest_
                 Email = "HassanHashemi@yahoo.com"
             };
 
-            this.Service.CreateAsync(user).Wait();
+            if (this.Service.GetByUserName(user.UserName) == null)
+            {
+                int count = this.Service.CreateAsync(user).Result;
+                Assert.IsTrue(count > 0);
+            }
         }
 
         [TestMethod]
