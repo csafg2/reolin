@@ -6,10 +6,10 @@ using Reolin.Web.Security.Membership.Core;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
@@ -28,7 +28,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 args.Cnaceled = true;
-                args.Reason = "Username or password can not be empty";
+                args.Reason = "Username or password can not be empty.";
                 return;
             }
             
@@ -36,19 +36,17 @@ namespace Reolin.Web.Api.Infra.Middlewares
             if(user == null)
             {
                 args.Cnaceled = true;
-                args.Reason = "user dose not exist";
+                args.Reason = $"the user {userName} dose not exist.";
                 return;
             }
             
-            string[] roles = user.Roles.Select(r => r.Name).ToArray();
-
-            options.Claims = GetClaims(userName, roles).ToList();
+            options.Claims = GetClaims(userName, user.Roles.Select(r => r.Name));
         }
         
 
-        private IEnumerable<Claim> GetClaims(string userName, string[] roles)
+        private List<Claim> GetClaims(string userName, IEnumerable<string> roles)
         {
-            return new Claim[]
+            return new List<Claim>()
                    {
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -57,7 +55,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                    };
         }
 
-        private string GetRoleString(string[] roles)
+        private string GetRoleString(IEnumerable<string> roles)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var item in roles)
