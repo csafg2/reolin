@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using EntityFramework.Extensions;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Collections.Generic;
 
 namespace Reolin.Data.Services
 {
@@ -30,18 +31,41 @@ namespace Reolin.Data.Services
 
         public Task<int> CreateAsync(User user)
         {
+            if (user.Roles == null || user.Roles.Count < 1)
+            {
+                throw new InvalidOperationException("user must have at least one role");
+            }
+
             this.Context.Users.Add(user);
             return this.Context.SaveChangesAsync();
         }
 
-        public Task<int> CreateAsync(string userName, byte[] password, string email)
+        public async Task<int> CreateAsync(string userName, byte[] password, string email, params string[] roles)
         {
-            return CreateAsync(new User()
+            User user = new User()
             {
                 UserName = userName,
                 Email = email,
                 Password = password
-            });
+            };
+            if (roles != null && roles.Length > 0)
+            {
+                user.Roles = new List<Role>() { await InitializeDefaultRole() };
+            }
+
+            return await CreateAsync(user);
+        }
+
+        private async Task<Role> InitializeDefaultRole()
+        {
+            Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Name == Role.Default().Name);
+            if (role == null)
+            {
+                role = Role.Default();
+                this.Context.Roles.Add(role);
+                await this.Context.SaveChangesAsync();
+            }
+            return role;
         }
 
         public Task<int> DeleteAsync(User user)
@@ -57,7 +81,7 @@ namespace Reolin.Data.Services
         {
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
         }
-     
+
         public Task<User> GetByIdAsync(int id)
         {
             return this.Context.Users.FirstOrDefaultAsync(u => u.Id == id);
@@ -72,6 +96,11 @@ namespace Reolin.Data.Services
 
         public Task UpdateAsync(User user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
             if (Context.Entry(user).State == EntityState.Detached)
             {
                 Context.Users.Attach(user);
@@ -82,28 +111,66 @@ namespace Reolin.Data.Services
 
         public Task<User> GetByUserName(string userName)
         {
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException(nameof(userName));
+            }
+                
             return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
         }
 
         public Task<User> GetUserTokenInfo(string userName)
         {
-            return this.Query(u => u.UserName == userName, "Roles").FirstOrDefaultAsync();
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException(nameof(userName));
+            }
+
+            return this.Context.Users.Include("Roles").FirstOrDefaultAsync(u => u.UserName == userName);
         }
 
+
+        public async Task<int> AddToRole(int userId, int roleId)
+        {
+            User user = await this.Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if(user == null)
+            {
+                throw new Exception("user could not be found");
+            }
+
+            Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            if(role == null)
+            {
+                throw new Exception("role could not be found");
+            }
+
+            user.Roles.Add(role);
+            return await Context.SaveChangesAsync();
+        }
+
+        public async Task<int> AddToRole(int userId, string roleName)
+        {
+            if(string.IsNullOrEmpty(roleName))
+            {
+                throw new ArgumentNullException(roleName);
+            }
+
+            Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Name == roleName);
+            if (role == null)
+            {
+                throw new Exception("role could not be found");
+            }
+
+            User user = await this.Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            user.Roles.Add(role);
+
+            return await Context.SaveChangesAsync();
+        }
 
         public void Dispose()
         {
             this._context.Dispose();
         }
 
-        public Task<int> AddToRole(int userId, int roleId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> AddToRole(int userId, string role)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

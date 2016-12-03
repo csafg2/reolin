@@ -10,7 +10,7 @@ namespace Reolin.Data.Services.Core
     {
         IQueryable<User> Query(Expression<Func<User, bool>> filter, params string[] includes);
         Task<int> CreateAsync(User user);
-        Task<int> CreateAsync(string userName, byte[] password, string email);
+        Task<int> CreateAsync(string userName, byte[] password, string email, params string[] roles);
         Task<int> DeleteAsync(int id);
         Task<int> DeleteAsync(User user);
         Task<User> GetByIdAsync(int id);

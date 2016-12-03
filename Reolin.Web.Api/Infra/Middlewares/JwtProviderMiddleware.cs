@@ -28,7 +28,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 args.Cnaceled = true;
-                args.Reason = "Username or password can not be empty.";
+                args.Reason = "both username and password are required.";
                 return;
             }
             

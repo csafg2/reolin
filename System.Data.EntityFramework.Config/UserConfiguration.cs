@@ -28,6 +28,7 @@ namespace Reolin.Data.EntityFramework.Config
                      {
                          IsUnique = true
                      }));
+
             // user email has to be unique
             this.Property(u => u.Email)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,

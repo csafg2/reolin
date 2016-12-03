@@ -20,10 +20,10 @@ namespace Reolin.Web.Api.Infra.Middlewares
         private readonly string _path;
         private readonly IUserSecurityManager _userManager;
 
-        public TokenProviderMiddlewareBase(RequestDelegate next,
-            IOptions<TokenProviderOptions> options,
-            string path,
-            IUserSecurityManager userManager)
+        public TokenProviderMiddlewareBase(RequestDelegate next, 
+                                            IOptions<TokenProviderOptions> options,
+                                            string path,
+                                            IUserSecurityManager userManager)
         {
             this._next = next;
             this._options = options.Value;
@@ -67,7 +67,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 return WriteError(context, ex.Message);
             }
             
-            
             string jwt = new JwtProvider().ProvideJwt(_options);
             string response = JwtManager.CreateResponseString(jwt, this._options.Expiration);
             return WriteToken(context, response);
@@ -75,10 +74,10 @@ namespace Reolin.Web.Api.Infra.Middlewares
 
         protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, TokenArgs args)
         {
+            // do nothing, just allow sub class to hook in.
             return Task.FromResult(0);
         }
         
-        const string Json_MimeType = "application/json";
         private async Task WriteError(HttpContext context, string message)
         {
             await context.Response.WriteAsync(message);
@@ -86,7 +85,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
 
         private async Task WriteToken(HttpContext context, string jwtResponse)
         {
-            context.Response.ContentType = Json_MimeType;
+            context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(jwtResponse);
         }
     }

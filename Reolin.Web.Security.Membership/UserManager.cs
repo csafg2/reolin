@@ -98,34 +98,23 @@ namespace Reolin.Web.Security.Membership
         // check the username and password provided
         public async Task<IdentityResult> ValidateUserPasswordAsync(string userName, string password)
         {
-            if (string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                throw new ArgumentNullException(nameof(userName));
+                throw new ArgumentNullException("username of password is required.");
             }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentNullException(nameof(password));
-            }
-
+            
             User user = await this._service.GetByUserName(userName);
-            if(user != null)
+            if (user == null)
             {
-                if (!user.Password.IsEqualTo(Encoding.UTF8.GetBytes(password)))
-                {
-                    return IdentityResult.Failed(new PasswordNotValidException("Password is not valid"));
-                }
+                return IdentityResult.Failed(new PasswordNotValidException($"username {userName} dose not exist."));
             }
-            else
+            else if (!user.Password.IsEqualTo(Encoding.UTF8.GetBytes(password)))
             {
-                return IdentityResult.Failed
-                    (new PasswordNotValidException($"username {userName} dose not exist."));
+                return IdentityResult.Failed(new PasswordNotValidException("Password is not valid."));
             }
 
             return IdentityResult.FromSucceeded();
         }
-
-
 
         public Task<User> GetByUserNameAsync(string userName)
         {
@@ -140,7 +129,7 @@ namespace Reolin.Web.Security.Membership
         public async Task<User> GetLoginInfo(string userName, string password)
         {
             User user = await this.UserService.GetUserTokenInfo(userName);
-            if(user == null)
+            if (user == null)
             {
                 return null;
             }
