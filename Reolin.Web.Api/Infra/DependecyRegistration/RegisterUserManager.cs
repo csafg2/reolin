@@ -13,15 +13,7 @@ namespace Reolin.Web
 {
     public static class RegisterUserManager
     {
-        private static List<IUserValidator> _cache;
-
-        private static List<IUserValidator> Validators
-        {
-            get
-            {
-                return _cache ?? (_cache = CreateValidators());
-            }
-        }
+        private static List<IUserValidator> _cache = null;
 
         private static List<IUserValidator> CreateValidators()
         {
@@ -33,8 +25,17 @@ namespace Reolin.Web
                     .GetTypes()
                         .Where(t => !t.IsInterface && interfaceType.IsAssignableFrom(t))
                             .ForEach(t => result.Add((IUserValidator)Activator.CreateInstance(t)));
-            
+
             return result;
+        }
+
+
+        private static List<IUserValidator> Validators
+        {
+            get
+            {
+                return _cache ?? (_cache = CreateValidators());
+            }
         }
 
         public static IServiceCollection AddUserManager(this IServiceCollection source)

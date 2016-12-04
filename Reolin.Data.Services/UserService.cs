@@ -12,14 +12,13 @@ using System.Threading.Tasks;
 
 namespace Reolin.Data.Services
 {
-
     public class UserService : IUserService, IDisposable
     {
         private readonly DataContext _context;
 
         public UserService(DataContext context)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
@@ -122,7 +121,7 @@ namespace Reolin.Data.Services
             {
                 throw new ArgumentNullException(nameof(userName));
             }
-                
+
             return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
         }
 
@@ -140,13 +139,13 @@ namespace Reolin.Data.Services
         public async Task<int> AddToRole(int userId, int roleId)
         {
             User user = await this.Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            if(user == null)
+            if (user == null)
             {
                 throw new Exception("user could not be found");
             }
 
             Role role = await this.Context.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
-            if(role == null)
+            if (role == null)
             {
                 throw new Exception("role could not be found");
             }
@@ -157,7 +156,7 @@ namespace Reolin.Data.Services
 
         public async Task<int> AddToRole(int userId, string roleName)
         {
-            if(string.IsNullOrEmpty(roleName))
+            if (string.IsNullOrEmpty(roleName))
             {
                 throw new ArgumentNullException(roleName);
             }
@@ -177,7 +176,7 @@ namespace Reolin.Data.Services
 
         public Task<bool> UserExists(string userName)
         {
-            if(string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(userName))
             {
                 throw new ArgumentNullException(nameof(User));
             }
@@ -188,7 +187,7 @@ namespace Reolin.Data.Services
 
         public Task<User> GetByEmailAsync(string email)
         {
-            if(string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(email))
             {
                 throw new ArgumentNullException(nameof(email));
             }
@@ -202,9 +201,9 @@ namespace Reolin.Data.Services
             {
                 throw new ArgumentNullException(nameof(userName));
             }
-            
+
             DbGeography location = GeoHelpers.FromLongitudeLatitude(longitude, latitude, Address.Geo_SRID);
-            if(!location.IsValid())
+            if (!location.IsValid())
             {
                 throw new InvalidOperationException("Location is invalid");
             }
@@ -222,6 +221,21 @@ namespace Reolin.Data.Services
         public void Dispose()
         {
             this._context.Dispose();
+        }
+
+        public Task<List<User>> GetNearybyUsers(DbGeography source, double radius, string tag)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (string.IsNullOrEmpty(tag))
+            {
+                throw new ArgumentNullException(nameof(tag));
+            }
+
+            return this.Context.Users.Where(u => u.Tags.Any(t => t.Name == tag) && u.Address.Location.Distance(source) <= radius).ToListAsync();
         }
     }
 }

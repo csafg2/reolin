@@ -1,5 +1,6 @@
 ﻿using Reolin.Data.Domain;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -23,5 +24,6 @@ namespace Reolin.Data.Services.Core
         Task<bool> UserExists(string userName);
         Task<User> GetByEmailAsync(string email);
         Task<int> SetUserLocation(string userName, double longitude, double latitude);
+        Task<IEnumerable<User>> GetNearybyUsers(double radius, string tag);
     }
 }

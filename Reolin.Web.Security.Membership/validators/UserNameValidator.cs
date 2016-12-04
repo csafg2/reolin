@@ -6,7 +6,7 @@ namespace Reolin.Web.Security.Membership.validators
 {
     public class UserNameValidator : IUserValidator
     {
-        string[] invalidStrings = new string[] { "-", "@" };
+        private readonly string[] invalidStrings = new string[] { "-", "@" };
         public Task<IdentityResult> ValidateEmail(string email)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
