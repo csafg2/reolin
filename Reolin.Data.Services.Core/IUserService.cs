@@ -16,6 +16,7 @@ namespace Reolin.Data.Services.Core
         Task<User> GetByIdAsync(int id);
         Task<User> GetUserTokenInfo(string userName);
         Task<User> GetByUserName(string userName);
+        Task<User> GetByUserName(string userName, params string[] includes);
         Task UpdateAsync(User user);
         Task<int> AddToRole(int userId, int roleId);
         Task<int> AddToRole(int userId, string role);

@@ -1,13 +1,14 @@
-﻿using Reolin.Data.Services.Core;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EntityFramework.Extensions;
 using Reolin.Data.Domain;
-using System.Linq.Expressions;
-using EntityFramework.Extensions;
+using Reolin.Data.Services.Core;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Collections.Generic;
+using System.Data.Entity.Spatial;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Reolin.Data.Services
 {
@@ -195,23 +196,32 @@ namespace Reolin.Data.Services
             return this.Context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-
         public async Task<int> SetUserLocation(string userName, double longitude, double latitude)
         {
             if (string.IsNullOrEmpty(userName))
             {
                 throw new ArgumentNullException(nameof(userName));
             }
-            var location = GeographyHelper.FromLongitudeLatitude(longitude, latitude);
-            User user = await this.GetByUserName(userName);
+            
+            DbGeography location = GeoHelpers.FromLongitudeLatitude(longitude, latitude, Address.Geo_SRID);
+            if(!location.IsValid())
+            {
+                throw new InvalidOperationException("Location is invalid");
+            }
+
+            User user = await this.GetByUserName(userName, "Address");
             user.Address = user.Address ?? new Address() { Location = location };
             return await Context.SaveChangesAsync();
+        }
+
+        public Task<User> GetByUserName(string userName, params string[] includes)
+        {
+            return this.Query(u => u.UserName == userName, includes).FirstOrDefaultAsync();
         }
 
         public void Dispose()
         {
             this._context.Dispose();
         }
-
     }
 }

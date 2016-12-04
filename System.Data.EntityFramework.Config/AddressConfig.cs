@@ -8,7 +8,6 @@ namespace Reolin.Data.EntityFramework.Config
     {
         public AddressConfig()
         {
-            
             this.HasKey(a => a.Id);
         }
     }
