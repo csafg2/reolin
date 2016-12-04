@@ -27,16 +27,14 @@ namespace Reolin.Web.Api.Infra.Middlewares
 
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                args.Cnaceled = true;
-                args.Reason = "both username and password are required.";
+                args.Cancel("both username and password are required.");
                 return;
             }
             
             User user = await this.UserManager.GetLoginInfo(userName, password);
             if(user == null)
             {
-                args.Cnaceled = true;
-                args.Reason = $"the user {userName} dose not exist.";
+                args.Cancel($"the user {userName} dose not exist.");
                 return;
             }
             

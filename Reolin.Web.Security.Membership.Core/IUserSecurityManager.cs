@@ -8,7 +8,7 @@ namespace Reolin.Web.Security.Membership.Core
     {
         IUserPasswordHasher PasswordHasher { get; }
         IEnumerable<IUserValidator> Validators { get; }
-        Task CreateAsync(string userName, string password, string email);
+        Task<int> CreateAsync(string userName, string password, string email);
         Task<IdentityResult> ValidateUserPasswordAsync(string userName, string password);
         Task ChangePasswordAsync(int id, string oldPassword, string newPassword);
         Task<User> GetUserByEmailAsync(string email);

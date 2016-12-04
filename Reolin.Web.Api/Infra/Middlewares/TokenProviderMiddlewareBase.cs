@@ -11,8 +11,14 @@ namespace Reolin.Web.Api.Infra.Middlewares
     {
         protected class TokenArgs
         {
-            public bool Cnaceled { get; set; }
+            public bool Canceled { get; set; }
             public string Reason { get; set; }
+
+            public void Cancel(string reason)
+            {
+                this.Canceled = true;
+                this.Reason = reason;
+            }
         }
 
         private readonly RequestDelegate _next;
@@ -57,7 +63,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 TokenArgs args = new TokenArgs();
                 this.OnTokenCreating(context, _options, args);
 
-                if (args.Cnaceled == true)
+                if (args.Canceled)
                 {
                     return WriteError(context, args.Reason);
                 }

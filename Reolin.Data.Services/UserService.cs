@@ -168,6 +168,17 @@ namespace Reolin.Data.Services
             return await Context.SaveChangesAsync();
         }
 
+
+        public Task<bool> UserExists(string userName)
+        {
+            if(string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException(nameof(User));
+            }
+
+            return this.Context.Users.AnyAsync(u => u.UserName == userName);
+        }
+
         public void Dispose()
         {
             this._context.Dispose();

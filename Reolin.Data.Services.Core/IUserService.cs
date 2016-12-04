@@ -19,5 +19,6 @@ namespace Reolin.Data.Services.Core
         Task UpdateAsync(User user);
         Task<int> AddToRole(int userId, int roleId);
         Task<int> AddToRole(int userId, string role);
+        Task<bool> UserExists(string userName);
     }
 }

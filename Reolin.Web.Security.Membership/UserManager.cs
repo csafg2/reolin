@@ -52,24 +52,29 @@ namespace Reolin.Web.Security.Membership
             await this.UserService.UpdateAsync(user);
         }
 
-        private Task CreateAsync(User user)
+        private async Task<int> CreateAsync(User user)
         {
-            return this.UserService.CreateAsync(user);
+            if((await this.UserService.UserExists(user.UserName)))
+            {
+                throw new Exception("this username is already taken.");
+            }
+
+            return await this.UserService.CreateAsync(user);
         }
 
-        public async Task CreateAsync(string userName, string password, string email)
+        public async Task<int> CreateAsync(string userName, string password, string email)
         {
             foreach (var item in this.Validators)
             {
                 IdentityResult result = await item.ValidateStringPassword(password);
-
+                
                 if (!result.Succeeded)
                 {
                     throw result.Exception;
                 }
             }
 
-            await CreateAsync(new User()
+            return await CreateAsync(new User()
             {
                 UserName = userName,
                 Password = this.PasswordHasher.ComputeHash(password),
