@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Reolin.Web.Api.ViewModels;
 using Reolin.Web.Security.Membership.Core;
 using System;
@@ -24,6 +25,7 @@ namespace Reolin.Web.Api.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!this.ModelState.IsValid)

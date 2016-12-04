@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.Middlewares;
+using Reolin.Web.Security.Membership.Core;
+using Reolin.Web.Security.Membership;
+using Reolin.Data.Services;
+using Reolin.Web;
 
 namespace Reolin.Web.Api
 {
@@ -38,23 +40,15 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthorization(o =>
-            {
-                o.AddPolicy("TokenValidation", p =>
-                {
-                    
-                });
-            });
-            // Add framework services.
+            services.AddUserManager();
             services.AddMvc();
-            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             app.AddJwtValidation();
             app.AddJwtEndPoint();
             app.UseMvcWithDefaultRoute();

@@ -10,11 +10,12 @@ namespace Reolin.Web.Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        [Authorize]
-        [HttpGet]
-        public IEnumerable<string> Get()
+        //[Authorize]
+        //[HttpGet]
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Redirect("http://www.google.com");
+            //return new string[] { "value1", "value2" };
         }
 
         [HttpGet("{id}")]
@@ -25,8 +26,9 @@ namespace Reolin.Web.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post(string value)
         {
+            return Redirect("http://www.google.com");
         }
 
         // PUT api/values/5
