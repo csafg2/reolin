@@ -33,8 +33,8 @@ namespace Reolin.Web.Api.Controllers
 
             try
             {
-                return (await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email)) > 0
-                 ? (IActionResult)Ok(model) : BadRequest();
+                await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
+                return Ok(model);
             }
             catch (Exception ex)
             {

@@ -14,10 +14,15 @@ namespace Reolin.Data.Services
 
     public class UserService : IUserService, IDisposable
     {
-        private DataContext _context;
+        private readonly DataContext _context;
 
         public UserService(DataContext context)
         {
+            if(context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             this._context = context;
         }
 
@@ -177,6 +182,30 @@ namespace Reolin.Data.Services
             }
 
             return this.Context.Users.AnyAsync(u => u.UserName == userName);
+        }
+
+
+        public Task<User> GetByEmailAsync(string email)
+        {
+            if(string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException(nameof(email));
+            }
+
+            return this.Context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+
+        public async Task<int> SetUserLocation(string userName, double longitude, double latitude)
+        {
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException(nameof(userName));
+            }
+            var location = GeographyHelper.FromLongitudeLatitude(longitude, latitude);
+            User user = await this.GetByUserName(userName);
+            user.Address = user.Address ?? new Address() { Location = location };
+            return await Context.SaveChangesAsync();
         }
 
         public void Dispose()

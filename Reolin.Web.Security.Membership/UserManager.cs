@@ -34,17 +34,27 @@ namespace Reolin.Web.Security.Membership
                 return _service;
             }
         }
-
-
+        
         public async Task ChangePasswordAsync(int id, string oldPassword, string newPassword)
         {
+            if(string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(oldPassword))
+            {
+                throw new ArgumentException("old password and new password are required");
+            }
+
             User user = await this.UserService.GetByIdAsync(id);
             foreach (var validator in this.Validators)
             {
-                IdentityResult result = await validator.ValidateChangePassword(this, user, oldPassword, newPassword);
+                IdentityResult result = await validator.ValidatePassword(newPassword);
+                IdentityResult oldPass = await validator.ValidatePassword(oldPassword);
+
                 if (!result.Succeeded)
                 {
                     throw new InvalidOperationException(result.Message);
+                }
+                else if (!oldPass.Succeeded)
+                {
+                    throw new InvalidOperationException(oldPass.Message);
                 }
             }
 
@@ -54,11 +64,6 @@ namespace Reolin.Web.Security.Membership
 
         private async Task<int> CreateAsync(User user)
         {
-            if((await this.UserService.UserExists(user.UserName)))
-            {
-                throw new Exception("this username is already taken.");
-            }
-
             return await this.UserService.CreateAsync(user);
         }
 
@@ -66,12 +71,31 @@ namespace Reolin.Web.Security.Membership
         {
             foreach (var item in this.Validators)
             {
-                IdentityResult result = await item.ValidateStringPassword(password);
-                
-                if (!result.Succeeded)
+                IdentityResult passwordValidation = await item.ValidatePassword(password);
+                IdentityResult userNameValidation = await item.ValidateUserName(userName);
+                IdentityResult emailValidation =    await item.ValidateEmail(email);
+
+                if (!passwordValidation.Succeeded)
                 {
-                    throw result.Exception;
+                    throw passwordValidation.Exception;
                 }
+                else if (!userNameValidation.Succeeded)
+                {
+                    throw userNameValidation.Exception;
+                }
+                else if (!emailValidation.Succeeded)
+                {
+                    throw emailValidation.Exception;
+                }
+            }
+
+            if ((await this.UserService.UserExists(userName)))
+            {
+                throw new Exception("this username is already taken.");
+            }
+            else if ((await this.UserService.GetByEmailAsync(email)) != null)
+            {
+                throw new Exception("this email is taken");
             }
 
             return await CreateAsync(new User()

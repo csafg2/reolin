@@ -1,33 +1,22 @@
 ﻿using Reolin.Web.Security.Membership.Core;
 using System;
 using System.Threading.Tasks;
-using Reolin.Data.Domain;
 
 namespace Reolin.Web.Security.Membership.validators
 {
     public class UserNameValidator : IUserValidator
     {
-        public Task<IdentityResult> Validate(User user)
-        {
-            return Task.FromResult(IdentityResult.FromSucceeded());
-        }
-
-        public Task<IdentityResult> ValidateChangePassword(IUserSecurityManager manager, User user, string oldPassword, string currentPassord)
-        {
-            return Task.FromResult(IdentityResult.FromSucceeded());
-        }
-
+        string[] invalidStrings = new string[] { "-", "@" };
         public Task<IdentityResult> ValidateEmail(string email)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
 
-        public Task<IdentityResult> ValidateStringPassword(string password)
+        public Task<IdentityResult> ValidatePassword(string password)
         {
             return Task.FromResult(IdentityResult.FromSucceeded());
         }
 
-        string[] invalidStrings = new string[] { "-", "@" };
         public Task<IdentityResult> ValidateUserName(string userName)
         {
             foreach (var item in invalidStrings)

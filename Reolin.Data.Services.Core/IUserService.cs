@@ -20,5 +20,7 @@ namespace Reolin.Data.Services.Core
         Task<int> AddToRole(int userId, int roleId);
         Task<int> AddToRole(int userId, string role);
         Task<bool> UserExists(string userName);
+        Task<User> GetByEmailAsync(string email);
+        Task<int> SetUserLocation(string userName, double longitude, double latitude);
     }
 }
