@@ -6,10 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.Middlewares;
-using Reolin.Web.Security.Membership.Core;
-using Reolin.Web.Security.Membership;
-using Reolin.Data.Services;
-using Reolin.Web;
+using Reolin.Web.Api.Infra.DependecyRegistration;
 
 namespace Reolin.Web.Api
 {
@@ -33,6 +30,7 @@ namespace Reolin.Web.Api
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -40,6 +38,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddJwtManager();
             services.AddUserManager();
             services.AddMvc();
         }
@@ -49,8 +48,8 @@ namespace Reolin.Web.Api
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             
-            app.AddJwtValidation();
-            app.AddJwtEndPoint();
+            app.UseJwtValidation();
+            app.UseJwtEndPoint();
             app.UseMvcWithDefaultRoute();
             
             app.UseMvc();

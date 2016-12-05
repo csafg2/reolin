@@ -15,8 +15,8 @@ namespace Reolin.Web.Api.Infra.Middlewares
 {
     public class JwtProviderMiddleware : TokenProviderMiddlewareBase
     {
-        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path, IUserSecurityManager userManager)
-            : base(next, options, path, userManager)
+        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path, IUserSecurityManager userManager, IJWTManager jwtManager)
+            : base(next, options, path, userManager, jwtManager)
         {
         }
 

@@ -8,7 +8,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
 {
     public static class JwtHelpers
     {
-        public static IApplicationBuilder AddJwtValidation(this IApplicationBuilder source)
+        public static IApplicationBuilder UseJwtValidation(this IApplicationBuilder source)
         {
             return source.UseJwtBearerAuthentication(new JwtBearerOptions
             {
@@ -30,7 +30,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             
         }
 
-        public static IApplicationBuilder AddJwtEndPoint(this IApplicationBuilder source)
+        public static IApplicationBuilder UseJwtEndPoint(this IApplicationBuilder source)
         {
             var options = Options.Create(new TokenProviderOptions()
             {
@@ -39,7 +39,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 SigningCredentials = JwtDefaults.SigningCredentials,
                 Expiration = JwtDefaults.Expiry
             });
-
+            
             return source.UseMiddleware<JwtProviderMiddleware>(options, ConfigurationManager.TokenEndPoint);
         }
     }
