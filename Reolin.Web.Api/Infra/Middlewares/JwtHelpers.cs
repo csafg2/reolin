@@ -17,11 +17,11 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = JwtManager.Configuration.SigningKey,
+                    IssuerSigningKey = JwtDefaults.SigningKey,
                     ValidateIssuer = true,
-                    ValidIssuer = JwtManager.Configuration.Issuer,
+                    ValidIssuer = JwtDefaults.Issuer,
                     ValidateAudience = true,
-                    ValidAudience = JwtManager.Configuration.Audience,
+                    ValidAudience = JwtDefaults.Audience,
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
                 }
@@ -34,10 +34,10 @@ namespace Reolin.Web.Api.Infra.Middlewares
         {
             var options = Options.Create(new TokenProviderOptions()
             {
-                Audience = JwtManager.Configuration.Audience,
-                Issuer = JwtManager.Configuration.Issuer,
-                SigningCredentials = JwtManager.Configuration.SigningCredentials,
-                Expiration = JwtManager.Configuration.Expiry
+                Audience = JwtDefaults.Audience,
+                Issuer = JwtDefaults.Issuer,
+                SigningCredentials = JwtDefaults.SigningCredentials,
+                Expiration = JwtDefaults.Expiry
             });
 
             return source.UseMiddleware<JwtProviderMiddleware>(options, ConfigurationManager.TokenEndPoint);

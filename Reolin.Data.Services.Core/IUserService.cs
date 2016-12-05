@@ -24,6 +24,6 @@ namespace Reolin.Data.Services.Core
         Task<bool> UserExists(string userName);
         Task<User> GetByEmailAsync(string email);
         Task<int> SetUserLocation(string userName, double longitude, double latitude);
-        Task<IEnumerable<User>> GetNearybyUsers(double radius, string tag);
+        Task<List<User>> GetNearybyUsers(double sourceLat, double sourceLong, double radius, string tag);
     }
 }

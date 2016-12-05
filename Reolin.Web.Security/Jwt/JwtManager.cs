@@ -5,10 +5,8 @@ using System.Text;
 
 namespace Reolin.Web.Security.Jwt
 {
-    public static class JwtManager
+    public static class JwtDefaults
     {
-        public  class Configuration
-        {
             public static TimeSpan Expiry
             {
                 get
@@ -50,7 +48,6 @@ namespace Reolin.Web.Security.Jwt
                 }
             }
 
-        }
 
         public static string CreateResponseString(string jwt, TimeSpan expiry)
         {

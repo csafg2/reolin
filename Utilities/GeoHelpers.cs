@@ -11,20 +11,21 @@ namespace System
 
         public const double MAX_LONGITUDE = 180;
         public const double MIN_LONGITUDE = -180;
+
         public const double MAX_LATITUDE = 90;
         public const double MIN_LATITUDE = -90;
 
         public static bool IsValid(this DbGeography source)
         {
-            return source.Latitude.IsValideLatitude() && source.Longitude.IsValidLongitude();
+            return ((double)source.Latitude).IsValideLatitude() && ((double)source.Longitude).IsValidLongitude();
         }
-
-        public static bool IsValidLongitude(this double? longitude)
+        
+        public static bool IsValidLongitude(this double longitude)
         {
             return longitude <= MAX_LONGITUDE && longitude > MIN_LONGITUDE;
         }
 
-        public static bool IsValideLatitude(this double? latitude)
+        public static bool IsValideLatitude(this double latitude)
         {
             return latitude <= MAX_LATITUDE && latitude > MIN_LATITUDE;
         }

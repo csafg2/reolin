@@ -9,18 +9,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
 {
     public class TokenProviderMiddlewareBase
     {
-        protected class TokenArgs
-        {
-            public bool Canceled { get; set; }
-            public string Reason { get; set; }
-
-            public void Cancel(string reason)
-            {
-                this.Canceled = true;
-                this.Reason = reason;
-            }
-        }
-
+        
         private readonly RequestDelegate _next;
         private readonly TokenProviderOptions _options;
         private readonly string _path;
@@ -74,7 +63,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
             
             string jwt = new JwtProvider().ProvideJwt(_options);
-            string response = JwtManager.CreateResponseString(jwt, this._options.Expiration);
+            string response = JwtDefaults.CreateResponseString(jwt, this._options.Expiration);
             return WriteToken(context, response);
         }
 
@@ -94,5 +83,18 @@ namespace Reolin.Web.Api.Infra.Middlewares
             context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(jwtResponse);
         }
+
+        protected class TokenArgs
+        {
+            public bool Canceled { get; private set; }
+            public string Reason { get; set; }
+
+            public void Cancel(string reason)
+            {
+                this.Canceled = true;
+                this.Reason = reason;
+            }
+        }
+
     }
 }

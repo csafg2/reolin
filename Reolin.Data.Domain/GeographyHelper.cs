@@ -3,8 +3,8 @@ using System.Data.Entity.Spatial;
 
 namespace System
 {
-    public static class GeographyHelper
-    {
+    //public static class GeographyHelper
+    //{
       
-    }
+    //}
 }
