@@ -43,7 +43,7 @@ namespace Reolin.Web
             return source
                 .AddTransient(typeof(IEnumerable<IUserValidator>), p => Validators)
                 .AddTransient<IUserPasswordHasher, SHA1PasswordHasher>()
-                .AddTransient(typeof(IUserService), p => new UserService(new DataContext()))
+                .AddTransient(typeof(IUserService), p => new UserService(new DataContext(connectionString)))
                 .AddTransient(typeof(IUserSecurityManager), typeof(UserSecurityManager));
         }
     }

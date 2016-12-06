@@ -7,7 +7,7 @@ namespace System
         {
             for (int i = 0; i < source.Length; i++)
             {
-                if (source[i] == target[i])
+                if (source[i] != target[i])
                 {
                     return false;
                 }
