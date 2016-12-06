@@ -30,6 +30,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             
         }
 
+        [Obsolete]
         public static IApplicationBuilder UseJwtEndPoint(this IApplicationBuilder source)
         {
             var options = Options.Create(new TokenProviderOptions()

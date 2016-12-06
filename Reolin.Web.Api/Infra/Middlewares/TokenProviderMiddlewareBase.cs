@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
+    [Obsolete("Account controller is responsible for issuing JWT")]
     public class TokenProviderMiddlewareBase
     {
         private readonly RequestDelegate _next;
@@ -77,7 +78,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             return WriteToken(context, response);
         }
 
-        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions _options, TokenArgs args)
+        protected virtual Task OnTokenCreating(HttpContext context, TokenProviderOptions options, TokenArgs args)
         {
             // do nothing, just allow sub class to hook in.
             return Task.FromResult(0);

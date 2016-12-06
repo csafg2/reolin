@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Reolin.Web.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private IServiceProvider _provider;
+
+        public ValuesController(IServiceProvider provider)
+        {
+            _provider = provider;
+        }
         //[Authorize]
         //[HttpGet]
         public IActionResult Get()
         {
-            return Redirect("http://www.google.com");
-            //return new string[] { "value1", "value2" };
+            //return Redirect("http://www.google.com");
+            return Json( new string[] { "value1", "value2" });
         }
 
         [HttpGet("{id}")]

@@ -31,7 +31,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 return;
             }
             
-            User user = await this.UserManager.GetLoginInfo(userName, password);
+            User user = (await this.UserManager.GetLoginInfo(userName, password)).User;
             if(user == null)
             {
                 args.Cancel($"the user {userName} dose not exist.");

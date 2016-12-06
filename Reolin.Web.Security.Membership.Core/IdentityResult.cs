@@ -1,19 +1,47 @@
-﻿using System;
+﻿using Reolin.Data.Domain;
+using System;
 
 namespace Reolin.Web.Security.Membership.Core
 {
 
+    public enum IdentityResultErrors
+    {
+        Empty = 0,
+        UserNotFound = 1,
+        InvalidPassowrd = 2
+    }
+
     public abstract class IdentityResult
     {
         public abstract bool Succeeded { get; }
-        public string Message { get; set; }
 
+        public User User { get; set; }
         public Exception Exception { get; set; }
+        public IdentityResultErrors Error { get; set; }
+
+        private string _message;
+        public string Message
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_message))
+                {
+                    return this?.Exception?.Message;
+                }
+
+                return _message;
+            }
+            set
+            {
+                _message = value;
+            }
+        }
+
         public static IdentityResult Failed()
         {
             return Failed(new Exception());
         }
-        
+
         public static IdentityResult Failed(Exception ex)
         {
             return new Failed() { Exception = ex };
@@ -23,9 +51,18 @@ namespace Reolin.Web.Security.Membership.Core
         {
             return new SucceedResult() { Message = message };
         }
+
+
         public static IdentityResult FromSucceeded()
         {
             return FromSucceeded(string.Empty);
+        }
+
+        public static IdentityResult FromSucceeded(User user)
+        {
+            var result = FromSucceeded();
+            result.User = user;
+            return result;
         }
     }
 }

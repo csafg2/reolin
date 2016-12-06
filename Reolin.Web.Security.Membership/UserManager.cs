@@ -34,10 +34,10 @@ namespace Reolin.Web.Security.Membership
                 return _service;
             }
         }
-        
+
         public async Task ChangePasswordAsync(int id, string oldPassword, string newPassword)
         {
-            if(string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(oldPassword))
+            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(oldPassword))
             {
                 throw new ArgumentException("old password and new password are required");
             }
@@ -73,7 +73,7 @@ namespace Reolin.Web.Security.Membership
             {
                 IdentityResult passwordValidation = await item.ValidatePassword(password);
                 IdentityResult userNameValidation = await item.ValidateUserName(userName);
-                IdentityResult emailValidation =    await item.ValidateEmail(email);
+                IdentityResult emailValidation = await item.ValidateEmail(email);
 
                 if (!passwordValidation.Succeeded)
                 {
@@ -131,7 +131,7 @@ namespace Reolin.Web.Security.Membership
             {
                 throw new ArgumentNullException("username of password is required.");
             }
-            
+
             User user = await this._service.GetByUserName(userName);
             if (user == null)
             {
@@ -155,14 +155,27 @@ namespace Reolin.Web.Security.Membership
             return this._service.Query(user => user.UserName == user.UserName).FirstOrDefaultAsync();
         }
 
-        public async Task<User> GetLoginInfo(string userName, string password)
+        public async Task<IdentityResult> GetLoginInfo(string userName, string password)
         {
-            User user = await this.UserService.GetUserTokenInfo(userName);
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            {
+                
+                throw new ArgumentNullException("username and password are both required");
+            }
+
+            User user = await this.UserService.GetByUserName(userName, "Roles");
+
             if (user == null)
             {
-                return null;
+                return IdentityResult.Failed(new Exception($"{userName} could not be found"));
             }
-            return user;
+
+            if (!user.Password.IsEqualTo(this.PasswordHasher.ComputeHash(password)))
+            {
+                return IdentityResult.Failed(new Exception("Password is invalid"));
+            }
+
+            return IdentityResult.FromSucceeded(user);
         }
     }
 }

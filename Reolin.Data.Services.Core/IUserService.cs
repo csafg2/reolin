@@ -15,7 +15,7 @@ namespace Reolin.Data.Services.Core
         Task<int> DeleteAsync(int id);
         Task<int> DeleteAsync(User user);
         Task<User> GetByIdAsync(int id);
-        Task<User> GetUserTokenInfo(string userName);
+        //Task<User> GetUserTokenInfo(string userName);
         Task<User> GetByUserName(string userName);
         Task<User> GetByUserName(string userName, params string[] includes);
         Task UpdateAsync(User user);

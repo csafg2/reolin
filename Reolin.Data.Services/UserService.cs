@@ -125,15 +125,15 @@ namespace Reolin.Data.Services
             return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
         }
 
-        public Task<User> GetUserTokenInfo(string userName)
-        {
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentNullException(nameof(userName));
-            }
+        //public Task<User> GetUserTokenInfo(string userName)
+        //{
+        //    if (string.IsNullOrEmpty(userName))
+        //    {
+        //        throw new ArgumentNullException(nameof(userName));
+        //    }
 
-            return this.Context.Users.Include("Roles").FirstOrDefaultAsync(u => u.UserName == userName);
-        }
+        //    return this.Context.Users.Include("Roles").FirstOrDefaultAsync(u => u.UserName == userName);
+        //}
 
 
         public async Task<int> AddToRole(int userId, int roleId)
