@@ -159,11 +159,19 @@ namespace Reolin.Web.Security.Membership
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                
+
                 throw new ArgumentNullException("username and password are both required");
             }
 
-            User user = await this.UserService.GetByUserName(userName, "Roles");
+            User user = null;
+            try
+            {
+                user = await this.UserService.GetByUserName(userName, "Roles");
+            }
+            catch (Exception ex)
+            {
+                return IdentityResult.Failed(ex, IdentityResultErrors.EmptyOrUnknown);
+            }
 
             if (user == null)
             {

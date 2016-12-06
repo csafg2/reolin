@@ -65,10 +65,15 @@ namespace Reolin.Web.Api.Controllers
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
                 return Ok(model);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is IdentityException)
             {
                 this.ModelState.AddModelError("error", ex.Message);
-                return BadRequest(this.ModelState);
+                return BadRequest(ModelState);
+            }
+            catch (Exception)
+            {
+                // TODO: Log exception here
+                return BadRequest();
             }
         }
 
@@ -88,7 +93,7 @@ namespace Reolin.Web.Api.Controllers
             }
 
             this.Options.Claims = GetPerUserClaims(model.UserName, result.User.Roles.Select(r => r.Name));
-            
+
             return Ok(new
             {
                 access_token = this.JwtManager.IssueJwt(this.Options),
@@ -100,7 +105,7 @@ namespace Reolin.Web.Api.Controllers
         {
             switch (result.Error)
             {
-                case IdentityResultErrors.Empty:
+                case IdentityResultErrors.EmptyOrUnknown:
                     return NotFound("Something went wrong.");
 
                 case IdentityResultErrors.UserNotFound:

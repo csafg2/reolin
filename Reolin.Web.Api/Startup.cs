@@ -26,8 +26,7 @@ namespace Reolin.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddJwtDependencies();
-            services.AddUserManager();
-            
+            services.AddUserManager(Configuration.GetConnectionString("Default"));
             services.AddMvc();
        } 
 

@@ -6,10 +6,50 @@ namespace Reolin.Web.Security.Membership.Core
 
     public enum IdentityResultErrors
     {
-        Empty = 0,
+        EmptyOrUnknown = 0,
         UserNotFound = 1,
-        InvalidPassowrd = 2
+        InvalidPassowrd = 2,
+        InvalidUserName
     }
+
+    public class IdentityException: Exception
+    {
+        public IdentityException(string message)
+        {
+
+        }
+        protected string _message;
+        public override string Message
+        {
+            get
+            {
+                return _message;
+            }
+        }
+    }
+
+
+    public class InvalidEmailException : IdentityException
+    {
+        public InvalidEmailException(string message) : base(message)
+        {
+        }
+    }
+
+    public class InvalidUserNameException : IdentityException
+    {
+        public InvalidUserNameException(string message) : base(message)
+        {
+        }
+    }
+
+    public class InvalidPasswordException : IdentityException
+    {
+        public InvalidPasswordException(string message) : base(message)
+        {
+        }
+    }
+
 
     public abstract class IdentityResult
     {
@@ -40,6 +80,11 @@ namespace Reolin.Web.Security.Membership.Core
         public static IdentityResult Failed()
         {
             return Failed(new Exception());
+        }
+
+        public static IdentityResult Failed(Exception ex, IdentityResultErrors errorType)
+        {
+            return new Failed() { Exception = ex, Error = errorType };
         }
 
         public static IdentityResult Failed(Exception ex)

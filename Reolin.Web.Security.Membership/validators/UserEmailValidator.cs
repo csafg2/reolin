@@ -13,7 +13,7 @@ namespace Reolin.Web.Security.Membership.Validators
 
             return regex.Match(email).Success ? 
                 Task.FromResult(IdentityResult.FromSucceeded()) 
-                : Task.FromResult(IdentityResult.Failed(new InvalidOperationException("email format is not valid.")));
+                : Task.FromResult(IdentityResult.Failed(new InvalidEmailException("email format is not valid.")));
         }
 
         public Task<IdentityResult> ValidatePassword(string password)

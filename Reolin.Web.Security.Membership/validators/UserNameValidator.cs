@@ -23,7 +23,7 @@ namespace Reolin.Web.Security.Membership.validators
             {
                 if (userName.Contains(item))
                 {
-                    return Task.FromResult(IdentityResult.Failed(new InvalidOperationException($"username can not contain '{item}'")));
+                    return Task.FromResult(IdentityResult.Failed(new InvalidUserNameException($"username can not contain '{item}'")));
                 }
             }
 

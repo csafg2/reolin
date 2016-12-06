@@ -20,11 +20,11 @@ namespace Reolin.Web.Security.Membership.Validators
         {
             if (password.Length > 50)
             {
-                return Task.FromResult(IdentityResult.Failed(new InvalidOperationException("password length can not be over 50")));
+                return Task.FromResult(IdentityResult.Failed(new InvalidPasswordException("password length can not be over 50")));
             }
             if (password.Length < 6)
             {
-                return Task.FromResult(IdentityResult.Failed(new InvalidOperationException("password length can not be less than 6")));
+                return Task.FromResult(IdentityResult.Failed(new InvalidPasswordException("password length can not be less than 6")));
             }
 
             return Task.FromResult(IdentityResult.FromSucceeded());

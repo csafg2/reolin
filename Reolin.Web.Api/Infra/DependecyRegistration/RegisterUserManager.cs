@@ -38,7 +38,7 @@ namespace Reolin.Web
             }
         }
 
-        public static IServiceCollection AddUserManager(this IServiceCollection source)
+        public static IServiceCollection AddUserManager(this IServiceCollection source, string connectionString)
         {
             return source
                 .AddTransient(typeof(IEnumerable<IUserValidator>), p => Validators)
