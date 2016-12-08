@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Security.Jwt;
+using Reolin.Web.Api.Infra.mvc;
 
 namespace Reolin.Web.Api.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IUserSecurityManager _userManager;
         private readonly IOptions<TokenProviderOptions> _tokenOptionsWrapper;
@@ -106,13 +107,13 @@ namespace Reolin.Web.Api.Controllers
             switch (result.Error)
             {
                 case IdentityResultErrors.EmptyOrUnknown:
-                    return NotFound("Something went wrong.");
+                    return Error("Something went wrong.");
 
                 case IdentityResultErrors.UserNotFound:
-                    return NotFound(result.Message);
+                    return NotFound("Specified User could not be found");
 
                 case IdentityResultErrors.InvalidPassowrd:
-                    return BadRequest("Password is invalid.");
+                    return BadRequest("Invalid password");
 
                 default:
                     return BadRequest(result.Exception.Message);

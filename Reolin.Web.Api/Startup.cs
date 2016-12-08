@@ -37,7 +37,7 @@ namespace Reolin.Web.Api
             loggerFactory.AddDebug();
             
             app.UseJwtValidation();
-            
+            app.UseExceptionHandler("/Error/SomeThingWentWrong");
             app.UseMvcWithDefaultRoute();
         }
     }

@@ -16,7 +16,7 @@ namespace Reolin.Web.Api.Controllers
         //[HttpGet]
         public IActionResult Get()
         {
-            //return Redirect("http://www.google.com");
+            
             return Json( new string[] { "value1", "value2" });
         }
 

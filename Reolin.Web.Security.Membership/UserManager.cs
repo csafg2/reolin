@@ -175,12 +175,12 @@ namespace Reolin.Web.Security.Membership
 
             if (user == null)
             {
-                return IdentityResult.Failed(new Exception($"{userName} could not be found"));
+                return IdentityResult.Failed(new Exception($"{userName} could not be found"), IdentityResultErrors.UserNotFound);
             }
 
             if (!user.Password.IsEqualTo(this.PasswordHasher.ComputeHash(password)))
             {
-                return IdentityResult.Failed(new Exception("Password is invalid"));
+                return IdentityResult.Failed(new Exception("Password is invalid"), IdentityResultErrors.InvalidPassowrd);
             }
 
             return IdentityResult.FromSucceeded(user);
