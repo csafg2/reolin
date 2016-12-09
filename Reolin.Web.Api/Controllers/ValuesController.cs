@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -7,16 +8,22 @@ namespace Reolin.Web.Api.Controllers
     public class ValuesController : Controller
     {
         private IServiceProvider _provider;
-
-        public ValuesController(IServiceProvider provider)
+        private ILogger<ValuesController> _logger;
+        
+        public ValuesController(ILogger<ValuesController> logger)
         {
-            _provider = provider;
+            this._logger = logger;
         }
+
+        //public ValuesController(IServiceProvider provider)
+        //{
+        //    _provider = provider;
+        //}
         //[Authorize]
         //[HttpGet]
         public IActionResult Get()
         {
-            
+            throw new Exception();
             return Json( new string[] { "value1", "value2" });
         }
 

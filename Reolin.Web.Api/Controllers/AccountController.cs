@@ -63,6 +63,7 @@ namespace Reolin.Web.Api.Controllers
 
             try
             {
+                
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
                 return Ok(model);
             }
@@ -70,11 +71,6 @@ namespace Reolin.Web.Api.Controllers
             {
                 this.ModelState.AddModelError("error", ex.Message);
                 return BadRequest(ModelState);
-            }
-            catch (Exception)
-            {
-                // TODO: Log exception here
-                return BadRequest();
             }
         }
 

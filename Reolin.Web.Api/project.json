@@ -17,7 +17,7 @@
     "Reolin.Data.Domain": "1.0.0-*",
     "Reolin.Web.Security.Membership": "1.0.0-*",
     "Reolin.Web.Security.Membership.Core": "1.0.0-*",
-    "Microsoft.AspNetCore.Diagnostics": "1.2.0-preview1-22805"
+    "Microsoft.AspNetCore.Diagnostics": "1.2.0-preview1-22792"
   },
 
   "tools": {

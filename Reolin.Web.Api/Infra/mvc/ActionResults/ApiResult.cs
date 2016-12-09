@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
 using System.Text;
@@ -9,8 +10,9 @@ namespace Reolin.Web.Api.Infra.mvc
 
     public class ApiResult : ActionResult
     {
-        private object _data;
-        private HttpStatusCode _statusCode;
+        private readonly object _data;
+        private readonly HttpStatusCode _statusCode;
+        private const string MEDIA_TYPE = "application/json";
 
         public ApiResult(HttpStatusCode statusCode, object data)
         {
@@ -18,19 +20,32 @@ namespace Reolin.Web.Api.Infra.mvc
             this._data = data;
         }
 
-        public async override void ExecuteResult(ActionContext context)
+        public override void ExecuteResult(ActionContext context)
         {
-            await this.ExecuteResultAsync(context);
+            this.Write(context, this.CreateResponse(context));
         }
 
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            var response = context.HttpContext.Response;
-            response.ContentType = "application/json";
-            response.StatusCode = (int)this._statusCode;
-            var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_data));
-            return response.Body.WriteAsync(body, 0, body.Length);
+            return this.WriteAsync(context, this.CreateResponse(context));
+        }
 
+        private byte[] CreateResponse(ActionContext context)
+        {
+            HttpResponse response = context.HttpContext.Response;
+            response.ContentType = MEDIA_TYPE;
+            response.StatusCode = (int)this._statusCode;
+            return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_data));
+        }
+
+        private void Write(ActionContext context, byte[] message)
+        {
+            context.HttpContext.Response.Body.Write(message, 0, message.Length);
+        }
+
+        private Task WriteAsync(ActionContext context, byte[] message)
+        {
+            return context.HttpContext.Response.Body.WriteAsync(message, 0, message.Length);
         }
     }
 
