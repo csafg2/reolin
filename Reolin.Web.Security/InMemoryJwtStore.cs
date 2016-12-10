@@ -35,6 +35,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 throw new KeyNotFoundException($"the key {key} could not be found");
             }
+
             else if (!_store[key].Any(t => t == jwt))
             {
                 throw new Exception($"Token {jwt} could not be found ");
