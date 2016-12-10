@@ -20,14 +20,6 @@ namespace Reolin.Web.Api.Controllers
         
         public IActionResult SomeThingWentWrong()
         {
-            IExceptionHandlerFeature error = this.HttpContext.Features.Get<IExceptionHandlerFeature>();
-
-            if (error != null && _environemnt.IsDevelopment())
-            {
-                // TODO: LOG the error
-                return Error(error.Error.Message);
-            }
-
             return Error("Some thing went wrong, please try again later.");
         }
     }

@@ -135,7 +135,7 @@ namespace Reolin.Web.Security.Membership
             User user = await this._service.GetByUserName(userName);
             if (user == null)
             {
-                return IdentityResult.Failed(new PasswordNotValidException($"username {userName} dose not exist."));
+                return IdentityResult.Failed(new UserNotFoundException($"username {userName} dose not exist."));
             }
             else if (!user.Password.IsEqualTo(Encoding.UTF8.GetBytes(password)))
             {
