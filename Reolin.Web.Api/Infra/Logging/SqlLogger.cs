@@ -11,6 +11,11 @@ namespace Reolin.Web.Api.Infra.Logging
 
         public SqlLogger(string categoryName, Func<string, LogLevel, bool> filter, LogContext context)
         {
+            if(filter == null)
+            {
+                throw new ArgumentException(nameof(filter));
+            }
+
             this._context = context;
             this._categoryName = categoryName;
             this._filter = filter;
@@ -24,18 +29,18 @@ namespace Reolin.Web.Api.Infra.Logging
 
         public bool IsEnabled(LogLevel logLevel)
         {
-            return _filter(_categoryName, logLevel);
+            return  _filter(_categoryName, logLevel);
         }
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
+            if(!this.IsEnabled(logLevel) || exception == null)
+            {
+                return;
+            }
+
             try
             {
-                if(exception == null)
-                {
-                    return;
-                }
-
                 string message = $"{ logLevel }: {exception.Message}";
                 this._context.Logs.Add(new Log() { Date = DateTime.Now, Message = message, Level = logLevel });
                 this._context.SaveChangesAsync().ConfigureAwait(false);
