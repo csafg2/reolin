@@ -23,7 +23,7 @@ namespace Reolin.Web.Api.Controllers
         //[HttpGet]
         public IActionResult Get()
         {
-            throw new Exception();
+            throw new InvalidCastException("some wrong cast");
             return Json( new string[] { "value1", "value2" });
         }
 

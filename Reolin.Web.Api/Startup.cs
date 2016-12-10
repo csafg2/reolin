@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.DependecyRegistration;
-using Reolin.Web.Api.Infra.Logging;
+using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.Middlewares;
 
 namespace Reolin.Web.Api
@@ -35,14 +35,10 @@ namespace Reolin.Web.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            // TODO: get logging context to work, it`s commented now.
-            //loggerFactory.AddProvider(
-            //    new SqlLoggerProvider((s, l) => l == LogLevel.Critical || l == LogLevel.Error || l == LogLevel.Warning,
-            //        new LogContext(Configuration["ConnectionStrings:Log"])));
+            loggerFactory.AddSqlLogger(Configuration["ConnectionStrings:Log"]);
 
             if (env.IsDevelopment())
             {
-                //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
                 loggerFactory.AddDebug();
             }
 

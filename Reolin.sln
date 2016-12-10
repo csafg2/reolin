@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTest", "DatabaseTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTest", "ServiceTest\ServiceTest.csproj", "{91E4A4A8-C3A0-43BC-872B-C62658B14356}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostics", "diagnostics", "{FC9A4D8E-F45A-4BF3-9FC8-514FF0BB70AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Diagnostics.Logging", "Reolin.Diagnostics.Logging\Reolin.Diagnostics.Logging.csproj", "{311A2D66-1F72-410A-BE08-C5601B99676B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +93,10 @@ Global
 		{91E4A4A8-C3A0-43BC-872B-C62658B14356}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91E4A4A8-C3A0-43BC-872B-C62658B14356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91E4A4A8-C3A0-43BC-872B-C62658B14356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{311A2D66-1F72-410A-BE08-C5601B99676B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{311A2D66-1F72-410A-BE08-C5601B99676B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{311A2D66-1F72-410A-BE08-C5601B99676B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{311A2D66-1F72-410A-BE08-C5601B99676B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,5 +113,6 @@ Global
 		{0993A7C6-E21B-496D-8933-8860CCF33B63} = {99FA4CA5-3336-4602-80DC-54A0577E48C4}
 		{ECC591BE-F756-4CB7-A3F8-5B25D60F2702} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
 		{91E4A4A8-C3A0-43BC-872B-C62658B14356} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
+		{311A2D66-1F72-410A-BE08-C5601B99676B} = {FC9A4D8E-F45A-4BF3-9FC8-514FF0BB70AA}
 	EndGlobalSection
 EndGlobal

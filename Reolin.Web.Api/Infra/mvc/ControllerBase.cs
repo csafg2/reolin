@@ -4,7 +4,6 @@ using System.Net;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
-
     public class BaseController : Controller
     {
         protected IActionResult Error(Exception ex)
@@ -22,5 +21,4 @@ namespace Reolin.Web.Api.Infra.mvc
             return new ApiResult(code, data);
         }
     }
-
 }

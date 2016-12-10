@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,18 @@ namespace Reolin.Web.Api.Infra.mvc
         private readonly HttpStatusCode _statusCode;
         private const string MEDIA_TYPE = "application/json";
 
+        public ApiResult(object data) : this(HttpStatusCode.Accepted, data)
+        {
+
+        }
+
         public ApiResult(HttpStatusCode statusCode, object data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
             this._statusCode = statusCode;
             this._data = data;
         }
