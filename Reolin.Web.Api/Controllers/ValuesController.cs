@@ -24,6 +24,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            throw new System.Exception();
             return "value";
         }
 
