@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using Reolin.Web.Api.Infra.mvc;
 
 namespace Reolin.Web.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ValuesController : BaseController
     {
         private ILogger<ValuesController> _logger;
         
@@ -13,11 +15,12 @@ namespace Reolin.Web.Api.Controllers
         {
             this._logger = logger;
         }
-        
+
         [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
+            var name = this.Username;
             return Json( new string[] { "value1", "value2" });
         }
 

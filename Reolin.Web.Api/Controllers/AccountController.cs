@@ -12,6 +12,7 @@ using System.Linq;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Api.Infra.mvc;
+using System.Net;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -54,22 +55,22 @@ namespace Reolin.Web.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(this.ModelState);
             }
-
+            
             try
             {
-                
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
-                return Ok(model);
+                return Ok(new { model.Email, model.UserName });
             }
             catch (Exception ex) when (ex is IdentityException)
             {
-                this.ModelState.AddModelError("error", ex.Message);
+                this.ModelState.AddModelError("identificationError", ex.Message);
                 return BadRequest(ModelState);
             }
         }
@@ -106,10 +107,10 @@ namespace Reolin.Web.Api.Controllers
                     return Error("Something went wrong.");
 
                 case IdentityResultErrors.UserNotFound:
-                    return NotFound("Specified User could not be found");
+                    return Error(HttpStatusCode.NotFound, "Specified User could not be found");
 
                 case IdentityResultErrors.InvalidPassowrd:
-                    return BadRequest("Invalid password");
+                    return Error(HttpStatusCode.BadRequest, "Invalid password" );
 
                 default:
                     return BadRequest(result.Exception.Message);

@@ -13,7 +13,7 @@ namespace Reolin.Web.Api.Infra.mvc
     {
         private readonly object _data;
         private readonly HttpStatusCode _statusCode;
-        private const string MEDIA_TYPE = "application/json";
+        private const string JSON_MEDIA_TYPE = "application/json";
 
         public ApiResult(object data) : this(HttpStatusCode.Accepted, data)
         {
@@ -44,7 +44,7 @@ namespace Reolin.Web.Api.Infra.mvc
         private byte[] CreateResponse(ActionContext context)
         {
             HttpResponse response = context.HttpContext.Response;
-            response.ContentType = MEDIA_TYPE;
+            response.ContentType = JSON_MEDIA_TYPE;
             response.StatusCode = (int)this._statusCode;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_data));
         }
