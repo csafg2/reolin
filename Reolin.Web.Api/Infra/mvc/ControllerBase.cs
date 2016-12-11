@@ -14,7 +14,16 @@ namespace Reolin.Web.Api.Infra.mvc
                 return User.Claims.Where(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").FirstOrDefault().Value;
             }
         }
-        
+
+        const string ID_CLAIM_TYPE = "Id";
+        protected int UserId
+        {
+            get
+            {
+                return int.Parse(User.Claims.Where(c => c.Type == ID_CLAIM_TYPE).FirstOrDefault().Value);
+            }
+        }
+
         protected IActionResult Error(Exception ex)
         {
             return this.Error(ex.Message);

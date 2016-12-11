@@ -17,9 +17,16 @@ namespace Reolin.Web.Api.Controllers
             this._logger = logger;
             this._environemnt = env;
         }
-        
+
         public IActionResult SomeThingWentWrong()
         {
+            var error = this.HttpContext.Features.Get<IExceptionHandlerFeature>();
+
+            if (_environemnt.IsDevelopment() && error?.Error != null)
+            {
+                return Error(error.Error.Message + error.Error.StackTrace);
+            }
+
             return Error("Some thing went wrong, please try again later.");
         }
     }

@@ -35,6 +35,9 @@ namespace Reolin.Web.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // uncomment this one in production
+            app.UseExceptionHandler("/Error/SomeThingWentWrong");
+
             loggerFactory.AddSqlLogger(Configuration["ConnectionStrings:Log"]);
 
             // comment this "if statement" in production
@@ -42,11 +45,10 @@ namespace Reolin.Web.Api
             {
                 loggerFactory.AddDebug();
             }
+            
+            // Comment this in production
+            //app.UseDeveloperExceptionPage();
 
-            // uncomment this one in production
-            //app.UseExceptionHandler("/Error/SomeThingWentWrong");
-
-            app.UseDeveloperExceptionPage();
             app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
         }

@@ -90,7 +90,7 @@ namespace Reolin.Web.Api.Controllers
                 return WriteError(result);
             }
 
-            this.Options.Claims = GetPerUserClaims(model.UserName, result.User.Roles.Select(r => r.Name));
+            this.Options.Claims = GetPerUserClaims(result.User.UserName, result.User.Id, result.User.Roles.Select(r => r.Name));
 
             return Ok(new
             {
@@ -117,7 +117,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-        private List<Claim> GetPerUserClaims(string userName, IEnumerable<string> roles)
+        private List<Claim> GetPerUserClaims(string userName, int userId, IEnumerable<string> roles)
         {
             const string roleClaimName = "roles";
             return new List<Claim>()
@@ -125,7 +125,8 @@ namespace Reolin.Web.Api.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
-                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"),
+                        new Claim("Id", userId.ToString(), "http://www.w3.org/2001/XMLSchema#integer")
                    };
         }
 

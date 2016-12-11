@@ -38,11 +38,11 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 return;
             }
             
-            options.Claims = GetClaims(userName, user.Roles.Select(r => r.Name));
+            options.Claims = GetClaims(userName, user.Id, user.Roles.Select(r => r.Name));
         }
         
 
-        private List<Claim> GetClaims(string userName, IEnumerable<string> roles)
+        private List<Claim> GetClaims(string userName, int userId, IEnumerable<string> roles)
         {
             const string roleClaimName = "roles";
             return new List<Claim>()
@@ -50,7 +50,8 @@ namespace Reolin.Web.Api.Infra.Middlewares
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
-                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"),
+                        new Claim("Id", userId.ToString(), "http://www.w3.org/2001/XMLSchema#integer")
                    };
         }
 

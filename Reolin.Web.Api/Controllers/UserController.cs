@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Reolin.Data.Services;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using Reolin.Web.Api.ViewModels;
 using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
-    public class UserController: BaseController
+    public class UserController : BaseController
     {
         private readonly IUserService _service;
 
@@ -29,34 +27,16 @@ namespace Reolin.Web.Api.Controllers
 
 
         // TODO: complete this method
-        public IActionResult SetFirstNameLastName(SetFirstNameLastNameModel model)
+        public async Task<IActionResult> SetFirstNameLastName(SetFirstNameLastNameModel model)
         {
-            throw new NotImplementedException();
-            if(!this.ModelState.IsValid)
+            throw new ArgumentException("some thing is null");
+            if (!this.ModelState.IsValid)
             {
-                
                 return BadRequest(this.ModelState);
             }
 
-            try
-            {
-                
-                //this.UserService.SetUserInfo(User.Claims.)
-            }
-            catch(Exception ex)
-            { }
-
+            await this.UserService.SetUserInfo(this.UserId, model.FirstName, model.LastName);
+            return Ok();
         }
-        
     }
-    public class SetFirstNameLastNameModel
-    {
-        [Required(ErrorMessage = "Firstname is required", AllowEmptyStrings = false)]
-        public string FirstName { get; set; }
-        [Required(ErrorMessage = "Lastname is required", AllowEmptyStrings = false)]
-        public  string LastName { get; set; }
-
-    }
-
-
 }

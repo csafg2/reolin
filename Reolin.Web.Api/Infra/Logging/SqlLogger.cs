@@ -41,7 +41,7 @@ namespace Reolin.Web.Api.Infra.Logging
 
             try
             {
-                string message = $"{ logLevel }: {exception.Message}";
+                string message = $"{ logLevel }: {exception.Message} : { exception.StackTrace}";
                 this._context.Logs.Add(new Log() { Date = DateTime.Now, Message = message, Level = logLevel });
                 this._context.SaveChangesAsync().ConfigureAwait(false);
             }
