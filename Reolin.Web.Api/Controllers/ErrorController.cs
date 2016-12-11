@@ -10,7 +10,7 @@ namespace Reolin.Web.Api.Controllers
     public class ErrorController : BaseController
     {
         private readonly IHostingEnvironment _environemnt;
-        private readonly ILogger<ErrorController> _logger;
+        private readonly ILogger<ErrorController>   _logger;
 
         public ErrorController(ILogger<ErrorController> logger, IHostingEnvironment env)
         {
