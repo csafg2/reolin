@@ -1,33 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authorization;
-using System.Linq;
 using Reolin.Web.Api.Infra.mvc;
+using System;
+using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Controllers
 {
+    public class MyViewModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
     [Route("api/[controller]")]
     public class ValuesController : BaseController
     {
         private ILogger<ValuesController> _logger;
-        
+
         public ValuesController(ILogger<ValuesController> logger)
         {
             this._logger = logger;
         }
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult Get()
+        //[Authorize]
+        //[HttpGet]
+        [OutputCache(Key = "tag",  AbsoluteExpiration = 3600, SlidingExpiration = 1800)]
+        public IActionResult Get(string tag)
         {
-            var name = this.Username;
-            return Json( new string[] { "value1", "value2" });
+            return Json(new { Number = new Random().Next(1, 500) });
         }
 
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            throw new System.Exception();
             return "value";
         }
 
@@ -46,6 +51,7 @@ namespace Reolin.Web.Api.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        
         public void Delete(int id)
         {
         }

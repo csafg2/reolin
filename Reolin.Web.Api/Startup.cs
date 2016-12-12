@@ -26,6 +26,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddLogging().AddJwtDependencies();
             services.AddJwtDependencies();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
@@ -38,15 +39,14 @@ namespace Reolin.Web.Api
             // uncomment this one in production
             //app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
-            loggerFactory.AddSqlLogger(Configuration["ConnectionStrings:Log"]);
+            loggerFactory.AddSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
 
-            // comment this "if statement" in production
+            // comment this entire "if statement" in production
             if (env.IsDevelopment())
             {
                 loggerFactory.AddDebug();
             }
             
-            // Comment this in production
             //app.UseDeveloperExceptionPage();
 
             app.UseJwtValidation();

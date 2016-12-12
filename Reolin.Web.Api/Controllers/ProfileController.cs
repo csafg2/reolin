@@ -7,17 +7,21 @@ using System;
 using System.Linq;
 using System.Data.Entity;
 using Reolin.Web.Api.ViewModels.profile;
+using Microsoft.Extensions.Caching.Memory;
+using System.Collections.Generic;
 
 namespace Reolin.Web.Api.Controllers
 {
 
     public class ProfileController : BaseController
     {
-        private IPorofileService _profileService;
+        private readonly IPorofileService _profileService;
+        private readonly IMemoryCache _cache;
 
-        public ProfileController(IPorofileService service)
+        public ProfileController(IPorofileService service, IMemoryCache cache)
         {
             this._profileService = service;
+            this._cache = cache;
         }
 
         public IPorofileService ProfileService
@@ -28,7 +32,6 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-
         public async Task<IActionResult> GetByTag(string tag)
         {
             if (string.IsNullOrEmpty(tag))
@@ -36,14 +39,14 @@ namespace Reolin.Web.Api.Controllers
                 ModelState.AddModelError("Error", "Tag is required");
                 return BadRequest(this.ModelState);
             }
-
+            
             var result = await this.ProfileService.GetByTagAsync(tag)
-                .Select(p => new
-                {
-                    Description = p.Description,
-                    Address = p.Address
-                }).ToListAsync();
-
+                        .Select(p => new
+                        {
+                            Description = p.Description,
+                            Address = p.Address
+                        }).ToListAsync();
+            
             return Json(result);
         }
 

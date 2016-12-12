@@ -8,8 +8,9 @@ namespace Reolin.Web.Api.Infra.ConfigExtensions
     {
         public static void AddSqlLogger(this ILoggerFactory source, string connectionString)
         {
-            Func<string, LogLevel, bool> filter = (cat, level) => level == LogLevel.Error || level == LogLevel.Critical;
-            var context = new LogContext(connectionString);
+            Func<string, LogLevel, bool> filter = 
+                (cat, level) => level == LogLevel.Error || level == LogLevel.Critical;
+            LogContext context = new LogContext(connectionString);
             source.AddProvider(new SqlLoggerProvider(filter, context));
         }
     }
