@@ -36,7 +36,7 @@ namespace Reolin.Web.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // uncomment this one in production
-            app.UseExceptionHandler("/Error/SomeThingWentWrong");
+            //app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
             loggerFactory.AddSqlLogger(Configuration["ConnectionStrings:Log"]);
 

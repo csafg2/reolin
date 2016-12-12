@@ -29,7 +29,6 @@ namespace Reolin.Web.Api.Controllers
         // TODO: complete this method
         public async Task<IActionResult> SetFirstNameLastName(SetFirstNameLastNameModel model)
         {
-            throw new ArgumentException("some thing is null");
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(this.ModelState);
