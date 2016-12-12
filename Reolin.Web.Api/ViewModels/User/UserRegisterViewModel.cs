@@ -3,7 +3,7 @@
 namespace Reolin.Web.Api.ViewModels
 {
 
-    public class RegisterViewModel
+    public class UserRegisterViewModel
     {
         [Required(ErrorMessage = "Username is required", AllowEmptyStrings = false)]
         [MaxLength(80, ErrorMessage = "Username can not be more than 80 characters")]

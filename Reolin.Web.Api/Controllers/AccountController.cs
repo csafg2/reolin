@@ -56,7 +56,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
 
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
