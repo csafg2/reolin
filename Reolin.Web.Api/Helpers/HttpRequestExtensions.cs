@@ -11,10 +11,16 @@ namespace Reolin.Web.Api.Helpers
 
         public static JwtSecurityToken GetRequestToken(this HttpRequest source)
         {
+            
             string jwt = source.Headers
-                            .First(h => h.Key == HEADER_KEY)
-                                   .Value.ToString()
-                                       .Replace(TOKEN_SCHEME, string.Empty);
+                           .FirstOrDefault(h => h.Key == HEADER_KEY)
+                                   .Value;
+            if (string.IsNullOrEmpty(jwt))
+            {
+                return null;
+            }
+
+            jwt = jwt.Replace(TOKEN_SCHEME, string.Empty);
 
             return new JwtSecurityToken(jwt);
         }
