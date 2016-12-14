@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Reolin.Web.Api.Helpers;
+using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
+using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership.Core;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.Extensions.Options;
-using Reolin.Web.Security.Jwt;
-using Reolin.Web.Api.Infra.mvc;
-using System.Net;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -53,16 +54,29 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+        public IActionResult Logout()
+        {
+            JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
+
+            if (requestToken == null)
+            {
+                return BadRequest();
+            }
+
+            this.JwtManager.InvalidateToken(requestToken.Issuer, requestToken.Id);
+
+            return Ok();
+        }
+
         [HttpPost]
         [AllowAnonymous]
-
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(this.ModelState);
             }
-            
+
             try
             {
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
@@ -110,7 +124,7 @@ namespace Reolin.Web.Api.Controllers
                     return Error(HttpStatusCode.NotFound, "Specified User could not be found");
 
                 case IdentityResultErrors.InvalidPassowrd:
-                    return Error(HttpStatusCode.BadRequest, "Invalid password" );
+                    return Error(HttpStatusCode.BadRequest, "Invalid password");
 
                 default:
                     return BadRequest(result.Exception.Message);

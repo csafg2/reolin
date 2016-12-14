@@ -59,11 +59,11 @@ namespace Reolin.Web.Api.Infra.filters
 
             if (context.Result is JsonResult)
             {
-                this.Cache.Set(this._tempKey, context.Result, 
+                this.Cache.Set(this._tempKey, context.Result,
                     new MemoryCacheEntryOptions()
-                                {
-                                    SlidingExpiration = TimeSpan.FromSeconds(this.SlidingExpiration)
-                                }.SetAbsoluteExpiration(TimeSpan.FromSeconds(this.AbsoluteExpiration)));
+                    {
+                        SlidingExpiration = TimeSpan.FromSeconds(this.SlidingExpiration)
+                    }.SetAbsoluteExpiration(TimeSpan.FromSeconds(this.AbsoluteExpiration)));
             }
         }
     }

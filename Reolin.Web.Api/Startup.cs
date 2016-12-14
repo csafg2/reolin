@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +28,7 @@ namespace Reolin.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMemoryCache();
-            services.AddLogging().AddJwtDependencies();
+            services.AddLogging();
             services.AddJwtDependencies();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
             services.AddMvc();
@@ -37,7 +38,7 @@ namespace Reolin.Web.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // uncomment this one in production
-            //app.UseExceptionHandler("/Error/SomeThingWentWrong");
+            app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
             loggerFactory.AddSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
 

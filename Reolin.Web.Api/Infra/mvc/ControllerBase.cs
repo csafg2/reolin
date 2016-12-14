@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
@@ -11,7 +12,10 @@ namespace Reolin.Web.Api.Infra.mvc
         {
             get
             {
-                return User.Claims.Where(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").FirstOrDefault().Value;
+                string userNameSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
+                return this.User
+                            .Claims
+                                .Where(c => c.Type == userNameSchema).FirstOrDefault().Value;
             }
         }
 

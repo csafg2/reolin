@@ -1,4 +1,6 @@
-﻿namespace Reolin.Web.Security.Jwt
+﻿using System.IdentityModel.Tokens.Jwt;
+
+namespace Reolin.Web.Security.Jwt
 {
     public class JwtManager : IJWTManager
     {
@@ -11,21 +13,21 @@
             this._provider = jwtProvider;
         }
 
-        public void InvalidateToken(string issuer, string token)
+        public void InvalidateToken(string issuer, string tokenId)
         {
-            _store.Remove(issuer, token);
+            _store.Remove(issuer, tokenId);
         }
 
         public string IssueJwt(TokenProviderOptions options)
         {
-            string jwt = _provider.ProvideJwt(options);
-            _store.Add(options.Issuer, jwt);
-            return jwt;
+            JwtSecurityToken token = _provider.CreateJwt(options);
+            _store.Add(options.Issuer, token.Id);
+            return _provider.JwtToString(token);
         }
 
-        public bool ValidateToken(string issuer, string token)
+        public bool ValidateToken(string issuer, string tokenId)
         {
-            return _store.HasToken(issuer, token);
+            return _store.HasToken(issuer, tokenId);
         }
     }
 }

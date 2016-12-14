@@ -11,7 +11,7 @@ namespace Reolin.Web.Api.Infra.Logging
 
         public SqlLogger(string categoryName, Func<string, LogLevel, bool> filter, LogContext context)
         {
-            if(filter == null)
+            if (filter == null)
             {
                 throw new ArgumentException(nameof(filter));
             }
@@ -24,17 +24,16 @@ namespace Reolin.Web.Api.Infra.Logging
         public IDisposable BeginScope<TState>(TState state)
         {
             return null;
-            //return this._context;
         }
 
         public bool IsEnabled(LogLevel logLevel)
         {
-            return  _filter(_categoryName, logLevel);
+            return _filter(_categoryName, logLevel);
         }
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            if(!this.IsEnabled(logLevel) || exception == null)
+            if (!this.IsEnabled(logLevel) || exception == null)
             {
                 return;
             }
@@ -43,11 +42,11 @@ namespace Reolin.Web.Api.Infra.Logging
             {
                 string message = $"{ logLevel }: {exception.Message} : { exception.StackTrace}";
                 this._context.Logs.Add(new Log() { Date = DateTime.Now, Message = message, Level = logLevel });
-                this._context.SaveChangesAsync().ConfigureAwait(false);
+                this._context.SaveChangesAsync().Forget();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // IGNORE this fucking exception :D
+                // we do not accept any exception here so, just ignore it.
             }
         }
     }

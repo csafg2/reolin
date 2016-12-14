@@ -9,6 +9,7 @@ using System.Data.Entity;
 using Reolin.Web.Api.ViewModels.profile;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
+using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -32,6 +33,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+        [OutputCache(Key = "tag", AbsoluteExpiration =  60 * 60, SlidingExpiration = 5 * 60)]
         public async Task<IActionResult> GetByTag(string tag)
         {
             if (string.IsNullOrEmpty(tag))
@@ -44,7 +46,8 @@ namespace Reolin.Web.Api.Controllers
                         .Select(p => new
                         {
                             Description = p.Description,
-                            Address = p.Address
+                            Address = p.Address,
+                            p.Address.Location
                         }).ToListAsync();
             
             return Json(result);

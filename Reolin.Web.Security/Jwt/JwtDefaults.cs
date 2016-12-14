@@ -19,7 +19,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 get
                 {
-                    return "ExampleAudience";
+                    return "ApiClients";
                 }
             }
 
@@ -27,7 +27,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 get
                 {
-                    return "ExampleIssuer";
+                    return "Self";
                 }
             }
 
