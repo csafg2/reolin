@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Reolin.Web.Security.Jwt
 {
@@ -29,6 +30,23 @@ namespace Reolin.Web.Security.Jwt
         public bool ValidateToken(string user, string tokenId)
         {
             return _store.HasToken(user, tokenId);
+        }
+
+        public bool VerifyToken(string token, TokenValidationParameters validationParams)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            
+            try
+            {
+                SecurityToken validatedToken = null;
+                
+                tokenHandler.ValidateToken(token, validationParams, out validatedToken);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

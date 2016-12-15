@@ -13,17 +13,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             {
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true,
-                TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = JwtConfigs.SigningKey,
-                    ValidateIssuer = true,
-                    ValidIssuer = JwtConfigs.Issuer,
-                    ValidateAudience = true,
-                    ValidAudience = JwtConfigs.Audience,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
-                }
+                TokenValidationParameters = JwtConfigs.ValidationParameters
             });
             
         }

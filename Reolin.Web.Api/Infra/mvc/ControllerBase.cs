@@ -2,29 +2,19 @@
 using System;
 using System.Net;
 using System.Linq;
-using System.IdentityModel.Tokens.Jwt;
+using Reolin.Web.Security.Jwt;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
     public class BaseController : Controller
     {
-        protected string Username
-        {
-            get
-            {
-                string userNameSchema = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
-                return this.User
-                            .Claims
-                                .Where(c => c.Type == userNameSchema).FirstOrDefault().Value;
-            }
-        }
-
-        const string ID_CLAIM_TYPE = "Id";
+        
         protected int UserId
         {
             get
             {
-                return int.Parse(User.Claims.Where(c => c.Type == ID_CLAIM_TYPE).FirstOrDefault().Value);
+                return int.Parse(User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE)
+                    .FirstOrDefault().Value);
             }
         }
 

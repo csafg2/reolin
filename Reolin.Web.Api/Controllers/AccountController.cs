@@ -14,6 +14,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static Reolin.Web.Security.Jwt.JwtConstantsLookup;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -52,6 +53,34 @@ namespace Reolin.Web.Api.Controllers
             {
                 return _jwtManager;
             }
+        }
+
+        [HttpPost]
+        public IActionResult ExchangeToken()
+        {
+            var token = Request.GetRequestToken();
+            if (token == null)
+            {
+                return BadRequest();
+            }
+
+            string userName = token.Claims.GetUsernameClaim().Value;
+            if (!this.JwtManager.VerifyToken(token.BuildString(), JwtConfigs.ValidationParameters)
+                ||
+                !this.JwtManager.ValidateToken(userName, token.Id))
+            {
+                return BadRequest();
+            }
+
+            this.JwtManager.InvalidateToken(userName, token.Id);
+
+            this.Options.Claims = token.Claims.ToList();
+
+            return Json(new
+            {
+                access_token = this.JwtManager.IssueJwt(this.Options),
+                expires_in = Options.Expiration
+            });
         }
 
         [Authorize]
@@ -140,8 +169,8 @@ namespace Reolin.Web.Api.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
-                        new Claim(roleClaimName, GetRoleString(roles), "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"),
-                        new Claim("Id", userId.ToString(), "http://www.w3.org/2001/XMLSchema#integer")
+                        new Claim(roleClaimName, GetRoleString(roles), ROLE_VALUE_TYPE),
+                        new Claim(ID_CLAIM_TYPE, userId.ToString(), ClaimValueTypes.Integer32)
                    };
         }
 

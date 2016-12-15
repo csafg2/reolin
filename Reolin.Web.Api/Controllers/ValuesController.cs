@@ -22,7 +22,6 @@ namespace Reolin.Web.Api.Controllers
         public ValuesController(ILogger<ValuesController> logger, IServiceProvider provider)
         {
             this._logger = logger;
-            var instance = (IJwtManager)provider.GetService(typeof(IJwtManager));
         }
 
         [Authorize]
