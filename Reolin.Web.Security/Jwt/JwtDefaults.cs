@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Reolin.Web.Security.Jwt
 {
-    public static class JwtDefaults
+    public static class JwtConfigs
     {
             public static TimeSpan Expiry
             {
                 get
                 {
-                    return TimeSpan.FromMinutes(10);
+                    return TimeSpan.FromMinutes(30);
                 }
             }
 

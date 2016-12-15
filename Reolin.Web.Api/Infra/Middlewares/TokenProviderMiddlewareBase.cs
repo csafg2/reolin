@@ -14,13 +14,13 @@ namespace Reolin.Web.Api.Infra.Middlewares
         private readonly TokenProviderOptions _options;
         private readonly string _path;
         private readonly IUserSecurityManager _userManager;
-        private readonly IJWTManager _jwtManager;
+        private readonly IJwtManager _jwtManager;
 
         public TokenProviderMiddlewareBase(RequestDelegate next, 
                                             IOptions<TokenProviderOptions> options,
                                             string path,
                                             IUserSecurityManager userManager,
-                                            IJWTManager manager)
+                                            IJwtManager manager)
         {
             this._next = next;
             this._options = options.Value;
@@ -37,7 +37,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
         }
 
-        private IJWTManager JwtManager
+        private IJwtManager JwtManager
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Reolin.Web.Api.Infra.Middlewares
             }
 
             string jwt = this._jwtManager.IssueJwt(this._options);
-            string response = JwtDefaults.CreateResponseString(jwt, this._options.Expiration);
+            string response = JwtConfigs.CreateResponseString(jwt, this._options.Expiration);
             return WriteToken(context, response);
         }
 

@@ -21,9 +21,9 @@ namespace Reolin.Web.Api.Controllers
     {
         private readonly IUserSecurityManager _userManager;
         private readonly IOptions<TokenProviderOptions> _tokenOptionsWrapper;
-        private readonly IJWTManager _jwtManager;
+        private readonly IJwtManager _jwtManager;
 
-        public AccountController(IUserSecurityManager userManager, IOptions<TokenProviderOptions> options, IJWTManager jwtManager)
+        public AccountController(IUserSecurityManager userManager, IOptions<TokenProviderOptions> options, IJwtManager jwtManager)
         {
             this._userManager = userManager;
             this._jwtManager = jwtManager;
@@ -46,7 +46,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-        private IJWTManager JwtManager
+        private IJwtManager JwtManager
         {
             get
             {

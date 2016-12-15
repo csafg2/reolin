@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.mvc;
 using System;
 using Reolin.Web.Api.Infra.filters;
+using Microsoft.AspNetCore.Authorization;
+using Reolin.Web.Security.Jwt;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -17,14 +19,15 @@ namespace Reolin.Web.Api.Controllers
     {
         private ILogger<ValuesController> _logger;
 
-        public ValuesController(ILogger<ValuesController> logger)
+        public ValuesController(ILogger<ValuesController> logger, IServiceProvider provider)
         {
             this._logger = logger;
+            var instance = (IJwtManager)provider.GetService(typeof(IJwtManager));
         }
 
-        //[Authorize]
+        [Authorize]
         //[HttpGet]
-        [OutputCache(Key = "tag",  AbsoluteExpiration = 3600, SlidingExpiration = 1800)]
+        //[OutputCache(Key = "tag",  AbsoluteExpiration = 3600, SlidingExpiration = 1800)]
         public IActionResult Get(string tag)
         {
             return Json(new { Number = new Random().Next(1, 500) });

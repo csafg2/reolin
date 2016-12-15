@@ -13,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
+    [Obsolete]
     public class JwtProviderMiddleware : TokenProviderMiddlewareBase
     {
-        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path, IUserSecurityManager userManager, IJWTManager jwtManager)
+        public JwtProviderMiddleware(RequestDelegate next, IOptions<TokenProviderOptions> options, string path, IUserSecurityManager userManager, IJwtManager jwtManager)
             : base(next, options, path, userManager, jwtManager)
         {
         }

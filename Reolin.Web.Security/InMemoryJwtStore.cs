@@ -19,11 +19,6 @@ namespace Reolin.Web.Security.Jwt
             _store[key] = new List<string>() { tokenId };
         }
 
-        public List<string> Get(string key)
-        {
-            return _store[key];
-        }
-
         public bool HasToken(string issuer, string tokenId)
         {
             return this._store.ContainsKey(issuer) && this._store[issuer].Any(t => t == tokenId);
@@ -42,16 +37,6 @@ namespace Reolin.Web.Security.Jwt
             }
 
             this._store[key].Remove(tokenId);
-        }
-
-        public bool TryRemove(string key, string tokenId)
-        {
-            if (this._store.ContainsKey(key))
-            {
-                return this._store[key].Remove(tokenId);
-            }
-
-            return false;
         }
     }
 }

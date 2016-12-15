@@ -1,9 +1,9 @@
 ﻿namespace Reolin.Web.Security.Jwt
 {
-    public interface IJWTManager
+    public interface IJwtManager
     {
         string IssueJwt(TokenProviderOptions options);
-        bool ValidateToken(string issuer, string token);
-        void InvalidateToken(string issuer, string token);
+        bool ValidateToken(string user, string token);
+        void InvalidateToken(string user, string token);
     }
 }
