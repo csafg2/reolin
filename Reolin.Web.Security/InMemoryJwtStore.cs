@@ -19,24 +19,14 @@ namespace Reolin.Web.Security.Jwt
             _store[key] = new List<string>() { tokenId };
         }
 
-        public bool HasToken(string issuer, string tokenId)
+        public bool HasToken(string userName, string tokenId)
         {
-            return this._store.ContainsKey(issuer) && this._store[issuer].Any(t => t == tokenId);
+            return this._store.ContainsKey(userName) && this._store[userName].Any(t => t == tokenId);
         }
 
-        public void Remove(string key, string tokenId)
+        public void Remove(string userName, string tokenId)
         {
-            if (!_store.ContainsKey(key))
-            {
-                throw new KeyNotFoundException($"the key {key} could not be found");
-            }
-
-            else if (!_store[key].Any(t => t == tokenId))
-            {
-                throw new Exception($"tokenId {tokenId} could not be found ");
-            }
-
-            this._store[key].Remove(tokenId);
+            this._store[userName].Remove(tokenId);
         }
     }
 }

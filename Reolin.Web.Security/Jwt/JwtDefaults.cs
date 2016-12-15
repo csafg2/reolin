@@ -11,7 +11,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 get
                 {
-                    return TimeSpan.FromMinutes(30);
+                    return TimeSpan.FromMinutes(60);
                 }
             }
 

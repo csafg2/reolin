@@ -28,7 +28,7 @@ namespace Reolin.Web.Security.Jwt
 
         public bool ValidateToken(string user, string tokenId)
         {
-            return _store.HasToken(issuer, tokenId);
+            return _store.HasToken(user, tokenId);
         }
     }
 }

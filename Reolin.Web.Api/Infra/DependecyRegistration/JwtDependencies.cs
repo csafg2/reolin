@@ -17,7 +17,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
                                     SigningCredentials = JwtConfigs.SigningCredentials,
                                     Expiration = JwtConfigs.Expiry
                                 }))
-                            .AddSingleton(typeof(IJwtStore), typeof(InMemoryJwtStore))
+                            .AddSingleton<IJwtStore>(new InMemoryJwtStore())
                             .AddTransient(typeof(IJwtManager), typeof(JwtManager));
         }
     }

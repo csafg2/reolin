@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Reolin.Web.Security.Jwt;
 using System;
@@ -27,20 +26,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 }
             });
             
-        }
-
-        [Obsolete]
-        public static IApplicationBuilder UseJwtEndPoint(this IApplicationBuilder source)
-        {
-            var options = Options.Create(new TokenProviderOptions()
-            {
-                Audience = JwtConfigs.Audience,
-                Issuer = JwtConfigs.Issuer,
-                SigningCredentials = JwtConfigs.SigningCredentials,
-                Expiration = JwtConfigs.Expiry
-            });
-            
-            return source.UseMiddleware<JwtProviderMiddleware>(options, ConfigurationManager.TokenEndPoint);
         }
     }
 }

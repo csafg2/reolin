@@ -6,10 +6,12 @@ namespace System
 {
     public static class ClaimHelpers
     {
-        public static string UserNameClaimType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
-        public static Claim GetUsernameClaim(this List<Claim> source)
+        const string userNameType = "sub";
+        const string secondUserNameType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
+
+        public static Claim GetUsernameClaim(this IEnumerable<Claim> source)
         {
-            return source.FirstOrDefault(c => c.Type == UserNameClaimType);
+            return source.FirstOrDefault(c => c.Type == userNameType || c.Type == secondUserNameType);
         }
     }
 }

@@ -54,6 +54,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult Logout()
         {
             JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
@@ -63,7 +64,7 @@ namespace Reolin.Web.Api.Controllers
                 return BadRequest();
             }
 
-            this.JwtManager.InvalidateToken(requestToken.Issuer, requestToken.Id);
+            this.JwtManager.InvalidateToken(requestToken.Claims.GetUsernameClaim().Value, requestToken.Id);
 
             return Ok();
         }

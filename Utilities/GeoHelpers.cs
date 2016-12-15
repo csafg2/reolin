@@ -4,16 +4,16 @@ namespace System
 {
     public static class GeoHelpers
     {
-        public static DbGeography FromLongitudeLatitude(double longitude, double latitude, int srid)
-        {
-            return DbGeography.FromText($"POINT({longitude} {latitude})", srid);
-        }
-
         public const double MAX_LONGITUDE = 180;
         public const double MIN_LONGITUDE = -180;
 
         public const double MAX_LATITUDE = 90;
         public const double MIN_LATITUDE = -90;
+
+        public static DbGeography FromLongitudeLatitude(double longitude, double latitude, int srid)
+        {
+            return DbGeography.FromText($"POINT({longitude} {latitude})", srid);
+        }
 
         public static bool IsValid(this DbGeography source)
         {

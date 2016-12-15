@@ -23,5 +23,4 @@ namespace Reolin.Web.Api.Infra.Logging
         {
         }
     }
-
 }
