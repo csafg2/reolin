@@ -1,21 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net;
-using System.Linq;
 using Reolin.Web.Security.Jwt;
+using System;
+using System.Linq;
+using System.Net;
+using System.Security.Claims;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
-        
-        protected int UserId
+        protected int GetUserId()
         {
-            get
+            Claim idClaim = User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault();
+
+            if (idClaim == null)
             {
-                return int.Parse(User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE)
-                    .FirstOrDefault().Value);
+                throw new Exception("userId claim could not be found");
             }
+
+            return int.Parse(idClaim.Value);
         }
 
         protected IActionResult Error(Exception ex)

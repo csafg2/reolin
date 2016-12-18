@@ -7,12 +7,6 @@ namespace Reolin.Web.Api.Helpers
 {
     public static class HttpRequestExtensions
     {
-    
-
-        public static string BuildString(this JwtSecurityToken source)
-        {
-            return new JwtSecurityTokenHandler().WriteToken(source);
-        }
 
         public static JwtSecurityToken GetRequestToken(this HttpRequest source)
         {

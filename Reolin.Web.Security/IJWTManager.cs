@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Reolin.Web.Security.Jwt
 {
@@ -8,5 +9,6 @@ namespace Reolin.Web.Security.Jwt
         bool ValidateToken(string user, string tokenId);
         void InvalidateToken(string user, string tokenId);
         bool VerifyToken(string token, TokenValidationParameters validationParams);
+        string ExchangeToken(JwtSecurityToken oldToken);
     }
 }

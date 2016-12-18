@@ -1,13 +1,14 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System;
 using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 
 namespace Reolin.Web.Security.Jwt
 {
     public class JwtManager : IJwtManager
     {
-        IJwtStore _store;
-        IJwtProvider _provider;
+        private readonly IJwtStore _store;
+        private readonly IJwtProvider _provider;
 
         public JwtManager(IJwtStore store, IJwtProvider jwtProvider)
         {
@@ -34,19 +35,40 @@ namespace Reolin.Web.Security.Jwt
 
         public bool VerifyToken(string token, TokenValidationParameters validationParams)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
+            validationParams.ValidateLifetime = false;
+
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken validatedToken = null;
+            tokenHandler.ValidateToken(token, validationParams, out validatedToken);
+            return true;
+        }
+
+        public string ExchangeToken(JwtSecurityToken oldToken)
+        {
+            string userName = oldToken.Claims.ToList().GetUsernameClaim().Value;
+
+            // verify token signature
+            this.VerifyToken(oldToken.RawData, JwtConfigs.ValidationParameters);
             
-            try
+            // we dont exchange a token that is already invalidated with a valid token.
+            if (!this.ValidateToken(userName, oldToken.Id))
             {
-                SecurityToken validatedToken = null;
-                
-                tokenHandler.ValidateToken(token, validationParams, out validatedToken);
-                return true;
+                throw new SecurityTokenInvalidTokenException("the jwt is already Invalidated");
             }
-            catch (Exception)
+
+            this.InvalidateToken(userName, oldToken.Id);
+            var options = new TokenProviderOptions()
             {
-                return false;
-            }
+                Audience = JwtConfigs.Audience,
+                Issuer = JwtConfigs.Issuer,
+                SigningCredentials = JwtConfigs.SigningCredentials,
+                Expiration = JwtConfigs.Expiry,
+                Claims = oldToken.Claims.ToList()
+            };
+
+            options.Claims.Remove(options.Claims.First(c => c.Type == JwtConstantsLookup.JWT_JTI_TYPE));
+
+            return this.IssueJwt(options);
         }
     }
 }

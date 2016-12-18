@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Web.Api.Infra.mvc;
 using Microsoft.Extensions.Logging;
@@ -27,7 +26,7 @@ namespace Reolin.Web.Api.Controllers
                 return Error(error.Error.Message + error.Error.StackTrace);
             }
 
-            return Error("Some thing went wrong, please try again later.");
+            return Error("Something went wrong, please try again later.");
         }
     }
 }

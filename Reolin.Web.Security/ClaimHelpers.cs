@@ -16,5 +16,10 @@ namespace System
         {
             return source.FirstOrDefault(c => c.Type == USERNAME_CLAIM_TYPE);
         }
+
+        public static Claim GetUsernameClaim(this IEnumerable<Claim> source)
+        {
+            return source.FirstOrDefault(c => c.Type == USERNAME_CLAIM_TYPE || c.Type == USERNAME_SCHEMA);
+        }
     }
 }

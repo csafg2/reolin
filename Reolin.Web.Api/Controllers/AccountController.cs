@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Helpers;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
+using Reolin.Web.Security;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership.Core;
 using System;
@@ -63,35 +65,25 @@ namespace Reolin.Web.Api.Controllers
             {
                 return BadRequest();
             }
-
-            string userName = token.Claims.GetUsernameClaim().Value;
-            if (!this.JwtManager.VerifyToken(token.BuildString(), JwtConfigs.ValidationParameters)
-                ||
-                !this.JwtManager.ValidateToken(userName, token.Id))
+            
+            try
             {
-                return BadRequest();
+                return Json(new
+                {
+                    newToken = this.JwtManager.ExchangeToken(token),
+                    expiresIn = Options.Expiration
+                });
             }
-
-            this.JwtManager.InvalidateToken(userName, token.Id);
-
-            this.Options.Claims = token.Claims.ToList();
-
-            return Json(new
+            catch (Exception ex)
             {
-                access_token = this.JwtManager.IssueJwt(this.Options),
-                expires_in = Options.Expiration
-            });
+                return BadRequest(ex.Message);
+            }
         }
 
         [Authorize]
         public IActionResult Logout()
         {
             JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
-
-            if (requestToken == null)
-            {
-                return BadRequest();
-            }
 
             this.JwtManager.InvalidateToken(requestToken.Claims.GetUsernameClaim().Value, requestToken.Id);
 
@@ -112,7 +104,7 @@ namespace Reolin.Web.Api.Controllers
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
                 return Ok(new { model.Email, model.UserName });
             }
-            catch (Exception ex) when (ex is IdentityException)
+            catch (IdentityException ex)
             {
                 this.ModelState.AddModelError("identificationError", ex.Message);
                 return BadRequest(ModelState);
@@ -138,8 +130,8 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(new
             {
-                access_token = this.JwtManager.IssueJwt(this.Options),
-                expires_in = Options.Expiration
+                accessToken = this.JwtManager.IssueJwt(this.Options),
+                expiresIn = Options.Expiration
             });
         }
 
@@ -157,7 +149,7 @@ namespace Reolin.Web.Api.Controllers
                     return Error(HttpStatusCode.BadRequest, "Invalid password");
 
                 default:
-                    return BadRequest(result.Exception.Message);
+                    return RedirectToAction("SomeThingWentWrong", "ErrorController");
             }
         }
 

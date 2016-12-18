@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace Reolin.Web.Security.Jwt
 {
-
     public class JwtProvider : IJwtProvider
     {
         public JwtSecurityToken CreateJwt(TokenProviderOptions options)
@@ -16,15 +15,13 @@ namespace Reolin.Web.Security.Jwt
             }
 
             DateTime now = DateTime.UtcNow;
-            JwtSecurityToken jwt = new JwtSecurityToken(
+            return new JwtSecurityToken(
                 issuer: options.Issuer,
                 audience: options.Audience,
                 claims: options.Claims,
                 notBefore: now,
                 expires: now.Add(options.Expiration),
                 signingCredentials: options.SigningCredentials);
-
-            return jwt;
         }
 
         public string JwtToString(JwtSecurityToken jwt)

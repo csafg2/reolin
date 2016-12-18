@@ -1,24 +1,13 @@
-﻿using System;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
 using System.Text;
 
 namespace Reolin.Web.Security.Jwt
 {
-    public static class JwtConstantsLookup
-    {
-        public const string TOKEN_SCHEME = "bearer ";
-        public const string HEADER_KEY = "Authorization";
-        public const string ROLE_VALUE_TYPE = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
-        public const string INT_VALUE_TYPE = "http://www.w3.org/2001/XMLSchema#integer";
-        public const string ID_CLAIM_TYPE = "Id";
-        public const string USERNAME_CLAIM_TYPE = "sub";
-    }
-
-
     public static class JwtConfigs
     {
-        
+
         public static TokenValidationParameters ValidationParameters
         {
             get
@@ -37,46 +26,46 @@ namespace Reolin.Web.Security.Jwt
             }
         }
 
-            public static TimeSpan Expiry
+        public static TimeSpan Expiry
+        {
+            get
             {
-                get
-                {
-                    return TimeSpan.FromMinutes(60);
-                }
+                return TimeSpan.FromMinutes(3);
             }
+        }
 
-            public static string Audience
+        public static string Audience
+        {
+            get
             {
-                get
-                {
-                    return "ApiClients";
-                }
+                return "ApiClients";
             }
+        }
 
-            public static string Issuer
+        public static string Issuer
+        {
+            get
             {
-                get
-                {
-                    return "Self";
-                }
+                return "Self";
             }
+        }
 
-            public const string SecretKey = "QWERASDZXCVFRTGBNHYUJMKIUOKLPO";
-            public static SymmetricSecurityKey SigningKey
+        public const string SecretKey = "QWERASDZXCVFRTGBNHYUJMKIUOKLPO";
+        public static SymmetricSecurityKey SigningKey
+        {
+            get
             {
-                get
-                {
-                    return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
-                }
+                return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
             }
+        }
 
-            public static SigningCredentials SigningCredentials
+        public static SigningCredentials SigningCredentials
+        {
+            get
             {
-                get
-                {
-                    return new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
-                }
+                return new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
             }
+        }
 
 
         public static string CreateResponseString(string jwt, TimeSpan expiry)

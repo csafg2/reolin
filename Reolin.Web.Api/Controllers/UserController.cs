@@ -22,8 +22,7 @@ namespace Reolin.Web.Api.Controllers
                 return _service;
             }
         }
-        
-        // TODO: complete this method
+
         public async Task<IActionResult> SetFirstNameLastName(SetFirstNameLastNameModel model)
         {
             if (!this.ModelState.IsValid)
@@ -31,7 +30,7 @@ namespace Reolin.Web.Api.Controllers
                 return BadRequest(this.ModelState);
             }
 
-            await this.UserService.SetUserInfo(this.UserId, model.FirstName, model.LastName);
+            await this.UserService.SetUserInfo(this.GetUserId(), model.FirstName, model.LastName);
             return Ok();
         }
     }

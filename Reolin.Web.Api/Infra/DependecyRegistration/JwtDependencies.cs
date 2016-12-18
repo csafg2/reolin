@@ -6,19 +6,27 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
     public static class AddJwtManagerExtension
     {
+
         public static IServiceCollection AddJwtDependencies(this IServiceCollection source)
         {
             return source.AddTransient(typeof(IJwtProvider), typeof(JwtProvider))
-                            .AddTransient(typeof(IOptions<TokenProviderOptions>),
-                                p => Options.Create(new TokenProviderOptions()
-                                {
-                                    Audience = JwtConfigs.Audience,
-                                    Issuer = JwtConfigs.Issuer,
-                                    SigningCredentials = JwtConfigs.SigningCredentials,
-                                    Expiration = JwtConfigs.Expiry
-                                }))
+                            .AddTransient(typeof(IOptions<TokenProviderOptions>), p => TokenOptions)
                             .AddSingleton<IJwtStore>(new InMemoryJwtStore())
                             .AddTransient(typeof(IJwtManager), typeof(JwtManager));
+        }
+
+        private static IOptions<TokenProviderOptions> TokenOptions
+        {
+            get
+            {
+                return Options.Create(new TokenProviderOptions()
+                {
+                    Audience = JwtConfigs.Audience,
+                    Issuer = JwtConfigs.Issuer,
+                    SigningCredentials = JwtConfigs.SigningCredentials,
+                    Expiration = JwtConfigs.Expiry
+                });
+            }
         }
     }
 }
