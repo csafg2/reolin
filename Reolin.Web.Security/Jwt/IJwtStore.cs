@@ -1,11 +1,28 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Reolin.Web.Security.Jwt
 {
     public interface IJwtStore
     {
-        void Add(string key, string tokenId);
-        void Remove(string key, string tokenId);
-        bool HasToken(string issuer, string tokenId);
+        /// <summary>
+        /// attach specified tokenId to the uername
+        /// </summary>
+        /// <param name="userName">username that owns token id</param>
+        /// <param name="tokenId">tokenId that will be attached</param>
+        void Add(string userName, string tokenId);
+
+        /// <summary>
+        /// remove token from user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="tokenId"></param>
+        void Remove(string userName, string tokenId);
+
+        /// <summary>
+        /// determines if specified has a token with this Id
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="tokenId"></param>
+        /// <returns></returns>
+        bool HasToken(string userName, string tokenId);
     }
 }
