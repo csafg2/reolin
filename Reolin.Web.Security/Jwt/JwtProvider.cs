@@ -13,6 +13,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 throw new ArgumentNullException("sub '(username)' claim can not be null");
             }
+            
 
             DateTime now = DateTime.UtcNow;
             return new JwtSecurityToken(
