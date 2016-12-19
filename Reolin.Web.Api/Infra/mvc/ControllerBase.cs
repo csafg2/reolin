@@ -9,6 +9,10 @@ namespace Reolin.Web.Api.Infra.mvc
 {
     public abstract class BaseController : Controller
     {
+        /// <summary>
+        /// extracts the user if from the request token.
+        /// </summary>
+        /// <returns></returns>
         protected int GetUserId()
         {
             Claim idClaim = User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault();

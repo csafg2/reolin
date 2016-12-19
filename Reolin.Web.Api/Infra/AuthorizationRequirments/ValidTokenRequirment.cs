@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.AuthorizationRequirments
 {
-
+    /// <summary>
+    /// this class is responsible for validating a token against our JWT persistant storage,
+    /// a valid token is tracked by jwtManager
+    /// </summary>
     public class ValidTokenRequirment : AuthorizationHandler<ValidTokenRequirment>, IAuthorizationRequirement
     {
         private IJwtManager _jwtManager;
@@ -20,7 +23,7 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ValidTokenRequirment requirement)
         {
-            string tokenId = context.User.Claims.FirstOrDefault(c => c.Type == "jti")?.Value;
+            string tokenId = context.User.Claims.FirstOrDefault(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE)?.Value;
             string userName = context.User.Claims.GetUsernameClaim()?.Value;
 
             if (string.IsNullOrEmpty(tokenId) || string.IsNullOrEmpty(userName))

@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
-
+    /// <summary>
+    /// a wrapper for for JsonResult
+    /// </summary>
     public class ApiResult : ActionResult
     {
         private readonly object _data;

@@ -3,6 +3,9 @@ using System;
 
 namespace Reolin.Web.Api.Infra.Logging
 {
+    /// <summary>
+    /// loggs messages into sql server
+    /// </summary>
     public class SqlLogger : ILogger
     {
         private readonly string _categoryName;

@@ -9,13 +9,52 @@ namespace Reolin.Data.Services.Core
 {
     public interface IUserService
     {
+        /// <summary>
+        /// an IQueryable object which can be used to query the underlying data storage
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="includes">navigational properties to include in result set</param>
+        /// <returns></returns>
         IQueryable<User> Query(Expression<Func<User, bool>> filter, params string[] includes);
+
+        /// <summary>
+        /// Create new user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         Task<int> CreateAsync(User user);
+
+        /// <summary>
+        /// Create new user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <param name="email"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         Task<int> CreateAsync(string userName, byte[] password, string email, params string[] roles);
+
+        /// <summary>
+        /// Deletes a user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Task<int> DeleteAsync(int id);
-        Task<int> DeleteAsync(User user);
+
+        //Task<int> DeleteAsync(User user);
+
+        /// <summary>
+        /// Get a uer by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Task<User> GetByIdAsync(int id);
-        //Task<User> GetUserTokenInfo(string userName);
+
+        /// <summary>
+        /// gets username by username
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         Task<User> GetByUserName(string userName);
         Task<User> GetByUserName(string userName, params string[] includes);
         Task UpdateAsync(User user);

@@ -74,14 +74,14 @@ namespace Reolin.Data.Services
             return role;
         }
 
-        public Task<int> DeleteAsync(User user)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-            return this.DeleteAsync(user.Id);
-        }
+        //public Task<int> DeleteAsync(User user)
+        //{
+        //    if (user == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(user));
+        //    }
+        //    return this.DeleteAsync(user.Id);
+        //}
 
         public Task<int> DeleteAsync(int id)
         {
