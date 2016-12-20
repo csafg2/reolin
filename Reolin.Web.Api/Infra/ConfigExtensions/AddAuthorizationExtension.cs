@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Reolin.Web.Api.Infra.AuthorizationRequirments;
 using Reolin.Web.Security.Jwt;
 using System;
+
 namespace Reolin.Web.Api.Infra.ConfigExtensions
 {
     public static class AddAuthorizationExtensions

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Data.Entity;
 using Reolin.Web.Api.ViewModels.profile;
 using Microsoft.Extensions.Caching.Memory;
-using System.Collections.Generic;
 using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Controllers

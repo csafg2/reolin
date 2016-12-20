@@ -57,14 +57,15 @@ namespace Reolin.Web.Api.Infra.filters
                 return;
             }
 
-            if (context.Result is JsonResult)
+            if (!(context.Result is JsonResult))
             {
-                this.Cache.Set(this._tempKey, context.Result,
-                    new MemoryCacheEntryOptions()
-                    {
-                        SlidingExpiration = TimeSpan.FromSeconds(this.SlidingExpiration)
-                    }.SetAbsoluteExpiration(TimeSpan.FromSeconds(this.AbsoluteExpiration)));
+                throw new NotSupportedException("Only JsonResult is supported for caching");
             }
+
+            this.Cache.Set(this._tempKey, context.Result, new MemoryCacheEntryOptions()
+            {
+                SlidingExpiration = TimeSpan.FromSeconds(this.SlidingExpiration)
+            }.SetAbsoluteExpiration(TimeSpan.FromSeconds(this.AbsoluteExpiration)));
         }
     }
 }
