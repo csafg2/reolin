@@ -4,52 +4,6 @@ using System;
 namespace Reolin.Web.Security.Membership.Core
 {
 
-    public enum IdentityResultErrors
-    {
-        EmptyOrUnknown = 0,
-        UserNotFound = 1,
-        InvalidPassowrd = 2,
-        InvalidUserName
-    }
-
-    public class IdentityException: Exception
-    {
-        public IdentityException(string message)
-        {
-
-        }
-        protected string _message;
-        public override string Message
-        {
-            get
-            {
-                return _message;
-            }
-        }
-    }
-
-
-    public class InvalidEmailException : IdentityException
-    {
-        public InvalidEmailException(string message) : base(message)
-        {
-        }
-    }
-
-    public class InvalidUserNameException : IdentityException
-    {
-        public InvalidUserNameException(string message) : base(message)
-        {
-        }
-    }
-
-    public class InvalidPasswordException : IdentityException
-    {
-        public InvalidPasswordException(string message) : base(message)
-        {
-        }
-    }
-
 
     public abstract class IdentityResult
     {
@@ -66,7 +20,7 @@ namespace Reolin.Web.Security.Membership.Core
             {
                 if (string.IsNullOrEmpty(_message))
                 {
-                    return this?.Exception?.Message;
+                    return this.Exception?.Message;
                 }
 
                 return _message;

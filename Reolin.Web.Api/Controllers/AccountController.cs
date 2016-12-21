@@ -155,17 +155,22 @@ namespace Reolin.Web.Api.Controllers
 
         private List<Claim> GetPerUserClaims(string userName, int userId, IEnumerable<string> roles)
         {
-            const string roleClaimName = "roles";
             return new List<Claim>()
                    {
                         new Claim(JwtRegisteredClaimNames.Sub, userName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
-                        new Claim(roleClaimName, GetRoleString(roles), ROLE_VALUE_TYPE),
+                        new Claim(Role_CLAIM_TYPE, GetRoleString(roles), ROLE_VALUE_TYPE),
                         new Claim(ID_CLAIM_TYPE, userId.ToString(), ClaimValueTypes.Integer32)
                    };
         }
 
+
+        /// <summary>
+        /// convert string[] into some thing like this: "admin,normalUser, ..., ..."
+        /// </summary>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         private string GetRoleString(IEnumerable<string> roles)
         {
             StringBuilder sb = new StringBuilder();

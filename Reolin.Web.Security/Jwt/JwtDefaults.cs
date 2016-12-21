@@ -1,5 +1,4 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using System;
 using System.Text;
 
@@ -65,17 +64,6 @@ namespace Reolin.Web.Security.Jwt
             {
                 return new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
             }
-        }
-
-
-        public static string CreateResponseString(string jwt, TimeSpan expiry)
-        {
-            return JsonConvert.SerializeObject(
-                new
-                {
-                    access_token = jwt,
-                    expires_in = expiry
-                });
         }
     }
 }
