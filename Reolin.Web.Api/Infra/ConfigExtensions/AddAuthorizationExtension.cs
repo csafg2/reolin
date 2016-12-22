@@ -14,7 +14,7 @@ namespace Reolin.Web.Api.Infra.ConfigExtensions
             return services.AddAuthorization(o =>
             {
                 o.AddPolicy(ValidTokenRequirment.Name,
-                    b => b.Requirements.Add(new ValidTokenRequirment(jwtManager, provider)));
+                    b => b.Requirements.Add(new ValidTokenRequirment(jwtManager)));
 
                 o.DefaultPolicy = o.GetPolicy(ValidTokenRequirment.Name);
             });

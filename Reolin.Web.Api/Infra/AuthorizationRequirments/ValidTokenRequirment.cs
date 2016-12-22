@@ -8,13 +8,13 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
 {
     /// <summary>
     /// this class is responsible for validating a token against our JWT persistant storage,
-    /// a valid token is tracked by jwtManager
+    /// (a valid token is tracked by jwtManager)
     /// </summary>
     public class ValidTokenRequirment : AuthorizationHandler<ValidTokenRequirment>, IAuthorizationRequirement
     {
         private IJwtManager _jwtManager;
 
-        public ValidTokenRequirment(IJwtManager manager, IServiceProvider provider)
+        public ValidTokenRequirment(IJwtManager manager)
         {
             _jwtManager = manager;
         }
