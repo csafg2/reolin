@@ -45,7 +45,7 @@ namespace Reolin.Web.Api.Infra.filters
             if (this.Cache.TryGetValue(arg.Value.ToString(), out cachedResult))
             {
                 _tempKey = arg.Key;
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Accepted;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
                 context.Result = cachedResult as JsonResult;
             }
         }
@@ -59,7 +59,7 @@ namespace Reolin.Web.Api.Infra.filters
 
             if (!(context.Result is JsonResult))
             {
-                throw new NotSupportedException("Only JsonResult is supported for caching");
+                throw new NotSupportedException("Only 'JsonResult' is supported for caching");
             }
 
             this.Cache.Set(this._tempKey, context.Result, new MemoryCacheEntryOptions()
