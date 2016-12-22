@@ -32,13 +32,13 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
                 return Task.FromResult(0);
             }
 
-            if (!_jwtManager.ValidateToken(userName, tokenId))
+            if (_jwtManager.ValidateToken(userName, tokenId))
             {
-                context.Fail();
+                context.Succeed(this);
             }
             else
             {
-                context.Succeed(this);
+                context.Fail();
             }
 
             return Task.FromResult(0);
