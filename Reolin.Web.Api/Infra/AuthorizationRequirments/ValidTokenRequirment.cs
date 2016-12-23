@@ -14,7 +14,7 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
     {
         private IJwtManager _jwtManager;
 
-        public ValidTokenRequirment(IJwtManager manager, IServiceProvider provider)
+        public ValidTokenRequirment(IJwtManager manager)
         {
             _jwtManager = manager;
         }

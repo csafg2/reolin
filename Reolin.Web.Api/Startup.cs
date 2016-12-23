@@ -29,26 +29,25 @@ namespace Reolin.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddJwtDependencies();
-            services.AddJwtAuthorization(services.BuildServiceProvider());
+            services.AddJwtValidationRequirement(services.BuildServiceProvider());
             services.AddMemoryCache();
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
-            services.AddMvc();
+            services.AddMvcWithConfig();
         }
 
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            // uncomment this one in production
             app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
             loggerFactory.AddSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
 
             // comment this entire "if statement" in production
-            if (env.IsDevelopment())
-            {
-                loggerFactory.AddDebug();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    loggerFactory.AddDebug();
+            //}
 
             //app.UseDeveloperExceptionPage();
 

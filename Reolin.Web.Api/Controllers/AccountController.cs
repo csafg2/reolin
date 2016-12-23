@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Helpers;
+using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
 using Reolin.Web.Security;
@@ -33,6 +35,7 @@ namespace Reolin.Web.Api.Controllers
             this._tokenOptionsWrapper = options;
         }
 
+        #region Properties
         private TokenProviderOptions Options
         {
             get
@@ -56,6 +59,7 @@ namespace Reolin.Web.Api.Controllers
                 return _jwtManager;
             }
         }
+        #endregion
 
         [HttpPost]
         public IActionResult ExchangeToken()
@@ -65,7 +69,7 @@ namespace Reolin.Web.Api.Controllers
             {
                 return BadRequest();
             }
-            
+
             try
             {
                 return Json(new
@@ -94,11 +98,6 @@ namespace Reolin.Web.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return BadRequest(this.ModelState);
-            }
-
             try
             {
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
@@ -115,11 +114,6 @@ namespace Reolin.Web.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
-
             IdentityResult result = (await this.UserManager.GetLoginInfo(model.UserName, model.Password));
             if (!result.Succeeded)
             {
@@ -155,6 +149,7 @@ namespace Reolin.Web.Api.Controllers
 
         private List<Claim> GetPerUserClaims(string userName, int userId, IEnumerable<string> roles)
         {
+            
             return new List<Claim>()
                    {
                         new Claim(JwtRegisteredClaimNames.Sub, userName),

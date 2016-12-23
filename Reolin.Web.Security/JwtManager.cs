@@ -2,6 +2,7 @@
 using System;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq;
+using System.Security.Claims;
 
 namespace Reolin.Web.Security.Jwt
 {
@@ -30,6 +31,11 @@ namespace Reolin.Web.Security.Jwt
 
         public bool ValidateToken(string user, string tokenId)
         {
+            if(string.IsNullOrEmpty(user) || string.IsNullOrEmpty(tokenId))
+            {
+                throw new ArgumentException("user or tokenId can not be null or empty");
+            }
+
             return _store.HasToken(user, tokenId);
         }
 
@@ -37,9 +43,17 @@ namespace Reolin.Web.Security.Jwt
         {
             validationParams.ValidateLifetime = false;
 
-            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            SecurityToken validatedToken = null;
-            tokenHandler.ValidateToken(token, validationParams, out validatedToken);
+            try
+            {
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                SecurityToken validatedToken = null;
+                tokenHandler.ValidateToken(token, validationParams, out validatedToken);
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+            
             return true;
         }
 
@@ -49,7 +63,7 @@ namespace Reolin.Web.Security.Jwt
 
             // verify token signature
             this.VerifyToken(oldToken.RawData, JwtConfigs.ValidationParameters);
-            
+
             // we dont exchange a token that is already invalidated with a valid token.
             if (!this.ValidateToken(userName, oldToken.Id))
             {
@@ -57,6 +71,13 @@ namespace Reolin.Web.Security.Jwt
             }
 
             this.InvalidateToken(userName, oldToken.Id);
+            TokenProviderOptions options = CreateOptions(oldToken);
+
+            return this.IssueJwt(options);
+        }
+
+        private static TokenProviderOptions CreateOptions(JwtSecurityToken oldToken)
+        {
             var options = new TokenProviderOptions()
             {
                 Audience = JwtConfigs.Audience,
@@ -66,9 +87,12 @@ namespace Reolin.Web.Security.Jwt
                 Claims = oldToken.Claims.ToList()
             };
 
+            //remove old id
             options.Claims.Remove(options.Claims.First(c => c.Type == JwtConstantsLookup.JWT_JTI_TYPE));
 
-            return this.IssueJwt(options);
+            // set a new id for the jwt
+            options.Claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            return options;
         }
     }
 }

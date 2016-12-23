@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.IdentityModel.Tokens;
 using Reolin.Web.Security.Jwt;
-using System;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
