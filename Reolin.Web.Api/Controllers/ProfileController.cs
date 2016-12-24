@@ -12,7 +12,6 @@ using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Controllers
 {
-
     public class ProfileController : BaseController
     {
         private readonly IPorofileService _profileService;
@@ -56,11 +55,6 @@ namespace Reolin.Web.Api.Controllers
         [Authorize]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return BadRequest(this.ModelState);
-            }
-
             Task addDescriptionTask = this.ProfileService.AddDescriptionAsync(model.Id, model.Description);
             Task addTagTask = this.ProfileService.AddTagAsync(model.Id, model.Description.ExtractHashtags());
 

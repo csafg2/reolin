@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostics", "diagnostics"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Diagnostics.Logging", "Reolin.Diagnostics.Logging\Reolin.Diagnostics.Logging.csproj", "{311A2D66-1F72-410A-BE08-C5601B99676B}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "MainUMLProject", "MainUMLProject\MainUMLProject.modelproj", "{11261D80-EA4C-44E4-B1F7-16AE488E73EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtTests", "JwtTests\JwtTests.csproj", "{9551F3AD-D4EA-418A-ADEF-0E08F8995563}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,14 @@ Global
 		{311A2D66-1F72-410A-BE08-C5601B99676B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{311A2D66-1F72-410A-BE08-C5601B99676B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{311A2D66-1F72-410A-BE08-C5601B99676B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11261D80-EA4C-44E4-B1F7-16AE488E73EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11261D80-EA4C-44E4-B1F7-16AE488E73EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11261D80-EA4C-44E4-B1F7-16AE488E73EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11261D80-EA4C-44E4-B1F7-16AE488E73EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9551F3AD-D4EA-418A-ADEF-0E08F8995563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9551F3AD-D4EA-418A-ADEF-0E08F8995563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9551F3AD-D4EA-418A-ADEF-0E08F8995563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9551F3AD-D4EA-418A-ADEF-0E08F8995563}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,5 +126,6 @@ Global
 		{ECC591BE-F756-4CB7-A3F8-5B25D60F2702} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
 		{91E4A4A8-C3A0-43BC-872B-C62658B14356} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
 		{311A2D66-1F72-410A-BE08-C5601B99676B} = {FC9A4D8E-F45A-4BF3-9FC8-514FF0BB70AA}
+		{9551F3AD-D4EA-418A-ADEF-0E08F8995563} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
 	EndGlobalSection
 EndGlobal

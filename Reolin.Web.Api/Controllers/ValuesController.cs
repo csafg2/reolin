@@ -5,6 +5,7 @@ using System;
 using Reolin.Web.Api.Infra.filters;
 using Microsoft.AspNetCore.Authorization;
 using Reolin.Web.Security.Jwt;
+using System.ComponentModel.DataAnnotations;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -24,38 +25,62 @@ namespace Reolin.Web.Api.Controllers
             this._logger = logger;
         }
 
-        [Authorize]
+        //[Authorize]
         //[HttpGet]
         //[OutputCache(Key = "tag",  AbsoluteExpiration = 3600, SlidingExpiration = 1800)]
-        public IActionResult Get(string tag)
+        //public IActionResult Get(string tag)
+        //{
+        //    return Json(new { Number = new Random().Next(1, 500) });
+        //}
+
+
+        public class SomeModel
         {
-            return Json(new { Number = new Random().Next(1, 500) });
+            [Required (ErrorMessage = "ID is required")]
+            public string Id { get; set; }
+            [Required(ErrorMessage = "ID2 is required")]
+            public string Id2 { get; set; }
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/values
-        [HttpPost]
-        public IActionResult Post(string value)
+        public string Get()
         {
-            return Redirect("http://www.google.com");
-        }
+                throw new Exception("Some thing went wrong");
+            try
+            {
+            }
+            catch(Exception ex)
+            {
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            }
+            return "HELLOW WORLD!!";
         }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
         
-        public void Delete(int id)
-        {
-        }
+        ////[HttpGet("{id}")]
+        //public string Get(SomeModel model)
+        //{
+            
+        //    return "value";
+        //}
+
+        //// POST api/values
+        //[HttpPost]
+        //public IActionResult Post(string value)
+        //{
+        //    return Redirect("http://www.google.com");
+        //}
+
+        //// PUT api/values/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
+
+        //// DELETE api/values/5
+        //[HttpDelete("{id}")]
+        
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
