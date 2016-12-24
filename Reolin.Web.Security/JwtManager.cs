@@ -31,7 +31,7 @@ namespace Reolin.Web.Security.Jwt
 
         public bool ValidateToken(string user, string tokenId)
         {
-            if(string.IsNullOrEmpty(user) || string.IsNullOrEmpty(tokenId))
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(tokenId))
             {
                 throw new ArgumentException("user or tokenId can not be null or empty");
             }
@@ -49,11 +49,13 @@ namespace Reolin.Web.Security.Jwt
                 SecurityToken validatedToken = null;
                 tokenHandler.ValidateToken(token, validationParams, out validatedToken);
             }
-            catch(Exception)
+            catch (Exception)
             {
+                // fucking idiots at Microsoft are controlling program flow by throwing exceptions
+                // so if verification fails an exception will be thrown.
                 return false;
             }
-            
+
             return true;
         }
 

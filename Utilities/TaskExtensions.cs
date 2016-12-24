@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace System
 {
@@ -13,7 +12,7 @@ namespace System
             }
             catch(Exception)
             {
-                // ignore..
+                // ignore this fuck..
             }
         }
     }

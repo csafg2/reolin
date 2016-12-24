@@ -12,6 +12,7 @@ namespace System
 
         public static DbGeography FromLongitudeLatitude(double longitude, double latitude, int srid)
         {
+            
             return DbGeography.FromText($"POINT({longitude} {latitude})", srid);
         }
 

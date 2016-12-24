@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="ebf4afc8-4a3f-4c77-a9d7-cc64fa3a7e7e"
   name="MainUMLProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -17,28 +17,510 @@
         name="StandardProfileL3" />
     </packageHasProfileInstances>
   </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="3acd1e69-b4a0-40d3-8254-67b3b63ea9b0"
+        name="HttpService"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="c60ef442-4068-4037-bdeb-d6055b6ff0b0"
+            name="AccessToken"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+                LastKnownName="JwtSecurityToken"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="9df571f6-284f-49cf-9bc3-3883a880dbce"
+            name="Get"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fd3e63a7-723b-48a5-933a-e7968a4b4f86"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="fa18446a-cb46-451f-952b-92e8a5df25a8"
+                      LastKnownName="HttpResponse"
+                      LastKnownLocation="MainUMLProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bc1601a0-8fe4-4dcd-a7ff-88ce476293b5"
+                  name="url"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="eb4b3056-3e1b-402c-8296-9fec036461e6"
+                  name="headers"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f4ae3843-8275-4344-835e-2478b8d63fc8"
+            name="Post"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d27322b7-a7f1-47eb-8098-da0d03a3d5b8"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7df387b1-d393-4a99-a7cd-759119fa1bb1"
+                      LastKnownName="HttpResponse"
+                      LastKnownLocation="MainUMLProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="df8eef81-be05-4246-9bed-a05113045e66"
+                  name="url"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a84674ba-6e9c-4d77-b1c3-d3eb1a35c748"
+                  name="formData"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="49661e8e-0e2c-4fb5-a8b4-1a7c7e8a1951"
+                  name="headers"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f180edf3-7631-4fd0-bfb0-58e11f406b39"
+            name="HttpService"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="df647957-7f25-4b09-8ed3-ff7e826d0686"
+                  name="jwt"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="339f71a9-7e44-46e8-aac0-41367ee99657"
+                  name="newTokenEndPoint"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5114aea7-d7cc-4891-bf1b-66c819158d2a"
+            name="HttpService"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="696fac16-d6f6-44a2-9591-378cbe6dd21b"
+                  name=")"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="9d0d951b-2d0c-4883-b4ca-3a3c91396e53"
+                      LastKnownName="this(string.Empty"
+                      LastKnownLocation="MainUMLProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2d9021c8-1686-471b-9dd7-e7c525b51c33"
+                  name="string.Empty"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="7c5633a8-2e12-4567-9475-c6ef8d4400db"
+        name="Interface1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+        name="JwtSecurityToken"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="02104db0-fb05-47e3-9554-c217f5bbf1af"
+            isDerived="false"
+            sourceEndRoleName="JwtSecurityToken"
+            targetEndRoleName="HttpService"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3acd1e69-b4a0-40d3-8254-67b3b63ea9b0"
+              LastKnownName="HttpService"
+              LastKnownLocation="MainUMLProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d29340ca-2221-4c7b-84a7-990f99d35296"
+                  name="JwtSecurityToken"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="afba4ead-802b-44c8-b434-38f4cef7f390"
+                  name="HttpService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="87cfa3ad-3f81-44a6-ab27-6cbb09a10f07"
+            name="Token"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2"
+                LastKnownName="string"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="76321224-ea37-4470-aeb8-53952a09f204"
+            name="IsExpired"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="4ebd9351-5b50-4f56-be95-24a10ce0db1c"
+                LastKnownName="bool"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="cba69f32-769a-4016-8c23-b5724eb2986f"
+            name="Parse"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e5782616-2410-47d7-8521-c0b4c3433dfa"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+                      LastKnownName="JwtSecurityToken"
+                      LastKnownLocation="MainUMLProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e09046fd-aa76-4a35-a64b-c59b0dd234f4"
+                  name="string jwt"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="911b7116-3419-4014-9bfd-0a259dd3f163"
+            name="TryParse"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7c5d235b-0d71-4758-86a3-5f14c632a743"
+                  name="string jwt"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e3de6992-a285-41ce-8185-23907b4beb4f"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+                      LastKnownName="JwtSecurityToken"
+                      LastKnownLocation="MainUMLProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4ebd9351-5b50-4f56-be95-24a10ce0db1c"
+        name="bool" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3741a147-aeaf-4edf-8c33-f608727d4511"
+        name="Response" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="fa18446a-cb46-451f-952b-92e8a5df25a8"
+        name="HttpResponse" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7df387b1-d393-4a99-a7cd-759119fa1bb1"
+        name="HttpResponse"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="2eae6c6c-b020-409a-a575-1cdfc0c60ebc"
+            isDerived="false"
+            sourceEndRoleName="HttpResponse"
+            targetEndRoleName="HttpService"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3acd1e69-b4a0-40d3-8254-67b3b63ea9b0"
+              LastKnownName="HttpService"
+              LastKnownLocation="MainUMLProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="01619011-874a-4812-bf9d-fbb7c422b836"
+                  name="HttpResponse"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9f0ce926-6b3c-46ea-b7a8-d1161844441d"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e7e77835-1e0b-442a-8849-623701baa838"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cfbc4d76-0acf-43ec-a272-e36d92da887c"
+                  name="HttpService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="02ce2af7-7b6c-4673-b13b-ac24317e49f1"
+            name="StatusCode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="98cd99a2-bc24-4cb4-b4bb-0114bfced026"
+                LastKnownName="int"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4b0fc82b-6784-449a-82a4-06f4b27c2bfc"
+            name="Headers"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9abec1c2-e62a-44ae-8991-e05055c263ef"
+                LastKnownName="Dictionary&lt;string, string&gt;"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7ac3835d-80c1-455b-ac20-9daee3666de6"
+            name="Body"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2"
+                LastKnownName="string"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="98cd99a2-bc24-4cb4-b4bb-0114bfced026"
+        name="int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9abec1c2-e62a-44ae-8991-e05055c263ef"
+        name="Dictionary&lt;string, string&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9d0d951b-2d0c-4883-b4ca-3a3c91396e53"
+        name="this(string.Empty" />
+    </packageHasNamedElement>
+  </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
     name="Integer"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
     name="Boolean"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
     name="String"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
     name="UnlimitedNatural"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
 </modelStoreModel>

@@ -10,16 +10,23 @@ namespace Reolin.Web.Api.Infra.filters
     public class OutputCacheAttribute : Attribute, IFilterFactory
     {
         /// <summary>
-        /// the key in request to associate cache with
+        /// the key to associate cached object with
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        /// amount of time to keep the object in memory if not request came to access it
+        /// amount of time to keep the object in memory if no request came to access it
         /// </summary>
         public int SlidingExpiration { get; set; }
+
+        /// <summary>
+        /// absolute amount of time to keep object in memory
+        /// </summary>
         public int AbsoluteExpiration { get; set; }
 
+        /// <summary>
+        /// Determines if object can be used to serve multiple requests
+        /// </summary>
         public bool IsReusable
         {
             get

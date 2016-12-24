@@ -1,1 +1,294 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="0d84e18a-5b43-48e8-a549-e1d585ced5bd" name="JwtManagement" linkedPackageId="66f38b44-ccd0-4b98-b7c8-a3f90d864952" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ed05493f-d570-454c-8194-2d1d4fc4afe5" name="HttpService" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3acd1e69-b4a0-40d3-8254-67b3b63ea9b0" />
+        <ownedAttributesInternal>
+          <property Id="59a84061-62bc-41b0-b398-c78b822f0c2c" name="AccessToken" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c60ef442-4068-4037-bdeb-d6055b6ff0b0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e3b3190d-ab62-42d8-924f-3c649287afba" LastKnownName="JwtSecurityToken" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="7e40fab0-9fc5-44a9-aaf5-2413d4cefd20" name="Get" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9df571f6-284f-49cf-9bc3-3883a880dbce" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4363f531-14ef-477c-8ef4-44e3012df5d4" direction="Return" isUnique="false">
+                  <elementDefinition Id="fd3e63a7-723b-48a5-933a-e7968a4b4f86" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="37dbe2e8-7dc4-4f4d-b361-68250eb58395" LastKnownName="HttpResponse" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8cc06f78-d50f-40b5-9093-ed3981fcac89" name="url" direction="In" isUnique="false">
+                  <elementDefinition Id="bc1601a0-8fe4-4dcd-a7ff-88ce476293b5" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0310e155-7926-45a5-9327-95b7d6a7b31c" name="headers" direction="In" isUnique="false">
+                  <elementDefinition Id="eb4b3056-3e1b-402c-8296-9fec036461e6" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="92251afd-6a97-47dc-9dcc-5c725276c51c" name="Post" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f4ae3843-8275-4344-835e-2478b8d63fc8" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d47bce62-4c65-4a81-ad30-4424009d4f52" direction="Return" isUnique="false">
+                  <elementDefinition Id="d27322b7-a7f1-47eb-8098-da0d03a3d5b8" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="e7160c6a-9414-45ac-b671-f0d17068df89" LastKnownName="HttpResponse" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="90c1ff77-65ff-4b96-9391-fd46a42e24ef" name="url" direction="In" isUnique="false">
+                  <elementDefinition Id="df8eef81-be05-4246-9bed-a05113045e66" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="87905537-1764-441b-a11d-467a90a3bffb" name="formData" direction="In" isUnique="false">
+                  <elementDefinition Id="a84674ba-6e9c-4d77-b1c3-d3eb1a35c748" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7b1ca99d-5598-4908-8df8-6ef8d528d005" name="headers" direction="In" isUnique="false">
+                  <elementDefinition Id="49661e8e-0e2c-4fb5-a8b4-1a7c7e8a1951" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="39d868c9-bab2-40e1-add5-86925d0b5d76" name="HttpService" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f180edf3-7631-4fd0-bfb0-58e11f406b39" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5ce626ee-7b3f-4cc7-af56-1879c89ee5f6" name="jwt" direction="In" isUnique="false">
+                  <elementDefinition Id="df647957-7f25-4b09-8ed3-ff7e826d0686" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="18d6f5a5-b731-4fbb-bab7-fa95a7235fbd" name="newTokenEndPoint" direction="In" isUnique="false">
+                  <elementDefinition Id="339f71a9-7e44-46e8-aac0-41367ee99657" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="89c2c052-af2b-4da9-993d-29ce7266021e" name="HttpService" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5114aea7-d7cc-4891-bf1b-66c819158d2a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dc8b20b8-23ec-4fdb-ab19-d98c8975883e" name=")" direction="In" isUnique="false">
+                  <elementDefinition Id="696fac16-d6f6-44a2-9591-378cbe6dd21b" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="889a6c04-cb99-489a-8039-1804e0836230" LastKnownName="this(string.Empty" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3d80453b-4022-4a4e-8e6b-10c3988b09cd" name="string.Empty" direction="In" isUnique="false">
+                  <elementDefinition Id="2d9021c8-1686-471b-9dd7-e7c525b51c33" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="63b5f416-f3e0-4cdf-ab0a-280d3de477fe" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
+        <elementDefinition Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="caacba01-810d-4200-a359-811af87d3007" name="JwtSecurityToken" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f7256f58-636b-45f4-bbdb-1401867b2f23" />
+        <targetEnds>
+          <association Id="06e4209c-187b-4c5a-bdcb-c60fd49eec41" isDerived="false" sourceEndRoleName="JwtSecurityToken" targetEndRoleName="HttpService" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ed05493f-d570-454c-8194-2d1d4fc4afe5" LastKnownName="HttpService" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2775c10e-4393-4ef1-8982-cc1f08094dbe" name="JwtSecurityToken" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d29340ca-2221-4c7b-84a7-990f99d35296" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a34dddec-81bf-4c93-aacc-d05f64913086" name="HttpService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="afba4ead-802b-44c8-b434-38f4cef7f390" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="02104db0-fb05-47e3-9554-c217f5bbf1af" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="db462637-9a65-4a37-8213-40e0fe2b2058" name="Token" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="87cfa3ad-3f81-44a6-ab27-6cbb09a10f07" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="63b5f416-f3e0-4cdf-ab0a-280d3de477fe" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="210ea375-75a7-45de-bbbc-84bebdb9fa61" name="IsExpired" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="76321224-ea37-4470-aeb8-53952a09f204" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9c178fad-9fa7-45a9-9caa-1dd381d9e7a3" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="275b3e2c-349c-40bb-b9e8-50b5e38de112" name="Parse" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cba69f32-769a-4016-8c23-b5724eb2986f" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="836e8ec9-7c3d-4ad7-8d5e-a9d20420bd25" direction="Return" isUnique="false">
+                  <elementDefinition Id="e5782616-2410-47d7-8521-c0b4c3433dfa" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" LastKnownName="JwtSecurityToken" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="628d7d7e-d8e8-4b5d-9bc4-3db49b4786c6" name="string jwt" direction="In" isUnique="false">
+                  <elementDefinition Id="e09046fd-aa76-4a35-a64b-c59b0dd234f4" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="74f90520-c8dc-4b2a-a07c-22780cda5cf2" name="TryParse" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="911b7116-3419-4014-9bfd-0a259dd3f163" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9586ee28-9e02-4767-acb9-048d314573e8" name="string jwt" direction="In" isUnique="false">
+                  <elementDefinition Id="7c5d235b-0d71-4758-86a3-5f14c632a743" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5ca9e687-2201-449a-8e23-5bef84b02fc0" direction="Return" isUnique="false">
+                  <elementDefinition Id="e3de6992-a285-41ce-8185-23907b4beb4f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" LastKnownName="JwtSecurityToken" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="9c178fad-9fa7-45a9-9caa-1dd381d9e7a3" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="4ebd9351-5b50-4f56-be95-24a10ce0db1c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" name="JwtSecurityToken" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::JwtSecurityToken">
+        <elementDefinition Id="f7256f58-636b-45f4-bbdb-1401867b2f23" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e3b3190d-ab62-42d8-924f-3c649287afba" name="JwtSecurityToken" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::JwtSecurityToken">
+        <elementDefinition Id="f7256f58-636b-45f4-bbdb-1401867b2f23" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="37dbe2e8-7dc4-4f4d-b361-68250eb58395" name="HttpResponse" isAbstract="false" isLeaf="false" cachedFullName="HttpResponse">
+        <elementDefinition Id="fa18446a-cb46-451f-952b-92e8a5df25a8" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a0778f3f-030a-47ce-ad90-5f341e75fc53" name="HttpResponse" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7df387b1-d393-4a99-a7cd-759119fa1bb1" />
+        <targetEnds>
+          <association Id="184cb0a2-a3f6-412f-86a8-e2c40ad647e2" isDerived="false" sourceEndRoleName="HttpResponse" targetEndRoleName="HttpService" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ed05493f-d570-454c-8194-2d1d4fc4afe5" LastKnownName="HttpService" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="01a61467-d88f-4b16-bdbc-5d3dc5908d83" name="HttpResponse" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="79af8c47-a923-407b-849b-903b4b4a97af" name="Lower" value="*">
+                      <elementDefinition Id="9f0ce926-6b3c-46ea-b7a8-d1161844441d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="76c3e69d-7644-481e-a792-bc2ae928596f" name="Upper" value="*">
+                      <elementDefinition Id="e7e77835-1e0b-442a-8849-623701baa838" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="01619011-874a-4812-bf9d-fbb7c422b836" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d75928e2-d608-45e6-9f28-ecad66aa4f41" name="HttpService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cfbc4d76-0acf-43ec-a272-e36d92da887c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2eae6c6c-b020-409a-a575-1cdfc0c60ebc" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="60da3a28-4f78-4d1b-9e86-367eb475bae0" name="StatusCode" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="02ce2af7-7b6c-4673-b13b-ac24317e49f1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e4faecbb-acb1-4eca-a0a6-ccc519c96fd1" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="2baa3c68-0df6-4424-8883-7cd53fde1196" name="Headers" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4b0fc82b-6784-449a-82a4-06f4b27c2bfc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="cdd859ba-247c-4d8f-a1f6-0cc5bc174a68" LastKnownName="Dictionary&lt;string, string&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="346226ef-b84b-4c67-b26e-2bd6af7a105b" name="Body" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7ac3835d-80c1-455b-ac20-9daee3666de6" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="63b5f416-f3e0-4cdf-ab0a-280d3de477fe" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="e4faecbb-acb1-4eca-a0a6-ccc519c96fd1" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="98cd99a2-bc24-4cb4-b4bb-0114bfced026" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="cdd859ba-247c-4d8f-a1f6-0cc5bc174a68" name="Dictionary&lt;string, string&gt;" isAbstract="false" isLeaf="false" cachedFullName="Dictionary&lt;string, string&gt;">
+        <elementDefinition Id="9abec1c2-e62a-44ae-8991-e05055c263ef" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e7160c6a-9414-45ac-b671-f0d17068df89" name="HttpResponse" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::HttpResponse">
+        <elementDefinition Id="7df387b1-d393-4a99-a7cd-759119fa1bb1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="889a6c04-cb99-489a-8039-1804e0836230" name="this(string.Empty" isAbstract="false" isLeaf="false" cachedFullName="this(string.Empty">
+        <elementDefinition Id="9d0d951b-2d0c-4883-b4ca-3a3c91396e53" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="66f38b44-ccd0-4b98-b7c8-a3f90d864952" name="MainUMLProject">
+    <elementDefinition Id="ebf4afc8-4a3f-4c77-a9d7-cc64fa3a7e7e" />
+    <profileInstances>
+      <packageHasProfileInstances Id="a4ea7a50-5956-4319-befe-965a7c38aba2">
+        <profileInstance Id="7d825cb1-cf57-4e9f-876c-99bd96c1768b" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="445e44e6-e560-4b69-8bcb-ff72de2caebf">
+        <profileInstance Id="07759817-b1f8-4724-825e-8439dd631f98" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

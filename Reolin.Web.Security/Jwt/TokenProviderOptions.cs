@@ -6,7 +6,7 @@ using System.Security.Claims;
 namespace Reolin.Web.Security.Jwt
 {
     /// <summary>
-    /// this class holds options for for generating a JWT
+    /// this class holds options for generating a JWT
     /// </summary>
     public class TokenProviderOptions
     {

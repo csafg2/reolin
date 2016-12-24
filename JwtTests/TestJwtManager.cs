@@ -22,12 +22,13 @@ namespace JwtTests
         };
 
         string userName = "nina3";
+        int userId = 13;
         string[] roles = new[] { "admin", "superUser" };
 
         [TestMethod]
         public void TestTokenVerification()
         {
-            options.Claims = GetPerUserClaims("nina3", 13, roles);
+            options.Claims = GetPerUserClaims(userName, userId, roles);
             var token = manager.IssueJwt(options);
 
             Assert.IsTrue(manager.VerifyToken(token, JwtConfigs.ValidationParameters));
@@ -40,7 +41,7 @@ namespace JwtTests
         [TestMethod]
         public void TestExchange()
         {
-            options.Claims = GetPerUserClaims("nina3", 13, roles);
+            options.Claims = GetPerUserClaims(this.userName, this.userId, this.roles);
 
             var firstToken = manager.IssueJwt(options);
             var jwt = new JwtSecurityToken(firstToken);
