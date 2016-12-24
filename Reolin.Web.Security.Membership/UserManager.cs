@@ -41,8 +41,7 @@ namespace Reolin.Web.Security.Membership
             {
                 throw new ArgumentException("old password and new password are required");
             }
-
-            User user = await this.UserService.GetByIdAsync(id);
+            
             foreach (var validator in this.Validators)
             {
                 IdentityResult result = await validator.ValidatePassword(newPassword);
@@ -50,14 +49,15 @@ namespace Reolin.Web.Security.Membership
 
                 if (!result.Succeeded)
                 {
-                    throw new InvalidOperationException(result.Message);
+                    throw result.Exception;
                 }
                 else if (!oldPass.Succeeded)
                 {
-                    throw new InvalidOperationException(oldPass.Message);
+                    throw oldPass.Exception;
                 }
             }
 
+            User user = await this.UserService.GetByIdAsync(id);
             user.Password = this.PasswordHasher.ComputeHash(newPassword);
             await this.UserService.UpdateAsync(user);
         }
@@ -91,11 +91,11 @@ namespace Reolin.Web.Security.Membership
 
             if ((await this.UserService.UserExists(userName)))
             {
-                throw new Exception("this username is already taken.");
+                throw new UserNameTakenExistsException("this username is already taken.");
             }
             else if ((await this.UserService.GetByEmailAsync(email)) != null)
             {
-                throw new Exception("this email is taken");
+                throw new EmailTakenException("this email is taken");
             }
 
             return await CreateAsync(new User()

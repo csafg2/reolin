@@ -1,40 +1,35 @@
-﻿using System;
+﻿using Reolin.Web.Security.Membership.Core;
 
 namespace Reolin.Web.Security.Membership.exceptions
 {
-    public class UserNotFoundException : Exception
+    public class EmailTakenException : IdentityException
     {
-        public UserNotFoundException(string message)
+        public EmailTakenException(string message) : base(message)
         {
-            this._message = message;
-        }
 
-        private string _message;
-
-        public override string Message
-        {
-            get
-            {
-                return _message;
-            }
         }
     }
 
-    public class PasswordNotValidException: Exception
+    public class UserNameTakenExistsException : IdentityException
     {
-        private string _message;
+        public UserNameTakenExistsException(string message) : base(message)
+        {
 
-        public PasswordNotValidException(string message)
-        {
-            this._message = message;
-        }
-        public override string Message
-        {
-            get
-            {
-                return _message;
-            }
         }
     }
-    
+
+    public class UserNotFoundException : IdentityException
+    {
+        public UserNotFoundException(string message) : base(message)
+        {
+        }
+    }
+
+    public class PasswordNotValidException : IdentityException
+    {
+
+        public PasswordNotValidException(string message) : base(message)
+        {
+        }
+    }
 }

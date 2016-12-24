@@ -44,10 +44,10 @@ namespace Reolin.Web.Api
             loggerFactory.AddSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
 
             // comment this entire "if statement" in production
-            //if (env.IsDevelopment())
-            //{
-            //    loggerFactory.AddDebug();
-            //}
+            if (env.IsDevelopment())
+            {
+                loggerFactory.AddDebug();
+            }
 
             //app.UseDeveloperExceptionPage();
 

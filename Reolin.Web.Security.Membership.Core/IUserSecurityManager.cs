@@ -6,6 +6,8 @@ namespace Reolin.Web.Security.Membership.Core
 {
     /// <summary>
     /// defines security service operations for a user account
+    /// iff the method result is Identity Result exceptions will be wrapped in error property otherwise
+    /// this class will always throw subclasses of IdentityException which is safe to be serialized to client
     /// </summary>
     public interface IUserSecurityManager
     {
@@ -16,7 +18,7 @@ namespace Reolin.Web.Security.Membership.Core
         IUserPasswordHasher PasswordHasher { get; }
 
         /// <summary>
-        /// an ienumerble of validators which will validate various user fields before storing it.
+        /// an IEnumerble of validators which will validate various user fields before storing it.
         /// </summary>
         IEnumerable<IUserValidator> Validators { get; }
 
