@@ -273,6 +273,22 @@
         <elementDefinition Id="9d0d951b-2d0c-4883-b4ca-3a3c91396e53" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b966e85c-ef2b-41ce-aa40-fc96c2ae8542" name="JwtStorage" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="add76b84-7e14-416a-aa3d-4cae7648e170" />
+        <ownedAttributesInternal>
+          <property Id="729eb6d9-470e-47f1-a0c2-97e18cf03a89" name="Add(JwtSecurityToken)" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6e028a71-024a-4f5b-9c92-489dd681b277" />
+          </property>
+          <property Id="1cd42948-42d5-4d21-9e2c-26fbf1182081" name="Get()" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9a0c77f8-c145-4b88-ae75-a878eeace0d8" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" LastKnownName="JwtSecurityToken" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="66f38b44-ccd0-4b98-b7c8-a3f90d864952" name="MainUMLProject">
     <elementDefinition Id="ebf4afc8-4a3f-4c77-a9d7-cc64fa3a7e7e" />
