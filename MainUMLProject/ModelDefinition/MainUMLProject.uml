@@ -502,6 +502,46 @@
         Id="9d0d951b-2d0c-4883-b4ca-3a3c91396e53"
         name="this(string.Empty" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="add76b84-7e14-416a-aa3d-4cae7648e170"
+        name="JwtStorage"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="6e028a71-024a-4f5b-9c92-489dd681b277"
+            name="Add(JwtSecurityToken)"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="9a0c77f8-c145-4b88-ae75-a878eeace0d8"
+            name="Get()"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+                LastKnownName="JwtSecurityToken"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

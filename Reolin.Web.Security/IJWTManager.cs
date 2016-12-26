@@ -33,7 +33,7 @@ namespace Reolin.Web.Security.Jwt
         /// </summary>
         /// <param name="token">token to be verified</param>
         /// <param name="validationParams"></param>
-        /// <returns></returns>
+        /// <returns>true if token is vlaid</returns>
         bool VerifyToken(string token, TokenValidationParameters validationParams);
 
         /// <summary>

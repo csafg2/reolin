@@ -7,13 +7,10 @@ namespace Reolin.Web.Api.Helpers
 {
     public static class HttpRequestExtensions
     {
-
         public static JwtSecurityToken GetRequestToken(this HttpRequest source)
         {
-            
-            string jwt = source.Headers
-                           .FirstOrDefault(h => h.Key == HEADER_KEY)
-                                   .Value;
+            string jwt = source.Headers.FirstOrDefault(h => h.Key == HEADER_KEY).Value;
+
             if (string.IsNullOrEmpty(jwt))
             {
                 return null;

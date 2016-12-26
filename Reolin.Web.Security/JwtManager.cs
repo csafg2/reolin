@@ -62,9 +62,12 @@ namespace Reolin.Web.Security.Jwt
         public string ExchangeToken(JwtSecurityToken oldToken)
         {
             string userName = oldToken.Claims.ToList().GetUsernameClaim().Value;
-
+            
             // verify token signature
-            this.VerifyToken(oldToken.RawData, JwtConfigs.ValidationParameters);
+            if(!this.VerifyToken(oldToken.RawData, JwtConfigs.ValidationParameters))
+            {
+                throw new SecurityTokenInvalidTokenException("Token format or payload is incorrect");
+            }
 
             // we dont exchange a token that is already invalidated with a valid token.
             if (!this.ValidateToken(userName, oldToken.Id))

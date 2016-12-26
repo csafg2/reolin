@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace Reolin.Web.Api.Infra.mvc
 {
     /// <summary>
-    /// a wrapper for for JsonResult
+    /// a wrapper for for JsonResult to be able to set Http StatusCode.
     /// </summary>
     public class ApiResult : ActionResult
     {
         private readonly object _data;
-        private readonly HttpStatusCode _statusCode;
+        private readonly int _statusCode;
         private const string JSON_MEDIA_TYPE = "application/json";
 
         public ApiResult(object data) : this(HttpStatusCode.Accepted, data)
@@ -29,7 +29,7 @@ namespace Reolin.Web.Api.Infra.mvc
                 throw new ArgumentNullException(nameof(data));
             }
 
-            this._statusCode = statusCode;
+            this._statusCode = (int)statusCode;
             this._data = data;
         }
 
@@ -47,7 +47,8 @@ namespace Reolin.Web.Api.Infra.mvc
         {
             HttpResponse response = context.HttpContext.Response;
             response.ContentType = JSON_MEDIA_TYPE;
-            response.StatusCode = (int)this._statusCode;
+            response.StatusCode = this._statusCode;
+            
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_data));
         }
 
@@ -61,5 +62,4 @@ namespace Reolin.Web.Api.Infra.mvc
             return context.HttpContext.Response.Body.WriteAsync(message, 0, message.Length);
         }
     }
-
 }
