@@ -2621,6 +2621,24 @@ it uses the jwtProvider classes
                 LastKnownLocation="MainUMLProject.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="c8bd963f-ecf8-4bb3-9582-8b0fff864b9a"
+            name="IJwtProvider"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="5d3a292d-85f6-44d5-8947-6b6a15d5a40c"
+                LastKnownName="IJwtProvider"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -2830,6 +2848,11 @@ it uses the jwtProvider classes
       <undefinedType
         Id="79f35772-4e2a-4025-a2f5-0cdc1b0813e3"
         name="Succeeded" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3f009e2f-755a-4ad1-89f1-7c49cedca304"
+        name="JwtProvider" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

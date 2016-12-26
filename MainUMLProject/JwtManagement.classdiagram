@@ -1833,6 +1833,12 @@ it uses the jwtProvider classes
               <referencedTypeMoniker Id="38d04c1a-6f67-463d-951f-889770772ebb" LastKnownName="HttpService" />
             </type_NamedElement>
           </property>
+          <property Id="bebe5dba-1e6c-4606-8959-16aebbdb6eb2" name="IJwtProvider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c8bd963f-ecf8-4bb3-9582-8b0fff864b9a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="079c69b8-e6ff-433d-9b59-2453e644ebfd" LastKnownName="IJwtProvider" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="05430b4b-e5d7-4604-9eaa-8b6d4f6b23f6" name="Login" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -2001,6 +2007,11 @@ it uses the jwtProvider classes
     <packageHasNamedElement>
       <referencedType Id="ebae330b-6d6f-46be-a74e-40e1af9f5dec" name="LogResult" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::LogResult">
         <elementDefinition Id="34806dca-884e-4737-a6a9-01d06434d7fd" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="079c69b8-e6ff-433d-9b59-2453e644ebfd" name="IJwtProvider" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::IJwtProvider">
+        <elementDefinition Id="5d3a292d-85f6-44d5-8947-6b6a15d5a40c" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
