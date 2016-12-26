@@ -1,3 +1,4 @@
+/// <reference path="httpresponse.ts" />
 /// <reference path="jwtsecuritytoken.ts" />
 var Reolin;
 (function (Reolin) {
@@ -6,7 +7,13 @@ var Reolin;
         var UI;
         (function (UI) {
             var HttpService = (function () {
-                function HttpService() {
+                function HttpService(jwt, newTokenUrl) {
+                    this.Get = function (url, headers) {
+                        headers["formData"] = "123Hellow world!";
+                        return null;
+                    };
+                    this._jwt = jwt;
+                    this._newTokenUrl = newTokenUrl;
                 }
                 return HttpService;
             }());

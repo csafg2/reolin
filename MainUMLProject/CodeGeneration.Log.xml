@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 14.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="ProjectPath = ..\MainUMLProjectLib\MainUMLProjectLib.csproj" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:23" Importance="Medium" Text="MainUMLProject's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'MainUMLProject::HttpService' -  (Class), 'MainUMLProject::JwtSecurityToken' -  (Class), 'MainUMLProject::HttpResponse' -  (Class), 'MainUMLProject::AuthenticatedHttpService' -  (Class), 'MainUMLProject::Configuration' -  (Class), 'MainUMLProject::UserSecurityService' -  (Class) " />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="Project Added: C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\MainUMLProjectLib.csproj" />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="'MainUMLProject::HttpService' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\HttpService.cs" />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="'MainUMLProject::JwtSecurityToken' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\JwtSecurityToken.cs" />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="'MainUMLProject::HttpResponse' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\HttpResponse.cs" />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="'MainUMLProject::AuthenticatedHttpService' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\AuthenticatedHttpService.cs" />
+  <Message Timestamp="2016-12-26T23:14:46" Importance="Medium" Text="'MainUMLProject::Configuration' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\Configuration.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="'MainUMLProject::UserSecurityService' -  (Class) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\UserSecurityService.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Name = EnumTemplate" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ProjectPath = ..\MainUMLProjectLib\MainUMLProjectLib.csproj" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="MainUMLProject's Text Template Binding: 'EnumTemplate' will apply EnumTemplate.t4 to: 'MainUMLProject::LogResult' -  (Enumeration) " />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="'MainUMLProject::LogResult' -  (Enumeration) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\LogResult.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ProjectPath = ..\MainUMLProjectLib\MainUMLProjectLib.csproj" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="MainUMLProject's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'MainUMLProject::IJwtProvider' -  (Interface), 'MainUMLProject::IJwtStore' -  (Interface), 'MainUMLProject::IJwtSource' -  (Interface) " />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="'MainUMLProject::IJwtProvider' -  (Interface) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\IJwtProvider.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="'MainUMLProject::IJwtStore' -  (Interface) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\IJwtStore.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="'MainUMLProject::IJwtSource' -  (Interface) : success (file created) - C:\Users\Hassan\Source\Repos\reolin\MainUMLProjectLib\GeneratedCode\IJwtSource.cs" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ProjectPath = ..\MainUMLProjectLib\MainUMLProjectLib.csproj" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Medium" Text="MainUMLProject's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'MainUMLProject::HttpService' -  (Class), 'MainUMLProject::JwtSecurityToken' -  (Class), 'MainUMLProject::HttpResponse' -  (Class), 'MainUMLProject::AuthenticatedHttpService' -  (Class), 'MainUMLProject::Configuration' -  (Class), 'MainUMLProject::UserSecurityService' -  (Class) " />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="'MainUMLProject::HttpService' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="'MainUMLProject::JwtSecurityToken' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:47" Importance="Diagnostic" Text="'MainUMLProject::HttpResponse' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::AuthenticatedHttpService' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::Configuration' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::UserSecurityService' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="The selection included 9 elements which were not bound to a template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'3958c008-fbe3-427c-9562-eef78a27f876' -  (Generalization): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Dependency): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="Diagnostic" Text="'MainUMLProject::' -  (Association): no bound template." />
+  <Message Timestamp="2016-12-26T23:14:48" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>
