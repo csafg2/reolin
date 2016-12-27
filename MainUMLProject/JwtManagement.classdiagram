@@ -27,17 +27,10 @@
     </comment>
     <comment Id="9f0bb350-f481-4324-8caa-f38b43d7f8db">
       <elementDefinition Id="64a5463a-fe31-4983-b258-3f8c5144c310" />
-      <body>wrapps result of a http request.</body>
-      <annotatedElements>
-        <classMoniker Id="a0778f3f-030a-47ce-ad90-5f341e75fc53" LastKnownName="HttpResponse" />
-      </annotatedElements>
-    </comment>
-    <comment Id="6a1c35ea-791a-4a13-8ca9-54e21c61ca76">
-      <elementDefinition Id="eb68a881-6e0c-4a08-8648-92bdb6cdd044" />
-      <body>overrides the base service to add an auth token to all requests.
+      <body>encapsulates the result of a httpRequest
 </body>
       <annotatedElements>
-        <classMoniker Id="1f400be9-7f8e-4c19-9e49-beb23d128b79" LastKnownName="AuthenticatedHttpService" />
+        <classMoniker Id="a0778f3f-030a-47ce-ad90-5f341e75fc53" LastKnownName="HttpResponse" />
       </annotatedElements>
     </comment>
     <comment Id="04b6bb75-3702-486c-b87e-e747f8bc590f">
@@ -856,6 +849,12 @@ it uses the jwtProvider classes
               <referencedTypeMoniker Id="63b5f416-f3e0-4cdf-ab0a-280d3de477fe" LastKnownName="string" />
             </type_NamedElement>
           </property>
+          <property Id="dd0dfbf6-6235-4ca7-a3be-bd76606b5271" name="Succeeded" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="21dfe328-d5e2-41f7-8ece-9393efa88f28" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9c178fad-9fa7-45a9-9caa-1dd381d9e7a3" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -867,194 +866,6 @@ it uses the jwtProvider classes
     <packageHasNamedElement>
       <referencedType Id="cdd859ba-247c-4d8f-a1f6-0cc5bc174a68" name="Dictionary&lt;string, string&gt;" isAbstract="false" isLeaf="false" cachedFullName="Dictionary&lt;string, string&gt;">
         <elementDefinition Id="9abec1c2-e62a-44ae-8991-e05055c263ef" />
-      </referencedType>
-    </packageHasNamedElement>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="1f400be9-7f8e-4c19-9e49-beb23d128b79" name="AuthenticatedHttpService" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <appliedStereotypesInternal>
-          <stereotypeInstance Id="b92f6501-277a-41da-98a1-ea4e142fce27" name="class" profile="CSharpProfile">
-            <elementDefinition Id="8f3bbed7-7e07-483d-867a-809fc9953552" />
-            <propertyInstances>
-              <stereotypeInstanceHasPropertyInstances Id="be882a24-7d22-4a2b-bec1-cf8c1a1e9f9d">
-                <propertyInstance Id="ed5abd69-83e0-469e-92e9-dbb829305250" name="ClrAttributes">
-                  <elementDefinition Id="6de48ec5-ae10-4bea-8955-5a3770b1b308" />
-                </propertyInstance>
-                <elementDefinition Id="6d315acf-c10c-4d41-9b63-2fa640e7b108" />
-              </stereotypeInstanceHasPropertyInstances>
-              <stereotypeInstanceHasPropertyInstances Id="b6b259b6-5033-4868-bafe-15262f890bc0">
-                <propertyInstance Id="32b77961-93d7-4e88-bded-fafdc4430b09" name="IsPartial" value="false">
-                  <elementDefinition Id="dc80d25c-48c4-4bab-b816-bff3dc150ae3" />
-                </propertyInstance>
-                <elementDefinition Id="13f7f1a7-26c5-4a89-acd4-f0ef17e882b0" />
-              </stereotypeInstanceHasPropertyInstances>
-              <stereotypeInstanceHasPropertyInstances Id="10017d21-634f-4bb0-aed4-e081178a463a">
-                <propertyInstance Id="387e8463-3470-4890-9329-b62d0a796e7d" name="IsStatic" value="false">
-                  <elementDefinition Id="992ed0c4-82f8-4b71-b944-ff2c196b04ba" />
-                </propertyInstance>
-                <elementDefinition Id="c436c5fc-7658-4244-a547-756510c7f13a" />
-              </stereotypeInstanceHasPropertyInstances>
-              <stereotypeInstanceHasPropertyInstances Id="c237b72f-775c-4d8a-8b86-9af39489f0bf">
-                <propertyInstance Id="030853ba-ee41-4d17-8d7e-8e7cffabae0f" name="IsUnsafe" value="false">
-                  <elementDefinition Id="e62659d6-4d2f-491b-b8fa-2298c85af4c1" />
-                </propertyInstance>
-                <elementDefinition Id="4c1769ed-6505-4a33-895e-cec5452c2899" />
-              </stereotypeInstanceHasPropertyInstances>
-              <stereotypeInstanceHasPropertyInstances Id="cff50c25-78fa-4203-a7a7-2b34490fc209">
-                <propertyInstance Id="621eb2ea-a072-4692-a16c-1a63d55af8fb" name="PackageVisibility" value="internal">
-                  <elementDefinition Id="e7646d2c-7463-40f2-99e4-e7292b1f041b" />
-                </propertyInstance>
-                <elementDefinition Id="8e9bb2f9-a45d-4401-99a7-dff5b88a1930" />
-              </stereotypeInstanceHasPropertyInstances>
-            </propertyInstances>
-          </stereotypeInstance>
-        </appliedStereotypesInternal>
-        <elementDefinition Id="22f2b145-99c5-4f09-9b11-cab070d6ba48" />
-        <generalsInternal>
-          <generalization Id="831db382-0300-4664-b29f-2e66b9823540" isSubstitutable="false">
-            <classMoniker Id="ed05493f-d570-454c-8194-2d1d4fc4afe5" LastKnownName="HttpService" />
-            <elementDefinition Id="3958c008-fbe3-427c-9562-eef78a27f876" />
-          </generalization>
-        </generalsInternal>
-        <targetEnds>
-          <association Id="40971e9e-c0a8-4a44-a341-d905062a8096" isDerived="false" sourceEndRoleName="AuthenticatedHttpService" targetEndRoleName="HttpResponse" isLeaf="false" isAbstract="false">
-            <classMoniker Id="a0778f3f-030a-47ce-ad90-5f341e75fc53" LastKnownName="HttpResponse" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="0493185c-d303-4751-99d3-2be8636fe958" name="AuthenticatedHttpService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="dd1b41a1-98a3-46ad-be49-41265716ea54" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="e1ce0168-c0b9-4357-af9d-97609443413f" name="HttpResponse" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
-                  <elementDefinition Id="5ad4ba28-d6f9-48c7-a012-76d95a85a2e5" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="07978123-e652-43c5-b4f3-5fe26620e568" />
-          </association>
-        </targetEnds>
-        <ownedAttributesInternal>
-          <property Id="4d0f88c0-a95d-4189-8470-4e66be2e1218" name="CurrentJwt" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance Id="9d62974f-2c2f-4b82-87e2-f8ae14f6bd86" name="property" profile="CSharpProfile">
-                <elementDefinition Id="61f4885d-a4f3-4c7d-b47e-9f5687a7358a" />
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="684d700e-fa17-461a-9189-559f94f8ae7b">
-                    <propertyInstance Id="58bbb533-39a4-49aa-a740-0e8ab53d6364" name="ClrAttributes">
-                      <elementDefinition Id="6734d201-2539-4dda-ad68-f66585248bb4" />
-                    </propertyInstance>
-                    <elementDefinition Id="2daebc93-9f97-4a10-b380-0f62e75a52be" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="39f8848d-9170-407e-b7dd-8f2a12849d2e">
-                    <propertyInstance Id="58c715fe-88ca-4d4c-9978-e5049a2c1c2c" name="Get" value="none">
-                      <elementDefinition Id="06f788d1-40e7-4bae-a109-8621111b695c" />
-                    </propertyInstance>
-                    <elementDefinition Id="18876559-7829-47a2-adb7-dc63e682476d" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="497320c4-9305-4abe-96ac-57d756f2cdc4">
-                    <propertyInstance Id="16b6b4f4-79ff-48a8-8edd-dd516626c9d0" name="HasBody" value="false">
-                      <elementDefinition Id="66bb3222-a216-4534-8b89-50227750c16b" />
-                    </propertyInstance>
-                    <elementDefinition Id="5ecfabbd-3b95-491d-904c-1cee475a8acb" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="e8ecc976-1577-431d-8553-f9d408fcf097">
-                    <propertyInstance Id="b7e89412-5bf5-4fe3-aa82-ba72069583fc" name="IsUnsafe" value="false">
-                      <elementDefinition Id="ac950bec-5967-4961-b905-cc084bf270bb" />
-                    </propertyInstance>
-                    <elementDefinition Id="f38c0f65-4dcd-45c4-8dc0-bfea3a304a0e" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="5fc98550-269f-4cf9-acfd-6aaa2ee0596f">
-                    <propertyInstance Id="4b3ea403-7f1b-4db0-b383-44456d014b55" name="Inheritance" value="none">
-                      <elementDefinition Id="91de244b-4b5a-4230-a47c-acaa2b2b9b22" />
-                    </propertyInstance>
-                    <elementDefinition Id="a31c613b-3817-4244-84ff-7680be1ba3be" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="5f47c2a9-ee47-4186-b668-1244709cae8f">
-                    <propertyInstance Id="bc613ac1-7901-478b-8070-534620f5a8f9" name="PackageVisibility" value="internal">
-                      <elementDefinition Id="d39bfea7-5304-4aad-9b6d-adf35b2269ea" />
-                    </propertyInstance>
-                    <elementDefinition Id="097a6717-1bff-425c-a1a1-c2780bf58656" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="d581d69e-9ef8-4aaa-a93e-c73d50c241b3">
-                    <propertyInstance Id="4cc73846-c678-48e5-a663-0c1c7b3f4537" name="Set" value="none">
-                      <elementDefinition Id="1f860a2c-9057-4528-becb-4c6159dbe092" />
-                    </propertyInstance>
-                    <elementDefinition Id="4ba83bcf-0ed4-4131-9b2d-95cbea09a47a" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <elementDefinition Id="ff1abc89-4ba1-4d94-82bc-1c25cb3d8bc8" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="da889c87-81a6-468a-9940-d7ef3889ee4a" LastKnownName="JwtSecurityToken" />
-            </type_NamedElement>
-          </property>
-          <property Id="0fb31fd9-31cc-494c-ac9d-88f5e48101c4" name="JwtProvider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance Id="943a1b6c-4b9e-4d61-a300-66f950eff3fa" name="property" profile="CSharpProfile">
-                <elementDefinition Id="7438d3da-e59d-4e74-8d63-d118dabbb3a8" />
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="5083fe19-9711-4294-a04e-acf455c3e64c">
-                    <propertyInstance Id="dc3b50ed-2756-491a-8b67-fffbb5750b17" name="ClrAttributes">
-                      <elementDefinition Id="bf36aa93-37e7-479b-9726-d7682cf68d14" />
-                    </propertyInstance>
-                    <elementDefinition Id="1b37964a-a743-42cd-89e4-e4dfac49b9e1" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="293b1f89-d380-44c1-bf5a-f0f23efdba2a">
-                    <propertyInstance Id="26393aef-0818-4afa-aa57-e84b89bef4ac" name="Get" value="none">
-                      <elementDefinition Id="90d5bb36-10a4-4ac1-a577-0599345c3844" />
-                    </propertyInstance>
-                    <elementDefinition Id="c05642fa-d4e2-4116-a60a-3a36592add33" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="2ba5e042-d403-440f-a661-7a7d5664b9e5">
-                    <propertyInstance Id="6e0f514e-007e-47bd-bf2f-e4bf148a1b9d" name="HasBody" value="false">
-                      <elementDefinition Id="4317d6a3-e74e-49e2-91d7-275ae45145d7" />
-                    </propertyInstance>
-                    <elementDefinition Id="a442a9f7-8871-4aac-a2ee-ecfbc350e783" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="72dd68e4-ae51-4265-ad1c-c0759b4f5fb2">
-                    <propertyInstance Id="12365691-8dbc-445e-9fa3-119740fbacb8" name="IsUnsafe" value="false">
-                      <elementDefinition Id="60ccc61a-9830-416e-8931-ab5bf152d6f7" />
-                    </propertyInstance>
-                    <elementDefinition Id="cb977b21-4bf8-4a35-8b1c-30ff07e6a512" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="edecdb01-ca45-4d13-b8b1-9cb1f17217bd">
-                    <propertyInstance Id="ad3baf06-7841-4449-995b-cefc7b77dfdf" name="Inheritance" value="none">
-                      <elementDefinition Id="f9a25633-972a-40b7-acd8-925f62e97e0f" />
-                    </propertyInstance>
-                    <elementDefinition Id="075360d6-a734-4b05-844b-06064e3fb8fb" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="d3b7812b-9b8f-4bff-9528-edfb30218fd0">
-                    <propertyInstance Id="8a4049e4-87e6-435b-b18e-aaa306219f71" name="PackageVisibility" value="internal">
-                      <elementDefinition Id="a2560eba-9b70-415c-aed2-04156fe125bf" />
-                    </propertyInstance>
-                    <elementDefinition Id="6e48d07e-5c4a-4fee-95e2-1b960df54305" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances Id="172be406-ec31-4835-8e04-b8a75821aae4">
-                    <propertyInstance Id="6a0d16e7-76d9-476b-a22a-862a171f49a1" name="Set" value="none">
-                      <elementDefinition Id="47e08a41-801b-457b-8c6a-62fbbe467ea6" />
-                    </propertyInstance>
-                    <elementDefinition Id="aa094cfc-2153-465b-9bf5-fe1d42bd6e30" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <elementDefinition Id="6d49f9b7-2759-4a8b-a991-0808f9066220" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="82678ad4-b479-453c-b382-e8029d083fc5" LastKnownName="IJwtProvider" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="da889c87-81a6-468a-9940-d7ef3889ee4a" name="JwtSecurityToken" isAbstract="false" isLeaf="false" cachedFullName="MainUMLProject::JwtSecurityToken">
-        <elementDefinition Id="f7256f58-636b-45f4-bbdb-1401867b2f23" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="82678ad4-b479-453c-b382-e8029d083fc5" name="IJwtProvider" isAbstract="false" isLeaf="false" cachedFullName="IJwtProvider">
-        <elementDefinition Id="fa0f8a4c-2d02-4409-a6f9-1edaaf654993" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
@@ -2014,6 +1825,113 @@ it uses the jwtProvider classes
         <elementDefinition Id="5d3a292d-85f6-44d5-8947-6b6a15d5a40c" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="44065793-5ab0-40ad-a451-5d715243c705" name="HttpException" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="97c7a7cf-ecfe-4159-991a-a45599efc8c6" />
+        <targetEnds>
+          <association Id="19841067-216e-4f33-badd-a870f182e686" isDerived="false" sourceEndRoleName="HttpException" targetEndRoleName="HttpService" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ed05493f-d570-454c-8194-2d1d4fc4afe5" LastKnownName="HttpService" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fe24ec96-5692-4a85-b131-44b2789d735c" name="HttpException" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="545675e2-bb31-4794-b86c-89cca649f5b1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4bae15ea-8834-4b64-90ad-d5c6c900bd49" name="HttpService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="0b284a5b-26d3-4ddc-ae22-e1f74094c166" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7b5df162-26dc-4b1c-99f6-fb9b32f623e5" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="75904181-a73c-4c43-9203-84917ee0d1b4" name="Code" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="368a81b7-8c03-415b-abeb-5ca604fd1568" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e4faecbb-acb1-4eca-a0a6-ccc519c96fd1" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="66929a78-81bb-4e01-bb43-7de2fb9274d6" name="Body" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="58835fed-71f9-4a16-9438-22a7c468e52f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="63b5f416-f3e0-4cdf-ab0a-280d3de477fe" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6ecc6427-db2c-4ceb-bc1e-e46b0cedc171" name="IdentityException" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cc061cd3-a448-43cf-a7a6-0989a203f929" />
+        <generalsInternal>
+          <generalization Id="ee39d95f-ffa8-44aa-9fff-08062322c266" isSubstitutable="false">
+            <classMoniker Id="44065793-5ab0-40ad-a451-5d715243c705" LastKnownName="HttpException" />
+            <elementDefinition Id="8d12e533-6295-4ea1-bda2-55707e09c314" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="02196e51-51bd-46e2-906a-b1aeb87e8763" isDerived="false" sourceEndRoleName="IdentityException" targetEndRoleName="UserSecurityService" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d36fa31f-8550-4c1b-8b57-4db1f6c61896" LastKnownName="UserSecurityService" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="89261b0d-b597-4dc6-86d3-3360393fdaa8" name="IdentityException" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0ce47554-dd93-4668-9ff5-5a40f3b956fb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ff58e143-ac24-4a42-b81f-a1a80085facd" name="UserSecurityService" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="f692637f-c703-492c-b714-fea1674183f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1ee6346d-d971-4cef-a7c6-28a059fe42a9" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="34807553-576a-4af8-9367-0ac76f6694c6" name="Errors" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ff5a8b89-b2fb-4e1d-b7bf-1c97c0e6db1b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d76d1ea9-e20f-4970-974e-499e41996835" LastKnownName="Dictionary&lt;string, string&gt;" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="d76d1ea9-e20f-4970-974e-499e41996835" name="Dictionary&lt;string, string&gt;" isAbstract="false" isLeaf="false" cachedFullName="Dictionary&lt;string, string&gt;">
+        <elementDefinition Id="9abec1c2-e62a-44ae-8991-e05055c263ef" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b84efd3d-f4e8-41ec-874b-76a27776ccb2" name="JwtSecurityTokenException" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c923cebb-99e2-46b7-b073-2fcc6c59d384" />
+        <targetEnds>
+          <association Id="d6cff5da-6ecd-4027-94f1-427ed79ca202" isDerived="false" sourceEndRoleName="JwtSecurityTokenException" targetEndRoleName="JwtSecurityToken" isLeaf="false" isAbstract="false">
+            <classMoniker Id="caacba01-810d-4200-a359-811af87d3007" LastKnownName="JwtSecurityToken" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c969d9c5-3d34-46e1-8bd8-04de6cf7dc8f" name="JwtSecurityTokenException" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3266c31d-7b9a-4fa0-92c7-7fe377c903e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5e94a341-8998-47d2-ab44-abad953857b2" name="JwtSecurityToken" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="86f1b663-76e6-46ee-ae47-02f9b035ad0e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9adeadf9-68c1-49f2-9043-83e227d63d8d" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="f16d837b-e704-438c-a8c2-719e98f13ad3" name="Message" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="41f8d8e7-3dcb-4f9c-a2d7-6c9646ef2aeb" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="66f38b44-ccd0-4b98-b7c8-a3f90d864952" name="MainUMLProject">
     <elementDefinition Id="ebf4afc8-4a3f-4c77-a9d7-cc64fa3a7e7e" />

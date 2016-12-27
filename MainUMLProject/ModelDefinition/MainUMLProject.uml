@@ -39,22 +39,12 @@
     </comment>
     <comment
       Id="64a5463a-fe31-4983-b258-3f8c5144c310">
-      <body>wrapps result of a http request.</body>
+      <body>encapsulates the result of a httpRequest
+</body>
       <annotatedElements>
         <classMoniker
           Id="7df387b1-d393-4a99-a7cd-759119fa1bb1"
           LastKnownName="HttpResponse"
-          LastKnownLocation="MainUMLProject.uml" />
-      </annotatedElements>
-    </comment>
-    <comment
-      Id="eb68a881-6e0c-4a08-8648-92bdb6cdd044">
-      <body>overrides the base service to add an auth token to all requests.
-</body>
-      <annotatedElements>
-        <classMoniker
-          Id="22f2b145-99c5-4f09-9b11-cab070d6ba48"
-          LastKnownName="AuthenticatedHttpService"
           LastKnownLocation="MainUMLProject.uml" />
       </annotatedElements>
     </comment>
@@ -1173,6 +1163,24 @@ it uses the jwtProvider classes
               <undefinedTypeMoniker
                 Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2"
                 LastKnownName="string"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="21dfe328-d5e2-41f7-8ece-9393efa88f28"
+            name="Succeeded"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="4ebd9351-5b50-4f56-be95-24a10ce0db1c"
+                LastKnownName="bool"
                 LastKnownLocation="MainUMLProject.uml" />
             </type_NamedElement>
           </property>
@@ -2853,6 +2861,237 @@ it uses the jwtProvider classes
       <undefinedType
         Id="3f009e2f-755a-4ad1-89f1-7c49cedca304"
         name="JwtProvider" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="97c7a7cf-ecfe-4159-991a-a45599efc8c6"
+        name="HttpException"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="7b5df162-26dc-4b1c-99f6-fb9b32f623e5"
+            isDerived="false"
+            sourceEndRoleName="HttpException"
+            targetEndRoleName="HttpService"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3acd1e69-b4a0-40d3-8254-67b3b63ea9b0"
+              LastKnownName="HttpService"
+              LastKnownLocation="MainUMLProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="545675e2-bb31-4794-b86c-89cca649f5b1"
+                  name="HttpException"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0b284a5b-26d3-4ddc-ae22-e1f74094c166"
+                  name="HttpService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="368a81b7-8c03-415b-abeb-5ca604fd1568"
+            name="Code"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="98cd99a2-bc24-4cb4-b4bb-0114bfced026"
+                LastKnownName="int"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="58835fed-71f9-4a16-9438-22a7c468e52f"
+            name="Body"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="71807356-f9a8-48e0-8f0b-ed4d566bc2c2"
+                LastKnownName="string"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cc061cd3-a448-43cf-a7a6-0989a203f929"
+        name="IdentityException"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="8d12e533-6295-4ea1-bda2-55707e09c314"
+            isSubstitutable="false">
+            <classMoniker
+              Id="97c7a7cf-ecfe-4159-991a-a45599efc8c6"
+              LastKnownName="HttpException"
+              LastKnownLocation="MainUMLProject.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="1ee6346d-d971-4cef-a7c6-28a059fe42a9"
+            isDerived="false"
+            sourceEndRoleName="IdentityException"
+            targetEndRoleName="UserSecurityService"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3fba1387-7342-41ea-aa24-80b11b4db46a"
+              LastKnownName="UserSecurityService"
+              LastKnownLocation="MainUMLProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ce47554-dd93-4668-9ff5-5a40f3b956fb"
+                  name="IdentityException"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f692637f-c703-492c-b714-fea1674183f5"
+                  name="UserSecurityService"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="ff5a8b89-b2fb-4e1d-b7bf-1c97c0e6db1b"
+            name="Errors"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9abec1c2-e62a-44ae-8991-e05055c263ef"
+                LastKnownName="Dictionary&lt;string, string&gt;"
+                LastKnownLocation="MainUMLProject.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c923cebb-99e2-46b7-b073-2fcc6c59d384"
+        name="JwtSecurityTokenException"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="9adeadf9-68c1-49f2-9043-83e227d63d8d"
+            isDerived="false"
+            sourceEndRoleName="JwtSecurityTokenException"
+            targetEndRoleName="JwtSecurityToken"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="f7256f58-636b-45f4-bbdb-1401867b2f23"
+              LastKnownName="JwtSecurityToken"
+              LastKnownLocation="MainUMLProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3266c31d-7b9a-4fa0-92c7-7fe377c903e5"
+                  name="JwtSecurityTokenException"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="86f1b663-76e6-46ee-ae47-02f9b035ad0e"
+                  name="JwtSecurityToken"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="41f8d8e7-3dcb-4f9c-a2d7-6c9646ef2aeb"
+            name="Message"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
