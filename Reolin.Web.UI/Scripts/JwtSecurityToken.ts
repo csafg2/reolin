@@ -5,18 +5,22 @@
 
         get IsExpired(): boolean {
             return this._isExpired;
-        }
+        };
 
         set IsExpired(value: boolean) {
             this._isExpired = value;
-        }
+        };
 
-        Parse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
+        GetToken: () => string = function () {
+            return this._token;
+        };
+
+        static Parse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
             return new JwtSecurityToken();
-        }
+        };
 
-        TryParse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
+        static TryParse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
             return null;
-        }
+        };
     }
 }

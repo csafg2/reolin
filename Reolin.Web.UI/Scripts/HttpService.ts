@@ -17,6 +17,6 @@ module Reolin.Web.UI {
             HttpResponse = function (url: string, headers: { [key: string]: string }) {
                 headers["formData"] = "123Hellow world!";
                 return null;
-        }
+            };
     }
 }

@@ -7,11 +7,8 @@ var Reolin;
             var JwtSecurityToken = (function () {
                 function JwtSecurityToken() {
                     this._isExpired = false;
-                    this.Parse = function (jwt) {
-                        return new JwtSecurityToken();
-                    };
-                    this.TryParse = function (jwt) {
-                        return null;
+                    this.GetToken = function () {
+                        return this._token;
                     };
                 }
                 Object.defineProperty(JwtSecurityToken.prototype, "IsExpired", {
@@ -24,8 +21,16 @@ var Reolin;
                     enumerable: true,
                     configurable: true
                 });
+                ;
+                ;
                 return JwtSecurityToken;
             }());
+            JwtSecurityToken.Parse = function (jwt) {
+                return new JwtSecurityToken();
+            };
+            JwtSecurityToken.TryParse = function (jwt) {
+                return null;
+            };
             UI.JwtSecurityToken = JwtSecurityToken;
         })(UI = Web.UI || (Web.UI = {}));
     })(Web = Reolin.Web || (Reolin.Web = {}));
