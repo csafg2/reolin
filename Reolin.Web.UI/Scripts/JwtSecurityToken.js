@@ -2,8 +2,8 @@ var Reolin;
 (function (Reolin) {
     var Web;
     (function (Web) {
-        var UI;
-        (function (UI) {
+        var Client;
+        (function (Client) {
             var JwtSecurityToken = (function () {
                 function JwtSecurityToken() {
                     this._isExpired = false;
@@ -23,15 +23,15 @@ var Reolin;
                 });
                 ;
                 ;
+                JwtSecurityToken.Parse = function (jwt) {
+                    return new JwtSecurityToken();
+                };
+                JwtSecurityToken.TryParse = function (jwt) {
+                    return null;
+                };
                 return JwtSecurityToken;
             }());
-            JwtSecurityToken.Parse = function (jwt) {
-                return new JwtSecurityToken();
-            };
-            JwtSecurityToken.TryParse = function (jwt) {
-                return null;
-            };
-            UI.JwtSecurityToken = JwtSecurityToken;
-        })(UI = Web.UI || (Web.UI = {}));
+            Client.JwtSecurityToken = JwtSecurityToken;
+        })(Client = Web.Client || (Web.Client = {}));
     })(Web = Reolin.Web || (Reolin.Web = {}));
 })(Reolin || (Reolin = {}));

@@ -1,6 +1,11 @@
 ﻿/// <reference path="../jwtsecuritytoken.ts" />
 
-module Reolin.Web.UI.Scripts.interfaces {
+module Reolin.Web.Client {
+    class sample {
+        getValue(): LoginInfo {
+            return null;
+        }
+    }
 
     export class LoginInfo {
         private _userName: string;
@@ -22,21 +27,15 @@ module Reolin.Web.UI.Scripts.interfaces {
             this._password = password;
         }
     }
-    
-    export interface IJwtStore {
-        Get(): JwtSecurityToken;
-        Save(jwt: JwtSecurityToken): void;
-        HasJwt(): boolean;
-    }
 
     export class LocalStorageJwtStore implements IJwtStore {
         private key: string = "jwt";
 
-        HasJwt: () => boolean = function () {
+        HasJwt(): boolean {
             return (window.localStorage.getItem(this.key) != null);
         }
 
-        Get: () => JwtSecurityToken = function () {
+        Get(): JwtSecurityToken {
             if (!this.HasJwt()) {
                 throw new Error("jwt dose not exist");
             }
@@ -44,7 +43,8 @@ module Reolin.Web.UI.Scripts.interfaces {
             return JwtSecurityToken.Parse(window.localStorage.getItem(this.key));
         }
 
-        Save: (jwt: JwtSecurityToken) => void = function (jwt: JwtSecurityToken) {
+
+        Save(jwt: JwtSecurityToken): void {
             if (jwt == null) {
                 throw Error("jwt can not be null");
             }
@@ -52,14 +52,7 @@ module Reolin.Web.UI.Scripts.interfaces {
             window.localStorage.clear();
             window.localStorage.setItem(this.key, jwt.GetToken());
         }
-
     }
-
-    export interface IJwtSource {
-        ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken;
-        IssueJwt(loginInfo: LoginInfo): JwtSecurityToken;
-    }
-
 
     export class RemoteJwtSource implements IJwtSource {
         ExchangeJwt: (oldJwt: JwtSecurityToken) => JwtSecurityToken = function (oldJwt: JwtSecurityToken) {
@@ -70,18 +63,12 @@ module Reolin.Web.UI.Scripts.interfaces {
             return null;
         }
     }
-
-    export interface IJwtProvider {
-        Store: IJwtStore;
-        Source: IJwtSource;
-        ProvideJwt(loginInfo: LoginInfo): JwtSecurityToken;
-    }
-
-    export class DefaultJwtProvider implements IJwtProvider {
+    
+    export class DefaultJwtProvider implements IJwtManager {
 
         private _store: IJwtStore;
         private _source: IJwtSource;
-        
+
         get Store(): IJwtStore {
             return this._store;
         }
@@ -99,13 +86,50 @@ module Reolin.Web.UI.Scripts.interfaces {
         }
 
         ProvideJwt: (loginInfo: LoginInfo) => JwtSecurityToken = function (loginInfo: LoginInfo) {
-            var jwt: JwtSecurityToken = this.Store.HasJwt();
-            if (!jwt.IsExpired) {
-                return jwt;
+            var jwt: JwtSecurityToken;
+
+            if (loginInfo == null && this.Store.hasJwt()) {
+                jwt = this.Store.Get();
+                if (jwt.IsExpired) {
+                    try {
+                        jwt = this.Source.ExchangeJwt(jwt);
+                        this.Store.Save(jwt);
+                    }
+                    catch (e) {
+                        console.log(e.message);
+                    }
+                }
             }
             else {
-                return null;
+                try {
+                    jwt = this.Source.IssueJwt(loginInfo);
+                    this.Store.Save(jwt);
+                }
+                catch (e) {
+                    console.log(e.message);
+                }
             }
+
+            return jwt;
         }
+    }
+}
+
+module Reolin.Web.Client.Core {
+    export interface IJwtStore {
+        Get(): JwtSecurityToken;
+        Save(jwt: JwtSecurityToken): void;
+        HasJwt(): boolean;
+    }
+
+    export interface IJwtSource {
+        ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken;
+        IssueJwt(loginInfo: LoginInfo): JwtSecurityToken;
+    }
+    
+    export interface IJwtManager {
+        Store: IJwtStore;
+        Source: IJwtSource;
+        ProvideJwt(loginInfo: LoginInfo): JwtSecurityToken;
     }
 }

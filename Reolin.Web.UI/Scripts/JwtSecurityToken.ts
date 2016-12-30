@@ -1,4 +1,4 @@
-﻿module Reolin.Web.UI {
+﻿module Reolin.Web.Client {
     export class JwtSecurityToken {
         private _isExpired: boolean = false;
         private _token: string;
