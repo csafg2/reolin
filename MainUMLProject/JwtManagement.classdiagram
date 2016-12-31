@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="0d84e18a-5b43-48e8-a549-e1d585ced5bd" name="JwtManagement" linkedPackageId="66f38b44-ccd0-4b98-b7c8-a3f90d864952" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="0d84e18a-5b43-48e8-a549-e1d585ced5bd" name="JwtManagement" linkedPackageId="66f38b44-ccd0-4b98-b7c8-a3f90d864952" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="cc466bb0-1fdf-4982-a598-a44d3abdc902">
       <elementDefinition Id="70ba6bab-8a94-4abd-aefb-e9a9ec0ec5f2" />
@@ -994,6 +994,37 @@ it uses the jwtProvider classes
               <operationHasOwnedParameters>
                 <parameter Id="b2aabd3b-fbee-41c8-96f3-d2ca0fe4fa4e" name="loginInfo" direction="In" isUnique="false">
                   <elementDefinition Id="969c2232-0f1d-4858-8a6b-5f4a45fb4d4b" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5ba9ab7e-00ab-4c88-8535-158d2b312bc4" name="GetLocalJwt" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="744a1efd-e68c-42e5-9009-8db746ca3c31" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="870e48d8-12f6-4411-a15e-a8e041593325" direction="Return" isUnique="false">
+                  <elementDefinition Id="7570f979-850a-4efe-9b62-0eb1873af380" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" LastKnownName="JwtSecurityToken" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="9319028a-d245-4a39-82b7-80f04ee63189" name="ProvideJwt" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c29fe646-a14d-4d2b-afc2-d500137335d0" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e4a59472-bb2c-4fff-8fa3-b44b83ff435d" name="oldJwt" direction="In" isUnique="false">
+                  <elementDefinition Id="22716a61-d220-4a88-870b-176d5058dd80" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8f7d377e-ce92-45f6-a48d-dcacc36de2a5" direction="Return" isUnique="false">
+                  <elementDefinition Id="5dbdedec-79ee-4769-94d4-378fcac3f591" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="94c4749a-498a-4f7f-86d3-3f6112e2726f" LastKnownName="JwtSecurityToken" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
