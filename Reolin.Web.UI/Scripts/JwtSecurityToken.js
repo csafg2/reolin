@@ -37,6 +37,7 @@ var Reolin;
                         return JwtSecurityToken.Parse(jwt);
                     }
                     catch (e) {
+                        console.log(e.Message);
                         return null;
                     }
                 };
