@@ -1,5 +1,6 @@
 ﻿/// <reference path="httpresponse.ts" />
 /// <reference path="jwtsecuritytoken.ts" />
+/// <reference path="typing/jquery.d.ts" />
 
 module Reolin.Web.Client {
     export class HttpService {
@@ -13,10 +14,13 @@ module Reolin.Web.Client {
             this._newTokenUrl = newTokenUrl;
         }
 
-        Get: (url: string, headers: { [key: string]: string }) =>
-            HttpResponse = function (url: string, headers: { [key: string]: string }) {
-                headers["formData"] = "123Hellow world!";
-                return null;
-            };
+        Get(url: string, header: { [key: string]: string }): HttpResponse {
+            $.ajax({
+                type : "GET",
+                headers : header
+            });
+            
+            return null;
+        };
     }
 }

@@ -1,5 +1,6 @@
 /// <reference path="httpresponse.ts" />
 /// <reference path="jwtsecuritytoken.ts" />
+/// <reference path="typing/jquery.d.ts" />
 var Reolin;
 (function (Reolin) {
     var Web;
@@ -8,13 +9,17 @@ var Reolin;
         (function (Client) {
             var HttpService = (function () {
                 function HttpService(jwt, newTokenUrl) {
-                    this.Get = function (url, headers) {
-                        headers["formData"] = "123Hellow world!";
-                        return null;
-                    };
                     this._jwt = jwt;
                     this._newTokenUrl = newTokenUrl;
                 }
+                HttpService.prototype.Get = function (url, header) {
+                    $.ajax({
+                        type: "GET",
+                        headers: header
+                    });
+                    return null;
+                };
+                ;
                 return HttpService;
             }());
             Client.HttpService = HttpService;

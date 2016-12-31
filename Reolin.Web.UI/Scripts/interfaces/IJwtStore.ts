@@ -1,4 +1,5 @@
 ﻿/// <reference path="../jwtsecuritytoken.ts" />
+/// <reference path="../typing/jquery.d.ts" />
 
 module Reolin.Web.Client {
     export interface IJwtSource {
@@ -13,6 +14,7 @@ module Reolin.Web.Client {
     }
 
     export interface IJwtStore {
+        HasJwt(): boolean;
         Get(): JwtSecurityToken;
         Save(jwt: JwtSecurityToken): void;
     }
@@ -23,6 +25,7 @@ module Reolin.Web.Client {
 
         get UserName(): string {
             return this._userName;
+            
         }
 
         set UserName(userName: string) {
@@ -39,17 +42,35 @@ module Reolin.Web.Client {
     }
 
     export class DefaultJwtProvider implements IJwtProvider {
+        private _source: IJwtSource;
+        private _store: IJwtStore;
+
+        constructor(source: IJwtSource, store: IJwtStore) {
+            this._source = source;
+            this._store = store;
+        }
+
         GetLocalJwt(): JwtSecurityToken {
-            return null;
+            if (!this._store.HasJwt()) {
+                return null;
+            }
+            return this._store.Get();
         }
 
         ProvideJwtByLoginInfo(info: LoginInfo): JwtSecurityToken {
+            if (info === null) {
+                throw new Error("info can not be null");
+            }
 
-            return null;
+            return this._source.IssueJwt(info);
         }
 
         ProvideJwtbyOldJwt(oldJwt: JwtSecurityToken): JwtSecurityToken {
-            return null;
+            if (oldJwt === null) {
+                throw new Error("oldJwt can not be null");
+            }
+
+            return this._source.ExchangeJwt(oldJwt);
         }
     }
 
@@ -61,10 +82,6 @@ module Reolin.Web.Client {
         }
 
         Get(): JwtSecurityToken {
-            if (!this.HasJwt()) {
-                throw new Error("jwt dose not exist");
-            }
-
             return JwtSecurityToken.Parse(window.localStorage.getItem(this.key));
         }
 
@@ -80,7 +97,8 @@ module Reolin.Web.Client {
     }
 
     export class RemoteJwtSource implements IJwtSource {
-        ExchangeJwt: (oldJwt: JwtSecurityToken) => JwtSecurityToken = function (oldJwt: JwtSecurityToken) {
+        ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken {
+            
             return null;
         }
 
