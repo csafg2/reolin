@@ -3,9 +3,18 @@
 <html>
 <head>
     <title>Home</title>
-    <script src="../Scripts/HttpResponse.js"></script>
+    <!--<script src="../Scripts/HttpResponse.js"></script>
     <script src="../Scripts/JwtSecurityToken.js"></script>
-    <script src="../Scripts/HttpService.js"></script>
+    <script src="../Scripts/HttpService.js"></script>-->
+    <script src="../Scripts/JwtSecurityToken.js"></script>
+
+
+    <script>
+        var jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ";
+        //var token = new JwtSecurityToken(jwt);
+        var a = Reolin.Web.Client.JwtSecurityToken.Parse(jwt);
+        alert(a);
+    </script>
 </head>
 <body>
     <h1>hellow world</h1>

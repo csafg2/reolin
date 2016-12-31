@@ -4,8 +4,8 @@ var Reolin;
 (function (Reolin) {
     var Web;
     (function (Web) {
-        var UI;
-        (function (UI) {
+        var Client;
+        (function (Client) {
             var HttpService = (function () {
                 function HttpService(jwt, newTokenUrl) {
                     this.Get = function (url, headers) {
@@ -17,6 +17,7 @@ var Reolin;
                 }
                 return HttpService;
             }());
-        })(UI = Web.UI || (Web.UI = {}));
+            Client.HttpService = HttpService;
+        })(Client = Web.Client || (Web.Client = {}));
     })(Web = Reolin.Web || (Reolin.Web = {}));
 })(Reolin || (Reolin = {}));

@@ -1,10 +1,20 @@
 ﻿/// <reference path="../jwtsecuritytoken.ts" />
 
 module Reolin.Web.Client {
-    class sample {
-        getValue(): LoginInfo {
-            return null;
-        }
+    export interface IJwtSource {
+        ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken;
+        IssueJwt(loginInfo: LoginInfo): JwtSecurityToken;
+    }
+
+    export interface IJwtProvider {
+        GetLocalJwt(): JwtSecurityToken;
+        ProvideJwtByLoginInfo(info: LoginInfo): JwtSecurityToken;
+        ProvideJwtbyOldJwt(oldJwt: JwtSecurityToken): JwtSecurityToken;
+    }
+
+    export interface IJwtStore {
+        Get(): JwtSecurityToken;
+        Save(jwt: JwtSecurityToken): void;
     }
 
     export class LoginInfo {
@@ -28,11 +38,26 @@ module Reolin.Web.Client {
         }
     }
 
-    export class LocalStorageJwtStore implements IJwtStore {
+    export class DefaultJwtProvider implements IJwtProvider {
+        GetLocalJwt(): JwtSecurityToken {
+            return null;
+        }
+
+        ProvideJwtByLoginInfo(info: LoginInfo): JwtSecurityToken {
+
+            return null;
+        }
+
+        ProvideJwtbyOldJwt(oldJwt: JwtSecurityToken): JwtSecurityToken {
+            return null;
+        }
+    }
+
+    export class LocalJwtStore implements IJwtStore {
         private key: string = "jwt";
 
         HasJwt(): boolean {
-            return (window.localStorage.getItem(this.key) != null);
+            return (window.localStorage.getItem(this.key) !== null);
         }
 
         Get(): JwtSecurityToken {
@@ -62,74 +87,5 @@ module Reolin.Web.Client {
         IssueJwt: (loginInfo: LoginInfo) => JwtSecurityToken = function (loginInfo: LoginInfo) {
             return null;
         }
-    }
-    
-    export class DefaultJwtProvider implements IJwtManager {
-
-        private _store: IJwtStore;
-        private _source: IJwtSource;
-
-        get Store(): IJwtStore {
-            return this._store;
-        }
-
-        set Store(store: IJwtStore) {
-            this._store = store;
-        }
-
-        get Source(): IJwtSource {
-            return this._source;
-        }
-
-        set Source(source: IJwtSource) {
-            this._source = source;
-        }
-
-        ProvideJwt: (loginInfo: LoginInfo) => JwtSecurityToken = function (loginInfo: LoginInfo) {
-            var jwt: JwtSecurityToken;
-
-            if (loginInfo == null && this.Store.hasJwt()) {
-                jwt = this.Store.Get();
-                if (jwt.IsExpired) {
-                    try {
-                        jwt = this.Source.ExchangeJwt(jwt);
-                        this.Store.Save(jwt);
-                    }
-                    catch (e) {
-                        console.log(e.message);
-                    }
-                }
-            }
-            else {
-                try {
-                    jwt = this.Source.IssueJwt(loginInfo);
-                    this.Store.Save(jwt);
-                }
-                catch (e) {
-                    console.log(e.message);
-                }
-            }
-
-            return jwt;
-        }
-    }
-}
-
-module Reolin.Web.Client.Core {
-    export interface IJwtStore {
-        Get(): JwtSecurityToken;
-        Save(jwt: JwtSecurityToken): void;
-        HasJwt(): boolean;
-    }
-
-    export interface IJwtSource {
-        ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken;
-        IssueJwt(loginInfo: LoginInfo): JwtSecurityToken;
-    }
-    
-    export interface IJwtManager {
-        Store: IJwtStore;
-        Source: IJwtSource;
-        ProvideJwt(loginInfo: LoginInfo): JwtSecurityToken;
     }
 }

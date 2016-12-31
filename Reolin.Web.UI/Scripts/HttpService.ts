@@ -1,8 +1,8 @@
 ﻿/// <reference path="httpresponse.ts" />
 /// <reference path="jwtsecuritytoken.ts" />
 
-module Reolin.Web.UI {
-    class HttpService {
+module Reolin.Web.Client {
+    export class HttpService {
 
         private _jwt: JwtSecurityToken;
         private _newTokenUrl: string;

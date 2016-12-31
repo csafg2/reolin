@@ -1,26 +1,43 @@
 ﻿module Reolin.Web.Client {
     export class JwtSecurityToken {
-        private _isExpired: boolean = false;
+
         private _token: string;
+        private _tokenObject: any;
+
+        constructor(jwt: string) {
+            this._token = jwt;
+            this._tokenObject = this.Decode(jwt);
+        }
 
         get IsExpired(): boolean {
-            return this._isExpired;
+            
+            return false;
         };
 
-        set IsExpired(value: boolean) {
-            this._isExpired = value;
-        };
+        Decode(jwt: string): any {
+            var base64Url = this._token.split('.')[1];
+            var base64 = base64Url.replace('-', '+').replace('_', '/');
+            return JSON.parse(window.atob(base64));
+        }
 
-        GetToken: () => string = function () {
+        GetToken(): string {
             return this._token;
+        }
+
+        public static Parse(jwt: string): JwtSecurityToken {
+            if (!jwt) {
+                throw Error("jwt can not be null");
+            }
+
+            return new JwtSecurityToken(jwt);
         };
 
-        static Parse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
-            return new JwtSecurityToken();
-        };
-
-        static TryParse: (jwt: string) => JwtSecurityToken = function (jwt: string) {
-            return null;
+        public static TryParse(jwt: string): JwtSecurityToken {
+            try {
+                return JwtSecurityToken.Parse(jwt);
+            } catch (e) {
+                return null;
+            }
         };
     }
 }
