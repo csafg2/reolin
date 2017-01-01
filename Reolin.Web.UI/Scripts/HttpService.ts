@@ -17,7 +17,14 @@ module Reolin.Web.Client {
         Get(url: string, header: { [key: string]: string }): HttpResponse {
             $.ajax({
                 type : "GET",
-                headers : header
+                headers: header,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    var result: /*HttpResponse = new HttpResponse(); */
+                    
+                    
+                }
             });
             
             return null;

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Reolin.Web.Api.Infra.mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -21,12 +22,18 @@ namespace Reolin.Web.Api.Controllers
         {
             var error = this.HttpContext.Features.Get<IExceptionHandlerFeature>();
 
-            if (_environemnt.IsDevelopment() && error?.Error != null)
+            if (DebugEnabled(error))
             {
                 return Error(error.Error.Message + error.Error.StackTrace);
             }
 
             return Error("Something went wrong, please try again later.");
+        }
+
+        private bool DebugEnabled(IExceptionHandlerFeature error)
+        {
+            return true;
+            return _environemnt.IsDevelopment() && error?.Error != null;
         }
     }
 }

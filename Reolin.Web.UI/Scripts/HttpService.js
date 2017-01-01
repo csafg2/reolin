@@ -15,7 +15,12 @@ var Reolin;
                 HttpService.prototype.Get = function (url, header) {
                     $.ajax({
                         type: "GET",
-                        headers: header
+                        headers: header,
+                        beforeSend: function () {
+                        },
+                        success: function (data) {
+                            var result; /*HttpResponse = new HttpResponse(); */
+                        }
                     });
                     return null;
                 };

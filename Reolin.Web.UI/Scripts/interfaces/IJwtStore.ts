@@ -87,22 +87,24 @@ module Reolin.Web.Client {
 
 
         Save(jwt: JwtSecurityToken): void {
-            if (jwt == null) {
+            if (jwt === null) {
                 throw Error("jwt can not be null");
             }
 
             window.localStorage.clear();
+
             window.localStorage.setItem(this.key, jwt.GetToken());
         }
     }
 
     export class RemoteJwtSource implements IJwtSource {
         ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken {
-            
+            // site/exhange
             return null;
         }
 
-        IssueJwt: (loginInfo: LoginInfo) => JwtSecurityToken = function (loginInfo: LoginInfo) {
+        IssueJwt(loginInfo: LoginInfo): JwtSecurityToken {
+            //site// login
             return null;
         }
     }
