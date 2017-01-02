@@ -32,7 +32,7 @@ namespace Reolin.Web.Api.Controllers
 
         private bool DebugEnabled(IExceptionHandlerFeature error)
         {
-            return true;
+            return error?.Error != null;
             return _environemnt.IsDevelopment() && error?.Error != null;
         }
     }

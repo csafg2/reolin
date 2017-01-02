@@ -5,15 +5,15 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Release/Reolin.Data.Domain.dll": {}
+        "bin/Debug/Reolin.Data.Domain.dll": {}
       },
       "runtime": {
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
-        "bin/Release/Reolin.Data.Domain.dll": {}
+        "bin/Debug/Reolin.Data.Domain.dll": {}
       },
       "contentFiles": {
-        "bin/Release/Reolin.Data.Domain.pdb": {
+        "bin/Debug/Reolin.Data.Domain.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
