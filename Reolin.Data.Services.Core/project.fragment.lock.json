@@ -19,6 +19,23 @@
           "copyToOutput": true
         }
       }
+    },
+    "Reolin.Data.DTO/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/Reolin.Data.DTO.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Reolin.Data.DTO.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Reolin.Data.DTO.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
     }
   }
 }

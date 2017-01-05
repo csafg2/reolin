@@ -32,27 +32,10 @@ namespace Reolin.Web.Api.Controllers
         //{
         //    return Json(new { Number = new Random().Next(1, 500) });
         //}
-
-
-        public class SomeModel
-        {
-            [Required (ErrorMessage = "ID is required")]
-            public string Id { get; set; }
-            [Required(ErrorMessage = "ID2 is required")]
-            public string Id2 { get; set; }
-        }
-
-
+        
         public string Get()
         {
-                throw new Exception("Some thing went wrong");
-            try
-            {
-            }
-            catch(Exception ex)
-            {
-
-            }
+           
             return "HELLOW WORLD!!";
         }
         

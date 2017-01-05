@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Reolin.Data.Domain\Reolin.Data.Domain.csproj" />
+    <ProjectReference Include="..\Reolin.Data.DTO\Reolin.Data.DTO.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

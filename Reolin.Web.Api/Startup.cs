@@ -46,8 +46,10 @@ namespace Reolin.Web.Api
             // comment this entire "if statement" in production
             if (env.IsDevelopment())
             {
+                //app.UseStaticFiles();
                 loggerFactory.AddDebug();
             }
+            
 
             //app.UseDeveloperExceptionPage();
 

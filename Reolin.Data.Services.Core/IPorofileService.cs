@@ -1,5 +1,6 @@
 ﻿
 using Reolin.Data.Domain;
+using Reolin.Data.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,23 +16,31 @@ namespace Reolin.Data.Services.Core
         /// Asynchronously add a descriptions string to a profile
         /// </summary>
         /// <param name="profileId">the if of the profile</param>
-        /// <param name="description"></param>
+        /// <param name="description">the description string</param>
         /// <returns></returns>
         Task AddDescriptionAsync(int profileId, string description);
 
         /// <summary>
         /// Asynchronously attach a list of tags to a profile entity
         /// </summary>
-        /// <param name="profileId"></param>
-        /// <param name="tags"></param>
+        /// <param name="profileId">the id of a profile that gets the news tags</param>
+        /// <param name="tags">tags to be added to the profile</param>
         /// <returns></returns>
         Task AddTagAsync(int profileId, IEnumerable<string> tags);
 
         /// <summary>
-        /// Get a list of profiles which are connected to a pofile entity
+        /// Get an IQuerayable of objects of Profiles wihch can be asynchronously loaded into memroy by calling ToListAsync()
         /// </summary>
-        /// <param name="tag"></param>
+        /// <param name="tag">tag text</param>
         /// <returns></returns>
-        IQueryable<Profile> GetByTagAsync(string tag);
+        IQueryable<ProfileByTagDTO> GetByTagAsync(string tag);
+
+        /// <summary>
+        /// attachs an imaged to specified profile record
+        /// </summary>
+        /// <param name="profileId">the id of profile to be update</param>
+        /// <param name="imagePath">the patch of image after it`s been saved</param>
+        /// <returns></returns>
+        Task<int> AddProfileImageAsync(int profileId, string imagePath);
     }
 }

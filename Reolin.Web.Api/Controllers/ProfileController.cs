@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Reolin.Data.Services.Core;
-using Reolin.Web.Api.Infra.mvc;
-using System.Threading.Tasks;
-using System;
-using System.Linq;
-using System.Data.Entity;
-using Reolin.Web.Api.ViewModels.profile;
 using Microsoft.Extensions.Caching.Memory;
+using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
+using Reolin.Web.Api.Infra.IO;
+using Reolin.Web.Api.Infra.mvc;
+using Reolin.Web.Api.ViewModels.profile;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -16,10 +19,11 @@ namespace Reolin.Web.Api.Controllers
     {
         private readonly IPorofileService _profileService;
         private readonly IMemoryCache _cache;
-
-        public ProfileController(IPorofileService service, IMemoryCache cache)
+        private readonly IFileService _fileService;
+        public ProfileController(IPorofileService service, IMemoryCache cache, IFileService fileService)
         {
             this._profileService = service;
+            this._fileService = fileService;
             this._cache = cache;
         }
 
@@ -31,7 +35,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-        [OutputCache(Key = "tag", AbsoluteExpiration =  60 * 60, SlidingExpiration = 5 * 60)]
+        [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         public async Task<IActionResult> GetByTag(string tag)
         {
             if (string.IsNullOrEmpty(tag))
@@ -39,15 +43,9 @@ namespace Reolin.Web.Api.Controllers
                 ModelState.AddModelError("Error", "Tag is required");
                 return BadRequest(this.ModelState);
             }
-            
-            var result = await this.ProfileService.GetByTagAsync(tag)
-                        .Select(p => new
-                        {
-                            Description = p.Description,
-                            Address = p.Address,
-                            p.Address.Location
-                        }).ToListAsync();
-            
+
+            var result = await this.ProfileService.GetByTagAsync(tag).ToListAsync();
+
             return Json(result);
         }
 
@@ -62,5 +60,20 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
+
+
+        [HttpPost]
+        public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
+        {
+            IFormFile file = files.FirstOrDefault() ?? Request.Form.Files[0];
+            using (var stream = file.OpenReadStream())
+            {
+                string path = await this._fileService.SaveAsync(stream, file.FileName);
+                int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
+                
+                return Ok(path);
+            }
+        }
     }
+
 }

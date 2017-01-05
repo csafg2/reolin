@@ -26,5 +26,6 @@ namespace Reolin.Data.Domain
         public bool Confirmed { get; set; }
 
         public string UserName { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

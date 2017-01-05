@@ -20,6 +20,9 @@ namespace Reolin.Web.Api.ViewModels
         [Required(ErrorMessage = "Email is required", AllowEmptyStrings = false)]
         [RegularExpression(pattern: @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Email format is not valid")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Phone number is requried")]
+        public string PhoneNumber { get; set; }
     }
 
 }

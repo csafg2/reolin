@@ -22,11 +22,11 @@
             return JSON.parse(window.atob(base64));
         }
 
-        GetToken(): string
+        get Token(): string
         {
             return this._token;
         }
-
+        
         GetKey(key: string): string
         {
             return this._tokenValues[key];
