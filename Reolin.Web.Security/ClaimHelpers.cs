@@ -21,5 +21,15 @@ namespace System
         {
             return source.FirstOrDefault(c => c.Type == USERNAME_CLAIM_TYPE || c.Type == USERNAME_SCHEMA);
         }
+
+        public static Claim GetIdClaim(this IEnumerable<Claim> source)
+        {
+            return source.FirstOrDefault(c => c.Type == ID_CLAIM_TYPE);
+        }
+
+        public static Claim GetProfileIdsClaim(this IEnumerable<Claim> source)
+        {
+            return source.FirstOrDefault(c => c.Type == PROFILE_CLAIM_TYPE);
+        }
     }
 }

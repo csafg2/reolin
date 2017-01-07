@@ -6,8 +6,6 @@ using Reolin.Data.Services;
 using Reolin.Data.Domain;
 using System.Security.Cryptography;
 using System.Text;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 
 namespace ServiceTest_
 {

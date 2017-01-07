@@ -20,6 +20,7 @@ namespace Reolin.Web.Api.Controllers
         private readonly IPorofileService _profileService;
         private readonly IMemoryCache _cache;
         private readonly IFileService _fileService;
+
         public ProfileController(IPorofileService service, IMemoryCache cache, IFileService fileService)
         {
             this._profileService = service;
@@ -63,6 +64,8 @@ namespace Reolin.Web.Api.Controllers
 
 
         [HttpPost]
+        [Authorize]
+        [RequireValidModel]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
         {
             IFormFile file = files.FirstOrDefault() ?? Request.Form.Files[0];
@@ -70,9 +73,9 @@ namespace Reolin.Web.Api.Controllers
             {
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
                 int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
-                
-                return Ok(path);
             }
+
+            return Ok();
         }
     }
 

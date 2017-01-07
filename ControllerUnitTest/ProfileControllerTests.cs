@@ -22,30 +22,28 @@ namespace ControllerUnitTest
         [TestMethod]
         public void AddImageAction()
         {
-            //arrange:
+            //Arrange:
             IPorofileService service = new ProfileService(new DataContext());
             string basePath = @"E:\data";
             IFileService fileService = new FileService(basePath, new DirectoryProvider());
-            var controller = new ProfileController(service, null, fileService);
-            var id = new DataContext().Profiles.First().Id;
-            var fileMock = new Mock<IFormFile>();
+            ProfileController controller = new ProfileController(service, null, fileService);
+            int id = new DataContext().Profiles.First().Id;
+            Mock<IFormFile> fileMock = new Mock<IFormFile>();
 
             string filePath = @"E:\Sample.txt";
-            var stream = new FileStream(filePath, FileMode.Open);
-            var writer = new StreamWriter(stream);
+            FileStream stream = new FileStream(filePath, FileMode.Open);
             fileMock.Setup(m => m.OpenReadStream()).Returns(stream);
             fileMock.Setup(m => m.FileName).Returns(Path.GetFileName(filePath));
             IFormFile file = fileMock.Object;
 
-            //Act  //act:
+            //Act
             var result = controller.AddImage(
                 new AddImageToProfileViewModel() { ProfileId = id },
                 new[] { file }).Result;
 
 
             // assert:
-            Assert.IsTrue(result is OkObjectResult);
-            Console.WriteLine((result as OkObjectResult).Value);
+            Assert.IsTrue(result is OkResult);
         }
     }
 }

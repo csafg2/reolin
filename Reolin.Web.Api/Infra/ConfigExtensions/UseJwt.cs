@@ -13,7 +13,6 @@ namespace Reolin.Web.Api.Infra.Middlewares
                 AutomaticChallenge = true,
                 TokenValidationParameters = JwtConfigs.ValidationParameters
             });
-            
         }
     }
 }

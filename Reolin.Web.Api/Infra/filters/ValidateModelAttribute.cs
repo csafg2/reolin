@@ -4,6 +4,14 @@ using System;
 
 namespace Reolin.Web.Api.Infra.filters
 {
+    public class CompareRequestInputsAttribute : Attribute, IAction
+    {
+        public void OnAuthorization(AuthorizationFilterContext context)
+        {
+            context.HttpContext.User.Claims.GetUsernameClaim
+        }
+    }
+
     public class RequireValidModelAttribute : Attribute, IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)

@@ -11,5 +11,6 @@
         public const string ID_CLAIM_TYPE = "Id";
         public const string USERNAME_CLAIM_TYPE = "sub";
         public const string JWT_JTI_TYPE = "jti";
+        public const string PROFILE_CLAIM_TYPE = "p";
     }
 }
