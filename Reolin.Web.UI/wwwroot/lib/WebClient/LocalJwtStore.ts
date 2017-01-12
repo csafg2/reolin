@@ -27,7 +27,7 @@ module Reolin.Web.Client
 
             window.localStorage.clear();
 
-            window.localStorage.setItem(this.key, jwt.GetToken());
+            window.localStorage.setItem(this.key, jwt.Token);
         }
     }
 }

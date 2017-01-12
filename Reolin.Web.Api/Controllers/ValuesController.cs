@@ -32,17 +32,18 @@ namespace Reolin.Web.Api.Controllers
         //{
         //    return Json(new { Number = new Random().Next(1, 500) });
         //}
-        
+
+        [Authorize]
         public string Get()
         {
-           
+
             return "HELLOW WORLD!!";
         }
-        
+
         ////[HttpGet("{id}")]
         //public string Get(SomeModel model)
         //{
-            
+
         //    return "value";
         //}
 
@@ -61,7 +62,7 @@ namespace Reolin.Web.Api.Controllers
 
         //// DELETE api/values/5
         //[HttpDelete("{id}")]
-        
+
         //public void Delete(int id)
         //{
         //}

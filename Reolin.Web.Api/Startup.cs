@@ -33,7 +33,9 @@ namespace Reolin.Web.Api
             services.AddMemoryCache();
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
+            
             services.AddMvcWithConfig();
+
         }
 
 
@@ -55,6 +57,7 @@ namespace Reolin.Web.Api
 
             app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
+            
         }
     }
 }

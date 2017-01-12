@@ -80,6 +80,15 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Sample()
+        {
+            return Ok();
+        }
+
         [Authorize]
         public IActionResult Logout()
         {

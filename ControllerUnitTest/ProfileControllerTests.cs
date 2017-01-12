@@ -17,6 +17,16 @@ using Moq;
 namespace ControllerUnitTest
 {
     [TestClass]
+    public class AccountControllerTests
+    {
+        [TestMethod]
+        public void TestLogin()
+        {
+            
+        }
+    }
+
+    [TestClass]
     public class ProfileControllerTests2
     {
         [TestMethod]

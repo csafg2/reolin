@@ -11,7 +11,6 @@ namespace Reolin.Data.EntityFramework.Config
 
             this.Property(a => a.Name).IsRequired();
 
-            //TODO: complete config for academy class
             this.HasRequired(a => a.Address)
                 .WithOptional(ad => ad.Academy);
 

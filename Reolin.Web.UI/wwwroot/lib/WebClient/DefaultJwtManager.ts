@@ -2,7 +2,7 @@
 module Reolin.Web.Client
 {
 
-    export class DefaultJwtProvider implements IJwtProvider
+    export class DefaultJwtManager implements IJwtManager
     {
         private _source: IJwtSource;
         private _store: IJwtStore;
@@ -22,14 +22,9 @@ module Reolin.Web.Client
             return this._store.Get();
         }
 
-        ProvideJwtByLoginInfo(info: LoginInfo): JwtSecurityToken
+        Save(jwt: JwtSecurityToken): void
         {
-            if (info === null)
-            {
-                throw new Error("info can not be null");
-            }
-
-            return this._source.IssueJwt(info);
+            
         }
 
         ProvideJwtbyOldJwt(oldJwt: JwtSecurityToken): JwtSecurityToken
