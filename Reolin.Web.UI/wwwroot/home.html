@@ -6,19 +6,52 @@
 </head>
 <body>
     <script src="lib/jquery-3.1.1.min.js"></script>
+    <!--
     <script src="lib/WebClient/bundle.min.js"></script>
-
+    <script src="lib/test.js"></script>
+    <script src="lib/WebClient/HttpService.js"></script>
     <input type="text" id="jwt" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOaW5hMyIsImlhdCI6IjEyLzIzLzIwMTYgMTA6NTU6MjggUE0iLCJyb2xlcyI6IkpvcmRvbjIwMDYiLCJJZCI6MTMsIm5iZiI6MTQ4MjUyMTE4NCwiZXhwIjoxNDgyNTIxMzY0LCJpc3MiOiJTZWxmIiwiYXVkIjpbIkFwaUNsaWVudHMiLCJBcGlDbGllbnRzIl19.nUUoN_mpYmo_ZjU7SidsDeA2p52PcWROAplqGfc3LlY" />
-    <input type="button" value="Go" id="button" />
+    <input type="button" value="Go" id="button" />-->
+
+
+    
+    <input type="button" id="getButton" value="Get" />
+
+    
+    <script src="lib/WebClient/DefaultJwtManager.js"></script>
+    <script src="lib/WebClient/HttpService.js"></script>
+    <script src="lib/WebClient/LocalJwtStore.js"></script>
+    <script src="lib/WebClient/RemoteJwtSource.js"></script>
+    <script src="lib/WebClient/LoginInfo.js"></script>
+    <script src="lib/WebClient/HttpResponse.js"></script>
+    <script src="lib/WebClient/JwtSecurityToken.js"></script>
+    <script src="lib/test.js"></script>
+    <!--<script src="lib/WebClient/run.js"></script>-->
 
     <script>
-        
-        $('#button').click(function (e) {
-            var jwtString = $('#jwt').val();
-            var jwt = Reolin.Web.Client.JwtSecurityToken.Parse(jwtString);
-            var sub = jwt.GetKey('sub');
-            console.log(sub);
-        });
+        //$('#getButton').click(function (e) {
+        //    var getUrl = "http://localhost:6987/account/Login";
+        //    $.ajax(
+        //        {
+        //            method: "POST",
+        //            url: getUrl,
+        //            data: { UserName: "Nina3", Password: "Hassan@1" },
+        //            error: function (e) {
+        //                console.log(e);
+        //            },
+        //            success: function (data) {
+        //                console.log(data);
+        //            }
+        //        });
+        //});
+        //    })
+        //$('#button').click(function (e) {
+        //    var jwtString = $('#jwt').val();
+        //    var jwt = Reolin.Web.Client.JwtSecurityToken.Parse(jwtString);
+            
+        //    var sub = jwt.GetKey('sub');
+        //    console.log(sub);
+        //});
     </script>
 </body>
 </html>

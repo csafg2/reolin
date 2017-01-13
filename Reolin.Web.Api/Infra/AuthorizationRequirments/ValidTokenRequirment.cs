@@ -23,7 +23,7 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ValidTokenRequirment requirement)
         {
-            string tokenId = context.User.Claims.FirstOrDefault(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE)?.Value;
+            string tokenId = context.User.Claims.FirstOrDefault(c => c.Type == JwtConstantsLookup.JWT_JTI_TYPE)?.Value;
             string userName = context.User.Claims.GetUsernameClaim()?.Value;
 
             if (string.IsNullOrEmpty(tokenId) || string.IsNullOrEmpty(userName))

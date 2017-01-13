@@ -28,14 +28,25 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyOrigin();
+                        builder.AllowCredentials();
+                    });
+            });
+
             services.AddJwtDependencies();
             services.AddJwtValidationRequirement(services.BuildServiceProvider());
             services.AddMemoryCache();
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
-            
             services.AddMvcWithConfig();
-
         }
 
 
@@ -51,13 +62,13 @@ namespace Reolin.Web.Api
                 //app.UseStaticFiles();
                 loggerFactory.AddDebug();
             }
-            
+
 
             //app.UseDeveloperExceptionPage();
 
             app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
-            
+
         }
     }
 }

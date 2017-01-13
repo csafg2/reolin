@@ -1,7 +1,6 @@
 ﻿
 module Reolin.Web.Client
 {
-
     export class DefaultJwtManager implements IJwtManager
     {
         private _source: IJwtSource;
@@ -24,7 +23,14 @@ module Reolin.Web.Client
 
         Save(jwt: JwtSecurityToken): void
         {
-            
+            this._store.Save(jwt);
+        }
+
+        IssueJwt (info: LoginInfo): JwtSecurityToken
+        {
+            var jwt: JwtSecurityToken = this._source.IssueJwt(info);
+            this.Save(jwt);
+            return jwt;
         }
 
         ProvideJwtbyOldJwt(oldJwt: JwtSecurityToken): JwtSecurityToken
@@ -34,7 +40,10 @@ module Reolin.Web.Client
                 throw new Error("oldJwt can not be null");
             }
 
-            return this._source.ExchangeJwt(oldJwt);
+            var newToken: JwtSecurityToken = this._source.ExchangeJwt(oldJwt);
+            this._store.Save(newToken);
+
+            return newToken;
         }
     }
 }

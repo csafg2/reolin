@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Helpers;
@@ -18,6 +19,7 @@ using static Reolin.Web.Security.Jwt.JwtConstantsLookup;
 
 namespace Reolin.Web.Api.Controllers
 {
+    [EnableCors("AllowAll")]
     public class AccountController : BaseController
     {
         private readonly IUserSecurityManager _userManager;
@@ -80,15 +82,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-
-
-        [HttpGet]
-        [Authorize]
-        public IActionResult Sample()
-        {
-            return Ok();
-        }
-
+        
         [Authorize]
         public IActionResult Logout()
         {

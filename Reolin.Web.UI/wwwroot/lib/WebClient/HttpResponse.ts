@@ -4,7 +4,7 @@
     {
         private _statusCode: number;
         private _responseHeaders: { [key: string]: string };
-        private _responseBody: string;
+        private _responseBody: any;
 
 
         get StatusCode(): number
@@ -29,12 +29,12 @@
         }
 
 
-        get ResponseBody(): string
+        get ResponseBody(): any
         {
             return this._responseBody;
         }
 
-        set ResponseBody(body: string)
+        set ResponseBody(body: any)
         {
             this._responseBody = body;
         }
