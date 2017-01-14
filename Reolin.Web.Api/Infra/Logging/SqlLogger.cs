@@ -34,7 +34,7 @@ namespace Reolin.Web.Api.Infra.Logging
             return _filter(_categoryName, logLevel);
         }
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        public async void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (!this.IsEnabled(logLevel) || exception == null)
             {
@@ -45,7 +45,7 @@ namespace Reolin.Web.Api.Infra.Logging
             {
                 string message = $"{ logLevel }: {exception.Message} : { exception.StackTrace}";
                 this._context.Logs.Add(new Log() { Date = DateTime.Now, Message = message, Level = logLevel });
-                this._context.SaveChangesAsync().Forget();
+                await this._context.SaveChangesAsync();//.Forget();
             }
             catch (Exception)
             {

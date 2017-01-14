@@ -20,6 +20,7 @@ using static Reolin.Web.Security.Jwt.JwtConstantsLookup;
 namespace Reolin.Web.Api.Controllers
 {
     [EnableCors("AllowAll")]
+    
     public class AccountController : BaseController
     {
         private readonly IUserSecurityManager _userManager;
@@ -60,6 +61,7 @@ namespace Reolin.Web.Api.Controllers
         #endregion
 
         [HttpPost]
+        [Route("/[controller]/[action]")]
         public IActionResult ExchangeToken()
         {
             var token = Request.GetRequestToken();
@@ -84,6 +86,8 @@ namespace Reolin.Web.Api.Controllers
 
         
         [Authorize]
+        [HttpPost]
+        [Route("/[controller]/[action]")]
         public IActionResult Logout()
         {
             JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
@@ -95,6 +99,7 @@ namespace Reolin.Web.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             try
@@ -111,6 +116,7 @@ namespace Reolin.Web.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             IdentityResult result = (await this.UserManager.GetLoginInfo(model.UserName, model.Password));

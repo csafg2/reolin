@@ -6,22 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Reolin.Web.Api.Controllers
 {
-    public class MyViewModel
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
-    
-    public class SampleController : Controller
-    {
-        public IActionResult Index()
-        {
-            return Json(new { Message = "123" });
-        }
-    }
-
-
-
     public class ValuesController : BaseController
     {
         private ILogger<ValuesController> _logger;
@@ -31,7 +15,8 @@ namespace Reolin.Web.Api.Controllers
             this._logger = logger;
         }
 
-
+        [Route("/[controller]/[action]")]
+        [HttpGet]
         public string Get2()
         {
 
