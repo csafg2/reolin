@@ -29,7 +29,7 @@ module Reolin.Web.Client
             {
                 result = JwtSecurityToken.Parse(response.ResponseBody.newToken);
             }
-            var response = service.MakeRequest("POST", this._exhangeUrl, null, headers, 2, handler);
+            service.MakeRequest("POST", this._exhangeUrl, null, headers, 2, handler);
             return result;
         }
 
