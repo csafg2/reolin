@@ -60,6 +60,11 @@ namespace Reolin.Web.Api.Controllers
         }
         #endregion
 
+
+        /// <summary>
+        /// Exchanges an Expired Token with a new Token
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
         public IActionResult ExchangeToken()

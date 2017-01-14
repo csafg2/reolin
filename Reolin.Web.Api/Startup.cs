@@ -29,17 +29,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder.AllowAnyHeader();
-                        builder.AllowAnyMethod();
-                        builder.AllowAnyOrigin();
-                        builder.AllowCredentials();
-                    });
-            });
+            services.AddCorsWithDefaultConfig();
 
             services.AddJwtDependencies();
             services.AddJwtValidationRequirement(services.BuildServiceProvider());
@@ -48,9 +38,8 @@ namespace Reolin.Web.Api
             services.AddUserManager(Configuration.GetConnectionString("Default"));
             services.AddMvcWithConfig();
 
-
-            services.AddSwaggerGen();
-         
+            
+            services.AddSwaggerAndConfigure();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
