@@ -12,15 +12,15 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(ICollection<IFormFile> files)
         {
-            
-            var file = Request.Form.Files[0];
-            var service = new FileService(@"E:\data", new DirectoryProvider());
-            using (var stream = file.OpenReadStream())
-            {
-                stream.Position = 0;
-                string path = await service.SaveAsync(stream, file.FileName);
-                return Ok(path);
-            }
+            return Json(new { Me = "YOU!"});
+            //var file = Request.Form.Files[0];
+            //var service = new FileService(@"E:\data", new DirectoryProvider());
+            //using (var stream = file.OpenReadStream())
+            //{
+            //    stream.Position = 0;
+            //    string path = await service.SaveAsync(stream, file.FileName);
+            //    return Ok(path);
+            //}
         }
     }
 }

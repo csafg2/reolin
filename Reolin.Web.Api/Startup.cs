@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.DependecyRegistration;
 using Reolin.Web.Api.Infra.Middlewares;
+using Swashbuckle.Swagger.Model;
 
 namespace Reolin.Web.Api
 {
@@ -28,7 +29,6 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -47,8 +47,11 @@ namespace Reolin.Web.Api
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
             services.AddMvcWithConfig();
-        }
 
+
+            services.AddSwaggerGen();
+         
+        }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -68,7 +71,9 @@ namespace Reolin.Web.Api
 
             app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
-
+            
+            app.UseSwagger();
+            app.UseSwaggerUi();
         }
     }
 }

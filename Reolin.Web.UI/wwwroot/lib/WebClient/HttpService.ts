@@ -14,7 +14,7 @@ module Reolin.Web.Client
             return this._retry;
         }
 
-        set(value: boolean)
+        set Retry(value: boolean)
         {
             this._retry = value;
         }
@@ -88,7 +88,7 @@ module Reolin.Web.Client
         
         protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs): void
         {
-
+           
         }
 
         public CreateFormData(input: any): FormData
@@ -112,7 +112,9 @@ module Reolin.Web.Client
         private _newTokenUrl: string;
         private _authenticaionFailed: AuthenticationFailedCallBack;
 
-        //constructor();
+        readonly _authenticationScheme: string = "bearer ";
+        readonly _headerKey: string = "Authorization";
+        
         constructor(manager?: IJwtManager, authenticaionFailed?: AuthenticationFailedCallBack)
         {
             super();
@@ -127,13 +129,13 @@ module Reolin.Web.Client
 
             if (jwt === null)
             {
-                // user is not logged in!!
+                // the fucking user is not logged in!!
                 this._authenticaionFailed();
                 return;
             }
             else // user is logged in
             {
-                headers["Authorization"] = "bearer " + jwt.Token;
+                headers[this._headerKey] = this._authenticationScheme + jwt.Token;
             }
         }
 
@@ -145,7 +147,8 @@ module Reolin.Web.Client
                 this._manager.ProvideJwtbyOldJwt(this._manager.GetLocalJwt());
                 args.Retry = true;
             }
-            // token is invalidated
+
+            // fucking user some how invalidated token
             else if (xhr.status === 403)
             {
                 this._authenticaionFailed();

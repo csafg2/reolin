@@ -5,7 +5,7 @@ namespace Reolin.Web.Api.Infra.Logging
 
     public class LogContext : DbContext
     {
-        public LogContext() : base("Server=127.0.0.1\\DefaultInstance; Database =LogDb; User Id=sa; Password=123;")
+        public LogContext() : base("Default")
         {
 
         }
