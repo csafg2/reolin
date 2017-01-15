@@ -15,7 +15,6 @@ namespace Reolin.Web.Api.Controllers
             this._logger = logger;
         }
 
-        [Route("/[controller]/[action]")]
         [HttpGet]
         public string Get2()
         {

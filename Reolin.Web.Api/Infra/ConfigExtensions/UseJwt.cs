@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
-    public static class JwtHelpers
+    internal static class JwtHelpers
     {
         public static IApplicationBuilder UseJwtValidation(this IApplicationBuilder source)
         {

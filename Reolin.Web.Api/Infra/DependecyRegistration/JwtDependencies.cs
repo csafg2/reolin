@@ -6,7 +6,7 @@ using System;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
-    public static class AddJwtManagerExtension
+    internal static class AddJwtManagerExtension
     {
         public static IServiceCollection AddJwtValidationRequirement(this IServiceCollection services, IServiceProvider provider)
         {
@@ -20,7 +20,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
             });
         }
 
-        public static IServiceCollection AddJwtDependencies(this IServiceCollection source)
+        internal static IServiceCollection AddJwtDependencies(this IServiceCollection source)
         {
             return source.AddTransient(typeof(IJwtProvider), typeof(JwtProvider))
                             .AddTransient(typeof(IOptions<TokenProviderOptions>), p => TokenOptions)

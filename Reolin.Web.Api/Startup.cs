@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.DependecyRegistration;
 using Reolin.Web.Api.Infra.Middlewares;
-using Swashbuckle.Swagger.Model;
 
 namespace Reolin.Web.Api
 {

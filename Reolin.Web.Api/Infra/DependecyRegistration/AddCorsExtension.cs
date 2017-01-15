@@ -2,7 +2,7 @@
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
-    public static class AddCorsExtension
+    internal static class AddCorsExtension
     {
         public static IServiceCollection AddCorsWithDefaultConfig(this IServiceCollection source)
         {

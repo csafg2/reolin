@@ -15,7 +15,9 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
+#pragma warning disable CS1591
     public class ProfileController : BaseController
+
     {
         private readonly IPorofileService _profileService;
         private readonly IMemoryCache _cache;
@@ -27,8 +29,9 @@ namespace Reolin.Web.Api.Controllers
             this._fileService = fileService;
             this._cache = cache;
         }
+#pragma warning restore CS1591 
 
-        public IPorofileService ProfileService
+        private IPorofileService ProfileService
         {
             get
             {
@@ -36,6 +39,14 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
+        /// </summary>
+        /// <param name="tag">the tag text to search for</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
         [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         public async Task<IActionResult> GetByTag(string tag)
         {
@@ -50,8 +61,15 @@ namespace Reolin.Web.Api.Controllers
             return Json(result);
         }
 
+
+        /// <summary>
+        /// add a text description to the specified profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Authorize]
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
         {
             Task addDescriptionTask = this.ProfileService.AddDescriptionAsync(model.Id, model.Description);
@@ -62,10 +80,16 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// adds an image the image collection of the profile
+        /// </summary>
+        /// <param name="model">a model that contians the profile id</param>
+        /// <param name="files">image file</param>
+        /// <returns></returns>
         [HttpPost]
         [Authorize]
         [RequireValidModel]
+        [Route("/[controller]/[action]")]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
         {
             IFormFile file = files.FirstOrDefault() ?? Request.Form.Files[0];

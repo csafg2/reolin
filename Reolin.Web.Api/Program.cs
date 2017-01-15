@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Builder;
 
 namespace Reolin.Web.Api
 {
+#pragma warning disable CS1591
     public class Program
+
     {
         public static void Main(string[] args)
         {
@@ -18,4 +20,5 @@ namespace Reolin.Web.Api
             host.Run();
         }
     }
+#pragma warning restore CS1591
 }

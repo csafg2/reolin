@@ -3,7 +3,7 @@ using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
-    public static class AddMvcExtension
+    internal static class AddMvcExtension
     {
         public static IMvcBuilder AddMvcWithConfig(this IServiceCollection services)
         {

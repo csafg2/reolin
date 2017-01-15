@@ -4,17 +4,32 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.IO
 {
+
+    /// <summary>
+    /// provides file related services, like saving it in file system
+    /// </summary>
     public class FileService: IFileService
     {
         private readonly string _basePath;
         private readonly IDirectoryProvider _provider;
 
+        /// <summary>
+        /// initialized a new instance of FileService
+        /// </summary>
+        /// <param name="basePath">the baseDirecotry to store files in</param>
+        /// <param name="provider">a provider that provides subDirectory for storing files</param>
         public FileService(string basePath, IDirectoryProvider provider)
         {
             this._provider = provider;
             this._basePath = basePath;
         }
 
+        /// <summary>
+        /// Save the file into target path
+        /// </summary>
+        /// <param name="input">the stream that contains the fucking file</param>
+        /// <param name="fileName">the full file name to write the stream into</param>
+        /// <returns></returns>
         public async Task<string> SaveAsync(Stream input, string fileName)
         {
             string subDirectory = _provider.ProvideDirectory();

@@ -20,7 +20,7 @@ using static Reolin.Web.Security.Jwt.JwtConstantsLookup;
 namespace Reolin.Web.Api.Controllers
 {
     [EnableCors("AllowAll")]
-    
+#pragma warning disable CS1591
     public class AccountController : BaseController
     {
         private readonly IUserSecurityManager _userManager;
@@ -28,6 +28,7 @@ namespace Reolin.Web.Api.Controllers
         private readonly IJwtManager _jwtManager;
 
         public AccountController(IUserSecurityManager userManager, IOptions<TokenProviderOptions> options, IJwtManager jwtManager)
+#pragma warning restore CS1591
         {
             this._userManager = userManager;
             this._jwtManager = jwtManager;
@@ -90,6 +91,10 @@ namespace Reolin.Web.Api.Controllers
         }
 
         
+        /// <summary>
+        /// Logout the user, the jwt MUST BE valid and present in the requst header
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         [Route("/[controller]/[action]")]
@@ -102,6 +107,12 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        /// Create a new user for specified information
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [Route("/[controller]/[action]")]
@@ -119,6 +130,12 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Login to the app by providing user information
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>a json object that contains the jwt </returns>
         [HttpPost]
         [AllowAnonymous]
         [Route("/[controller]/[action]")]

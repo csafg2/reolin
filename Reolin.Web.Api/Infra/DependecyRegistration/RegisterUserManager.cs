@@ -11,7 +11,7 @@ using System;
 
 namespace Reolin.Web
 {
-    public static class RegisterUserManager
+    internal static class RegisterUserManager
     {
         private static List<IUserValidator> _cache = null;
 
@@ -38,7 +38,7 @@ namespace Reolin.Web
             }
         }
 
-        public static IServiceCollection AddUserManager(this IServiceCollection source, string connectionString)
+        internal static IServiceCollection AddUserManager(this IServiceCollection source, string connectionString)
         {
             return source
                 .AddTransient(typeof(IEnumerable<IUserValidator>), p => Validators)

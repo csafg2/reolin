@@ -4,7 +4,7 @@ using System;
 
 namespace Reolin.Web.Api.Infra.ConfigExtensions
 {
-    public static class AddSqlLoggerExtension
+    internal static class AddSqlLoggerExtension
     {
         public static void AddSqlLogger(this ILoggerFactory source, string connectionString)
         {

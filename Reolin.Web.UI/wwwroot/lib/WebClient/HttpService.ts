@@ -105,15 +105,15 @@ module Reolin.Web.Client
     }
 
 
-    export class HttpServiceProvider extends HttpService
+    export class AuthenticatedHttpServiceProvider extends HttpService
     {
         private _manager: IJwtManager;
         private _jwt: JwtSecurityToken;
         private _newTokenUrl: string;
         private _authenticaionFailed: AuthenticationFailedCallBack;
 
-        readonly _authenticationScheme: string = "bearer ";
-        readonly _headerKey: string = "Authorization";
+        private _authenticationScheme: string = "bearer ";
+        private _headerKey: string = "Authorization";
         
         constructor(manager?: IJwtManager, authenticaionFailed?: AuthenticationFailedCallBack)
         {
@@ -157,6 +157,11 @@ module Reolin.Web.Client
         }
     }
 
+    export class ProfileService
+    {
+
+    }
+
     export interface AuthenticationFailedCallBack
     {
         (): void;
@@ -166,5 +171,42 @@ module Reolin.Web.Client
     {
         public HandleResponse: (response: HttpResponse) => void;
         public HandleError: (response: HttpResponse) => void;
+    }
+
+    export class LocationModel
+    {
+        public Latitude: number;
+        public Longitude: number;
+    }
+
+    export class SearchProfileByTagViewModel
+    {
+        public Location: LocationModel;
+    }
+
+    export class UserViewModel
+    {
+        private _firstName: string;
+        private _lastName: string;
+
+        set FirstName(firstName: string)
+        {
+            this._firstName = firstName;
+        }
+
+        get FirstName(): string
+        {
+            return this._firstName;
+        }
+        
+        set LastName(lastName: string)
+        {
+            this._lastName = lastName;
+        }
+
+        get LastName(): string 
+        {
+            return this._lastName;
+        }
     }
 }
