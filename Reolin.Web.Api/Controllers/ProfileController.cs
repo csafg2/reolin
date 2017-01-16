@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.IO;
@@ -48,6 +49,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpGet]
         [Route("/[controller]/[action]")]
         [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<ProfileByTagDTO>))]
         public async Task<IActionResult> GetByTag(string tag)
         {
             if (string.IsNullOrEmpty(tag))

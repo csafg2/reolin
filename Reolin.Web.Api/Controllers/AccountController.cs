@@ -90,7 +90,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-        
+
         /// <summary>
         /// Logout the user, the jwt MUST BE valid and present in the requst header
         /// </summary>
