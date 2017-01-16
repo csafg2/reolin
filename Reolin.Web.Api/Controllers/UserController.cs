@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
+    /// <summary>
+    /// User related apis 
+    /// </summary>
     public class UserController : BaseController
     {
         private readonly IUserService _service;
 
+#pragma warning disable CS1591
         public UserController(IUserService service)
         {
             this._service = service;
         }
+#pragma warning restore CS1591
 
-        public IUserService UserService
+        private IUserService UserService
         {
             get
             {
@@ -23,6 +28,11 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// set the first name and lastname of specified user, the user id has to be present in reqest header
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Ok if Succeeded</returns>
         public async Task<IActionResult> SetFirstNameLastName(SetFirstNameLastNameModel model)
         {
             if (!this.ModelState.IsValid)

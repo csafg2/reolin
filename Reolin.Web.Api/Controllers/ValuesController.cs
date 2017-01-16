@@ -3,12 +3,12 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
-using System.Collections;
-using System.Collections.Generic;
 
+#pragma warning disable CS1591
 namespace Reolin.Web.Api.Controllers
 {
     public class ValuesController : BaseController
+
     {
         private ILogger<ValuesController> _logger;
 
@@ -34,3 +34,4 @@ namespace Reolin.Web.Api.Controllers
     }
 }
 
+#pragma warning restore CS1591
