@@ -2,14 +2,14 @@ namespace Reolin.Data.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Reolin.Data.DataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Reolin.Data.DataContext context)
+        protected override void Seed(DataContext context)
         {
         }
     }

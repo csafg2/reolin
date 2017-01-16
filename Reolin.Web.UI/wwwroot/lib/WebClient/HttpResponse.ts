@@ -1,4 +1,5 @@
-﻿module Reolin.Web.Client
+﻿
+module Reolin.Web.Client
 {
     export class HttpResponse
     {

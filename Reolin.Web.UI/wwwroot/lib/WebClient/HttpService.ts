@@ -6,8 +6,8 @@ module Reolin.Web.Client
 {
     export class HttpErrorEventArgs
     {
-        private _retry      : boolean = false;
-        
+        private _retry: boolean = false;
+
 
         get Retry(): boolean
         {
@@ -27,6 +27,26 @@ module Reolin.Web.Client
 
         }
 
+        public Get(url: string,
+            headers: { [key: string]: string },
+            retryCount: number,
+            handler: HttpServiceHandler): void
+        {
+            this.headerCreating(headers);
+            this.MakeRequest("GET", url, null, headers, retryCount, handler);
+        }
+
+        public Post(url: string,
+            requestData: any,
+            headers: { [key: string]: string },
+            retryCount: number,
+            handler: HttpServiceHandler
+        ): void
+        {
+            this.headerCreating(headers);
+            this.MakeRequest("POST", url, requestData, headers, retryCount, handler);
+        }
+
         public MakeRequest(httpMethod: string,
             url: string,
             requestData: any,
@@ -34,7 +54,7 @@ module Reolin.Web.Client
             retryCount: number,
             handler: HttpServiceHandler): void
         {
-            this.headerCreating(headers);
+
             var me: HttpService = this;
 
             $.ajax({
@@ -85,10 +105,10 @@ module Reolin.Web.Client
                 }
             });
         };
-        
+
         protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs): void
         {
-           
+
         }
 
         public CreateFormData(input: any): FormData
@@ -114,7 +134,7 @@ module Reolin.Web.Client
 
         private _authenticationScheme: string = "bearer ";
         private _headerKey: string = "Authorization";
-        
+
         constructor(manager?: IJwtManager, authenticaionFailed?: AuthenticationFailedCallBack)
         {
             super();
@@ -125,10 +145,16 @@ module Reolin.Web.Client
 
         protected headerCreating(headers: { [key: string]: string }): void
         {
+            if (headers === null)
+            {
+                headers = {};
+            }
+
             var jwt: JwtSecurityToken = this._manager.GetLocalJwt();
 
             if (jwt === null)
             {
+                console.log("authenticatedHttpService->GetLocalJwt->NULL");
                 // the fucking user is not logged in!!
                 this._authenticaionFailed();
                 return;
@@ -157,10 +183,6 @@ module Reolin.Web.Client
         }
     }
 
-    export class ProfileService
-    {
-
-    }
 
     export interface AuthenticationFailedCallBack
     {
@@ -184,29 +206,14 @@ module Reolin.Web.Client
         public Location: LocationModel;
     }
 
-    export class UserViewModel
+
+    export class ProfileController
     {
-        private _firstName: string;
-        private _lastName: string;
+        private _view: HTMLElement;
 
-        set FirstName(firstName: string)
+        constructor(element: HTMLElement)
         {
-            this._firstName = firstName;
-        }
-
-        get FirstName(): string
-        {
-            return this._firstName;
-        }
-        
-        set LastName(lastName: string)
-        {
-            this._lastName = lastName;
-        }
-
-        get LastName(): string 
-        {
-            return this._lastName;
+            this._view = element;
         }
     }
 }
