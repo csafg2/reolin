@@ -7,6 +7,7 @@ namespace Reolin.Data.Domain
     {
         public int Id { get; set; }
         public string Identifier { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public bool Confirmed { get; set; }
         public Address Address { get; set; }
@@ -18,6 +19,7 @@ namespace Reolin.Data.Domain
         public List<Image> Images { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
+        public List<PhoneNumber> PhoneNumbers { get; set; }
     }
 
 }

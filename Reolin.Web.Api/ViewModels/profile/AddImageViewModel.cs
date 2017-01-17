@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Reolin.Web.Api.ViewModels.profile
+namespace Reolin.Web.Api.ViewModels
 {
+
     public class AddImageToProfileViewModel
     {
         [Required(ErrorMessage = "ProfileId is Required")]

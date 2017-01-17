@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
+using Reolin.Web.Api.ViewModels;
 using Reolin.Web.Api.ViewModels.profile;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,6 @@ namespace Reolin.Web.Api.Controllers
 {
 #pragma warning disable CS1591
     public class ProfileController : BaseController
-
     {
         private readonly IPorofileService _profileService;
         private readonly IMemoryCache _cache;
@@ -100,7 +101,6 @@ namespace Reolin.Web.Api.Controllers
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
                 int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
             }
-
             return Ok();
         }
     }
