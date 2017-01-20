@@ -7,12 +7,10 @@ using Reolin.Data;
 using Reolin.Web.Api.Infra.IO;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using System.Threading;
-using System.Threading.Tasks;
-using Reolin.Web.Api.ViewModels.profile;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Reolin.Web.Api.ViewModels;
 
 namespace ControllerUnitTest
 {
@@ -33,7 +31,7 @@ namespace ControllerUnitTest
         public void AddImageAction()
         {
             //Arrange:
-            IPorofileService service = new ProfileService(new DataContext());
+            IProfileService service = new ProfileService(new DataContext());
             string basePath = @"E:\data";
             IFileService fileService = new FileService(basePath, new DirectoryProvider());
             ProfileController controller = new ProfileController(service, null, fileService);

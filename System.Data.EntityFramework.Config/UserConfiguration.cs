@@ -78,7 +78,7 @@ namespace Reolin.Data.EntityFramework.Config
             // keeping track of where the users likes
             this.HasMany(u => u.Likes)
                 .WithRequired(l => l.Sender)
-                .HasForeignKey(l => l.UserId);
+                .HasForeignKey(l => l.SenderId);
 
             // 1:* Intelissence is necessary
             this.HasMany(u => u.Tags)

@@ -6,17 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Reolin.Data.Services
 {
-    public class ProfileService : IPorofileService
+    public class ProfileService : IProfileService
     {
         private DataContext _context;
-        
+
         public ProfileService(DataContext context)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
@@ -31,7 +32,7 @@ namespace Reolin.Data.Services
                 return _context;
             }
         }
-        
+
 
         public Task AddDescriptionAsync(int profileId, string description)
         {
@@ -66,6 +67,17 @@ namespace Reolin.Data.Services
         {
             this.Context.Images.Add(new Image() { ProfileId = profileId, Path = imagePath, UploadDate = DateTime.Now });
             return this.Context.SaveChangesAsync();
+        }
+
+        public Task<int> AddLikeAsync(int userId, int profileId)
+        {
+            this.Context.Likes.Add(new Like()
+            {
+                ProfileId = profileId,
+                SenderId = userId
+            });
+            
+            return Context.SaveChangesAsync();
         }
     }
 }

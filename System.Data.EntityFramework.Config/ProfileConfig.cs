@@ -52,7 +52,11 @@ namespace Reolin.Data.EntityFramework.Config
             // a profile record must have an address (location, etc..)
             this.HasRequired(p => p.Address)
                 .WithOptional(a => a.Profile);
-            
+
+
+            this.HasMany(p => p.Likes)
+                .WithRequired(l => l.Profile)
+                .HasForeignKey(l => l.ProfileId);
         }
     }
 }

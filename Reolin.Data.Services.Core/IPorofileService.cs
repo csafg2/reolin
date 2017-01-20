@@ -10,7 +10,7 @@ namespace Reolin.Data.Services.Core
     /// <summary>
     /// contains the database operations for a profile entity
     /// </summary>
-    public interface IPorofileService
+    public interface IProfileService
     {
         /// <summary>
         /// Asynchronously add a descriptions string to a profile
@@ -42,5 +42,8 @@ namespace Reolin.Data.Services.Core
         /// <param name="imagePath">the patch of image after it`s been saved</param>
         /// <returns></returns>
         Task<int> AddProfileImageAsync(int profileId, string imagePath);
+
+
+        Task<int> AddLikeAsync(int userId, int profileId);
     }
 }

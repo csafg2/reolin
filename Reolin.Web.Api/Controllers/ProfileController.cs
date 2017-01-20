@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
@@ -14,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
@@ -21,11 +21,11 @@ namespace Reolin.Web.Api.Controllers
 #pragma warning disable CS1591
     public class ProfileController : BaseController
     {
-        private readonly IPorofileService _profileService;
+        private readonly IProfileService _profileService;
         private readonly IMemoryCache _cache;
         private readonly IFileService _fileService;
 
-        public ProfileController(IPorofileService service, IMemoryCache cache, IFileService fileService)
+        public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService)
         {
             this._profileService = service;
             this._fileService = fileService;
@@ -33,7 +33,7 @@ namespace Reolin.Web.Api.Controllers
         }
 #pragma warning restore CS1591 
 
-        private IPorofileService ProfileService
+        private IProfileService ProfileService
         {
             get
             {
@@ -95,6 +95,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
         {
+            // TODO: test it
             IFormFile file = files.FirstOrDefault() ?? Request.Form.Files[0];
             using (var stream = file.OpenReadStream())
             {
@@ -102,6 +103,19 @@ namespace Reolin.Web.Api.Controllers
                 int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
             }
             return Ok();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="profileId"></param>
+        [Authorize]
+        public async Task<IActionResult> Like(int profileId)
+        {
+            //TODO: test it
+            int result = await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
+
+            return Ok(result);
         }
     }
 }
