@@ -8,7 +8,7 @@ namespace Reolin.Web.Api.Infra.IO
     /// <summary>
     /// provides file related services, like saving it in file system
     /// </summary>
-    public class FileService: IFileService
+    public class FileService : IFileService
     {
         private readonly string _basePath;
         private readonly IDirectoryProvider _provider;
@@ -29,7 +29,7 @@ namespace Reolin.Web.Api.Infra.IO
         /// </summary>
         /// <param name="input">the stream that contains the fucking file</param>
         /// <param name="fileName">the full file name to write the stream into</param>
-        /// <returns></returns>
+        /// <returns>the path in which, file has been stored</returns>
         public async Task<string> SaveAsync(Stream input, string fileName)
         {
             string subDirectory = _provider.ProvideDirectory();
@@ -44,8 +44,8 @@ namespace Reolin.Web.Api.Infra.IO
             using (var stream = new FileStream(fullPath, FileMode.CreateNew))
             {
                 await input.CopyToAsync(stream);
-                return Path.Combine(subDirectory, fileName);
             }
+            return Path.Combine(subDirectory, fileName);
         }
 
         private string RenameFile(string fullPath)

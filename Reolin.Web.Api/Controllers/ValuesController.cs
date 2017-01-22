@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
 
-#pragma warning disable CS1591
 namespace Reolin.Web.Api.Controllers
 {
     public class ValuesController : BaseController
@@ -33,5 +34,3 @@ namespace Reolin.Web.Api.Controllers
         
     }
 }
-
-#pragma warning restore CS1591

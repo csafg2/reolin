@@ -6,7 +6,7 @@ namespace Reolin.Web.Api.Infra.ConfigExtensions
 {
     internal static class AddSqlLoggerExtension
     {
-        public static void AddSqlLogger(this ILoggerFactory source, string connectionString)
+        public static void UseSqlLogger(this ILoggerFactory source, string connectionString)
         {
             Func<string, LogLevel, bool> filter = 
                 (cat, level) => level == LogLevel.Error || level == LogLevel.Critical;

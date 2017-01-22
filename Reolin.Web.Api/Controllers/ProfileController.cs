@@ -84,7 +84,7 @@ namespace Reolin.Web.Api.Controllers
         }
 
         /// <summary>
-        /// adds an image the image collection of the profile
+        /// adds an image to image collection of the profile
         /// </summary>
         /// <param name="model">a model that contians the profile id</param>
         /// <param name="files">image file</param>
@@ -101,8 +101,8 @@ namespace Reolin.Web.Api.Controllers
             {
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
                 int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
+                return Ok(path);
             }
-            return Ok();
         }
 
         /// <summary>

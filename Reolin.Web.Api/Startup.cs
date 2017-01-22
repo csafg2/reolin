@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,7 +46,7 @@ namespace Reolin.Web.Api
         {
             app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
-            loggerFactory.AddSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
+            loggerFactory.UseSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
 
             // comment this entire "if statement" in production
             if (env.IsDevelopment())
