@@ -117,10 +117,16 @@ namespace Reolin.Web.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Creates a new profile entry for the currently logged in user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>the address in which the profiel info is create an accessible to consume</returns>
 
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
+            throw new NotImplementedException();
             int userId = this.GetUserId();
             await this.ProfileService.CreateAsync(userId, model.Description);
             return Ok();
