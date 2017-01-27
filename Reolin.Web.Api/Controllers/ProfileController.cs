@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
@@ -116,6 +115,15 @@ namespace Reolin.Web.Api.Controllers
             int result = await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
 
             return Ok(result);
+        }
+
+
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Create(ProfileCreateModel model)
+        {
+            int userId = this.GetUserId();
+            await this.ProfileService.CreateAsync(userId, model.Description);
+            return Ok();
         }
     }
 }

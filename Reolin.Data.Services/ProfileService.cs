@@ -79,5 +79,10 @@ namespace Reolin.Data.Services
             
             return Context.SaveChangesAsync();
         }
+
+        public Task<int> CreateAsync(int userId, string description)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

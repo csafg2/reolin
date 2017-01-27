@@ -29,5 +29,7 @@ namespace System
         {
             return latitude <= MAX_LATITUDE && latitude > MIN_LATITUDE;
         }
+        
+        public const int Geo_SRID = 4326;
     }
 }

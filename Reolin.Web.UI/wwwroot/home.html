@@ -5,18 +5,41 @@
     <title> .::Test::. </title>
 </head>
 <body>
-    <script src="lib/jquery-3.1.1.min.js"></script>
-    <!--
-    <script src="lib/WebClient/bundle.min.js"></script>
-    <script src="lib/test.js"></script>
-    <script src="lib/WebClient/HttpService.js"></script>
-    <input type="text" id="jwt" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOaW5hMyIsImlhdCI6IjEyLzIzLzIwMTYgMTA6NTU6MjggUE0iLCJyb2xlcyI6IkpvcmRvbjIwMDYiLCJJZCI6MTMsIm5iZiI6MTQ4MjUyMTE4NCwiZXhwIjoxNDgyNTIxMzY0LCJpc3MiOiJTZWxmIiwiYXVkIjpbIkFwaUNsaWVudHMiLCJBcGlDbGllbnRzIl19.nUUoN_mpYmo_ZjU7SidsDeA2p52PcWROAplqGfc3LlY" />
-    <input type="button" value="Go" id="button" />-->
-
-
     
-    <input type="button" id="getButton" value="Get" />
+    <form id="registerForm">
+        <p>
+            <label>username: </label>
+            <input type="text" id="UserName" required tabindex="1" autofocus/>
 
+        <p>
+            <label>email: </label>
+            <input type="email" id="Email" tabindex="2" />
+        </p>
+
+        <p>
+            <label>Password: </label>
+            <input type="text" id="Password" required value="Hassan@1" />
+        </p>
+
+        <p>
+            <label>ConfirmPassword: </label>
+            <input type="text" id="ConfirmPassword" required value="Hassan@1" />
+        </p>
+
+        <p>
+            <label>PhoneNumber: </label>
+            <input type="text" id="PhoneNumber" value="45646654" />
+        </p>
+
+
+
+        <input type="button" value="Login" id="LoginButton" tabindex="3" />
+        <input type="button" value="Relogin" id="ReloginButton"  tabindex="4"/>
+        <input type="button" value="Register" id="RegisterButton" tabindex="5" />
+
+        <ul id="info"></ul>
+    </form>
+    <script src="lib/jquery-3.1.1.min.js"></script>
     
     <script src="lib/WebClient/DefaultJwtManager.js"></script>
     <script src="lib/WebClient/HttpService.js"></script>
@@ -25,33 +48,8 @@
     <script src="lib/WebClient/LoginInfo.js"></script>
     <script src="lib/WebClient/HttpResponse.js"></script>
     <script src="lib/WebClient/JwtSecurityToken.js"></script>
-    <script src="lib/test.js"></script>
-    <!--<script src="lib/WebClient/run.js"></script>-->
-
-    <script>
-        //$('#getButton').click(function (e) {
-        //    var getUrl = "http://localhost:6987/account/Login";
-        //    $.ajax(
-        //        {
-        //            method: "POST",
-        //            url: getUrl,
-        //            data: { UserName: "Nina3", Password: "Hassan@1" },
-        //            error: function (e) {
-        //                console.log(e);
-        //            },
-        //            success: function (data) {
-        //                console.log(data);
-        //            }
-        //        });
-        //});
-        //    })
-        //$('#button').click(function (e) {
-        //    var jwtString = $('#jwt').val();
-        //    var jwt = Reolin.Web.Client.JwtSecurityToken.Parse(jwtString);
-            
-        //    var sub = jwt.GetKey('sub');
-        //    console.log(sub);
-        //});
-    </script>
+    <script src="lib/WebClient/Global.js"></script>
+   
+    <script src="lib/WebClient/controllers/AccountController.js"></script>
 </body>
 </html>

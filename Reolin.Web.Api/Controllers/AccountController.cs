@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Helpers;
+using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
+using Reolin.Web.Security;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership.Core;
 using System;
@@ -84,6 +86,10 @@ namespace Reolin.Web.Api.Controllers
                     expiresIn = Options.Expiration
                 });
             }
+            catch(SecurityTokenInvalidTokenException ex)
+            {
+                return StatusCode(403, ex.Message);
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -139,8 +145,10 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("/[controller]/[action]")]
+        [RequireValidModel]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            
             IdentityResult result = (await this.UserManager.GetLoginInfo(model.UserName, model.Password));
             if (!result.Succeeded)
             {

@@ -3,7 +3,7 @@
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
-    "Microsoft.AspNetCore.StaticFiles": "1.2.0-preview1-22805"
+    "Microsoft.AspNetCore.StaticFiles": "1.2.0-preview1-22958"
   },
 
   "tools": {

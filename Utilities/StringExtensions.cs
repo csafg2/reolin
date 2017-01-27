@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
+using System;
 
 namespace System
 {
@@ -17,13 +18,14 @@ namespace System
 
             return sb.ToString();
         }
+
         public static List<string> ExtractHashtags(this string source)
         {
             List<string> result = new List<string>();
 
             Regex regex = new Regex(@"(?<=#)\w+");
             MatchCollection matches = regex.Matches(source);
-
+            
             foreach (Match m in matches)
             {
                 result.Add(m.Value);
@@ -32,5 +34,4 @@ namespace System
             return result;
         }
     }
-
 }

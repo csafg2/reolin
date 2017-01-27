@@ -85,7 +85,6 @@ namespace Reolin.Web.Security.Jwt
         {
             var options = new TokenProviderOptions()
             {
-                Audience = JwtConfigs.Audience,
                 Issuer = JwtConfigs.Issuer,
                 SigningCredentials = JwtConfigs.SigningCredentials,
                 Expiration = JwtConfigs.Expiry,

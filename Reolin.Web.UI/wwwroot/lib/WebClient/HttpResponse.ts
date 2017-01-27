@@ -6,7 +6,17 @@ module Reolin.Web.Client
         private _statusCode: number;
         private _responseHeaders: { [key: string]: string };
         private _responseBody: any;
+        private _error: string;
 
+        get Error(): string
+        {
+            return this._error;
+        }
+
+        set Error(error: string)
+        {
+            this._error = error;
+        }
 
         get StatusCode(): number
         {

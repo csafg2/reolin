@@ -1,6 +1,16 @@
 ﻿module Reolin.Web.Client
 {
 
+    export class RegisterInfo
+    {
+        UserName: string;
+        Password: string;
+        ConfirmPassword: string;
+        Email: string;
+        PhoneNumber: string;
+    }
+
+
     export class LoginInfo
     {
         private _userName: string;
@@ -9,7 +19,6 @@
         get UserName(): string
         {
             return this._userName;
-
         }
 
         set UserName(userName: string)

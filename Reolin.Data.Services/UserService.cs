@@ -124,9 +124,7 @@ namespace Reolin.Data.Services
 
             return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
         }
-
-
-
+        
         public async Task<int> AddToRole(int userId, int roleId)
         {
             User user = await this.Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
@@ -198,7 +196,7 @@ namespace Reolin.Data.Services
                 throw new InvalidOperationException("longitude or latitude is invalid");
             }
 
-            DbGeography location = GeoHelpers.FromLongitudeLatitude(longitude, latitude, Address.Geo_SRID);
+            DbGeography location = GeoHelpers.FromLongitudeLatitude(longitude, latitude, GeoHelpers.Geo_SRID);
 
             User user = await this.GetByUserName(userName, "Address");
             user.Address = user.Address ?? new Address() { Location = location };
@@ -230,7 +228,7 @@ namespace Reolin.Data.Services
                 throw new ArgumentException("Latitude or longitude is invalid");
             }
 
-            return this.GetNearybyUsers(GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat, Address.Geo_SRID), radius, tag);
+            return this.GetNearybyUsers(GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat, GeoHelpers.Geo_SRID), radius, tag);
         }
 
         public void Dispose()

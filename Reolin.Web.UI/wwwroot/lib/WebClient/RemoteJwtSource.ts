@@ -25,11 +25,17 @@ module Reolin.Web.Client
             headers["Authorization"] = "bearer " + oldJwt.Token;
             var handler: HttpServiceHandler = new HttpServiceHandler();
             var result: JwtSecurityToken = null;
-            handler.HandleResponse = (response: HttpResponse) =>
+            handler.HandleResponse = (response: HttpResponse): void =>
             {
                 result = JwtSecurityToken.Parse(response.ResponseBody.newToken);
-            }
-            service.MakeRequest("POST", this._exhangeUrl, null, headers, 2, handler);
+            };
+
+            //handler.HandleError = (response: HttpResponse): void =>
+            //{
+            //    //console.log(response.Error);
+            //};
+
+            service.MakeRequest("POST", this._exhangeUrl, null, headers, 2, handler, false);
             return result;
         }
 
@@ -40,12 +46,18 @@ module Reolin.Web.Client
             var handler = new HttpServiceHandler();
             var result: JwtSecurityToken = null;
 
-            handler.HandleResponse = (response: HttpResponse) =>
+            handler.HandleResponse = (response: HttpResponse): void =>
             {
                 result = JwtSecurityToken.Parse(response.ResponseBody.accessToken);
-            }
+            };
+            handler.HandleError = (r: HttpResponse): void =>
+            {
+                //alert(r.Error);
+              //  throw r.Error;
+//                console.log(r.StatusCode);
+            };
 
-            service.MakeRequest("POST", getUrl, requestData, null, 3, handler);
+            service.MakeRequest("POST", this._getJwtUrl, requestData, null, 3, handler, false);
             return result;
         }
     }

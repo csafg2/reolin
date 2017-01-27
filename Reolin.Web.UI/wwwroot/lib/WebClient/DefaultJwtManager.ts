@@ -26,10 +26,16 @@ module Reolin.Web.Client
             this._store.Save(jwt);
         }
 
-        IssueJwt (info: LoginInfo): JwtSecurityToken
+        IssueJwt(info: LoginInfo): JwtSecurityToken
         {
             var jwt: JwtSecurityToken = this._source.IssueJwt(info);
+            if (jwt === null)
+            {
+                return null;
+            }
+
             this.Save(jwt);
+            
             return jwt;
         }
 

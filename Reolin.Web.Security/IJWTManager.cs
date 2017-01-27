@@ -9,7 +9,6 @@ namespace Reolin.Web.Security.Jwt
         /// produce a jwt with specified options, the specified jwt will be tracked by the manager
         /// </summary>
         /// <param name="options"></param>
-        /// <returns></returns>
         string IssueJwt(TokenProviderOptions options);
 
         /// <summary>
@@ -17,7 +16,7 @@ namespace Reolin.Web.Security.Jwt
         /// </summary>
         /// <param name="user"></param>
         /// <param name="tokenId"></param>
-        /// <returns></returns>
+        /// <returns>true if token is valid</returns>
         bool ValidateToken(string user, string tokenId);
 
         /// <summary>

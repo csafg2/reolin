@@ -56,7 +56,8 @@ namespace Reolin.Data.EntityFramework.Config
 
             this.HasMany(p => p.Likes)
                 .WithRequired(l => l.Profile)
-                .HasForeignKey(l => l.ProfileId);
+                .HasForeignKey(l => l.ProfileId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

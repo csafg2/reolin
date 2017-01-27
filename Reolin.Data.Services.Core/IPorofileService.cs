@@ -45,5 +45,6 @@ namespace Reolin.Data.Services.Core
 
 
         Task<int> AddLikeAsync(int userId, int profileId);
+        Task<int> CreateAsync(int userId, string description);
     }
 }

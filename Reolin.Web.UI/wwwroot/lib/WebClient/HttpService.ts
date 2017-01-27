@@ -30,6 +30,7 @@ module Reolin.Web.Client
         public Get(url: string,
             headers: { [key: string]: string },
             retryCount: number,
+            isAsync: boolean = false,
             handler: HttpServiceHandler): void
         {
             this.headerCreating(headers);
@@ -40,8 +41,8 @@ module Reolin.Web.Client
             requestData: any,
             headers: { [key: string]: string },
             retryCount: number,
-            handler: HttpServiceHandler
-        ): void
+            isAsync: boolean = false,
+            handler: HttpServiceHandler): void
         {
             this.headerCreating(headers);
             this.MakeRequest("POST", url, requestData, headers, retryCount, handler);
@@ -52,14 +53,14 @@ module Reolin.Web.Client
             requestData: any,
             headers: { [key: string]: string },
             retryCount: number,
-            handler: HttpServiceHandler): void
+            handler: HttpServiceHandler, isAsync: boolean = false): void
         {
 
             var me: HttpService = this;
 
             $.ajax({
                 method: httpMethod,
-                async: false,
+                async: isAsync,
                 url: url,
                 crossDomain: true,
                 dataType: "json",
@@ -71,9 +72,9 @@ module Reolin.Web.Client
                         xhr.setRequestHeader(key, headers[key]);
                     }
                 },
-                success: function (responseData, textStatus, jqXHR)
+                success: function (responseData, textStatus: string, jqXHR: JQueryXHR)
                 {
-                    if (handler !== null && handler.HandleResponse !== null)
+                    if (handler !== null && handler.HandleResponse !== undefined)
                     {
                         var response: HttpResponse = new HttpResponse();
                         response.ResponseBody = responseData;
@@ -81,13 +82,14 @@ module Reolin.Web.Client
                         handler.HandleResponse(response);
                     }
                 },
-                error: function (xhr, error)
+                error: function (xhr, status, error)
                 {
-                    if (handler !== null && handler.HandleError !== null)
+                    if (handler !== null && handler.HandleError !== undefined)
                     {
                         var response: HttpResponse = new HttpResponse();
                         response.StatusCode = xhr.status;
                         response.ResponseBody = xhr.responseText;
+                        response.Error = error;
                         handler.HandleError(response);
                     }
 
@@ -96,11 +98,7 @@ module Reolin.Web.Client
                     me.OnError(xhr, error, args);
                     if (args.Retry === true && retryCount > 0)
                     {
-                        return me.MakeRequest(httpMethod, url, requestData, headers, retryCount--, handler);
-                    }
-                    else
-                    {
-                        throw error;
+                        return me.MakeRequest(httpMethod, url, requestData, headers, --retryCount, handler);
                     }
                 }
             });
@@ -113,18 +111,17 @@ module Reolin.Web.Client
 
         public CreateFormData(input: any): FormData
         {
-            var form_data = new FormData();
+            var formData = new FormData();
 
             for (var key in input)
             {
-                form_data.append(key, input[key]);
+                formData.append(key, input[key]);
             }
 
-            return form_data;
+            return formData;
         }
     }
-
-
+    
     export class AuthenticatedHttpServiceProvider extends HttpService
     {
         private _manager: IJwtManager;
@@ -147,6 +144,7 @@ module Reolin.Web.Client
         {
             if (headers === null)
             {
+
                 headers = {};
             }
 
@@ -155,7 +153,8 @@ module Reolin.Web.Client
             if (jwt === null)
             {
                 console.log("authenticatedHttpService->GetLocalJwt->NULL");
-                // the fucking user is not logged in!!
+                // the fucking user is not logged in!! :D
+                // force his ass to move to login page.
                 this._authenticaionFailed();
                 return;
             }
@@ -174,7 +173,7 @@ module Reolin.Web.Client
                 args.Retry = true;
             }
 
-            // fucking user some how invalidated token
+            // this FUCKING user some how invalidated token
             else if (xhr.status === 403)
             {
                 this._authenticaionFailed();
@@ -182,8 +181,7 @@ module Reolin.Web.Client
             }
         }
     }
-
-
+    
     export interface AuthenticationFailedCallBack
     {
         (): void;
@@ -194,26 +192,74 @@ module Reolin.Web.Client
         public HandleResponse: (response: HttpResponse) => void;
         public HandleError: (response: HttpResponse) => void;
     }
-
-    export class LocationModel
+    
+    export class AccountService
     {
-        public Latitude: number;
-        public Longitude: number;
-    }
+        private _jwtManager: IJwtManager;
 
-    export class SearchProfileByTagViewModel
-    {
-        public Location: LocationModel;
-    }
-
-
-    export class ProfileController
-    {
-        private _view: HTMLElement;
-
-        constructor(element: HTMLElement)
+        constructor(jwtManager: IJwtManager)
         {
-            this._view = element;
+            this._jwtManager = jwtManager;
         }
+
+        public Register(registerInfo: RegisterInfo, handler: HttpServiceHandler): void 
+        {
+            // send off a request to register the user
+            var service: HttpService = new HttpService();
+
+            service.Post(URLs.RegisterAccount, registerInfo, null, 2, true, handler);
+        }
+
+        public Login(info: LoginInfo): void
+        {
+            var token: JwtSecurityToken = manager.IssueJwt(info);
+            //TODO: safely redirect to dashboard page
+            //console.log("user registered and logged in")
+        }
+
+        public Relogin(): void 
+        {
+            var jwt: JwtSecurityToken = this._jwtManager.GetLocalJwt();
+            if (jwt === null)
+            {
+                throw new Error("oldJwt can not be null");
+            }
+
+            this._jwtManager.ProvideJwtbyOldJwt(jwt);
+        }
+    }
+
+    export class LocalURLs
+    {
+        public static RegisterAccount: string = "http://localhost:6987/account/register";
+        public static ExhangeTokenUrl: string = "http://localhost:6987/account/ExchangeToken";
+        public static GetTokenUrl: string = "http://localhost:6987/account/Login";
+    }
+
+    export class URLs
+    {
+        public static RegisterAccount: string = "http://178.63.55.123/account/register";
+        public static ExhangeTokenUrl: string = "http://178.63.55.123/account/ExchangeToken";
+        public static GetTokenUrl: string = "http://178.63.55.123/account/Login";
+
+        public static DashboardLocation: string = "/Account/Dashboard.html";
+    }
+
+    export class User
+    {
+        private static _current: User;
+
+        static get Current(): User
+        {
+            return User._current;
+        }
+
+        static set Current(user: User)
+        {
+            User._current = user;
+        }
+
+        public UserName: string;
+        public Email: string;
     }
 }

@@ -16,7 +16,5 @@ namespace Reolin.Data.Domain
         public Academy Academy { get; set; }
         public List<Tag> Tags { get; set; }
 
-        [NotMapped]
-        public const int Geo_SRID = 4326;
     }
 }
