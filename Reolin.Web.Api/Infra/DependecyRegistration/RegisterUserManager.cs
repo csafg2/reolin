@@ -15,6 +15,10 @@ namespace Reolin.Web
     {
         private static List<IUserValidator> _cache = null;
 
+        /// <summary>
+        /// Finds and instantiates all classes that implement "IUserValidator"
+        /// </summary>
+        /// <returns>a list of "IUserValidator" objects</returns>
         private static List<IUserValidator> CreateValidators()
         {
             List<IUserValidator> result = new List<IUserValidator>();
@@ -37,6 +41,7 @@ namespace Reolin.Web
                 return _cache ?? (_cache = CreateValidators());
             }
         }
+
 
         internal static IServiceCollection AddUserManager(this IServiceCollection source, string connectionString)
         {

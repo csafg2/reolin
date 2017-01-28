@@ -159,7 +159,6 @@ namespace Reolin.Web.Security.Membership
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-
                 throw new ArgumentNullException("username and password are both required");
             }
 
