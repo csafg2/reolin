@@ -47,7 +47,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="tag">the tag text to search for</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("/[controller]/[action]")]
+        //[Route("/[controller]/[action]")]
         [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<ProfileByTagDTO>))]
         public async Task<IActionResult> GetByTag(string tag)
@@ -71,7 +71,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        [Route("/[controller]/[action]")]
+        //[Route("/[controller]/[action]")]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
         {
             Task addDescriptionTask = this.ProfileService.AddDescriptionAsync(model.Id, model.Description);
@@ -91,7 +91,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [Authorize]
         [RequireValidModel]
-        [Route("/[controller]/[action]")]
+        //[Route("/[controller]/[action]")]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
         {
             // TODO: test it
@@ -123,7 +123,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns>the address in which the profiel info is create an accessible to consume</returns>
 
-        [Route("/[controller]/[action]")]
+        //[Route("/[controller]/[action]")]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
             throw new NotImplementedException();

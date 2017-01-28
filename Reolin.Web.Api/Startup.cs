@@ -18,7 +18,7 @@ namespace Reolin.Web.Api
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -30,15 +30,13 @@ namespace Reolin.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCorsWithDefaultConfig();
-
+            services.AddFileService(Configuration["BaseUploadPath"]);
             services.AddJwtDependencies();
             services.AddJwtValidationRequirement(services.BuildServiceProvider());
             services.AddMemoryCache();
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
             services.AddMvcWithConfig();
-
-            
             services.AddSwaggerAndConfigure();
         }
 

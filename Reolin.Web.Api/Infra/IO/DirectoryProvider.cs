@@ -12,7 +12,7 @@ namespace Reolin.Web.Api.Infra.IO
         /// <summary>
         /// Generates the SubDirectory
         /// </summary>
-        /// <returns></returns>
+        /// <returns>a string that represents the Generated subDirectory</returns>
         public string ProvideDirectory()
         {
             string guid = Guid.NewGuid().ToString();

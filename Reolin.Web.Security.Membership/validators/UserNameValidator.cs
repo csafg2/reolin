@@ -19,6 +19,11 @@ namespace Reolin.Web.Security.Membership.validators
 
         public Task<IdentityResult> ValidateUserName(string userName)
         {
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException(nameof(userName));
+            }
+
             foreach (var item in invalidStrings)
             {
                 if (userName.Contains(item))

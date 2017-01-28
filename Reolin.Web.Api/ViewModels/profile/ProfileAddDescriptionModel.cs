@@ -14,7 +14,7 @@ namespace Reolin.Web.Api.ViewModels.profile
         /// <summary>
         /// the profile Id
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Profile Id is Mandatory")]
         [Range(0, int.MaxValue)]
         public int Id { get; set; }
     }

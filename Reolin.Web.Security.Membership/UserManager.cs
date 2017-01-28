@@ -147,7 +147,7 @@ namespace Reolin.Web.Security.Membership
 
         public Task<User> GetByUserNameAsync(string userName)
         {
-            if (userName == null)
+            if (string.IsNullOrEmpty(userName))
             {
                 throw new ArgumentNullException(nameof(userName));
             }
