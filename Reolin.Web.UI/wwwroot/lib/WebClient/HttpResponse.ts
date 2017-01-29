@@ -7,6 +7,7 @@ module Reolin.Web.Client
         private _responseHeaders: { [key: string]: string };
         private _responseBody: any;
         private _error: string;
+        private _text: string;
 
         get Error(): string
         {
@@ -48,6 +49,17 @@ module Reolin.Web.Client
         set ResponseBody(body: any)
         {
             this._responseBody = body;
+        }
+
+
+        get ResponseText(): string {
+            return this._text;
+
+        }
+
+
+        set ResponseText(value: string) {
+            this._text = value;
         }
     }
 }

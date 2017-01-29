@@ -5,11 +5,12 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace Reolin.Web.Api.Controllers
 {
+    [EnableCors("AllowAll")]
     public class ValuesController : BaseController
-
     {
         private ILogger<ValuesController> _logger;
 
@@ -26,6 +27,7 @@ namespace Reolin.Web.Api.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public string Get()
         {
 

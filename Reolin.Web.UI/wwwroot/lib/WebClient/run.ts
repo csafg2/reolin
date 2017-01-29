@@ -1,9 +1,16 @@
-﻿/// <reference path="defaultjwtmanager.ts" />
-//import Reo = Reolin.Web.Client;
-//var source: Reo.IJwtSource = new Reo.RemoteJwtSource();
-//var store: Reo.IJwtStore = new Reo.LocalJwtStore();
-//var manager: Reo.IJwtManager = new Reolin.Web.Client.DefaultJwtManager(source, store);
-//var service = new Reolin.Web.Client.HttpServiceProvider(manager, () => console.log("X"));
+﻿//var source: Reo.IJwtSource = new Reo.RemoteJwtSource(Reo.LocalURLs.ExhangeTokenUrl, Reo.LocalURLs.GetTokenUrl);
+//var store: Reo.LocalJwtStore = new Reo.LocalJwtStore();
+//var manager: Reo.IJwtManager = new Reo.DefaultJwtManager(source, store);
+//var service: Reo.AccountService = new Reo.AccountService(manager);
 
+var authService: Reo.AuthenticatedHttpServiceProvider = new Reo.AuthenticatedHttpServiceProvider(manager, () =>
+{
+    alert("authentication failed");
+});
 
-//console.log(store.HasJwt());
+$("#GetValueButton").click(function (e) {
+    var handler = new Reo.HttpServiceHandler();
+    //handler.HandleError = (r: Reo.HttpResponse) => console.log(r.Error);
+    handler.HandleResponse = (r: Reo.HttpResponse) => console.log(r.ResponseText);
+    authService.Get("http://localhost:6987/Values/Get", {}, 2, true, handler);
+});
