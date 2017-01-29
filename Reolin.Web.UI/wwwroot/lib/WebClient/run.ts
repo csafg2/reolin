@@ -12,5 +12,5 @@ $("#GetValueButton").click(function (e) {
     var handler = new Reo.HttpServiceHandler();
     //handler.HandleError = (r: Reo.HttpResponse) => console.log(r.Error);
     handler.HandleResponse = (r: Reo.HttpResponse) => console.log(r.ResponseText);
-    authService.Get("http://localhost:6987/Values/Get", {}, 2, true, handler);
+    authService.Get("http://178.63.55.123/Values/Get", {}, 2, true, handler);
 });

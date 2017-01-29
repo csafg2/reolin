@@ -12,6 +12,7 @@
 
         get IsExpired(): boolean
         {
+            // we do`nt fucking trust client machine`s time
             return false;
         };
 
@@ -34,10 +35,11 @@
 
         public static Parse(jwt: string): JwtSecurityToken
         {
-            if (!jwt)
+            if (IsNullOrEmpty(jwt))
             {
                 throw Error("jwt can not be null");
             }
+
             var result: JwtSecurityToken = new JwtSecurityToken(jwt);
             var jst = JwtSecurityToken.Decode(jwt);
 
@@ -51,6 +53,11 @@
 
         public static TryParse(jwt: string): JwtSecurityToken
         {
+            if (IsNullOrEmpty(jwt))
+            {
+                throw new Error("Jwt can not be null");
+            }
+
             try
             {
                 return JwtSecurityToken.Parse(jwt);

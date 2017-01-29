@@ -14,6 +14,7 @@ module Reolin.Web.Client.Controllers
         PhoneNumberTextBox: JQuery = $('#PhoneNumber');
         ErrorList: JQuery;
 
+        private _service: Reo.AccountService = new Reo.AccountService(manager);
         constructor()
         {
             this.SetGlobalHandlers();
@@ -22,7 +23,7 @@ module Reolin.Web.Client.Controllers
             this.RegisterButton.click(e => this.RegisterButton_ClickHandler(e));
         }
 
-        SetGlobalHandlers(): void 
+        private SetGlobalHandlers(): void 
         {
             var me = this;
             $(document).ajaxError(function (event, jqxhr, settings, thrownError)
@@ -50,7 +51,7 @@ module Reolin.Web.Client.Controllers
             });
         }
 
-        RegisterButton_ClickHandler(e: JQueryEventObject): any
+        public RegisterButton_ClickHandler(e: JQueryEventObject): any
         {
             var info: RegisterInfo = new RegisterInfo();
             info.UserName = this.UserNameTextBox.val();
@@ -58,7 +59,7 @@ module Reolin.Web.Client.Controllers
             info.ConfirmPassword = this.ConfirmPasswordTextBox.val();
             info.Email = this.EmailTextBox.val();
             info.PhoneNumber = this.PhoneNumberTextBox.val();
-
+            
             var handler: HttpServiceHandler = new HttpServiceHandler();
             handler.HandleResponse = (r: HttpResponse): void =>
             {
@@ -67,10 +68,10 @@ module Reolin.Web.Client.Controllers
                 loginInfo.UserName = info.UserName;
                 loginInfo.Password = info.Password;
 
-                service.Login(loginInfo);
+                this._service.Login(loginInfo);
             };
 
-            service.Register(info, handler);
+            this._service.Register(info, handler);
         }
 
         LoginButton_ClickHandler(e: JQueryEventObject): any
@@ -79,7 +80,7 @@ module Reolin.Web.Client.Controllers
             info.UserName = this.UserNameTextBox.val();
             info.Password = this.PasswordTextBox.val();
 
-            service.Login(info);
+            this._service.Login(info);
         }
     }
 }

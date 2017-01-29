@@ -8,11 +8,10 @@ module Reolin.Web.Client
 
         constructor(exhangeUrl: string, getJwtUrl: string)
         {
-            // TODO: add argument validation
-            //if (!exhangeUrl)
-            //{
-            //    throw new Error("exhangeUrl can not be null");
-            //}
+            if (IsNullOrEmpty(exhangeUrl, getJwtUrl))
+            {
+                throw new Error("exhangeUrl and getJwtUrl can not be null");
+            }
 
             this._exhangeUrl = exhangeUrl;
             this._getJwtUrl = getJwtUrl;
@@ -20,7 +19,12 @@ module Reolin.Web.Client
 
         ExchangeJwt(oldJwt: JwtSecurityToken): JwtSecurityToken
         {
-            var service = new HttpService();
+            if (oldJwt === null)
+            {
+                throw new Error("OldJwt Can not be null");
+            }
+
+            var service: HttpService = new HttpService();
             var headers: { [key: string]: string } = {};
             headers["Authorization"] = "bearer " + oldJwt.Token;
             var handler: HttpServiceHandler = new HttpServiceHandler();
@@ -30,17 +34,17 @@ module Reolin.Web.Client
                 result = JwtSecurityToken.Parse(response.ResponseBody.newToken);
             };
 
-            //handler.HandleError = (response: HttpResponse): void =>
-            //{
-            //    //console.log(response.Error);
-            //};
-
             service.MakeRequest("POST", this._exhangeUrl, null, headers, 2, handler, false);
             return result;
         }
 
         IssueJwt(loginInfo: LoginInfo): JwtSecurityToken
         {
+            if (loginInfo === null)
+            {
+                throw new Error("loginInfo can not be null");
+            }
+
             var service = new HttpService();
             var requestData = { UserName: loginInfo.UserName, Password: loginInfo.Password };
             var handler = new HttpServiceHandler();
@@ -49,13 +53,7 @@ module Reolin.Web.Client
             handler.HandleResponse = (response: HttpResponse): void =>
             {
                 result = JwtSecurityToken.Parse(response.ResponseBody.accessToken);
-            };
-            handler.HandleError = (r: HttpResponse): void =>
-            {
-                //alert(r.Error);
-              //  throw r.Error;
-//                console.log(r.StatusCode);
-            };
+            }
 
             service.MakeRequest("POST", this._getJwtUrl, requestData, null, 3, handler, false);
             return result;
