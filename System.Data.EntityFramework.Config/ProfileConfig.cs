@@ -22,7 +22,7 @@ namespace Reolin.Data.EntityFramework.Config
                 .WithMany(t => t.Profiles)
                 .Map(t =>  t.MapLeftKey("ProfileId")
                         .MapRightKey("TagId")
-                        .ToTable("Profile_Tag"));
+                        .ToTable("ProfileTag"));
 
 
             // 1:*

@@ -82,6 +82,10 @@
       <Project>{0993a7c6-e21b-496d-8933-8860ccf33b63}</Project>
       <Name>Reolin.Data.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reolin.Data.DTO\Reolin.Data.DTO.csproj">
+      <Project>{1A7494B9-590B-4AAD-A6F8-CCB5079E64D2}</Project>
+      <Name>Reolin.Data.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Reolin.Data\Reolin.Data.csproj">
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>

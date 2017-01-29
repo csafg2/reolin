@@ -67,20 +67,52 @@ namespace Reolin.Data.Services
             return this.Context.SaveChangesAsync();
         }
 
-        public Task<int> AddLikeAsync(int userId, int profileId)
+        public Task<int> AddLikeAsync(int senderUserId, int targetProfileId)
         {
             this.Context.Likes.Add(new Like()
             {
-                ProfileId = profileId,
-                SenderId = userId
+                ProfileId = targetProfileId,
+                SenderId = senderUserId
             });
-            
+
             return Context.SaveChangesAsync();
         }
 
-        public Task<int> CreateAsync(int userId, string description)
+
+        public Task<int> CreateAsync(int userId, CreateProfileDTO dto)
         {
-            throw new NotImplementedException();
+            User user = Context.Users.Include("Profiles").FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                throw new InvalidOperationException($"No user with specified Id {userId} found.");
+            }
+
+            if (user.Profiles == null)
+            {
+                user.Profiles = new List<Profile>();
+            }
+
+            user.Profiles.Add(InstantiateProfile(dto));
+
+            return Context.SaveChangesAsync();
+        }
+
+        private Profile InstantiateProfile(CreateProfileDTO dto)
+        {
+            if (dto == null)
+            {
+                throw new ArgumentNullException(nameof(dto));
+            }
+
+            return new Profile()
+            {
+                Description = dto.Description,
+                Address = new Address()
+                {
+                    Location = GeoHelpers.FromLongitudeLatitude(dto.Longitude, dto.Latitude)
+                }
+            };
         }
     }
 }

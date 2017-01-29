@@ -10,7 +10,7 @@ namespace System
         public const double MAX_LATITUDE = 90;
         public const double MIN_LATITUDE = -90;
 
-        public static DbGeography FromLongitudeLatitude(double longitude, double latitude, int srid)
+        public static DbGeography FromLongitudeLatitude(double? longitude, double? latitude, int srid = Geo_SRID)
         {
             return DbGeography.FromText($"POINT({longitude} {latitude})", srid);
         }

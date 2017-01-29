@@ -44,7 +44,14 @@ namespace Reolin.Data.Services.Core
         Task<int> AddProfileImageAsync(int profileId, string imagePath);
 
 
-        Task<int> AddLikeAsync(int userId, int profileId);
-        Task<int> CreateAsync(int userId, string description);
+        Task<int> AddLikeAsync(int senderUserId, int targetProfileId);
+
+        /// <summary>
+        /// Create a new profile entry with the description, for the specified userId.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        Task<int> CreateAsync(int userId, CreateProfileDTO dto);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Mvc;
 using Reolin.Web.Security.Jwt;
 using System;
 using System.Linq;
@@ -7,12 +9,13 @@ using System.Security.Claims;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
+
     public abstract class BaseController : Controller
     {
         /// <summary>
         /// extracts the user if from the request token.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the id which has been found in request</returns>
         protected int GetUserId()
         {
             Claim idClaim = User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault();

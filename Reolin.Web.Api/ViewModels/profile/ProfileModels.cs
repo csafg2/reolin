@@ -22,7 +22,6 @@ namespace Reolin.Web.Api.ViewModels.profile
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -18,6 +19,7 @@ using System.Threading.Tasks;
 namespace Reolin.Web.Api.Controllers
 {
 #pragma warning disable CS1591
+    [EnableCors("AllowAll")]
     public class ProfileController : BaseController
     {
         private readonly IProfileService _profileService;
@@ -39,8 +41,7 @@ namespace Reolin.Web.Api.Controllers
                 return _profileService;
             }
         }
-
-
+        
         /// <summary>
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
@@ -71,6 +72,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Authorize]
+        [RequireValidModel]
         //[Route("/[controller]/[action]")]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
         {
@@ -105,13 +107,14 @@ namespace Reolin.Web.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Add a like entry to the specified Profile, note that the userId must be present in the request
         /// </summary>
-        /// <param name="profileId"></param>
+        /// <param name="profileId">the Id of profile which has been liked</param>
         [Authorize]
+        [HttpPost]
+        [Route("/User/LikeProfile/{profileId}")]
         public async Task<IActionResult> Like(int profileId)
         {
-            //TODO: test it
             int result = await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
 
             return Ok(result);
@@ -123,12 +126,17 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
 
-        //[Route("/[controller]/[action]")]
+        [Route("/[controller]/[action]")]
+        [RequireValidModel]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
-            throw new NotImplementedException();
             int userId = this.GetUserId();
-            await this.ProfileService.CreateAsync(userId, model.Description);
+            await this.ProfileService.CreateAsync(userId, new CreateProfileDTO()
+            {
+                Description = model.Description,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude
+            });
             return Ok();
         }
     }

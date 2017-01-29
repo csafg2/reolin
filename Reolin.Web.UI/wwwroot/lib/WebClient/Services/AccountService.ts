@@ -12,7 +12,7 @@
 
         public Register(registerInfo: RegisterInfo, handler: HttpServiceHandler): void
         {
-            // send off a request to register the user
+            // send off a request to register this user
             var service: HttpService = new HttpService();
 
             service.Post(URLs.RegisterAccount, registerInfo, null, 2, true, handler);
@@ -21,8 +21,6 @@
         public Login(info: LoginInfo): void
         {
             var token: JwtSecurityToken = manager.IssueJwt(info);
-            //TODO: safely redirect to dashboard page
-            //console.log("user registered and logged in")
         }
 
         public Relogin(): void

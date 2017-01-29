@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reolin.Data;
+using Reolin.Data.DTO;
 using Reolin.Data.Services;
 using System.Linq;
 
@@ -18,12 +19,27 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void AddProfileToUser()
+        {
+            var userId = _context.Users.First().Id;
+            var dto = new CreateProfileDTO()
+            {
+                Latitude = 50,
+                Longitude = 49,
+                Description = "Hellow world #engineer"
+            };
+            int result = this._service.CreateAsync(userId, dto).Result;
+            Assert.IsTrue(result > 0);
+        }
+
+
+        [TestMethod]
         public void TestAddLike()
         {
             var profile = this._context.Profiles.First();
             var user = this._context.Users.First();
-
-            var result = this._service.AddLikeAsync(user.Id, profile.Id).Result;
+            
+            var result = this._service.AddLikeAsync (user.Id, profile.Id).Result;
             Assert.IsTrue(result > 0);
         }
 
