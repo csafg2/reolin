@@ -73,6 +73,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reolin.Data.DTO\Reolin.Data.DTO.csproj">
+      <Project>{1A7494B9-590B-4AAD-A6F8-CCB5079E64D2}</Project>
+      <Name>Reolin.Data.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

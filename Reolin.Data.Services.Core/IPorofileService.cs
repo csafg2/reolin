@@ -52,6 +52,11 @@ namespace Reolin.Data.Services.Core
         /// <param name="userId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        Task<int> CreateAsync(int userId, CreateProfileDTO dto);
+        Task<Profile> CreateAsync(int userId, CreateProfileDTO dto);
+
+
+        Task<ProfileInfoDTO> QueryInfoAsync(int id);
+
+        Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong);
     }
 }

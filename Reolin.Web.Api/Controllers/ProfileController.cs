@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
@@ -42,6 +43,18 @@ namespace Reolin.Web.Api.Controllers
             }
         }
         
+
+        [RequireValidModel]
+        [HttpGet]
+        public async Task<IActionResult> InRange(SearchProfilesInRangeModel model)
+        {
+            IEnumerable<ProfileInfoDTO> data = 
+                (await this.ProfileService.GetInRange(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude))
+                .Cast<ProfileInfoDTO>();
+
+            return Ok(data);
+        }
+
         /// <summary>
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
@@ -91,7 +104,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="files">image file</param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [RequireValidModel]
         //[Route("/[controller]/[action]")]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
@@ -125,19 +138,27 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
-
         [Route("/[controller]/[action]")]
         [RequireValidModel]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
-            int userId = this.GetUserId();
-            await this.ProfileService.CreateAsync(userId, new CreateProfileDTO()
-            {
-                Description = model.Description,
-                Latitude = model.Latitude,
-                Longitude = model.Longitude
-            });
-            return Ok();
+            Profile result = await this.ProfileService.CreateAsync(this.GetUserId(),
+                new CreateProfileDTO()
+                {
+                    Description = model.Description,
+                    Latitude = model.Latitude,
+                    Longitude = model.Longitude,
+                    Name = model.Name
+                });
+            await this.ProfileService.AddTagAsync(result.Id, model.Description.ExtractHashtags());
+            return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
+        }
+
+        //[Authorize]
+        public async Task<IActionResult> GetInfo(int id)
+        {
+            ProfileInfoDTO info = await this.ProfileService.QueryInfoAsync(id);
+            return Ok(info);
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using Reolin.Web.Api.Infra.IO;
+using System.IO;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
     internal static class AddFileServiceExtension
     {
-
         public static IServiceCollection AddFileService(this IServiceCollection source, string basePath)
         {
-            return source
-                .AddTransient(typeof(IFileService), isp => new FileService(basePath, new TwoCharDirectoryProvider()));
+            IFileService instance = new FileService(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, basePath),
+                                        new TwoCharDirectoryProvider());
+            return source.AddTransient(typeof(IFileService), isp => instance);
         }
     }
 }
