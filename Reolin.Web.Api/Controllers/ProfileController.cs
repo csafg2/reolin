@@ -8,6 +8,7 @@ using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
+using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
@@ -93,6 +94,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         //[Authorize]
         [RequireValidModel]
+        [RequestFormSizeLimit(3000)]
         //[Route("/[controller]/[action]")]
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
         {

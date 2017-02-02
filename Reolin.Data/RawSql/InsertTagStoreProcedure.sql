@@ -45,7 +45,7 @@ if	Exists(	Select	Name
 						Tag.Id		=	@newTagId
 							and	
 						ProfileId	=	@ProfileId)
-						return @newTagId;
+						return 2;
 
 if(@AddressId	= -1)
 	Insert	ProfileTag(ProfileId,	TagId)
@@ -53,4 +53,7 @@ if(@AddressId	= -1)
 else
 	Insert	AddressTag(AddressId,	TagId)
 				Values(@AddressId,	@newTagId)
+
+return 1;
+
 End

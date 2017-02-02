@@ -3,6 +3,7 @@ using Reolin.Data;
 using Reolin.Data.DTO;
 using Reolin.Data.Services;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ServiceTest
 {
@@ -23,7 +24,7 @@ namespace ServiceTest
         public void Profile_AddTag()
         {
             var id = _context.Profiles.First().Id;
-            _service.AddTagAsync(id, new[] { "restaurent", "shop22" }).Wait();
+            _service.AddTagAsync(id, new[] { "restaurent", "Hellow" }).Wait();
         }
 
         [TestMethod]

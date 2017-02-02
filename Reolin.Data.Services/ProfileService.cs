@@ -58,7 +58,8 @@ namespace Reolin.Data.Services
             List<Task<int>> operations = new List<Task<int>>();
             foreach (var tagParameter in tagNames)
             {
-                operations.Add(this.Context.Database
+                operations.Add(new DataContext()
+                    .Database
                         .ExecuteSqlCommandAsync(
                                                 INSERT_TAG_PROCEDURE, 
                                                 new SqlParameter("ProfileId", (long)profileId),
