@@ -10,9 +10,7 @@ namespace Reolin.Data
         public DbSet<Academy> Academies { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
-        //public DbSet<City> Cities { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        //public DbSet<Country> Countries { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Profile> Profiles { get; set; }
@@ -33,8 +31,15 @@ namespace Reolin.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(typeof(ProfileConfig).Assembly);
         }
+
+        public class StoreProcedures
+        {
+            public const string INSERT_TAG_PROCEDURE = "InsertTag";
+        }
+
     }
 }

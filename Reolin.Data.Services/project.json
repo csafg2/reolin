@@ -6,6 +6,7 @@
     "EntityFramework.Extended": "6.1.0.168",
     "NETStandard.Library": "1.6.1",
     "Reolin.Data.Services.Core": "1.0.0-*",
+    "System.Data.SqlClient": "4.3.0",
     "Utilities": "1.0.0-*"
   },
 

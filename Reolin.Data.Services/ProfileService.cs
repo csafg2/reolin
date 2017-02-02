@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Spatial;
+using static Reolin.Data.DataContext.StoreProcedures;
+using System.Data.SqlClient;
 
 namespace Reolin.Data.Services
 {
@@ -45,9 +47,39 @@ namespace Reolin.Data.Services
                             });
         }
 
-        public Task AddTagAsync(int profileId, IEnumerable<string> tags)
+        public  async Task AddTagAsync(int profileId, IEnumerable<string> tags)
         {
-            throw new NotImplementedException();
+            // foreach tag:
+            // 1: check if exists if so then attach it to profileId
+            // otherwise create and then attack it to profileId
+            // TODO: modify stored procedure to this operation in one query
+            // TODO: test it
+            SqlParameter profileIdParamter = new SqlParameter("@ProfileId", profileId);
+            List<SqlParameter> tagNames = this.GetTagParams(tags);
+            List<Task<int>> operations = new List<Task<int>>();
+
+            foreach (var tagParameter in tagNames)
+            {
+                operations.Add(this.Context.Database.ExecuteSqlCommandAsync(INSERT_TAG_PROCEDURE, profileIdParamter, tagParameter));
+            }
+
+            await Task.WhenAll(operations);
+        }
+
+        private List<SqlParameter> GetTagParams(IEnumerable<string> tags)
+        {
+            List<SqlParameter> tagNames = new List<SqlParameter>();
+            foreach (var item in tags)
+            {
+                if (string.IsNullOrEmpty(item))
+                {
+                    throw new InvalidOperationException("Tags can not have empty text or name");
+                }
+
+                tagNames.Add(new SqlParameter("@TagName", item));
+            }
+
+            return tagNames;
         }
 
         public IQueryable<ProfileByTagDTO> GetByTagAsync(string tag)
