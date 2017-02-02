@@ -3,6 +3,9 @@ using Reolin.Data;
 using Reolin.Data.DTO;
 using Reolin.Data.Services;
 using System.Linq;
+using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace ServiceTest
 {
@@ -18,6 +21,21 @@ namespace ServiceTest
             this._service = new ProfileService(_context);
         }
 
+        [TestMethod]
+        public void Profile_GetByTag()
+        {
+            var all = this._service.GetByTagAsync("C++").ToList();
+            Assert.IsTrue(all.Count > 0);
+        }
+
+        [TestMethod]
+        public void Profile_GetRelated()
+        {
+            var data = this._service.GetRelatedProfiles(1).Result;
+            var items = data.ToList();
+            Assert.IsTrue(items.Count() > 0);
+        }
+
 
         [TestMethod]
         public void Profile_AddTag()
@@ -31,10 +49,10 @@ namespace ServiceTest
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "i am a #Lawyer",
-                Name = "Mohammad Rouhani",
-                Latitude = 90,
-                Longitude = 90
+                Description = "the #Musician",
+                Name = "Yanni",
+                Latitude = 87,
+                Longitude = 87
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateAsync(userId, dto).Result;

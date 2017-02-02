@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Reolin.Web.Api.Infra.IO;
 using System.IO;
 
@@ -7,11 +7,10 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
     internal static class AddFileServiceExtension
     {
-        public static IServiceCollection AddFileService(this IServiceCollection source, string basePath)
+        public static IServiceCollection AddFileService(this IServiceCollection source, string basePath, IHostingEnvironment env)
         {
-            basePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, basePath);
-            IFileService instance = new FileService(basePath, new TwoCharDirectoryProvider());
-            return source.AddTransient(typeof(IFileService), isp => instance);
+            return source.AddTransient(typeof(IFileService), isp =>
+                new FileService(Path.Combine(env.WebRootPath, basePath), new TwoCharDirectoryProvider()));
         }
     }
 }

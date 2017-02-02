@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {

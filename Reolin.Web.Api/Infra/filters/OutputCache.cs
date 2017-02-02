@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Caching.Memory;
 using System;
 
-namespace Reolin.Web.Api.Infra.filters
+namespace Reolin.Web.Api.Infra.Filters
 {
     /// <summary>
     /// caches the api response 

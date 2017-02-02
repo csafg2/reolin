@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Helpers;
-using Reolin.Web.Api.Infra.filters;
+using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
 using Reolin.Web.Security;

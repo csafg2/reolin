@@ -112,8 +112,17 @@ namespace Reolin.Data.Services.Core
         /// <returns> <1 if successfully updated</returns>
         Task<int> SetUserLocation(string userName, double longitude, double latitude);
         
-        
+        /// <summary>
+        /// retrieve all users within the radius range specified
+        /// </summary>
+        /// <param name="sourceLat"></param>
+        /// <param name="sourceLong"></param>
+        /// <param name="radius"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         Task<List<User>> GetNearybyUsers(double sourceLat, double sourceLong, double radius, string tag);
+
+        
         Task<int> SetUserInfo(int userName, string firstName, string lastName);
 
 

@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.DependecyRegistration;
 using Reolin.Web.Api.Infra.Middlewares;
+using System.IO;
 
 namespace Reolin.Web.Api
 {
@@ -21,18 +23,19 @@ namespace Reolin.Web.Api
                 //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
+            Environment = env;
             Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; }
-
+        public IHostingEnvironment Environment { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddProfileService();
             services.AddCorsWithDefaultConfig();
-            services.AddFileService(Configuration["BaseUploadPath"]);
+            services.AddFileService(Configuration["BaseUploadPath"], this.Environment);
             services.AddJwtDependencies();
             services.AddJwtValidationRequirement(services.BuildServiceProvider());
             services.AddMemoryCache();
@@ -44,6 +47,9 @@ namespace Reolin.Web.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+
+            app.UseFileServer(true);
+
             app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
             loggerFactory.UseSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
@@ -54,7 +60,6 @@ namespace Reolin.Web.Api
                 //app.UseStaticFiles();
                 loggerFactory.AddDebug();
             }
-
 
             //app.UseDeveloperExceptionPage();
 

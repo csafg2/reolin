@@ -38,7 +38,7 @@ namespace ServiceTest_
 
 
         [TestMethod]
-        public void Test_CrateAsync()
+        public void User_CrateAsync()
         {
             var user = new User()
             {
@@ -54,22 +54,22 @@ namespace ServiceTest_
         }
 
         [TestMethod]
-        public void Test_ValidateAsync()
+        public void User_ValidateAsync()
         {
 
         }
 
         [TestMethod]
-        public void Test_ChangePasswordAsync()
+        public void User_ChangePasswordAsync()
         { }
 
         [TestMethod]
-        public void Test_GetUserByEmailAsync()
+        public void User_GetUserByEmailAsync()
         {
         }
 
         [TestMethod]
-        public void Test_GetByUserNameAsync()
+        public void User_GetByUserNameAsync()
         {
 
         }

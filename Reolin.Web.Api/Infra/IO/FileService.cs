@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.PlatformAbstractions;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -45,7 +46,7 @@ namespace Reolin.Web.Api.Infra.IO
             {
                 await input.CopyToAsync(stream);
             }
-            return Path.Combine(subDirectory, fileName);
+            return Path.Combine(this._basePath, subDirectory, fileName);
         }
 
         private string RenameFile(string fullPath)
@@ -69,7 +70,9 @@ namespace Reolin.Web.Api.Infra.IO
         /// <returns></returns>
         private string GetDirectory(string subDirectory)
         {
-            string directory = Path.Combine(_basePath, subDirectory);
+            //basePath: some thing like  this: e:\files
+            string basePath2 = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, _basePath);
+            string directory = Path.Combine(basePath2, subDirectory);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);

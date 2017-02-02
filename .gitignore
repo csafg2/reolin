@@ -246,3 +246,5 @@ ModelManifest.xml
 
 # Javascript files
 *.js
+*.png
+*.jpg

@@ -37,7 +37,7 @@ namespace ControllerUnitTest
             //Act
             var result = controller.AddImage(
                 new AddImageToProfileViewModel() { ProfileId = id },
-                new[] { file }).Result;
+                 file ).Result;
 
 
             // assert:

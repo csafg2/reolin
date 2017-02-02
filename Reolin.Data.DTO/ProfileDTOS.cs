@@ -1,6 +1,13 @@
 ﻿
 namespace Reolin.Data.DTO
 {
+    public class RelatedProfileDTO 
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Id { get; set; }
+    }
+
     public class ProfileInfoDTO: ProfileByTagDTO
     {
     }

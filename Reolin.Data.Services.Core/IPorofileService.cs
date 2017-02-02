@@ -60,6 +60,6 @@ namespace Reolin.Data.Services.Core
 
         Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong);
 
-        Task<List<CreateProfileDTO>> GetRelatedProfiles(int profileId);
+        Task<List<Profile>> GetRelatedProfiles(int profileId);
     }
 }

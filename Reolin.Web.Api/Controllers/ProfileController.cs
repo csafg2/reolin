@@ -7,7 +7,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
-using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
@@ -43,14 +42,14 @@ namespace Reolin.Web.Api.Controllers
                 return _profileService;
             }
         }
-        
+
         /// <summary>
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
         /// <param name="tag">the tag text to search for</param>
         /// <returns></returns>
         [HttpGet]
-        //[Route("/[controller]/[action]")]
+        [Route("/[controller]/[action]")]
         [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<ProfileByTagDTO>))]
         public async Task<IActionResult> GetByTag(string tag)
@@ -74,7 +73,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [Authorize]
         [RequireValidModel]
-        //[Route("/[controller]/[action]")]
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
         {
             Task addDescriptionTask = this.ProfileService.AddDescriptionAsync(model.Id, model.Description);
@@ -95,11 +94,12 @@ namespace Reolin.Web.Api.Controllers
         //[Authorize]
         [RequireValidModel]
         [RequestFormSizeLimit(3000)]
-        //[Route("/[controller]/[action]")]
-        public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IEnumerable<IFormFile> files)
+        [Route("/[controller]/[action]")]
+        public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IFormFile file)
         {
-            // TODO: test it
-            IFormFile file = files.FirstOrDefault() ?? Request.Form.Files[0];
+            if (file == null)
+                return BadRequest();
+
             using (var stream = file.OpenReadStream())
             {
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
@@ -127,7 +127,7 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
-
+        [HttpPost]
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
@@ -149,10 +149,33 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="id">profieId</param>
         /// <returns></returns>
         //[Authorize]
+        [Route("/[Controller]/[action]/{id}")]
+        [HttpGet]
         public async Task<IActionResult> GetInfo(int id)
         {
             ProfileInfoDTO info = await this.ProfileService.QueryInfoAsync(id);
             return Ok(info);
+        }
+
+        /// <summary>
+        /// Get all profiles that are related to this profile by tag
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]/{profileId}")]
+        public async Task<IActionResult> GetRelated(int profileId)
+        {
+            var data = (await this.ProfileService.GetRelatedProfiles(profileId))
+                .Select(p => new RelatedProfileDTO()
+                {
+                    Description = p.Description,
+                    Name = p.Name,
+                    Id = p.Id
+                });
+
+
+            return Ok(data);
         }
     }
 }

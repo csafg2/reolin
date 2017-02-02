@@ -10,7 +10,6 @@ using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using static Reolin.Data.DataContext.StoreProcedures;
 using System.Data.SqlClient;
-using System.Linq.Expressions;
 
 namespace Reolin.Data.Services
 {
@@ -168,11 +167,12 @@ namespace Reolin.Data.Services
             return this.Context.Profiles.Where(p => p.Address.Location.Distance(other) < radius).ToListAsync();
         }
 
-        public Task<List<CreateProfileDTO>> GetRelatedProfiles(int profileId)
+        public Task<List<Profile>> GetRelatedProfiles(int profileId)
         {
-            //this.Context.Profiles.Where(p => p.Tags.Any(t => t.Name.Contains()))
-            throw new NotImplementedException();
-
+            return this._context
+                .Profiles
+                    .SqlQuery(GET_RELATED_PROFILES_PROCEDURE, new SqlParameter("ProfileId", profileId))
+                        .ToListAsync();
         }
     }
 

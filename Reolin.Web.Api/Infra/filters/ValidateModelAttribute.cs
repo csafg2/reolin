@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace Reolin.Web.Api.Infra.filters
+namespace Reolin.Web.Api.Infra.Filters
 {
     public class RequireValidModelAttribute : Attribute, IActionFilter
     {
