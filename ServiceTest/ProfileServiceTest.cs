@@ -18,20 +18,28 @@ namespace ServiceTest
             this._service = new ProfileService(_context);
         }
 
+
         [TestMethod]
-        public void AddProfileToUser()
+        public void AddTagTest()
         {
-            var userId = _context.Users.First().Id;
-            var dto = new CreateProfileDTO()
-            {
-                Latitude = 50,
-                Longitude = 49,
-                Description = "Hellow world #engineer"
-            };
-            int result = this._service.CreateAsync(userId, dto).Result.Id;
-            Assert.IsTrue(result > 0);
+            var id = _context.Profiles.First().Id;
+            _service.AddTagAsync(id, new[] { "restaurent", "shop22" }).Wait();
         }
 
+        [TestMethod]
+        public void CreateProfile()
+        {
+            var dto = new CreateProfileDTO()
+            {
+                Description = "i am a #software #engineer",
+                Name = "Hassan hashemi",
+                Latitude = 50,
+                Longitude = 50
+            };
+            var userId = _context.Users.First().Id;
+            var p = this._service.CreateAsync(userId, dto).Result;
+            Assert.IsTrue(p.Id > 0);
+        }
 
         [TestMethod]
         public void TestAddLike()

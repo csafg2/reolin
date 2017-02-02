@@ -141,6 +141,11 @@ namespace Reolin.Web.Api.Controllers
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
 
+        /// <summary>
+        /// Retrieve Profile information by Id
+        /// </summary>
+        /// <param name="id">profieId</param>
+        /// <returns></returns>
         //[Authorize]
         public async Task<IActionResult> GetInfo(int id)
         {

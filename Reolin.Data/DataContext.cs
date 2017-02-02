@@ -34,11 +34,12 @@ namespace Reolin.Data
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(typeof(ProfileConfig).Assembly);
+            
         }
 
         public class StoreProcedures
         {
-            public const string INSERT_TAG_PROCEDURE = "InsertTag";
+            public const string INSERT_TAG_PROCEDURE = "InsertTag @ProfileId, @AddressId, @TagName ";
         }
 
     }
