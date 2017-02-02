@@ -8,7 +8,7 @@ namespace Reolin.Web.Api.ViewModels.profile
 {
     public class SearchProfilesInRangeModel
     {
-        [Required(ErrorMessage = "Tag to search is required")]
+        [Required(ErrorMessage = "Tag to search is required", AllowEmptyStrings = false)]
         public string Tag { get; set; }
         
         [Required(ErrorMessage = "Search Range is required")]
@@ -28,10 +28,10 @@ namespace Reolin.Web.Api.ViewModels.profile
 
     public class ProfileCreateModel
     {
-        [Required(ErrorMessage = "Profile Name is required")]
+        [Required(ErrorMessage = "Profile Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Description text is mandatory")]
+        [Required(ErrorMessage = "Description text is mandatory", AllowEmptyStrings = false)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Latitude is Mandatory")]

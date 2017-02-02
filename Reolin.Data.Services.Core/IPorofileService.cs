@@ -1,6 +1,7 @@
 ﻿
 using Reolin.Data.Domain;
 using Reolin.Data.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,5 +59,7 @@ namespace Reolin.Data.Services.Core
         Task<ProfileInfoDTO> QueryInfoAsync(int id);
 
         Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong);
+
+        Task<List<CreateProfileDTO>> GetRelatedProfiles(int profileId);
     }
 }

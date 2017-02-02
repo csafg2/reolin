@@ -23,7 +23,7 @@ namespace ServiceTest
         public void Profile_AddTag()
         {
             var id = _context.Profiles.First().Id;
-            _service.AddTagAsync(id, new[] { "restaurent", "Hellow" }).Wait();
+            _service.AddTagAsync(id, new[] { "Soldier" }).Wait();
         }
 
         [TestMethod]
@@ -31,10 +31,10 @@ namespace ServiceTest
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "i am a #software #engineer",
-                Name = "Hassan hashemi",
-                Latitude = 50,
-                Longitude = 50
+                Description = "i am a #Lawyer",
+                Name = "Mohammad Rouhani",
+                Latitude = 90,
+                Longitude = 90
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateAsync(userId, dto).Result;

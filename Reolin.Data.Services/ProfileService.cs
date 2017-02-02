@@ -10,6 +10,8 @@ using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using static Reolin.Data.DataContext.StoreProcedures;
 using System.Data.SqlClient;
+using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Reolin.Data.Services
 {
@@ -52,7 +54,6 @@ namespace Reolin.Data.Services
             // foreach tag:
             // 1: check if exists if so then attach it to profileId
             // otherwise create and then attack it to profileId
-            // TODO: modify stored procedure to this operation in one query
             
             List<SqlParameter> tagNames = this.GetTagParams(tags);
             List<Task<int>> operations = new List<Task<int>>();
@@ -166,6 +167,13 @@ namespace Reolin.Data.Services
         {
             DbGeography other = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
             return this.Context.Profiles.Where(p => p.Address.Location.Distance(other) < radius).ToListAsync();
+        }
+
+        public Task<List<CreateProfileDTO>> GetRelatedProfiles(int profileId)
+        {
+            //this.Context.Profiles.Where(p => p.Tags.Any(t => t.Name.Contains()))
+            throw new NotImplementedException();
+
         }
     }
 
