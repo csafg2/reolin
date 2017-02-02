@@ -15,21 +15,10 @@ using Reolin.Web.Api.ViewModels;
 namespace ControllerUnitTest
 {
     [TestClass]
-    public class AccountControllerTests
-    {
-        [TestMethod]
-        public void TestLogin()
-        {
-            
-        }
-    }
-
-
-    [TestClass]
     public class ProfileControllerTests2
     {
         [TestMethod]
-        public void AddImageAction()
+        public void ProfilerController_AddImageAction()
         {
             //Arrange:
             IProfileService service = new ProfileService(new DataContext());

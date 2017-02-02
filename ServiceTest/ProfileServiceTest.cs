@@ -20,14 +20,14 @@ namespace ServiceTest
 
 
         [TestMethod]
-        public void AddTagTest()
+        public void Profile_AddTag()
         {
             var id = _context.Profiles.First().Id;
             _service.AddTagAsync(id, new[] { "restaurent", "shop22" }).Wait();
         }
 
         [TestMethod]
-        public void CreateProfile()
+        public void Profile_Create()
         {
             var dto = new CreateProfileDTO()
             {
@@ -42,7 +42,7 @@ namespace ServiceTest
         }
 
         [TestMethod]
-        public void TestAddLike()
+        public void Profile_AddLike()
         {
             var profile = this._context.Profiles.First();
             var user = this._context.Users.First();
@@ -52,7 +52,7 @@ namespace ServiceTest
         }
 
         [TestMethod]
-        public void TestAddImage()
+        public void Profile_AddImage()
         {
             var profileId = this._context.Profiles.First().Id;
             int result = _service.AddProfileImageAsync(profileId, @"\99\100\2.jpg").Result;

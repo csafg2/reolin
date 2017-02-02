@@ -41,17 +41,16 @@ if	Exists(	Select	Name
 				Inner	Join	ProfileTag
 				On
 				Tag.Id	=	ProfileTag.TagId
-				Where	Tag.Id		=	@newTagId
-						and	
+				Where	
+						Tag.Id		=	@newTagId
+							and	
 						ProfileId	=	@ProfileId)
 						return @newTagId;
 
 if(@AddressId	= -1)
 	Insert	ProfileTag(ProfileId,	TagId)
 			Values(@ProfileId,	@newTagId);
-
 else
 	Insert	AddressTag(AddressId,	TagId)
 				Values(@AddressId,	@newTagId)
-
 End
