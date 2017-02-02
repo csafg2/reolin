@@ -1,4 +1,5 @@
 ﻿using Reolin.Data.Domain;
+using Reolin.Data.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,14 +57,71 @@ namespace Reolin.Data.Services.Core
         /// <param name="userName"></param>
         /// <returns></returns>
         Task<User> GetByUserName(string userName);
+
+        /// <summary>
+        /// retrieve a user object by userName
+        /// </summary>
+        /// <param name="userName">username field of the user</param>
+        /// <param name="includes">navigational properties to include in query</param>
+        /// <returns></returns>
         Task<User> GetByUserName(string userName, params string[] includes);
+
+        /// <summary>
+        /// Updates a user object
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         Task UpdateAsync(User user);
+
+        /// <summary>
+        /// add a user to a role group
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId">the roleId in which the user should be added</param>
+        /// <returns></returns>
         Task<int> AddToRole(int userId, int roleId);
+
+        /// <summary>
+        /// add a user to a role group
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleId">the role name in which the user should be added</param>
+        /// <returns></returns>
         Task<int> AddToRole(int userId, string role);
+
+        /// <summary>
+        /// checks weather a user exists
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>true if user exists otherwise false</returns>
         Task<bool> UserExists(string userName);
+
+        /// <summary>
+        /// retrieve a user object by it`s email field
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         Task<User> GetByEmailAsync(string email);
+
+        /// <summary>
+        /// Updates the user location to the specified lat and long
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="longitude"></param>
+        /// <param name="latitude"></param>
+        /// <returns> <1 if successfully updated</returns>
         Task<int> SetUserLocation(string userName, double longitude, double latitude);
+        
+        
         Task<List<User>> GetNearybyUsers(double sourceLat, double sourceLong, double radius, string tag);
         Task<int> SetUserInfo(int userName, string firstName, string lastName);
+
+
+        /// <summary>
+        /// Gets all profile entries that are attached to this userId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        Task<List<ProfileInfoDTO>> QueryProfiles(int userId);
     }
 }

@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
@@ -46,10 +49,15 @@ namespace Reolin.Web.Api.Controllers
         }
 
 
-        public async Task<IActionResult> QueryProfils(int userId)
+        /// <summary>
+        /// Query profile entries that are attached to a userId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> QueryProfiles(int userId)
         {
-            // TODO: implement this.
-            throw new NotImplementedException();
+            return Ok(await this.UserService.QueryProfiles(userId));
+            
         }
     }
 }

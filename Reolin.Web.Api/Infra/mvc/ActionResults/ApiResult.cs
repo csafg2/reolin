@@ -17,11 +17,21 @@ namespace Reolin.Web.Api.Infra.mvc
         private readonly int _statusCode;
         private const string JSON_MEDIA_TYPE = "application/json";
 
+        /// <summary>
+        /// intializes a new instance of ApiResult
+        /// </summary>
+        /// <param name="data">the object to be serialized down to stream</param>
         public ApiResult(object data) : this(HttpStatusCode.Accepted, data)
         {
 
         }
 
+
+        /// <summary>
+        /// intializes a new instance of ApiResult
+        /// </summary>
+        /// <param name="statusCode">response status code</param>
+        /// <param name="data">the object to be serialized down to stream</param>
         public ApiResult(HttpStatusCode statusCode, object data)
         {
             if (data == null)
@@ -33,6 +43,7 @@ namespace Reolin.Web.Api.Infra.mvc
             this._data = data;
         }
 
+#pragma warning disable CS1591
         public override void ExecuteResult(ActionContext context)
         {
             this.Write(context, this.CreateResponse(context));

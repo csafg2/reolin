@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Authorization;
 using Reolin.Web.Security.Jwt;
 using System;
 using System.Linq;
@@ -14,11 +16,12 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
     {
         private IJwtManager _jwtManager;
 
+
         public ValidTokenRequirment(IJwtManager manager)
         {
             _jwtManager = manager;
         }
-
+        
         public static string Name { get { return "ValidJwt"; } }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ValidTokenRequirment requirement)

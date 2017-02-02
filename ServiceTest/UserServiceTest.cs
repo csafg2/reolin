@@ -6,13 +6,27 @@ using Reolin.Data.Services;
 using Reolin.Data.Domain;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
+using Reolin.Data.Services.Core;
 
 namespace ServiceTest_
 {
     [TestClass]
     public class UserServiceTest_
     {
-        public UserService Service { get; private set; }
+        public IUserService Service { get; private set; }
+
+        DataContext context = new DataContext();
+        
+        [TestMethod]
+        public void User_QueryProfile()
+        {
+            
+            var id = context.Users.First().Id;
+            var profiles = Service.QueryProfiles(id).Result;
+
+            Assert.IsTrue(profiles.Count() > 0);
+        }
 
         public UserServiceTest_()
         {
@@ -34,11 +48,9 @@ namespace ServiceTest_
                 Email = "HassanHashemi@yahoo.com"
             };
 
-            if (this.Service.GetByUserName(user.UserName) == null)
-            {
-                int count = this.Service.CreateAsync(user).Result;
-                Assert.IsTrue(count > 0);
-            }
+
+            int count = this.Service.CreateAsync(user).Result;
+            Assert.IsTrue(count > 0);
         }
 
         [TestMethod]

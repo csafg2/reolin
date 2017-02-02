@@ -35,6 +35,11 @@ namespace Reolin.Web.Api.Infra.filters
             }
         }
 
+        /// <summary>
+        /// Instantiates a new CacheFilter which implements IFilterMetadata
+        /// </summary>
+        /// <param name="serviceProvider">a service provider object to resolve the underlying caching store from.</param>
+        /// <returns></returns>
         public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
         {
             IMemoryCache cache = serviceProvider.GetService(typeof(IMemoryCache)) as IMemoryCache;

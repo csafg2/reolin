@@ -9,6 +9,7 @@ using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Reolin.Data.DTO;
 
 namespace Reolin.Data.Services
 {
@@ -250,6 +251,20 @@ namespace Reolin.Data.Services
                               FirstName = firstName,
                               LastName = lastName
                           });
+
+        }
+
+        public Task<List<ProfileInfoDTO>> QueryProfiles(int userId)
+        {
+            return this.Context.Profiles
+                .Where(p => p.UserId == userId)
+                    .Select(p => new ProfileInfoDTO()
+                    {
+                        Description = p.Description,
+                        Latitude = p.Address.Location.Latitude,
+                        Longitude = p.Address.Location.Longitude,
+                        Name = p.Name
+                    }).ToListAsync();
 
         }
     }

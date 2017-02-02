@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using static Reolin.Web.Security.Jwt.JwtConstantsLookup;
 
 namespace Reolin.Web.Api.Helpers
 {
+
     public static class HttpRequestExtensions
     {
         public static JwtSecurityToken GetRequestToken(this HttpRequest source)

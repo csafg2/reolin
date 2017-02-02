@@ -3,7 +3,6 @@ using Reolin.Data;
 using Reolin.Data.DTO;
 using Reolin.Data.Services;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ServiceTest
 {
@@ -55,6 +54,7 @@ namespace ServiceTest
         [TestMethod]
         public void Profile_AddImage()
         {
+            
             var profileId = this._context.Profiles.First().Id;
             int result = _service.AddProfileImageAsync(profileId, @"\99\100\2.jpg").Result;
             

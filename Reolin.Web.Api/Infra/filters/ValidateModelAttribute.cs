@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
 namespace Reolin.Web.Api.Infra.filters
 {
-
     public class RequireValidModelAttribute : Attribute, IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)
