@@ -9,6 +9,7 @@ namespace Reolin.Data.Domain
         public string Name { get; set; }
         public List<User> Users { get; set; }
         public List<Profile> Profiles { get; set; }
+        public List<Address> Addresses { get; set; }
         
     }
 

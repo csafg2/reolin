@@ -5,12 +5,11 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
-        /* Always set the map height explicitly to define the size of the div
-        * element that contains the map. */
+
         #map {
             height: 100%;
         }
-        /* Optional: Makes the sample page fill the window. */
+
         html, body {
             height: 100%;
             margin: 0;
@@ -25,7 +24,7 @@
             crossorigin="anonymous"></script>
     <script>
         var observer = new MutationObserver(function (mutations) {
-            for (var i = 0; mutations[i]; ++i) { // notify when script to hack is added in HTML head
+            for (var i = 0; mutations[i]; ++i) {
                 if (mutations[i].addedNodes[0].nodeName == "SCRIPT" && mutations[i].addedNodes[0].src.match(/\/AuthenticationService.Authenticate?/g)) {
                     var str = mutations[i].addedNodes[0].src.match(/[?&]callback=.*[&$]/g);
                     if (str) {
@@ -45,7 +44,6 @@
         });
         var config = { attributes: true, childList: true, characterData: true }
         observer.observe(document.head, config);
-
 
         function initMap(location)
         {

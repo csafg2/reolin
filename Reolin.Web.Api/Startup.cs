@@ -29,6 +29,8 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext(Configuration.GetConnectionString("Default"));
+            services.AddProfileService();
             services.AddCorsWithDefaultConfig();
             services.AddFileService(Configuration["BaseUploadPath"]);
             services.AddJwtDependencies();

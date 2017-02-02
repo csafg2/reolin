@@ -1,3 +1,4 @@
+using Reolin.Data.DTO;
 using System.Collections.Generic;
 
 namespace Reolin.Data.Domain
@@ -20,6 +21,17 @@ namespace Reolin.Data.Domain
         public User User { get; set; }
         public int UserId { get; set; }
         public List<PhoneNumber> PhoneNumbers { get; set; }
+        
+        public static implicit operator ProfileInfoDTO(Profile source)
+        {
+            return new ProfileInfoDTO()
+            {
+                Name = source.Name,
+                Description = source.Description,
+                Latitude = source.Address.Location.Latitude,
+                Longitude = source.Address.Location.Longitude
+            };
+        }
     }
 
 }

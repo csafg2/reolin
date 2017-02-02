@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.Entity.Spatial;
+using static Reolin.Data.DataContext.StoreProcedures;
+using System.Data.SqlClient;
 
 namespace Reolin.Data.Services
 {
@@ -43,9 +47,39 @@ namespace Reolin.Data.Services
                             });
         }
 
-        public Task AddTagAsync(int profileId, IEnumerable<string> tags)
+        public  async Task AddTagAsync(int profileId, IEnumerable<string> tags)
         {
-            throw new NotImplementedException();
+            // foreach tag:
+            // 1: check if exists if so then attach it to profileId
+            // otherwise create and then attack it to profileId
+            // TODO: modify stored procedure to this operation in one query
+            // TODO: test it
+            SqlParameter profileIdParamter = new SqlParameter("@ProfileId", profileId);
+            List<SqlParameter> tagNames = this.GetTagParams(tags);
+            List<Task<int>> operations = new List<Task<int>>();
+
+            foreach (var tagParameter in tagNames)
+            {
+                operations.Add(this.Context.Database.ExecuteSqlCommandAsync(INSERT_TAG_PROCEDURE, profileIdParamter, tagParameter));
+            }
+
+            await Task.WhenAll(operations);
+        }
+
+        private List<SqlParameter> GetTagParams(IEnumerable<string> tags)
+        {
+            List<SqlParameter> tagNames = new List<SqlParameter>();
+            foreach (var item in tags)
+            {
+                if (string.IsNullOrEmpty(item))
+                {
+                    throw new InvalidOperationException("Tags can not have empty text or name");
+                }
+
+                tagNames.Add(new SqlParameter("@TagName", item));
+            }
+
+            return tagNames;
         }
 
         public IQueryable<ProfileByTagDTO> GetByTagAsync(string tag)
@@ -79,9 +113,9 @@ namespace Reolin.Data.Services
         }
 
 
-        public Task<int> CreateAsync(int userId, CreateProfileDTO dto)
+        public async Task<Profile> CreateAsync(int userId, CreateProfileDTO dto)
         {
-            User user = Context.Users.Include("Profiles").FirstOrDefault(u => u.Id == userId);
+            User user = await Context.Users.Include("Profiles").FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
             {
@@ -93,9 +127,12 @@ namespace Reolin.Data.Services
                 user.Profiles = new List<Profile>();
             }
 
-            user.Profiles.Add(InstantiateProfile(dto));
+            Profile result = InstantiateProfile(dto);
+            user.Profiles.Add(result);
 
-            return Context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
+
+            return result;
         }
 
         private Profile InstantiateProfile(CreateProfileDTO dto)
@@ -108,11 +145,24 @@ namespace Reolin.Data.Services
             return new Profile()
             {
                 Description = dto.Description,
+                Name = dto.Name,
                 Address = new Address()
                 {
                     Location = GeoHelpers.FromLongitudeLatitude(dto.Longitude, dto.Latitude)
                 }
             };
         }
+
+        public async Task<ProfileInfoDTO> QueryInfoAsync(int id)
+        {
+            return await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong)
+        {
+            DbGeography other = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
+            return this.Context.Profiles.Where(p => p.Address.Location.Distance(other) < radius).ToListAsync();
+        }
     }
+
 }

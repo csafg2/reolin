@@ -28,7 +28,7 @@ namespace ServiceTest
                 Longitude = 49,
                 Description = "Hellow world #engineer"
             };
-            int result = this._service.CreateAsync(userId, dto).Result;
+            int result = this._service.CreateAsync(userId, dto).Result.Id;
             Assert.IsTrue(result > 0);
         }
 
