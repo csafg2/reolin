@@ -10,7 +10,6 @@ using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using static Reolin.Data.DataContext.StoreProcedures;
 using System.Data.SqlClient;
-using System.Data.Entity;
 using System.Linq.Expressions;
 
 namespace Reolin.Data.Services
