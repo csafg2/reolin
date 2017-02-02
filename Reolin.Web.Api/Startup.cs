@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.DependecyRegistration;
 using Reolin.Web.Api.Infra.Middlewares;
-using System.IO;
+using Reolin.Web.Api.Infra.OptionsConfig;
 
 namespace Reolin.Web.Api
 {
@@ -32,6 +31,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddProfileService();
             services.AddCorsWithDefaultConfig();

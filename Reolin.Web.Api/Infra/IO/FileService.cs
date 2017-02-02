@@ -1,28 +1,31 @@
-﻿using Microsoft.Extensions.PlatformAbstractions;
+﻿#pragma warning disable CS1591
+
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
+using Reolin.Web.Api.Infra.OptionsConfig;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.IO
 {
-
     /// <summary>
     /// provides file related services, like saving it in file system
     /// </summary>
     public class FileService : IFileService
     {
-        private readonly string _basePath;
         private readonly IDirectoryProvider _provider;
+        private readonly UploadDirectorySettings _config;
+        private readonly string _webRootPath;
 
-        /// <summary>
-        /// initialized a new instance of FileService
-        /// </summary>
-        /// <param name="basePath">the baseDirecotry to store files in</param>
-        /// <param name="provider">a provider that provides subDirectory for storing files</param>
-        public FileService(string basePath, IDirectoryProvider provider)
+
+        public FileService(IDirectoryProvider provider,
+            IHostingEnvironment env,
+            IOptions<UploadDirectorySettings> config)
         {
             this._provider = provider;
-            this._basePath = basePath;
+            this._config = config.Value;
+            this._webRootPath = env.WebRootPath;
         }
 
         /// <summary>
@@ -46,7 +49,8 @@ namespace Reolin.Web.Api.Infra.IO
             {
                 await input.CopyToAsync(stream);
             }
-            return Path.Combine(this._basePath, subDirectory, fileName);
+
+            return Path.Combine(this._config.BasePath, subDirectory, fileName);
         }
 
         private string RenameFile(string fullPath)
@@ -71,8 +75,8 @@ namespace Reolin.Web.Api.Infra.IO
         private string GetDirectory(string subDirectory)
         {
             //basePath: some thing like  this: e:\files
-            string basePath2 = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, _basePath);
-            string directory = Path.Combine(basePath2, subDirectory);
+            string fullBasePath = Path.Combine(this._webRootPath, this._config.BasePath);
+            string directory = Path.Combine(fullBasePath, subDirectory);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -81,5 +85,4 @@ namespace Reolin.Web.Api.Infra.IO
             return directory;
         }
     }
-
 }

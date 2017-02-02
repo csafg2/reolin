@@ -9,8 +9,9 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
     {
         public static IServiceCollection AddFileService(this IServiceCollection source, string basePath, IHostingEnvironment env)
         {
-            return source.AddTransient(typeof(IFileService), isp =>
-                new FileService(Path.Combine(env.WebRootPath, basePath), new TwoCharDirectoryProvider()));
+            return source
+                .AddTransient(typeof(IDirectoryProvider), typeof(TwoCharDirectoryProvider))
+                .AddTransient(typeof(IFileService), typeof(FileService));
         }
     }
 }

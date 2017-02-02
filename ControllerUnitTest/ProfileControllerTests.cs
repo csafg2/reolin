@@ -23,7 +23,7 @@ namespace ControllerUnitTest
             //Arrange:
             IProfileService service = new ProfileService(new DataContext());
             string basePath = @"E:\data";
-            IFileService fileService = new FileService(basePath, new TwoCharDirectoryProvider());
+            IFileService fileService = null;// new FileService(new TwoCharDirectoryProvider(), HostingEnvironment);
             ProfileController controller = new ProfileController(service, null, fileService);
             int id = new DataContext().Profiles.First().Id;
             Mock<IFormFile> fileMock = new Mock<IFormFile>();
