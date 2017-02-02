@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,6 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
-#pragma warning disable CS1591
     [EnableCors("AllowAll")]
     public class ProfileController : BaseController
     {
@@ -43,18 +43,6 @@ namespace Reolin.Web.Api.Controllers
             }
         }
         
-
-        [RequireValidModel]
-        [HttpGet]
-        public async Task<IActionResult> InRange(SearchProfilesInRangeModel model)
-        {
-            IEnumerable<ProfileInfoDTO> data = 
-                (await this.ProfileService.GetInRange(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude))
-                .Cast<ProfileInfoDTO>();
-
-            return Ok(data);
-        }
-
         /// <summary>
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
@@ -74,9 +62,8 @@ namespace Reolin.Web.Api.Controllers
 
             var result = await this.ProfileService.GetByTagAsync(tag).ToListAsync();
 
-            return Json(result);
+            return Ok(result);
         }
-
 
         /// <summary>
         /// add a text description to the specified profile
@@ -123,8 +110,8 @@ namespace Reolin.Web.Api.Controllers
         /// Add a like entry to the specified Profile, note that the userId must be present in the request
         /// </summary>
         /// <param name="profileId">the Id of profile which has been liked</param>
-        [Authorize]
         [HttpPost]
+        [Authorize]
         [Route("/User/LikeProfile/{profileId}")]
         public async Task<IActionResult> Like(int profileId)
         {
@@ -138,8 +125,8 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
+
         [Route("/[controller]/[action]")]
-        [RequireValidModel]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
             Profile result = await this.ProfileService.CreateAsync(this.GetUserId(),
