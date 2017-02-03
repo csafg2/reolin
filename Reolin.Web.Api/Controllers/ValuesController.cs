@@ -28,6 +28,7 @@ namespace Reolin.Web.Api.Controllers
 
         [Authorize]
         [HttpGet]
+        [Route("[controller]/[action]")]
         public string Get()
         {
 

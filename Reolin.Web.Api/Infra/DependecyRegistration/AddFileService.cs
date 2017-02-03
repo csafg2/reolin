@@ -7,7 +7,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
     internal static class AddFileServiceExtension
     {
-        public static IServiceCollection AddFileService(this IServiceCollection source, string basePath, IHostingEnvironment env)
+        public static IServiceCollection AddFileService(this IServiceCollection source)
         {
             return source
                 .AddTransient(typeof(IDirectoryProvider), typeof(TwoCharDirectoryProvider))

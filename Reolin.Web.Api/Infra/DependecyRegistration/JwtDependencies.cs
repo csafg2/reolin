@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Reolin.Web.Api.Infra.AuthorizationRequirments;
 using Reolin.Web.Security.Jwt;
+using StackExchange.Redis;
 using System;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
@@ -24,8 +25,22 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
         {
             return source.AddTransient(typeof(IJwtProvider), typeof(JwtProvider))
                             .AddTransient(typeof(IOptions<TokenProviderOptions>), p => TokenOptions)
-                            .AddSingleton<IJwtStore>(new InMemoryJwtStore())
+                            .AddSingleton<IJwtStore>(ResolveJwtStore())
                             .AddTransient(typeof(IJwtManager), typeof(JwtManager));
+        }
+
+
+        private static IJwtStore ResolveJwtStore()
+        {
+            try
+            {
+                ConnectionMultiplexer mutex = ConnectionMultiplexer.Connect("localhost");
+                return new RedisJwtStore(mutex);
+            }
+            catch(Exception)
+            {
+                return new InMemoryJwtStore();
+            }
         }
 
         private static IOptions<TokenProviderOptions> TokenOptions

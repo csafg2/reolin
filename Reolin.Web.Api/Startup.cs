@@ -35,7 +35,7 @@ namespace Reolin.Web.Api
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddProfileService();
             services.AddCorsWithDefaultConfig();
-            services.AddFileService(Configuration["BaseUploadPath"], this.Environment);
+            services.AddFileService();
             services.AddJwtDependencies();
             services.AddJwtValidationRequirement(services.BuildServiceProvider());
             services.AddMemoryCache();
@@ -47,8 +47,7 @@ namespace Reolin.Web.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-
-            app.UseFileServer(true);
+            app.UseStaticFiles();
 
             app.UseExceptionHandler("/Error/SomeThingWentWrong");
 
@@ -57,7 +56,6 @@ namespace Reolin.Web.Api
             // comment this entire "if statement" in production
             if (env.IsDevelopment())
             {
-                //app.UseStaticFiles();
                 loggerFactory.AddDebug();
             }
 

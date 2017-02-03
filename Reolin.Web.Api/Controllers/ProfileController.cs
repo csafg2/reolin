@@ -148,7 +148,7 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="id">profieId</param>
         /// <returns></returns>
-        //[Authorize]
+        [Authorize]
         [Route("/[Controller]/[action]/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetInfo(int id)

@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace Reolin.Web.Security.Jwt
 {
     public interface IJwtStore
@@ -24,5 +26,9 @@ namespace Reolin.Web.Security.Jwt
         /// <param name="tokenId"></param>
         /// <returns></returns>
         bool HasToken(string userName, string tokenId);
+
+        Task AddAsync(string userName, string tokenId);
+        Task<bool> HasTokenAsync(string userName, string tokenId);
+        Task RemoveAsync(string userName, string tokenId);
     }
 }
