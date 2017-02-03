@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace Reolin.Web.Security.Jwt
 {
+    // TODO: modify this class to use async methods on IJwtStore
     public class JwtManager : IJwtManager
     {
         private readonly IJwtStore _store;

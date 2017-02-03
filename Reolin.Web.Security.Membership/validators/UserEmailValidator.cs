@@ -5,14 +5,19 @@ using System;
 
 namespace Reolin.Web.Security.Membership.Validators
 {
-    public class UserEmailValidator: IUserValidator
+    public class UserEmailValidator : IUserValidator
     {
         public Task<IdentityResult> ValidateEmail(string email)
         {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException(nameof(email));
+            }
+
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
-            return regex.Match(email).Success ? 
-                Task.FromResult(IdentityResult.FromSucceeded()) 
+            return regex.Match(email).Success ?
+                Task.FromResult(IdentityResult.FromSucceeded())
                 : Task.FromResult(IdentityResult.Failed(new InvalidEmailException("email format is not valid.")));
         }
 

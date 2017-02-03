@@ -23,6 +23,7 @@ namespace Reolin.Web.Security.Jwt
             }
         }
 
+
         public void Add(string userName, string tokenId)
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(tokenId))

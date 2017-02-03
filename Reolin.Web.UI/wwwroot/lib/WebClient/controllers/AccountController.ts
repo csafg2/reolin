@@ -47,7 +47,7 @@ module Reolin.Web.Client.Controllers
                     return;
                 }
                 console.log(xhr.responseText);
-                // TODO: redirect user to login page
+                // TODO : redirect user to login page
             });
         }
 

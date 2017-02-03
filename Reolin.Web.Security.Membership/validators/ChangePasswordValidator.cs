@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Reolin.Web.Security.Membership.Core;
+using System;
 
 namespace Reolin.Web.Security.Membership.Validators
 {
-    public class PasswordLengthValidator: IUserValidator
+    public class PasswordLengthValidator : IUserValidator
     {
         public Task<IdentityResult> ValidateEmail(string email)
         {
@@ -17,6 +18,11 @@ namespace Reolin.Web.Security.Membership.Validators
 
         public Task<IdentityResult> ValidatePassword(string password)
         {
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+
             if (password.Length > 50)
             {
                 return Task.FromResult(IdentityResult.Failed(new InvalidPasswordException("password length can not be over 50")));

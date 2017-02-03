@@ -25,8 +25,10 @@ namespace JwtTests
         int userId = 13;
         string[] roles = new[] { "admin", "superUser" };
 
+
+        
         [TestMethod]
-        public void TestTokenVerification()
+        public void JwtManager_TestTokenVerification()
         {
             options.Claims = GetPerUserClaims(userName, userId, roles);
             var token = manager.IssueJwt(options);
@@ -39,7 +41,7 @@ namespace JwtTests
         }
 
         [TestMethod]
-        public void TestExchange()
+        public void JwtManager_TestExchange()
         {
             options.Claims = GetPerUserClaims(this.userName, this.userId, this.roles);
 

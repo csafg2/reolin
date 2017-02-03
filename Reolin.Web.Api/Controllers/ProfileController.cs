@@ -88,10 +88,10 @@ namespace Reolin.Web.Api.Controllers
         /// adds an image to image collection of the profile
         /// </summary>
         /// <param name="model">a model that contians the profile id</param>
-        /// <param name="files">image file</param>
+        /// <param name="file">image file</param>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         [RequireValidModel]
         [RequestFormSizeLimit(3000)]
         [Route("/[controller]/[action]")]
@@ -117,9 +117,9 @@ namespace Reolin.Web.Api.Controllers
         [Route("/User/LikeProfile/{profileId}")]
         public async Task<IActionResult> Like(int profileId)
         {
-            int result = await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
+            await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
 
-            return Ok(result);
+            return Ok();
         }
 
         /// <summary>
@@ -131,6 +131,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
+            // TODO: store user`s location, using each individual tas as it`s key
             Profile result = await this.ProfileService.CreateAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
@@ -153,8 +154,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInfo(int id)
         {
-            ProfileInfoDTO info = await this.ProfileService.QueryInfoAsync(id);
-            return Ok(info);
+            return Ok(await this.ProfileService.QueryInfoAsync(id));
         }
 
         /// <summary>
@@ -173,7 +173,6 @@ namespace Reolin.Web.Api.Controllers
                     Name = p.Name,
                     Id = p.Id
                 });
-
 
             return Ok(data);
         }
