@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -183,15 +182,6 @@ namespace Reolin.Data.Services
         }
         
 
- 
-        public void Dispose()
-        {
-            if (_context != null)
-            {
-                this._context.Dispose();
-            }
-        }
-
         public Task<int> SetUserInfo(int userId, string firstName, string lastName)
         {
             return this.Context
@@ -218,6 +208,15 @@ namespace Reolin.Data.Services
                         Name = p.Name
                     }).ToListAsync();
 
+        }
+
+        
+        public void Dispose()
+        {
+            if (_context != null)
+            {
+                this._context.Dispose();
+            }
         }
     }
 }

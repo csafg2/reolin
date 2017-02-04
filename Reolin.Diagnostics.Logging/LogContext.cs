@@ -12,7 +12,7 @@ namespace Reolin.Web.Api.Infra.Logging
 
         public LogContext(string message) : base(message)
         {
-        }
+        } 
 
         public DbSet<Log> Logs { get; set; }
 
