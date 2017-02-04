@@ -36,6 +36,28 @@ namespace ServiceTest
             Assert.IsTrue(items.Count() > 0);
         }
 
+        [TestMethod]
+        public void Profile_GetInDistance()
+        {
+            string[] tags = new[] { "C++",
+               "Programming",
+               "restaurent",
+               "Hellow",
+               "J++",
+               "shop",
+               "web development" };
+            double distance = 1000;
+            var service = new ProfileLocationService(this._context);
+            foreach (var item in tags)
+            {
+                var r = service.GetByDistance(item, 50, 50, distance).Result.ToList();
+                if (r.Count > 0)
+                {
+                    Assert.IsTrue(true);
+                }
+            }
+
+        }
 
         [TestMethod]
         public void Profile_AddTag()
@@ -64,18 +86,18 @@ namespace ServiceTest
         {
             var profile = this._context.Profiles.First();
             var user = this._context.Users.First();
-            
-            var result = this._service.AddLikeAsync (user.Id, profile.Id).Result;
+
+            var result = this._service.AddLikeAsync(user.Id, profile.Id).Result;
             Assert.IsTrue(result > 0);
         }
 
         [TestMethod]
         public void Profile_AddImage()
         {
-            
+
             var profileId = this._context.Profiles.First().Id;
             int result = _service.AddProfileImageAsync(profileId, @"\99\100\2.jpg").Result;
-            
+
             Assert.IsTrue(result > 0);
         }
     }

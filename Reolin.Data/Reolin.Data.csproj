@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="RawSql\InsertTagStoreProcedure.sql" />
     <Content Include="RawSql\GetRelatedProfiles.sql" />
+    <Content Include="RawSql\GetRelateProfilesWithingRadius.sql" />
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>

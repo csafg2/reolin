@@ -75,15 +75,6 @@ namespace Reolin.Data.Services
             return role;
         }
 
-        //public Task<int> DeleteAsync(User user)
-        //{
-        //    if (user == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(user));
-        //    }
-        //    return this.DeleteAsync(user.Id);
-        //}
-
         public Task<int> DeleteAsync(int id)
         {
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
@@ -185,53 +176,14 @@ namespace Reolin.Data.Services
             return this.Context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<int> SetUserLocation(string userName, double longitude, double latitude)
-        {
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentNullException(nameof(userName));
-            }
-
-            if (!longitude.IsValidLongitude() || !latitude.IsValideLatitude())
-            {
-                throw new InvalidOperationException("longitude or latitude is invalid");
-            }
-
-            DbGeography location = GeoHelpers.FromLongitudeLatitude(longitude, latitude, GeoHelpers.Geo_SRID);
-
-            User user = await this.GetByUserName(userName, "Address");
-            user.Address = user.Address ?? new Address() { Location = location };
-            return await Context.SaveChangesAsync();
-        }
 
         public Task<User> GetByUserName(string userName, params string[] includes)
         {
             return this.Query(u => u.UserName == userName, includes).FirstOrDefaultAsync();
         }
+        
 
-        private Task<List<User>> GetNearybyUsers(DbGeography source, double radius, string tag)
-        {
-            return this.Context
-                .Users
-                    .Where(u => u.Tags.Any(t => t.Name == tag) && u.Address.Location.Distance(source) <= radius)
-                        .ToListAsync();
-        }
-
-        public Task<List<User>> GetNearybyUsers(double sourceLat, double sourceLong, double radius, string tag)
-        {
-            if (string.IsNullOrEmpty(tag))
-            {
-                throw new ArgumentNullException(nameof(tag));
-            }
-
-            if (!sourceLat.IsValideLatitude() || !sourceLong.IsValidLongitude())
-            {
-                throw new ArgumentException("Latitude or longitude is invalid");
-            }
-
-            return this.GetNearybyUsers(GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat, GeoHelpers.Geo_SRID), radius, tag);
-        }
-
+ 
         public void Dispose()
         {
             if (_context != null)

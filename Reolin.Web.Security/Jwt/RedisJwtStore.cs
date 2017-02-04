@@ -30,7 +30,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 throw new ArgumentException("Key or tokenId Can not be null.");
             }
-
+            
             this.RedisDatabase.ListLeftPush(userName, tokenId);
         }
 

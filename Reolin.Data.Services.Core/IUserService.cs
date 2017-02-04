@@ -104,15 +104,6 @@ namespace Reolin.Data.Services.Core
         Task<User> GetByEmailAsync(string email);
 
         /// <summary>
-        /// Updates the user location to the specified lat and long
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="longitude"></param>
-        /// <param name="latitude"></param>
-        /// <returns> <1 if successfully updated</returns>
-        Task<int> SetUserLocation(string userName, double longitude, double latitude);
-        
-        /// <summary>
         /// retrieve all users within the radius range specified
         /// </summary>
         /// <param name="sourceLat"></param>
@@ -120,8 +111,7 @@ namespace Reolin.Data.Services.Core
         /// <param name="radius"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        Task<List<User>> GetNearybyUsers(double sourceLat, double sourceLong, double radius, string tag);
-
+        
         
         Task<int> SetUserInfo(int userName, string firstName, string lastName);
 

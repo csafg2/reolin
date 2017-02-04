@@ -1,5 +1,4 @@
 ﻿
-
 IF EXISTS ( SELECT * 
             FROM   sysobjects 
             WHERE  id = object_id(N'[dbo].[GetRelatedProfilesByTag]') 

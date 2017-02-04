@@ -56,8 +56,8 @@ namespace Reolin.Data.EntityFramework.Config
             // but an address object might not be accuired just by a user
             // may be university or a restaurent profile
             // allow the user to log once.
-            this.HasOptional(u => u.Address)
-                .WithOptionalDependent(a => a.User);
+            //this.HasOptional(u => u.Address)
+            //    .WithOptionalDependent(a => a.User);
 
             // *:*
             // maybe a certificate like mcsd is earned by multiple users

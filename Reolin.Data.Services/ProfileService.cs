@@ -27,7 +27,7 @@ namespace Reolin.Data.Services
             this._context = context;
         }
 
-        private DataContext Context
+        protected DataContext Context
         {
             get
             {
@@ -52,7 +52,7 @@ namespace Reolin.Data.Services
             // foreach tag:
             // 1: check if exists if so then attach it to profileId
             // otherwise create and then attack it to profileId
-            
+
             List<SqlParameter> tagNames = this.GetTagParams(tags);
             List<Task<int>> operations = new List<Task<int>>();
             foreach (var tagParameter in tagNames)
@@ -60,7 +60,7 @@ namespace Reolin.Data.Services
                 operations.Add(new DataContext()
                     .Database
                         .ExecuteSqlCommandAsync(
-                                                INSERT_TAG_PROCEDURE, 
+                                                INSERT_TAG_PROCEDURE,
                                                 new SqlParameter("ProfileId", (long)profileId),
                                                 new SqlParameter("AddressId", -1),
                                                 tagParameter));
@@ -92,6 +92,7 @@ namespace Reolin.Data.Services
                         .Where(p => p.Tags.Any(t => t.Name.Contains(tag)))
                         .Select(p => new ProfileByTagDTO
                         {
+                            Name = p.Name,
                             Description = p.Description,
                             Latitude = p.Address.Location.Latitude,
                             Longitude = p.Address.Location.Longitude
@@ -140,11 +141,6 @@ namespace Reolin.Data.Services
 
         private Profile InstantiateProfile(CreateProfileDTO dto)
         {
-            if (dto == null)
-            {
-                throw new ArgumentNullException(nameof(dto));
-            }
-
             return new Profile()
             {
                 Description = dto.Description,
@@ -175,5 +171,4 @@ namespace Reolin.Data.Services
                         .ToListAsync();
         }
     }
-
 }
