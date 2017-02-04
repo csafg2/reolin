@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Reolin.Data.Services
 {
-
+    // TODO: decide about this class
     public class ProfileLocationService : ProfileService, IProfileLocationService
     {
         public ProfileLocationService(DataContext context) : base(context) { }
@@ -18,7 +18,7 @@ namespace Reolin.Data.Services
 
         public Task<List<ProfileRedisCacheDTO>> GetByDistance(string searchTag, double sourceLat, double sourceLong, double radius)
         {
-            var source = Context.Addresses.First().Location;
+            var source = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
             return this.Context
                             .Profiles.Include("Tags")
                             .Where(p => (p.Address.Location.Distance(source) <= radius)

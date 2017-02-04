@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Reolin.Web.Api.Infra.IO;
-using System.IO;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {

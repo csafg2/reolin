@@ -157,10 +157,22 @@ namespace Reolin.Data.Services
             return await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong)
+        public Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong)
         {
-            DbGeography other = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
-            return this.Context.Profiles.Where(p => p.Address.Location.Distance(other) < radius).ToListAsync();
+            var source = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
+            return this.Context
+                            .Profiles.Include("Tags")
+                            .Where(p => (p.Address.Location.Distance(source) <= radius)
+                                    && (p.Tags.Any(t => t.Name.Contains(tag))))
+                                .Select(p => new ProfileRedisCacheDTO()
+                                {
+                                    Id = p.Id,
+                                    Description = p.Description,
+                                    Latitude = p.Address.Location.Latitude,
+                                    Longitude = p.Address.Location.Longitude,
+                                    Tags = p.Tags.Select(t => new TagDTO() { Id = t.Id, Name = t.Name }),
+                                    Name = p.Name
+                                }).ToListAsync();
         }
 
         public Task<List<Profile>> GetRelatedProfiles(int profileId)

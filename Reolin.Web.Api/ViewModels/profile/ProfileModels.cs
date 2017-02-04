@@ -6,6 +6,7 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.Api.ViewModels.profile
 {
+    
     public class SearchProfilesInRangeModel
     {
         [Required(ErrorMessage = "Tag to search is required", AllowEmptyStrings = false)]
@@ -24,8 +25,7 @@ namespace Reolin.Web.Api.ViewModels.profile
         [Range(-90, 90, ErrorMessage = "Latitude is not Valid")]
         public double SourceLatitude { get; set; }
     }
-
-
+    
     public class ProfileCreateModel
     {
         [Required(ErrorMessage = "Profile Name is required", AllowEmptyStrings = false)]

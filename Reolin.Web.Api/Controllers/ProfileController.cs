@@ -176,5 +176,19 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(data);
         }
+
+
+        /// <summary>
+        /// Retrieve all profiles withing the specified range by meter which are associated with the desired #tag
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> SearchInAreaByTag(SearchProfilesInRangeModel model)
+        {
+            var data = await this.ProfileService.GetInRangeAsync(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude);
+            return Ok(data);
+        }
     }
 }

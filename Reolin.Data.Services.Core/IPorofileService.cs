@@ -58,7 +58,7 @@ namespace Reolin.Data.Services.Core
 
         Task<ProfileInfoDTO> QueryInfoAsync(int id);
 
-        Task<List<Profile>> GetInRange(string tag, double radius, double sourceLat, double sourceLong);
+        Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong);
 
         Task<List<Profile>> GetRelatedProfiles(int profileId);
     }

@@ -5,7 +5,7 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Debug/Reolin.Diagnostics.Logging.dll": {}
+        "bin/Release/Reolin.Diagnostics.Logging.dll": {}
       },
       "runtime": {
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
@@ -30,10 +30,10 @@
         "../packages/System.Security.Cryptography.Primitives.4.3.0/lib/net46/System.Security.Cryptography.Primitives.dll": {},
         "../packages/System.Security.Cryptography.X509Certificates.4.3.0/lib/net461/System.Security.Cryptography.X509Certificates.dll": {},
         "../packages/System.Xml.ReaderWriter.4.3.0/lib/net46/System.Xml.ReaderWriter.dll": {},
-        "bin/Debug/Reolin.Diagnostics.Logging.dll": {}
+        "bin/Release/Reolin.Diagnostics.Logging.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Reolin.Diagnostics.Logging.pdb": {
+        "bin/Release/Reolin.Diagnostics.Logging.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -44,40 +44,40 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Debug/Reolin.Data.dll": {}
+        "bin/Release/Reolin.Data.dll": {}
       },
       "runtime": {
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
         "../packages/Microsoft.SqlServer.Types.11.0.2/lib/net20/Microsoft.SqlServer.Types.dll": {},
-        "bin/Debug/Reolin.Data.dll": {}
+        "bin/Release/Reolin.Data.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/msvcr100.dll": {
+        "bin/Release/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/msvcr100.dll": {
           "buildAction": "Content",
           "codeLanguage": "any",
           "copyToOutput": true,
           "outputPath": "../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/msvcr100.dll"
         },
-        "bin/Debug/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/sqlserverspatial110.dll": {
+        "bin/Release/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/sqlserverspatial110.dll": {
           "buildAction": "Content",
           "codeLanguage": "any",
           "copyToOutput": true,
           "outputPath": "../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x64/sqlserverspatial110.dll"
         },
-        "bin/Debug/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/msvcr100.dll": {
+        "bin/Release/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/msvcr100.dll": {
           "buildAction": "Content",
           "codeLanguage": "any",
           "copyToOutput": true,
           "outputPath": "../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/msvcr100.dll"
         },
-        "bin/Debug/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/sqlserverspatial110.dll": {
+        "bin/Release/../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/sqlserverspatial110.dll": {
           "buildAction": "Content",
           "codeLanguage": "any",
           "copyToOutput": true,
           "outputPath": "../packages/microsoft.sqlserver.types.11.0.2/nativebinaries/x86/sqlserverspatial110.dll"
         },
-        "bin/Debug/Reolin.Data.pdb": {
+        "bin/Release/Reolin.Data.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -88,15 +88,15 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Debug/Reolin.Data.Domain.dll": {}
+        "bin/Release/Reolin.Data.Domain.dll": {}
       },
       "runtime": {
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
-        "bin/Debug/Reolin.Data.Domain.dll": {}
+        "bin/Release/Reolin.Data.Domain.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Reolin.Data.Domain.pdb": {
+        "bin/Release/Reolin.Data.Domain.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -107,13 +107,13 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/Debug/Reolin.Data.DTO.dll": {}
+        "bin/Release/Reolin.Data.DTO.dll": {}
       },
       "runtime": {
-        "bin/Debug/Reolin.Data.DTO.dll": {}
+        "bin/Release/Reolin.Data.DTO.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/Reolin.Data.DTO.pdb": {
+        "bin/Release/Reolin.Data.DTO.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
@@ -124,15 +124,15 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Debug/System.Data.EntityFramework.Config.dll": {}
+        "bin/Release/System.Data.EntityFramework.Config.dll": {}
       },
       "runtime": {
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
         "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
-        "bin/Debug/System.Data.EntityFramework.Config.dll": {}
+        "bin/Release/System.Data.EntityFramework.Config.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/System.Data.EntityFramework.Config.pdb": {
+        "bin/Release/System.Data.EntityFramework.Config.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

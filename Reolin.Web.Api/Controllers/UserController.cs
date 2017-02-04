@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
