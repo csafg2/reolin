@@ -22,6 +22,16 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void Profile_UpdateLocation()
+        {
+            var profileId = _context.Profiles.FirstAsync(p => p.Id % 2 == 0).Result.Id;
+
+            var result = _service.UpdateLocaiton(profileId, 35, 35).Result;
+
+            Assert.IsTrue(result > 0);
+        }
+
+        [TestMethod]
         public void Profile_GetByTag()
         {
             var all = this._service.GetByTagAsync("C++").ToList();
@@ -50,7 +60,7 @@ namespace ServiceTest
             var service = new ProfileLocationService(this._context);
             foreach (var item in tags)
             {
-                var r = service.GetByDistance(item, 50, 50, distance).Result.ToList();
+                var r = service.GetInRangeAsync(item, 50, 50, distance).Result.ToList();
                 if (r.Count > 0)
                 {
                     Assert.IsTrue(true);

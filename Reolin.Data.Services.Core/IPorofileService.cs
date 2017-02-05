@@ -61,5 +61,7 @@ namespace Reolin.Data.Services.Core
         Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong);
 
         Task<List<Profile>> GetRelatedProfiles(int profileId);
+
+        Task<int> UpdateLocaiton(int profileId, double latitude, double longitude);
     }
 }

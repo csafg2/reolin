@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Data.Entity.Spatial;
 using static Reolin.Data.DataContext.StoreProcedures;
 using System.Data.SqlClient;
 
@@ -47,13 +46,13 @@ namespace Reolin.Data.Services
                             });
         }
 
-        public async Task AddTagAsync(int profileId, IEnumerable<string> tags)
+        public virtual async Task AddTagAsync(int profileId, IEnumerable<string> tags)
         {
             // foreach tag:
             // 1: check if exists if so then attach it to profileId
             // otherwise create and then attack it to profileId
 
-            List<SqlParameter> tagNames = this.GetTagParams(tags);
+            List<SqlParameter> tagNames = this.GetTagSqlParams(tags);
             List<Task<int>> operations = new List<Task<int>>();
             foreach (var tagParameter in tagNames)
             {
@@ -69,7 +68,7 @@ namespace Reolin.Data.Services
             await Task.WhenAll(operations);
         }
 
-        private List<SqlParameter> GetTagParams(IEnumerable<string> tags)
+        private List<SqlParameter> GetTagSqlParams(IEnumerable<string> tags)
         {
             List<SqlParameter> tagNames = new List<SqlParameter>();
             foreach (var item in tags)
@@ -157,7 +156,7 @@ namespace Reolin.Data.Services
             return await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong)
+        public virtual Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong)
         {
             var source = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
             return this.Context
@@ -181,6 +180,14 @@ namespace Reolin.Data.Services
                 .Profiles
                     .SqlQuery(GET_RELATED_PROFILES_PROCEDURE, new SqlParameter("ProfileId", profileId))
                         .ToListAsync();
+        }
+
+        public virtual async Task<int> UpdateLocaiton(int profileId, double latitude, double longitude)
+        {
+            Profile profile = await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == profileId);
+            profile.Address.Location = GeoHelpers.FromLongitudeLatitude(longitude, latitude);
+
+            return await Context.SaveChangesAsync();
         }
     }
 }
