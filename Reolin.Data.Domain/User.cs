@@ -27,5 +27,7 @@ namespace Reolin.Data.Domain
 
         public string UserName { get; set; }
         public string PhoneNumber { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

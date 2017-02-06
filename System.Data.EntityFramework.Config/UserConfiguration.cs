@@ -95,6 +95,12 @@ namespace Reolin.Data.EntityFramework.Config
                 .Map(t => t.MapLeftKey("UserId")
                         .MapRightKey("RoleId")
                         .ToTable("UserRole"));
+
+            // 1:* user and comments
+            this.HasMany(u => u.Comments)
+                .WithRequired(c => c.User)
+                .HasForeignKey(c => c.UserId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

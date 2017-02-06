@@ -24,7 +24,7 @@ namespace Reolin.Data
         {
 
         }
-        public DataContext(string connectionString = "Default"): base(connectionString)
+        public DataContext(string connectionString = "Default") : base(connectionString)
         {
 
         }

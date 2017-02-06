@@ -15,7 +15,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
                 throw new ArgumentNullException(nameof(connectionString));
             }
 
-            return source.AddTransient(typeof(DataContext), sp => new DataContext(connectionString));
+            return source.AddTransient(typeof(DataContext), isp => new DataContext(connectionString));
         }
     }
 }

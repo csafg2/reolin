@@ -121,6 +121,9 @@ namespace Reolin.Data.Services.Core
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        Task<List<ProfileInfoDTO>> QueryProfiles(int userId);
+        Task<List<ProfileInfoDTO>> QueryProfilesAsync(int userId);
+
+
+        Task<int> AddCommentAsync(int userId, int profileId, string comment);
     }
 }

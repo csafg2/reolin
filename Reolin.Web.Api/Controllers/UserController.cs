@@ -48,11 +48,12 @@ namespace Reolin.Web.Api.Controllers
         /// <summary>
         /// Query profile entries that are attached to a userId
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="id">the id of desired user</param>
         /// <returns></returns>
-        public async Task<IActionResult> QueryProfiles(int userId)
+        public async Task<IActionResult> QueryProfiles(int id)
         {
-            return Ok(await this.UserService.QueryProfiles(userId));
+            var profiles = await this.UserService.QueryProfilesAsync(id);
+            return Ok(profiles);
             
         }
     }

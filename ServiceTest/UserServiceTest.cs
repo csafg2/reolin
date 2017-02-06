@@ -23,7 +23,7 @@ namespace ServiceTest_
         {
             
             var id = context.Users.First().Id;
-            var profiles = Service.QueryProfiles(id).Result;
+            var profiles = Service.QueryProfilesAsync(id).Result;
 
             Assert.IsTrue(profiles.Count() > 0);
         }

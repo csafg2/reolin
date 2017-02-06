@@ -196,7 +196,7 @@ namespace Reolin.Data.Services
 
         }
 
-        public Task<List<ProfileInfoDTO>> QueryProfiles(int userId)
+        public Task<List<ProfileInfoDTO>> QueryProfilesAsync(int userId)
         {
             return this.Context.Profiles
                 .Where(p => p.UserId == userId)
@@ -217,6 +217,11 @@ namespace Reolin.Data.Services
             {
                 this._context.Dispose();
             }
+        }
+
+        public Task<int> AddCommentAsync(int userId, int profileId, string comment)
+        {
+            throw new NotImplementedException();
         }
     }
 }

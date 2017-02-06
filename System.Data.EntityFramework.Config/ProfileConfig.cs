@@ -58,6 +58,11 @@ namespace Reolin.Data.EntityFramework.Config
                 .WithRequired(l => l.Profile)
                 .HasForeignKey(l => l.ProfileId)
                 .WillCascadeOnDelete(false);
+
+            this.HasMany(p => p.Comments)
+                .WithRequired(c => c.Profile)
+                .HasForeignKey(c => c.ProfileId)
+                .WillCascadeOnDelete(false);
         }
     }
 }
