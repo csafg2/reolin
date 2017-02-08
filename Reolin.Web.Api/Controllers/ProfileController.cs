@@ -131,7 +131,6 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> Create(ProfileCreateModel model)
         {
-            // TODO: store user`s location, using each individual tas as it`s key
             Profile result = await this.ProfileService.CreateAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
