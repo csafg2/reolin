@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LAYOOT!</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!--Main styles-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--Adaptive styles-->
+    <link rel="stylesheet" type="text/css" href="css/adaptive.css">
+    <!--Swipe menu-->
+    <link rel="stylesheet" type="text/css" href="css/pushy.css">
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--animation css-->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- Slider Revolution -->
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="css/tabstyles.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../../../https@oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="../../../https@oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--ipt>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78930914-1', 'auto');
+      ga('send', 'pageview');
+
+    </scri-->
+</head>
+<body onload="initialize()" class="promo">
+    <!--navigation swipe-->
+    <nav class="pushy pushy-left hidden-xs" id="pushy">
+        <div class="iconleft  " id="iconleft">
+            <div class="suggestleft"></div>
+
+
+        </div>
+        <div class="" id="leftside-category">
+            <div class="firstul ">
+                <ul class="tabs-rightside">
+                    <li>
+                        <a class="tab-link current-link " title="search in Distance" data-tab="Distance" href="#Distance">Distance</a>
+                    </li>
+                    <li class=""><a class="tab-link " id="Popularity" title="search in popularity" data-tab="Popularity" href="#Popularity">Popularity</a></li>
+                </ul>
+            </div>
+            <div class="secondul">
+                <ul class="tabs-rightside">
+                    <li><a class="tab-link disable-a" title="search in global" data-tab="Global" href="#Global"> Global </a>  </li>
+                    <li><a class="tab-link disable-a" title="search in country" data-tab="Country" href="#Country">Country</a></li>
+                    <li><a id="cityfirst" class="tab-link disable-a" title="search in city" data-tab="city" href="#city">city </a></li>
+                </ul>
+                <hr />
+            </div>
+        </div>
+        <div class="menu-left-content">
+            <div class="menu-left-side">
+                <div id="Distance" class="tab-content current-content">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(distance)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div id="city" class="tab-content ">
+                    <ul class="side_menu">
+
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(city)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="Country" class="tab-content">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(country)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="Global" class="tab-content ">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(global)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+            <div class="cover-bar"></div>
+        </div>
+    </nav>
+    <nav class="pushy-r pushy-right hidden-xs">
+        <div class="menuright">
+            <ul>
+                <li class="suggest-right-side">
+                    <div class="profileplace">
+                        <img class="img-right-side" src="img/pl3.jpg" alt="" />
+                        <div class="hover-me"></div>
+                    </div>
+                    <div class="profileplace-caption suggest-caption" id="caption">
+                        <div class="profileplace-share">
+                            <a href="#" data-placeparent="place001">
+                                <img title="share this palce!" src="img/icon/tab-globalgreen.png" alt="" />
+                            </a>
+                            <ul data-palceitem="place001" class="social-share wow fadeIn">
+                                <li class="share-item">
+                                    <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfileInfo" style="border-bottom:unset;">
+                        <label>Poul Cafee</label>
+                    </div>
+                </li>
+
+
+
+            </ul>
+            <ul class="laze-load">
+                <li class="suggest-right-side">
+                    <div class="profileplace">
+                        <img class="img-right-side" src="img/pl3.jpg" alt="" />
+                        <div class="hover-me"></div>
+                    </div>
+                    <div class="profileplace-caption suggest-caption" id="caption">
+                        <div class="profileplace-share">
+                            <a href="#" data-placeparent="place002">
+                                <img title="share this palce!" src="img/icon/tab-globalgreen.png" alt="" />
+                            </a>
+                            <ul data-palceitem="place002" class="social-share wow fadeIn">
+                                <li class="share-item">
+                                    <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfileInfo" style="border-bottom:unset;">
+                        <label>Poul Cafee</label>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="add_place none" id="pl">
+        <div class="place_form">
+            <i class="fa fa-times close_window" id="close"></i>
+            <h3>Layoot Multiple Platform,Scan and Download Your App!</h3>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="ios">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="img/ios.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                    <div class="android">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="img/android.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="top_promo_block hidden-xs">
+        <div class="menu-btn" id="btnleft">
+            <p class="arrowleft"></p>
+        </div>
+    </div>
+    <div class="top_promo_block hidden-xs">
+        <div class="menu-btn-right" id="btnrightt">
+            <p class="arrowright"></p>
+        </div>
+
+    </div>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+    <div class="row hidden-sm">
+        <div class="profilecv-head wow fadeInDown">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 pull-right">
+                    <div class="topheader company-header">
+                        <ul>
+                            <li class="has-submenu">
+                                <a href="#" class="language"></a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">فارسی</a></li>
+                                    <li><a href="#">enlish</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="Login.html" class="user">
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="ad" class="download">
+
+                                </a>
+                            </li>
+                            <li class="has-submenu-edit">
+                                <a href="#" id="ad"><i id="edit-profile" class="fa fa-gear settingicon"></i></a>
+                                <ul class="sub-menu-edit">
+                                    <li><a href="CompanyEdit.html">back to Profile</a></li>
+                                    <li><a href="#">Related Profile</a></li>
+                                    <li><a href="#">Log-out</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-xs-12  pull-right">
+                    <div class="search_promo margin-searchbox" id="search_promo">
+                        <div class="input-group search group-search ">
+
+                            <div class="input-group-btn btn_cat btn-group-search">
+                                <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
+                                    <span><span class="caret"></span></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
+                                    <li><a href="#" class="cinema"><i class="fa fa-film"></i>سینما</a></li>
+                                    <li><a href="#" class="cafe"><i class="fa fa-cutlery"></i>کافی شاپ</a></li>
+                                    <li><a href="#" class="sport"><i class="fa fa-futbol-o"></i>سالن ورزشی</a></li>
+                                    <li><a href="#" class="bank"><i class="fa fa-university"></i>بانک</a></li>
+                                    <li><a href="#" class="park"><i class="fa fa-leaf"></i>داروخانه</a></li>
+                                </ul>
+                            </div>
+                            <input type="text" class="form-control bordersearch input-search" aria-label="...">
+                            <input id="Submit1" class="serch-btn" type="submit" value="" />
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs pull-left">
+                    <div class="col-md-6 pull-right">
+                        <div class="sitename" style="text-align:right;">
+                            <img src="img/layoot.png" alt="Layoot Logo" style="height:40px;margin-top:20px;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="suggest" style="text-align:left;">
+                            <a href="Suggest.html">
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="z-index:-1;">
+        <!--<div class="naigation-btn">
+            <div class="nav-btn-right">
+                <i class="mdi mdi-close"></i>
+            </div>
+            <div class="nav-btn-left">
+                <i class="mdi mdi-arrow-left"></i>
+            </div>
+        </div>-->
+        <div class="col-md-3 col-sm-3 hidden-xs">
+            <div class="company-staff">
+                <div class="staff-navigation">
+
+                </div>
+                <div class="main-staff">
+                    <h1 class="staff-title">Staff</h1>
+                    <div class="staff-container">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="related-Emploters">
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="item-related">
+                                        <div class="related-location" style="width:40%;">
+                                            <img src="img/android.png" alt="" />
+                                        </div>
+                                        <div class="related-body" style="width:unset;">
+                                            <ul>
+                                                <li>related</li>
+                                                <li class="company-name">Company name</li>
+                                                <li>year start</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="awards-body wow fadeIn" id="awards">
+                <div class="awrads-title">
+                    <div class="awrads-title-name">
+                        <p>add your awards here</p>
+                        <label id="bktoprofile">back to profile</label>
+                    </div>
+                    <div class="awrads-title-logo">
+                        <img src="img/icon/award.png" alt="awards-logo" />
+                    </div>
+                </div>
+                <div class="award-content">
+                    <div class="edit-award col-md-10 col-md-offset-1">
+                        <label>enter year's that you achived award </label>
+                        <input id="Text1" type="text" />
+                        <label>explanatin</label>
+                        <textarea id="TextArea1" rows="2" cols="20"></textarea>
+                        <label>upload image</label>
+                        <input id="File1" type="file" />
+                        <div class="edit-btn">
+                            <input id="Button1" type="button" value="save" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="awards-item wow fadein" data-wow-delay="0.1s">
+                        <div class="year-company">
+                            <p>Year</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="img/awards.jpg" alt="" />
+                        </div>
+                        <div class="award-explaine">
+                            <p>award explain</p>
+                        </div>
+                        <div class="award-icon">
+                            <img src="img/icon/arrow-top.png" />
+                        </div>
+                        <div class="edit-hover">
+                            <a class="" href="#editaward" data-awardbtn="1"><i class="fa fa-edit"></i></a>
+                            <a class="" href="#deletaward" data-item-delete=""><i class="fa fa-trash trash"></i></a>
+                        </div>                        
+                    </div> 
+                    <div class="edit-award-form" data-award="1">
+                        <div class="col-md-12  col-xs-12">
+                            <label class="label-edit">enter year's that you achived award </label>
+                            <input class="inpu-edit text" id="Text1" type="text" />
+                            <label class="label-edit">explanatin</label>
+                            <textarea class="inpu-edit textarea" id="TextArea1" rows="2" cols="20"></textarea>
+                            <label class="label-edit">upload image</label>
+                            <input class="inpu-edit file" id="File1" type="file" />
+                            <div class="edit-btn">
+                                <input id="Button1" type="button" value="save" />
+                                <input id="Button1" type="button" class="close-form" value="cancel" />
+                            </div>
+                        </div>
+                    </div> 
+                    <hr />
+                    <div class="awards-item wow fadein" data-wow-delay="0.1s">
+                        <div class="year-company">
+                            <p>Year</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="img/awards.jpg" alt="" />
+                        </div>
+                        <div class="award-explaine">
+                            <p>award explain</p>
+                        </div>
+                        <div class="award-icon">
+                            <img src="img/icon/arrow-top.png" />
+                        </div>
+                        <div class="edit-hover">
+                            <a class="" href="#editaward" data-awardbtn="2"><i class="fa fa-edit"></i></a>
+                            <a class="" href="#deletaward" data-item-delete=""><i class="fa fa-trash trash"></i></a>
+                        </div>
+                    </div>
+                    <div class="edit-award-form" data-award="2">
+                        <div class="col-md-12  col-xs-12">
+                            <label class="label-edit">enter year's that you achived award </label>
+                            <input class="inpu-edit text" id="Text1" type="text" />
+                            <label class="label-edit">explanatin</label>
+                            <textarea class="inpu-edit textarea" id="TextArea1" rows="2" cols="20"></textarea>
+                            <label class="label-edit">upload image</label>
+                            <input class="inpu-edit file" id="File1" type="file" />
+                            <div class="edit-btn">
+                                <input id="Button1" type="button" value="save" />
+                                <input id="Button1" type="button" class="close-form" value="cancel" />
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+            <div class="profile-company-body wow" id="profile" data-wow-delay="1.5s">
+                <div class="">
+                    <div class="col-md-6 hidden-xs nopad">
+                        <div class="company-profile-name edit">
+                            <div class="edit-position">
+                                <i class="fa fa-edit editable editable-left1" data-editbtn="userprofileeducation"></i>
+                            </div>
+                            <div class="position-edit-form">
+                                <div class="edit-from editable-left1" data-editform="userprofileeducation">
+                                    <label>Edit Your Profile Name</label>
+                                    <input id="Text1" type="text" />
+                                    <label>Edit city</label>
+                                    <input id="Text1" type="text" />
+                                    <label>Edit Your country</label>
+                                    <input id="Text1" type="text" />                               
+                                    <div class="edit-btn">
+                                        <input id="Button1" type="button" value="save" />
+                                        <input id="Button1" type="button" class="close-form" value="cancel" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show-city">
+                                <p>city/country</p>
+                            </div>
+                            <div class="show-profilename">
+                                <p>Profile Name</p>
+                            </div>
+                            <div class="show-info">
+                                <ul>
+                                    <li class="show-info-distance">1234KM</li>
+                                    <li class="show-info-icon">
+                                        <i class="mdi mdi-thumb-up"></i>
+                                    </li>
+                                    <li class="show-info-suggest">
+                                        <a href="#">suggests</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="suggest-awards">
+                            <div class="company-suggest">
+                                <p>Suggest</p>
+                                <div class="caption-hover-suggest"></div>
+                            </div>
+                            <div class="company-awards">
+                                <p>Awards</p>
+                                <div class="company-awards-icon">
+                                    <img src="img/icon/award.png" alt="awards" id="awardbtn" />
+                                   
+                                </div>
+                                <div class="caption-hover-awards"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 hidden-xs nopad">
+                        <div class="company-logo" style="text-align:center;line-height:15;">
+                            <img src="img/logo.png" alt="company logo" />
+
+                            <div class="caption-hover"></div>
+                        </div>
+                    </div>
+                    <div class="company-profile-avatar">
+                        <div class="responsive-company-1">
+                            <div class="col-xs-2">
+                                <p class="compnay-distance">1234km</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="company-like">
+                                    <a href="#"> <i class="mdi mdi-thumb-up"></i> </a>
+                                </div>
+                                <div class="company-logo-responsive">
+                                    <img src="img/android.png" alt="company logo" />
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <div class="company-awards-responsive">
+                                    <img src="img/icon/award.png" alt="company awards" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="responsive-company-2">
+                            <div class="col-xs-12 nopad">
+                                <div class="col-xs-4 nopad text-right">
+                                    <img class="location-icon-company" alt="location icon company" src="img/icon/location.png" />
+                                </div>
+                                <div class="col-xs-8 nopad text-left ">
+                                    <p class="company-name-responsive">Profile Name</p>
+                                    <span class="show-city-country">city / country</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-12 col-xs-12 nopad">
+                        <section id="section-linemove-1">
+                            <ul class="tab profile-left-tab nomargin">
+                                <li class="test company-tab-related">
+                                    <a href="javascript:void(0)" class="tablinks " onclick="openCity(event, 'related')">
+                                        <img src="img/icon/tab-usersgreen.png" class="test" alt="" />
+                                        <span class="notif">35</span>
+                                        <label class="tab-label">Related</label>
+                                    </a>
+                                </li>
+                                <li class="test company-tab-picture">
+                                    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Picture')">
+                                        <img src="img/icon/copy.png" class="test" alt="" />
+                                        <span class="notif">35</span>
+                                        <label class="tab-label">Picture</label>
+                                    </a>
+                                </li>
+                                <li class="test company-tab-network">
+                                    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Network')">
+                                        <img src="img/icon/tab-globalgreen.png" class="test" alt="" />
+                                        <span class="notif">35</span>
+                                        <label class="tab-label">Networks</label>
+                                    </a>
+                                </li>
+                                <li class="test company-tab-message">
+                                    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'message')">
+                                        <img src="img/icon/envolve.png" class="test" alt="" />
+                                        <span class="notif">35</span>
+                                        <label class="tab-label">Messages</label>
+                                    </a>
+                                </li>
+                                <li class="test company-tab-service">
+                                    <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Service')">
+                                        <img src="img/icon/hashtag.png" class="test" alt="" />
+                                        <span class="notif">35</span>
+                                        <label class="tab-label">Service</label>
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div id="related" class="tabcontent">
+
+                                <section>
+                                    <div class="tabs tabs-style-bar">
+                                        <nav class="navigation-tab">
+                                            <div class="tab-right">
+                                                <i class="fa fa-chevron-circle-right"></i>
+                                            </div>
+                                            <div class="tab-left">
+                                                <i class="fa fa-chevron-circle-left" style="font-size:18px;"></i>
+                                            </div>
+                                            <!---->
+                                            <!--<div class="arrow-tab" style="max-width:30px;background-color:#fff;"><i class="mdi mdi-arrow-left" style="font-size:18px;"></i></div>-->
+
+                                            <ul style="max-width: 650px;">
+                                                <li><a href="#section-bar-1"><span>Employers</span></a></li>
+                                                <li><a href="#section-bar-2"><span>Employee</span></a></li>
+                                                <li><a href="#section-bar-3"><span>Builder</span></a></li>
+                                                <li><a href="#section-bar-4"><span>Contractor</span></a></li>
+                                                <li><a href="#section-bar-6"><span>Units</span></a></li>
+                                                <li><a href="#section-bar-6"><span>Friend</span></a></li>
+                                                <li><a href="#section-bar-7"><span>work</span></a></li>
+                                            </ul>
+                                        </nav>
+                                        <div class="content-wrap">
+                                            <section id="section-bar-1">
+                                                <div class="related-Emploters">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                         
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section id="section-bar-2"><p>Employee</p></section>
+                                            <section id="section-bar-3"><p>Builder</p></section>
+                                            <section id="section-bar-4"><p>Contractor</p></section>
+                                            <section id="section-bar-5"><p>Units</p></section>
+                                            <section id="section-bar-6"><p>Friend</p></section>
+                                            <section id="section-bar-7"><p>work</p></section>
+                                        </div><!-- /content -->
+                                    </div><!-- /tabs -->
+                                </section>
+
+                            </div>
+                            <div id="Picture" class="tabcontent test">
+                                <section>
+                                    <div class="tabs tabs-style-bar">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="#section-bar-1"><span>add you photo</span></a></li>
+                                                <li><a href="#section-bar-1"><span>Employers</span></a></li>
+                                                <li><a href="#section-bar-2"><span>Employee</span></a></li>
+                                                <li><a href="#section-bar-3"><span>Builder</span></a></li>
+                                                <li><a href="#section-bar-4"><span>Contractor</span></a></li>
+                                                <li><a href="#section-bar-6"><span>Units</span></a></li>
+                                                <li><a href="#section-bar-6"><span>Friend</span></a></li>
+                                                <li><a href="#section-bar-7"><span>work</span></a></li>
+                                            </ul>
+                                        </nav>
+                                        <div class="content-wrap">
+                                            <section id="section-bar-1">
+                                                <div class="company-picture">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                           <div class="company-add-picture">
+                                                               <div id="plusimage" class="add-icon-plus">
+                                                                   <i class="fa fa-plus"></i>
+                                                                    add your photo
+                                                               </div>
+                                                               <div class="add-picture-body">
+                                                                   <div class="add-item">
+                                                                       <label>subject</label>
+                                                                       <input id="Text1" class="form-control" type="text" />
+
+                                                                       <label>select your group</label>
+                                                                       <div class="add-newgroup">
+                                                                           <i class="fa fa-plus" id="openmngimg" title="manage group of your picture"></i>                                                                           
+                                                                       </div>                                                                       
+                                                                       <select id="Select1" class="form-control">
+                                                                           <option>Employers</option>
+                                                                           <option>Employee</option>
+                                                                           <option>Builder</option>
+                                                                           <option>Contractor</option>
+                                                                           <option>Units</option>
+                                                                           <option>Friend</option>
+                                                                           <option>work</option>
+                                                                       </select>
+                                                                       <div class="group-picture">
+                                                                           <h5 class="title-info">here you can manage group of your picture , add new item ,edit or delete your current picture</h5>
+                                                                           <div class="group-picture-main">
+                                                                               <input id="Text1" type="text" />
+                                                                               <input id="Submit1" type="submit" value="save" />
+                                                                               <input id="Submit1" type="submit" class="cancel-mngimg" value="cancel" />
+                                                                               <table class="grouppicture-table">
+                                                                                   <tr>
+                                                                                       <th>#</th>
+                                                                                       <th>Group name</th>
+                                                                                       <th>edit</th>
+                                                                                       <th>delete</th>
+                                                                                   </tr>
+                                                                                   <tr>
+                                                                                       <td>1</td>
+                                                                                       <td>Employee</td>
+                                                                                       <td><i class="fa fa-edit"></i></td>
+                                                                                       <td><i class="fa fa-trash"></i></td>
+                                                                                   </tr>
+                                                                               </table>
+                                                                           </div>
+                                                                       </div>
+                                                                       <label>comment</label>
+                                                                       <textarea id="TextArea1" class="form-control" rows="2" cols="20"></textarea>
+                                                                       <input id="File1" type="file" />
+
+                                                                       <div class="edit-btn">
+                                                                           <input id="Button1" type="button" value="save" />
+                                                                           <input id="Button1" type="button" value="cancel" />
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section id="section-bar-2"><p>Employee</p></section>
+                                            <section id="section-bar-3"><p>Builder</p></section>
+                                            <section id="section-bar-4"><p>Contractor</p></section>
+                                            <section id="section-bar-5"><p>Units</p></section>
+                                            <section id="section-bar-6"><p>Friend</p></section>
+                                            <section id="section-bar-7"><p>work</p></section>
+                                        </div><!-- /content -->
+                                    </div><!-- /tabs -->
+                                </section>
+
+
+                            </div>
+                            <div id="Network" class="tabcontent">
+                                <div class="company-add-netwrok">
+                                    <div id="plusnetwork" class="add-icon-plus">
+                                        <i class="fa fa-plus"></i>
+                                          add your social Netwrok
+                                    </div>
+                                    <div class="add-network-body">
+                                        <div class="add-item">                                        
+                                            <label>select your Network</label>                                          
+                                            <select id="Select1" class="form-control">
+                                                <option>Facebook</option>
+                                                <option>instagram</option>
+                                                <option>telegram</option>
+                                                <option>youtube</option>
+                                                <option>linkdin</option>
+                                                <option>Google plus</option>                                                
+                                            </select>
+                                            <label>enter your url</label>
+                                            <input id="addsocial" placeholder="https://t.me/Username" class="form-control" type="url" required />                                                                                        
+                                            <div class="edit-btn">
+                                                <input id="Button1" type="button" value="save" />
+                                                <input id="Button1" type="button" value="cancel" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="profile-social">
+                                    <a href="#">
+                                        <p class="instagram"></p>
+                                    </a>                             
+                                </div>
+                            </div>
+                            <div id="message" class="tabcontent">
+                                <section>
+                                    <div class="tabs tabs-style-bar">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="#section-bar-1"><span>reguest</span></a></li>
+                                                <li><a href="#section-bar-2"><span>comment</span></a></li>
+                                                <li><a href="#section-bar-3"><span>question</span></a></li>
+                                                <li><a href="#section-bar-4"><span>history</span></a></li>
+
+                                            </ul>
+                                        </nav>
+                                        <div class="content-wrap">
+                                            <section id="section-bar-1">
+                                                <div class="company-message-request">
+                                                    <div class="request">
+                                                        <input id="request" class="request-related" placeholder="related" type="text" />
+                                                        <select id="type" class="request-type">
+                                                            <option>related type</option>
+
+                                                        </select>
+                                                        <select id="year" class="request-year">
+                                                            <option>Year start</option>
+
+                                                        </select>
+
+                                                        <textarea id="explain" class="request-explain" placeholder="explain" rows="2" cols="20"></textarea>
+                                                    </div>
+                                                    <div class="send-request">
+                                                        <input id="Submit1" type="submit" value="Send request" />
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section id="section-bar-2">
+                                                <div class="accept-request">
+                                                    <div class="accept-item">
+                                                        <ul>
+                                                            <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
+                                                            <li class="accept-item-logo">
+                                                                <img src="img/ios.png" alt="" />
+                                                            </li>
+                                                            <li class="accept-item-info">
+                                                                <p class="">Profile name</p>
+                                                                <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
+                                                                <p class=""> time</p>
+                                                            </li>
+                                                            <li class="accept-item-action">
+                                                                <div class="action">
+                                                                    <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline" title="Confirm"></i> </a>
+                                                                    <a href="#" class="cheched"><i class="mdi mdi-grease-pencil" title="Edit this request"></i> </a>
+                                                                    <a href="#" class="trash"><i class="mdi mdi-close-box-outline" title="Block this request"></i> </a>
+                                                                    <a href="#" class="trash"><i class="mdi mdi-delete" title="Delete this request"></i> </a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                    </div>
+                                                
+                                                </div>
+                                            </section>
+                                            <section id="section-bar-3" style="height:600px;"><p>question</p></section>
+                                            <section id="section-bar-4" style="height:600px;">
+                                                <div class="history">
+                                                    <h5>Here You can see all request to your account , which you blocked or send to other's  ! also you can can unblock or cancel that requests and see it as a normal request in Your request section</h5>
+                                                    <div class="accept-request">
+                                                        <div class="accept-item">
+                                                            <ul>
+                                                                <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
+                                                                <li class="accept-item-logo">
+                                                                    <img src="img/ios.png" alt="" />
+                                                                </li>
+                                                                <li class="accept-item-info">
+                                                                    <p class="">Profile name</p>
+                                                                    <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
+                                                                    <p class=""> time</p>
+                                                                </li>
+                                                                <li class="accept-item-action">
+                                                                    <div class="action">
+                                                                        <a href="#" class="cancel">Delete</a>
+                                                                        <a href="#" class="unblock">Unblock </a>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+                                                        <div class="accept-item">
+                                                            <ul>
+                                                                <li class="accept-item-arrow"><i class="mdi mdi-arrow-up green"></i></li>
+                                                                <li class="accept-item-logo">
+                                                                    <img src="img/ios.png" alt="" />
+                                                                </li>
+                                                                <li class="accept-item-info">
+                                                                    <p class="">Profile name</p>
+                                                                    <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
+                                                                    <p class=""> time</p>
+                                                                </li>
+                                                                <li class="accept-item-action">
+                                                                    <div class="action">
+                                                                        <a href="#" class="cancel">Cancel</a>
+                                                                       
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div><!-- /content -->
+                                    </div><!-- /tabs -->
+                                </section>
+                            </div>
+                            <div id="Service" class="tabcontent">
+                                <div class="company-service">
+                                    <!--<p style="font-weight:700;padding:6px">Service name #1</p>-->
+                                    <div class="col-md-12">
+                                        <div class="add-service col-md-10 col-md-offset-1 col-xs-12">
+                                            <lable class="label-edit">Enter Service name</lable>
+                                            <input id="Text1"  class="inpu-edit"  type="text" /> 
+                                            <div class="edit-btn">
+                                                <input id="Button1" type="button" value="save" />
+                                            </div>  
+                                        </div>
+                                        <div class="service-item">
+                                            <div class="number-service">
+                                                <p>1</p>
+                                            </div>
+                                            <div class="service-main">
+                                                <i class="fa fa-hashtag"></i>
+                                                <p data-servicename="1">Service name</p>
+                                                <div class="service-last-object">
+                                                    <span>2</span>
+                                                    <img src="img/icon/copy.png" class="hashtag-height"/>
+                                                </div>
+                                                <div class="edit-hover-service">
+                                                    <a class="" href="#servicebtn" ><i class="fa fa-edit coloredit" data-servicebtn="1"></i></a>
+                                                    <a class="" href="#servicedelete" data-servicedelete=""><i class="fa fa-trash trash"></i></a>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                   
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            
+                        </section>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-9 col-xs-12 nopad">
+                        <div class="company-address">
+                            <div class="physical-address">
+                                <div class="edit-icon" data-edit="address">
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                                <p class="edit-adrress" ><span style="font-weight:700;padding-right:5px;">Address:</span>mahhad-hashemie-hashemie18</p>                                
+                            </div>
+                            <div class="Editable-item" id="address">
+                                <textarea id="adrress" rows="2" cols="20"></textarea>
+                                <input id="save" type="submit" value="save" />
+                                <input id="cancel" type="submit" class="cancel" value="cancel" />
+                            </div>
+                            <div class="company-phone-number">
+                                <div class="col-md-12 phone-number">
+                                    <div class="edit-icon" data-edit="phone">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                    <ul>                                        
+                                        <li><span>phone</span> : 12345678</li>                               
+                                        <li><span>phone</span> : 12345678</li>                           
+                                        <li><span>phone</span> : 12345678</li>
+                                    </ul>
+                                    <div class="Editable-item" id="phone">
+                                        <label>phone-1</label>
+                                        <input id="Text1" type="text" />
+                                        <label>phone-2</label>
+                                        <input id="Text1" type="text" />
+                                        <label>phone-3</label>
+                                        <input id="Text1" type="text" />
+                                        <input id="save" type="submit" value="save" />
+                                        <input id="cancel" type="submit" class="cancel" value="cancel" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mobile-number">
+                                    <!--<ul>
+                                        <li><span>mobile</span> : 12345678</li>
+                                    </ul>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 hidden-xs nopad">
+                        <div class="company-location">
+                            <label class="company-distance">30m</label>
+                            <img src="img/icon/location.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-12 col-xs-12 nopad">
+                        <div class="company-explanation">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 col-sm-3 hidden-xs">
+            <div class="company-rightside">
+                <div class="null"></div>
+                <div class="company-service" style="height:200px;">
+                    <h1 class="staff-title">Service</h1>
+
+                </div>
+                <div class="company-comment">
+                    <h1 class="staff-title">Comment</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer">
+                    <ul>
+                        <li>
+                            <a href="#">Privacy</a>
+
+                        </li>
+                        <li>
+                            <a href="#">help</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Custom.js"></script>
+
+
+    <!--scroll animate block-->
+    <script src="js/wow.min.js"></script>
+    <!--Other main scripts-->
+    <script src="js/all_scr.js"></script>
+    <!--Bootstrap js-->
+    <script src="js/bootstrap.min.js"></script>
+    <!--scroll animation-->
+    <script>
+new WOW().init();
+    </script>
+    <script type="text/javascript">
+"use strict";
+setHeiHeight();
+$(window).resize( setHeiHeight );
+    </script>
+    <script src="js/cbpFWTabs.js"></script>
+    <script>
+			(function() {
+
+				[].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+					new CBPFWTabs( el );
+				});
+
+			})();
+
+    </script>
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        $(document).click(function (e) {
+            // Check if click was triggered on or within #menu_content
+            $('#related').bind('click', function (event) {
+                localStorage['visited'] = 1;
+            });
+            $('#Picture').bind('click', function (event) {
+                localStorage['visited'] = 1;
+            });
+            $('#Netwrok').bind('click', function (event) {
+                localStorage['visited'] = 1;
+            });
+            $('#message').bind('click', function (event) {
+                localStorage['visited'] = 1;
+            });
+            $('#Service').bind('click', function (event) {
+                localStorage['visited'] = 1;
+            });
+
+            if (e.target.className != "test" && localStorage['visited']!= 1) {
+                $('#related').css('display', 'none');
+                $('#Picture').css('display', 'none');
+                $('#Netwrok').css('display', 'none');
+                $('#message').css('display', 'none');
+                $('#Service').css('display', 'none');
+            }
+            localStorage['visited'] = 0;
+        });
+    </script>
+    <script>
+        $("document").ready(function () {
+            $('#awardbtn').click(function () {
+                $("#profile").css('display', 'none');
+                $("#profile").removeClass('fadedown');
+                $("#awards").css('display', 'block');
+            });
+            $('#bktoprofile').click(function () {
+                $("#profile").css('display', '');
+                $("#profile").addClass('bouncein');
+                $("#awards").css('display', '');
+            });
+            $('.company-awards-responsive img').click(function () {
+                $("#profile").css('display', 'none');
+                $("#profile").removeClass('fadedown');
+                $("#awards").css('display', 'block');
+                $(".profile-award").css('background-color', '#ccc');
+            });
+            $('#bktoprofile').click(function () {
+                $("#profile").css('display', '');
+                $("#profile").addClass('fadedown');
+                $("#awards").css('display', '');
+                $(".profile-award").css('background-color', '');
+            });
+
+
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,6 +1,5 @@
 ﻿module Reolin.Web.Client
 {
-
     export class AccountService
     {
         private _jwtManager: IJwtManager;
@@ -34,6 +33,4 @@
             this._jwtManager.ProvideJwtbyOldJwt(jwt);
         }
     }
-
-
 }
