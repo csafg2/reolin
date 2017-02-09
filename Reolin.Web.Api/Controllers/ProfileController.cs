@@ -228,6 +228,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [Route("[controller]/[action]")]
+        [HttpPost]
         public async Task<IActionResult> Edit(ProfileEditModel model)
         {
             await this.ProfileService.EditProfile(model.ProfileId, model.City, model.Country, model.Name);
@@ -241,6 +242,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [Route("[controller]/[action]")]
+        [HttpPost]
         public async Task<IActionResult> EditEducation(EducationEditDTO dto)
         {
             int result = await this.ProfileService.EditEducation(dto.ProfileId, dto);
