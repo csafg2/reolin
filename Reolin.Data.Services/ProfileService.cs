@@ -116,7 +116,8 @@ namespace Reolin.Data.Services
         }
 
 
-        public async Task<Profile> CreateAsync(int userId, CreateProfileDTO dto)
+
+        public async Task<Profile> CreateWorkAsync(int userId, CreateProfileDTO dto)
         {
             User user = await Context.Users.Include("Profiles").FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -125,12 +126,37 @@ namespace Reolin.Data.Services
                 throw new InvalidOperationException($"No user with specified Id {userId} found.");
             }
 
+            return await CreateAsync(user, dto, ProfileType.Business);
+        }
+
+
+        public async Task<Profile> CreatePersonalAsync(int userId, CreateProfileDTO dto)
+        {
+            User user = await Context.Users.Include("Profiles").FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+            {
+                throw new InvalidOperationException($"No user with specified Id {userId} found.");
+            }
+            if (user.Profiles != null)
+            {
+                if (user.Profiles.Any(p => p.Type == ProfileType.Personal))
+                {
+                    throw new InvalidOperationException($"User '{user.UserName}' already has a personal profile");
+                }
+            }
+
+            return await CreateAsync(user, dto, ProfileType.Personal);
+        }
+
+        private async Task<Profile> CreateAsync(User user, CreateProfileDTO dto, ProfileType type)
+        {
             if (user.Profiles == null)
             {
                 user.Profiles = new List<Profile>();
             }
 
-            Profile result = InstantiateProfile(dto);
+            Profile result = InstantiateProfile(dto, type);
             user.Profiles.Add(result);
 
             await Context.SaveChangesAsync();
@@ -138,14 +164,19 @@ namespace Reolin.Data.Services
             return result;
         }
 
-        private Profile InstantiateProfile(CreateProfileDTO dto)
+
+        private Profile InstantiateProfile(CreateProfileDTO dto, ProfileType type)
         {
             return new Profile()
             {
+                Type = type,
                 Description = dto.Description,
                 Name = dto.Name,
+                PhoneNumber = dto.PhoneNumber,
                 Address = new Address()
                 {
+                    City = dto.City,
+                    Country = dto.Country,
                     Location = GeoHelpers.FromLongitudeLatitude(dto.Longitude, dto.Latitude)
                 }
             };
@@ -153,7 +184,8 @@ namespace Reolin.Data.Services
 
         public async Task<ProfileInfoDTO> QueryInfoAsync(int id)
         {
-            return await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
+            var result = await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
+            return result;
         }
 
         public virtual Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong)
@@ -189,5 +221,76 @@ namespace Reolin.Data.Services
 
             return await Context.SaveChangesAsync();
         }
+
+
+        public async Task<int> EditProfile(int profileId, string city, string country, string name)
+        {
+            int addressCount = await this.Context.Addresses.Where(a => a.Id == profileId)
+                .UpdateAsync(a => new Address() { City = city, Country = country });
+
+            int profileCount = await this.Context.Profiles.Where(p => p.Id == profileId)
+                            .UpdateAsync(p => new Profile() { Name = name });
+
+            return addressCount + profileCount;
+        }
+
+        public Task<List<CommentDTO>> GetLatestComments(int profileId)
+        {
+            return this.Context
+                        .Comments
+                            .Where(c => c.ProfileId == profileId)
+                            .OrderByDescending(c => c.Date)
+                            .Take(10)
+                            .Select(c => new CommentDTO()
+                            {
+                                Body = c.Body,
+                                SenderName = c.User.UserName
+                            })
+                            .ToListAsync();
+        }
+
+        public async Task<int> EditEducation(int profileId, EducationEditDTO dto)
+        {
+            var profile = await this.Context
+                .Profiles
+                    .Include("Education")
+                        .FirstOrDefaultAsync(p => p.Id == profileId);
+
+            if (profile == null)
+            {
+                throw new InvalidOperationException($"no profile with id {profile} found. ");
+            }
+            else if (profile.Type == ProfileType.Business)
+            {
+                throw new InvalidOperationException($"only personal profiles should have edu info");
+            }
+
+            return await UpdateOrCreateEducation(profile, dto);
+        }
+
+        private Task<int> UpdateOrCreateEducation(Profile profile, EducationEditDTO dto)
+        {
+            if (profile.Education == null)
+            {
+                profile.Education = new Education()
+                {
+                    Field = dto.Field,
+                    GraduationYear = dto.GraduationYear,
+                    Level = dto.Level,
+                    University = dto.University
+                };
+            }
+            else
+            {
+                Education edu = profile.Education;
+                edu.Field = dto.Field;
+                edu.GraduationYear = dto.GraduationYear;
+                edu.Level = dto.Level;
+                edu.University = dto.University;
+            }
+
+            return Context.SaveChangesAsync();
+        }
+
     }
 }

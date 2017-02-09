@@ -55,6 +55,7 @@
     <Compile Include="AddressConfig.cs" />
     <Compile Include="CertificateConfig.cs" />
     <Compile Include="CommentConfig.cs" />
+    <Compile Include="EducationConfig.cs" />
     <Compile Include="ImageConfig.cs" />
     <Compile Include="LikeConfig.cs" />
     <Compile Include="PhoneNumberConfig.cs" />

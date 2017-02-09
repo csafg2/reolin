@@ -6,7 +6,21 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.Api.ViewModels.profile
 {
-    
+
+    public class ProfileEditModel
+    {
+        [Required(ErrorMessage = "ProfileId to be edited")]
+        [Range(1, int.MaxValue)]
+        public int ProfileId { get; set; }
+
+        [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
+        public string Name { get; set; }
+        [Required(ErrorMessage = "City is required", AllowEmptyStrings = false)]
+        public string City { get; set; }
+        [Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
+        public string Country { get; set; }
+    }
+
     public class SearchProfilesInRangeModel
     {
         [Required(ErrorMessage = "Tag to search is required", AllowEmptyStrings = false)]
@@ -42,6 +56,16 @@ namespace Reolin.Web.Api.ViewModels.profile
         [Range(-180, 180, ErrorMessage = "Longitude is not valid")]
         public double Longitude { get; set; }
 
+
+        [Required( ErrorMessage = "Phone Number is required", AllowEmptyStrings = false)]
+        public string PhoneNumber { get; set; }
+
+
+        [Required(ErrorMessage = "City is required", AllowEmptyStrings = false)]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
+        public string Country { get; set; }
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);

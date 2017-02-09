@@ -18,14 +18,18 @@ namespace Reolin.Data.Domain
         public List<Comment> Comments { get; set; }
         public List<Certificate> Certificates { get; set; }
         public List<Image> Images { get; set; }
+        public Education Education { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
-        public List<PhoneNumber> PhoneNumbers { get; set; }
+        public string PhoneNumber { get; set; }
+       // public List<PhoneNumber> PhoneNumbers { get; set; }
         
         public static implicit operator ProfileInfoDTO(Profile source)
         {
             return new ProfileInfoDTO()
             {
+                City = source.Address?.City,
+                Country = source.Address?.Country,
                 Name = source.Name,
                 Description = source.Description,
                 Latitude = source.Address.Location.Latitude,

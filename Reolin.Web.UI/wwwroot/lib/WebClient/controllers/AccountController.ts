@@ -47,7 +47,6 @@ module Reolin.Web.Client.Controllers
                     return;
                 }
                 console.log(xhr.responseText);
-                // TODO : redirect user to login page
             });
         }
 
@@ -81,6 +80,11 @@ module Reolin.Web.Client.Controllers
             info.Password = this.PasswordTextBox.val();
 
             this._service.Login(info);
+
+            var user: User = new User();
+            user.UserName = info.UserName;
+
+            User.Current = user;
         }
     }
 }

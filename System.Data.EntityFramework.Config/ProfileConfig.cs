@@ -8,6 +8,7 @@ namespace Reolin.Data.EntityFramework.Config
         public ProfileConfig()
         {
             this.HasKey(p => p.Id);
+            
 
             // *:*
             this.HasMany(p => p.Certificates)
@@ -63,6 +64,9 @@ namespace Reolin.Data.EntityFramework.Config
                 .WithRequired(c => c.Profile)
                 .HasForeignKey(c => c.ProfileId)
                 .WillCascadeOnDelete(false);
+
+            this.HasOptional(p => p.Education)
+                .WithRequired(e => e.Profile);
         }
     }
 }

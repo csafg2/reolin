@@ -44,13 +44,23 @@ namespace ServiceTest_
             {
                 UserName = "Hassan",
                 Password = new
-                SHA1CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("Hassan@1")),
+                SHA1CryptoServiceProvider().ComputeHash(Encoding.UTF8.GetBytes("123456")),
                 Email = "HassanHashemi@yahoo.com"
             };
 
 
             int count = this.Service.CreateAsync(user).Result;
             Assert.IsTrue(count > 0);
+        }
+
+        [TestMethod]
+        public void User_AddCommentAsync()
+        {
+            int userId = 4;
+            int profileId = 6;
+
+            int result = this.Service.AddCommentAsync(userId, profileId, "HELLOW COMMENT!").Result;
+            Assert.IsTrue(result > 0);
         }
 
         [TestMethod]

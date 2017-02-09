@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 namespace Reolin.Web.Api.Controllers
 {
     [EnableCors("AllowAll")]
+    [RequireValidModel]
     public class ProfileController : BaseController
     {
         private readonly IProfileService _profileService;
@@ -123,26 +124,53 @@ namespace Reolin.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Creates a new profile entry for the currently logged in user
+        /// Creates a new Work Profile for specified user
         /// </summary>
         /// <param name="model"></param>
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
-        public async Task<IActionResult> Create(ProfileCreateModel model)
+        public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
-            Profile result = await this.ProfileService.CreateAsync(this.GetUserId(),
+            Profile result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
+                    PhoneNumber = model.PhoneNumber,
                     Description = model.Description,
                     Latitude = model.Latitude,
                     Longitude = model.Longitude,
-                    Name = model.Name
+                    Name = model.Name,
+                    City = model.City,
+                    Country = model.Country
                 });
-            await this.ProfileService.AddTagAsync(result.Id, model.Description.ExtractHashtags());
+
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
 
+        /// <summary>
+        /// Creates a new Personal Profile for the specified user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>the address in which the profile info is create an accessible to consume</returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> CreatePersonal(ProfileCreateModel model)
+        {
+            Profile result = await this.ProfileService.CreatePersonalAsync(this.GetUserId(),
+                new CreateProfileDTO()
+                {
+                    PhoneNumber = model.PhoneNumber,
+                    Description = model.Description,
+                    Latitude = model.Latitude,
+                    Longitude = model.Longitude,
+                    City = model.City,
+                    Country = model.Country,
+                    Name = model.Name
+                });
+
+            return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
+        }
+        
         /// <summary>
         /// Retrieve Profile information by Id
         /// </summary>
@@ -153,7 +181,8 @@ namespace Reolin.Web.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInfo(int id)
         {
-            return Ok(await this.ProfileService.QueryInfoAsync(id));
+            var result = await this.ProfileService.QueryInfoAsync(id);
+            return Ok(result);
         }
 
         /// <summary>
@@ -178,7 +207,7 @@ namespace Reolin.Web.Api.Controllers
 
 
         /// <summary>
-        /// Retrieve all profiles withing the specified range by meter which are associated with the desired #tag
+        /// Retrieves all profiles withing the specified range by meter which are associated with the desired #tag
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -186,8 +215,36 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> SearchInAreaByTag(SearchProfilesInRangeModel model)
         {
-            var data = await this.ProfileService.GetInRangeAsync(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude);
+            var data = await this
+                .ProfileService
+                .GetInRangeAsync(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude);
             return Ok(data);
+        }
+
+
+        /// <summary>
+        /// Updates specified fields
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> Edit(ProfileEditModel model)
+        {
+            await this.ProfileService.EditProfile(model.ProfileId, model.City, model.Country, model.Name);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// modify education info of the profile
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> EditEducation(EducationEditDTO dto)
+        {
+            int result = await this.ProfileService.EditEducation(dto.ProfileId, dto);
+            return Ok(result);
         }
     }
 }

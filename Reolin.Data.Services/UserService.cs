@@ -33,7 +33,7 @@ namespace Reolin.Data.Services
                 return _context;
             }
         }
-
+        
         public async Task<int> CreateAsync(User user)
         {
             if (user.Roles == null || user.Roles.Count < 1)
@@ -74,6 +74,8 @@ namespace Reolin.Data.Services
             return role;
         }
 
+
+        
         public Task<int> DeleteAsync(int id)
         {
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
@@ -219,9 +221,18 @@ namespace Reolin.Data.Services
             }
         }
 
-        public Task<int> AddCommentAsync(int userId, int profileId, string comment)
+        public Task<int> AddCommentAsync(int userId, int profileId, string commentBody)
         {
-            throw new NotImplementedException();
+            Comment comment = new Comment()
+            {
+                Body = commentBody,
+                Date = DateTime.Now,
+                ProfileId = profileId,
+                UserId = userId
+            };
+
+            Context.Comments.Add(comment);
+            return Context.SaveChangesAsync();
         }
     }
 }

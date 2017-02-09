@@ -41,7 +41,7 @@ namespace Reolin.Data.Services.Core
         /// </summary>
         /// <param name="profileId">the id of profile to be update</param>
         /// <param name="imagePath">the patch of image after it`s been saved</param>
-        /// <returns></returns>
+        /// <returns></returns>f
         Task<int> AddProfileImageAsync(int profileId, string imagePath);
 
 
@@ -53,8 +53,10 @@ namespace Reolin.Data.Services.Core
         /// <param name="userId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        Task<Profile> CreateAsync(int userId, CreateProfileDTO dto);
+        Task<Profile> CreatePersonalAsync(int userId, CreateProfileDTO dto);
 
+        Task<Profile> CreateWorkAsync(int userId, CreateProfileDTO dto);
+    
 
         Task<ProfileInfoDTO> QueryInfoAsync(int id);
 
@@ -63,5 +65,10 @@ namespace Reolin.Data.Services.Core
         Task<List<Profile>> GetRelatedProfiles(int profileId);
 
         Task<int> UpdateLocaiton(int profileId, double latitude, double longitude);
+        Task<int> EditProfile(int profileId, string city, string country, string name);
+
+        Task<List<CommentDTO>> GetLatestComments(int profileId);
+
+        Task<int> EditEducation(int profileId, EducationEditDTO dto);
     }
 }

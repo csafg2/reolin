@@ -1,8 +1,22 @@
 ﻿
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Reolin.Data.DTO
 {
+    
+    public class EducationEditDTO
+    {
+        [Required(ErrorMessage = "ProfileId is required")]
+        [Range(1, int.MaxValue)]
+        public int ProfileId { get; set; }
+        public string Level { get; set; }
+        public string Field { get; set; }
+        [Range(1950, 2017)]
+        public int GraduationYear { get; set; }
+        public string University { get; set; }
+    }
+
     public class RelatedProfileDTO 
     {
         public string Name { get; set; }
@@ -26,10 +40,15 @@ namespace Reolin.Data.DTO
 
     public class ProfileInfoDTO: ProfileByTagDTO
     {
+        public string City { get; set; }
+        public string Country { get; set; }
     }
 
     public class CreateProfileDTO : ProfileByTagDTO
     {
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class ProfileByTagDTO

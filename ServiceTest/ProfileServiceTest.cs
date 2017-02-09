@@ -6,6 +6,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using Reolin.Data.Services.Core;
 
 namespace ServiceTest
 {
@@ -13,13 +14,28 @@ namespace ServiceTest
     public class ProfileServiceTest
     {
         private DataContext _context;
-        private ProfileService _service;
+        private IProfileService _service;
 
         public ProfileServiceTest()
         {
             this._context = new DataContext();
             this._service = new ProfileService(_context);
         }
+
+        [TestMethod]
+        public void Profile_EditEducation()
+        {
+            int profileId = _context.Profiles.First().Id;
+            int r = _service.EditEducation(profileId, new EducationEditDTO()
+            {
+                Field = "Microbilogy",
+                GraduationYear = 2000,
+                Level = "Bachelore",
+                University = "MIT"
+            }).Result;
+            Assert.IsTrue(r > 0);
+        }
+
 
         [TestMethod]
         public void Profile_UpdateLocation()
@@ -77,17 +93,50 @@ namespace ServiceTest
         }
 
         [TestMethod]
-        public void Profile_Create()
+        public void Profile_GetlatestComments()
+        {
+            var profileId = 6;
+            var comments = _service.GetLatestComments(profileId).Result;
+            Assert.IsTrue(comments.Count > 0);
+        }
+
+        [TestMethod]
+        public void Profile_Edit()
+        {
+            var profileId = this._context.Profiles.First(p => p.Id == 5).Id;
+            int r = this._service.EditProfile(profileId, "Manhatan", "US", "baseball couch").Result;
+            Assert.IsTrue(r > 0);
+        }
+
+        [TestMethod]
+        public void Profile_CreateWork()
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "the #Musician",
-                Name = "Yanni",
+                Description = "ZSfot is a software company that dose many things",
+                Name = "ZSoft inc",
+                Latitude = 87,
+                Longitude = 87,
+                City = "Qom",
+                Country = "Iran"
+            };
+            var userId = _context.Users.First().Id;
+            var p = this._service.CreateWorkAsync(userId, dto).Result;
+            Assert.IsTrue(p.Id > 0);
+        }
+
+        [TestMethod]
+        public void Profile_CreatePersonal()
+        {
+            var dto = new CreateProfileDTO()
+            {
+                Description = "software architect",
+                Name = "Hassan",
                 Latitude = 87,
                 Longitude = 87
             };
             var userId = _context.Users.First().Id;
-            var p = this._service.CreateAsync(userId, dto).Result;
+            var p = this._service.CreatePersonalAsync(userId, dto).Result;
             Assert.IsTrue(p.Id > 0);
         }
 
