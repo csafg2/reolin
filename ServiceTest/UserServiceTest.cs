@@ -20,8 +20,8 @@ namespace ServiceTest_
         
         [TestMethod]
         public void User_QueryProfile()
+
         {
-            
             var id = context.Users.First().Id;
             var profiles = Service.QueryProfilesAsync(id).Result;
 
@@ -36,6 +36,10 @@ namespace ServiceTest_
             this.Service = new UserService(context);
         }
 
+        [TestMethod]
+        public void User_CreateWithUserNameAndPassword()
+        {
+        }
 
         [TestMethod]
         public void User_CrateAsync()

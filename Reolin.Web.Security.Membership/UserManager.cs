@@ -67,6 +67,11 @@ namespace Reolin.Web.Security.Membership
             return await this.UserService.CreateAsync(user);
         }
 
+        public Task<int> CreateAsync(string userName, string password)
+        {
+            return CreateAsync(userName, password, string.Empty);
+        }
+
         public async Task<int> CreateAsync(string userName, string password, string email)
         {
             foreach (var item in this.Validators)

@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <title>LAYOOT!</title>
+
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />.
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="css/responsive.css" type="text/css" rel="stylesheet" />
+    <!--Adaptive styles-->
+    <link rel="stylesheet" type="text/css" href="css/adaptive.css">
+
+    <!--Swipe menu-->
+    <link rel="stylesheet" type="text/css" href="css/pushy.css">
+    <!--font awsome-->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--animation css-->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link href="css/animate-custom.css" rel="stylesheet" />
+    <!--Main styles-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="css/stylesheet.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <style>
+        .pushy {
+            width: 325px;
+            left: -10px;
+        }
+
+        .pushy-left {
+            -webkit-transform: translate3d(0px,0,0);
+            -moz-transform: translate3d(0px,0,0);
+            -ms-transform: translate3d(0px,0,0);
+            -o-transform: translate3d(0px,0,0);
+            transform: translate3d(0px,0,0);
+        }
+    </style>
+</head>
+<body onload="initialize()" class="promo back">
+    <div id="map"></div>
+
+    <!--<div class="site-overlay"></div>-->
+    
+    <div class="col-xs-12">
+        <div class="mobile-search-result">
+            <nav class="pushy pushy-left" id="pushy">
+                <div class="headmenu">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="menu-top">
+                                <div class="col-md-6 col-xs-6 pull-right">
+                                    <div class="topheader" id="shiftheader">
+                                        <ul>
+
+                                            <li>
+                                                <a href="#" class="language">
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Login.html" class="user">
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" id="ad" class="download">
+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <div class="suggest  ">
+                                        <a href="Suggest.html"></a>
+                                    </div>                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="" id="leftside-category">
+                    <div class="firstul ">
+                        <ul>
+                            <li data-lable="distance">Distance</li>
+                            <li data-lable="Popularity">Popularity</li>
+                        </ul>
+                    </div>
+                    <div class="secondul">
+                        <ul>
+                            <li data-lable="Global">Global</li>
+                            <li data-lable="Country">Country</li>
+                            <li data-lable="city">city</li>
+                        </ul>
+                        <hr />
+                    </div>
+                </div>
+                <div class="menu-left-content">
+                    <div class="menu-left-side">
+                        <ul class="side_menu">
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="">
+                                                <i class="mdi mdi-thumb-up like-btn like-deactive"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="basic-info-main">
+                                <p class="side-p">
+                                    Profile Name
+                                </p>
+                                <div class="basic-info">
+                                    <ul class="side-menu-submenu">
+                                        <li class="basic-info-Distance">30m</li>
+                                        <li class="basic-info-like" data-type="like">
+                                            <a href="#" class="" id="likebtn">
+                                                <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                                <span class="num">135</span>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="cover-bar"></div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer" style="width:unset;position:fixed;bottom:5px;right:55px;">
+                    <ul>
+                        <li>
+                            <a href="#">Privacy</a>
+
+                        </li>
+                        <li>
+                            <a href="#">help</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    #################################
+    - SCRIPT FILES -
+    #################################
+    -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+   
+
+
+
+    <!--Other main scripts-->
+    <script src="js/all_scr.js"></script>
+    <!--Bootstrap js-->
+    <script src="js/bootstrap.min.js"></script>
+    <!--Map js-->
+    <!--<script type="text/javascript" src="js/map_index.js"></script>
+    <script type="text/javascript" src="js/infobox.js"></script>-->
+    <script type="text/javascript">
+        "use strict";
+        setHeiHeight();
+        $(window).resize(setHeiHeight);
+
+    </script>
+
+</body>
+</html>

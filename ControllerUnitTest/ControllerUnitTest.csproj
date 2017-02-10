@@ -273,6 +273,7 @@
       <HintPath>..\packages\Microsoft.Extensions.WebEncoders.1.1.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.Net.Http.Headers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.1.1.0\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll</HintPath>
       <Private>True</Private>
@@ -295,8 +296,21 @@
     <Reference Include="Reolin.Data.Services.Core">
       <HintPath>..\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Reolin.Web.Api">
-      <HintPath>..\Reolin.Web.Api\bin\Debug\net461\win7-x64\Reolin.Web.Api.exe</HintPath>
+    <Reference Include="Reolin.Web.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reolin.Web.Api\bin\Debug\net461\Reolin.Web.Api.exe</HintPath>
+    </Reference>
+    <Reference Include="Reolin.Web.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reolin.Web.Security\bin\Debug\net461\Reolin.Web.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Reolin.Web.Security.Membership, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reolin.Web.Security.Membership\bin\Debug\net461\Reolin.Web.Security.Membership.dll</HintPath>
+    </Reference>
+    <Reference Include="Reolin.Web.Security.Membership.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reolin.Web.Security.Membership\bin\Debug\net461\Reolin.Web.Security.Membership.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -435,6 +449,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AccountController_Tests.cs" />
     <Compile Include="ProfileControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

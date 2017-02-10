@@ -10,7 +10,7 @@ module Reolin.Web.Client.Controllers
         PasswordTextBox: JQuery = $('#Password');
         ConfirmPasswordTextBox: JQuery = $('#ConfirmPassword');
         EmailTextBox: JQuery = $('#Email');
-        UserNameTextBox: JQuery = $('#UserName');
+        UserNameTextBox: JQuery = $('#Username');
         PhoneNumberTextBox: JQuery = $('#PhoneNumber');
         ErrorList: JQuery;
 

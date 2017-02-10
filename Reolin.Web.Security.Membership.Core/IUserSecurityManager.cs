@@ -71,5 +71,7 @@ namespace Reolin.Web.Security.Membership.Core
         /// <param name="password"></param>
         /// <returns></returns>
         Task<IdentityResult> GetLoginInfo(string userName, string password);
+
+        Task<int> CreateAsync(string userName, string password);
     }
 }

@@ -9,9 +9,11 @@ namespace Reolin.Web.Security.Membership.Validators
     {
         public Task<IdentityResult> ValidateEmail(string email)
         {
+            //empty string is stupidly allowed .
             if (string.IsNullOrEmpty(email))
             {
-                throw new ArgumentNullException(nameof(email));
+                return Task.FromResult(IdentityResult.FromSucceeded());
+                //throw new ArgumentNullException(nameof(email));
             }
 
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");

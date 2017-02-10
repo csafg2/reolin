@@ -122,12 +122,13 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("/[controller]/[action]")]
+        [RequireValidModel]
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             try
             {
-                await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
-                return Ok(new { model.Email, model.UserName });
+                await this.UserManager.CreateAsync(model.UserName, model.Password);
+                return Ok(new {model.UserName });
             }
             catch (IdentityException ex)
             {

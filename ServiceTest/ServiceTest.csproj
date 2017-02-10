@@ -55,6 +55,12 @@
     <Reference Include="Reolin.Data.Services.Core">
       <HintPath>..\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Services.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Reolin.Web.Security.Membership">
+      <HintPath>..\Reolin.Web.Security.Membership\bin\Debug\net461\Reolin.Web.Security.Membership.dll</HintPath>
+    </Reference>
+    <Reference Include="Reolin.Web.Security.Membership.Core">
+      <HintPath>..\Reolin.Web.Security.Membership\bin\Debug\net461\Reolin.Web.Security.Membership.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -74,6 +80,7 @@
   <ItemGroup>
     <Compile Include="ProfileServiceTest.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserSecurityManagerTest.cs" />
     <Compile Include="UserServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +96,10 @@
     <ProjectReference Include="..\Reolin.Data\Reolin.Data.csproj">
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.xproj">
+      <Project>{96c280ca-ae2e-4c94-99ee-14a1f512ce9e}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
