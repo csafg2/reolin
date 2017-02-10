@@ -78,6 +78,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="JobCategoryTests.cs" />
     <Compile Include="ProfileServiceTest.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserSecurityManagerTest.cs" />

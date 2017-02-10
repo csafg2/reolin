@@ -228,7 +228,8 @@ namespace Reolin.Data.Services
                 Body = commentBody,
                 Date = DateTime.Now,
                 ProfileId = profileId,
-                UserId = userId
+                UserId = userId,
+                Confirmed = false
             };
 
             Context.Comments.Add(comment);

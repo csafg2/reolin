@@ -1,7 +1,5 @@
-﻿
-using Reolin.Data.Domain;
+﻿using Reolin.Data.Domain;
 using Reolin.Data.DTO;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,5 +68,9 @@ namespace Reolin.Data.Services.Core
         Task<List<CommentDTO>> GetLatestComments(int profileId);
 
         Task<int> EditEducation(int profileId, EducationEditDTO dto);
+
+        Task<int> AddSkill(int profileId, string skill);
+
+        Task<int> AddSocialNetwork(int profileId, int netowrkId, string url);
     }
 }

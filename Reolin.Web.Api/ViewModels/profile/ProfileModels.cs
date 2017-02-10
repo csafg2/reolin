@@ -6,6 +6,31 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.Api.ViewModels.profile
 {
+    public class ProfileAddNetworkModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "ProfileId is not valid")]
+        [Required(ErrorMessage = "ProfileId is required")]
+        public int ProfielId { get; set; }
+
+
+        [Required(ErrorMessage = "SocialNetworkId is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "SocialnetworkId is required")]
+        public int SocialNetworkId { get; set; }
+
+        [Required(ErrorMessage = "Url is Required", AllowEmptyStrings = false)]
+        public string Url { get; set; }
+    }
+
+    public class ProfileAddSkillModel
+    {
+        [Required(ErrorMessage = "ProfileId is required")]
+        [Range(0, int.MaxValue, ErrorMessage = "Id is not valid")]
+        public int ProfileId { get; set; }
+
+        [Required(ErrorMessage = "Skillname is required", AllowEmptyStrings = false)]
+        public string SkillName { get; set; }
+    }
+
 
     public class ProfileEditModel
     {
@@ -66,6 +91,7 @@ namespace Reolin.Web.Api.ViewModels.profile
 
         [Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
         public string Country { get; set; }
+        public int JobCategoryId { get; set; }
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);

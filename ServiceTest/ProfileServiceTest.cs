@@ -22,6 +22,23 @@ namespace ServiceTest
             this._service = new ProfileService(_context);
         }
 
+
+        [TestMethod]
+        public void Profile_AddNetwork()
+        {
+            var networkId = this._context.SocialNetworks.First().Id;
+            var profileId = this._context.Profiles.First().Id;
+
+            int r = _service.AddSocialNetwork(profileId, networkId, "Http://t.me/hassanHashemi").Result;
+
+            Assert.IsTrue(r > 0);
+            var profile = _context
+                .Profiles
+                .Include(p => p.Networks)
+                .First(p => p.Id == profileId);
+            Assert.IsTrue(profile.Networks.Count > 0);
+        }
+
         [TestMethod]
         public void Profile_EditEducation()
         {
@@ -118,7 +135,8 @@ namespace ServiceTest
                 Latitude = 87,
                 Longitude = 87,
                 City = "Qom",
-                Country = "Iran"
+                Country = "Iran",
+                PhoneNumber = "230489324"
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateWorkAsync(userId, dto).Result;
@@ -158,6 +176,17 @@ namespace ServiceTest
             int result = _service.AddProfileImageAsync(profileId, @"\99\100\2.jpg").Result;
 
             Assert.IsTrue(result > 0);
+        }
+
+        [TestMethod]
+        public void Profile_AddSkill()
+        {
+            var profileId = _context.Profiles.FirstOrDefault().Id;
+
+            int r = this._service.AddSkill(profileId, "C#").Result;
+
+
+            Assert.IsTrue(r > 0);
         }
     }
 }

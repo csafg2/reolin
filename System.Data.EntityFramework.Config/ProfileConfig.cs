@@ -3,19 +3,31 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Reolin.Data.EntityFramework.Config
 {
+
     public class ProfileConfig: EntityTypeConfiguration<Profile>
     {
         public ProfileConfig()
         {
             this.HasKey(p => p.Id);
-            
+
+            this.HasMany(p => p.Networks)
+                .WithRequired(pn => pn.Profile)
+                .HasForeignKey(pn => pn.ProfileId)
+                .WillCascadeOnDelete(false);
+
+            // 1:* Intelisence is necessary
+            this.HasMany(u => u.Skills)
+                .WithMany(s => s.Profiles)
+                .Map(t => t.MapLeftKey("ProfileId")
+                        .MapRightKey("SkillId")
+                        .ToTable("ProfileSkill"));
 
             // *:*
             this.HasMany(p => p.Certificates)
                 .WithMany(c => c.Profiles)
                 .Map(t => t.MapLeftKey("ProfileId")
                         .MapRightKey("CertificateId")
-                        .ToTable("Profile_Certificate"));
+                        .ToTable("ProfileCertificate"));
 
             // a profile record can have multiple #tags 
             // #tags must be extracted from profile description string

@@ -126,7 +126,7 @@ namespace Reolin.Data.Services
                 throw new InvalidOperationException($"No user with specified Id {userId} found.");
             }
 
-            return await CreateAsync(user, dto, ProfileType.Business);
+            return await CreateAsync(user, dto, ProfileType.Work);
         }
 
 
@@ -260,7 +260,7 @@ namespace Reolin.Data.Services
             {
                 throw new InvalidOperationException($"no profile with id {profile} found. ");
             }
-            else if (profile.Type == ProfileType.Business)
+            else if (profile.Type == ProfileType.Work)
             {
                 throw new InvalidOperationException($"only personal profiles should have edu info");
             }
@@ -292,5 +292,55 @@ namespace Reolin.Data.Services
             return Context.SaveChangesAsync();
         }
 
+        public async Task<int> AddSkill(int profileId, string skill)
+        {
+            if (string.IsNullOrEmpty(skill))
+            {
+                throw new ArgumentNullException(nameof(Skill));
+            }
+
+            Profile profile = await Context.Profiles.Include("Skills").FirstOrDefaultAsync(p => p.Id == profileId);
+
+            if (profile.Skills.Any(s => s.Name == skill))
+            {
+                return 0;
+            }
+
+            Skill skillItem = await CreateSkill(skill, profile);
+
+            profile.Skills.Add(skillItem);
+            return await Context.SaveChangesAsync();
+        }
+
+        private async Task<Skill> CreateSkill(string skill, Profile profile)
+        {
+            Skill skillItem = await Context.Skills.FirstOrDefaultAsync(s => s.Name == skill);
+            if (skillItem == null)
+            {
+                skillItem = new Skill() { Name = skill };
+                profile.Skills.Add(skillItem);
+            }
+
+            return skillItem;
+        }
+
+        public Task<int> AddSocialNetwork(int profileId, int networkId, string url)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
+
+            ProfileNetwork network = new ProfileNetwork()
+            {
+                NetworkId = networkId,
+                ProfileId = profileId,
+                Url = url
+            };
+
+            Context.ProfileNetworks.Add(network);
+
+            return Context.SaveChangesAsync();
+        }
     }
 }

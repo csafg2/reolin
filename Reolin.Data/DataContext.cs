@@ -19,7 +19,14 @@ namespace Reolin.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         //public DbSet<PhoneNumber> PhoneNumbers { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
+
         public DbSet<Education> Educations { get; set; }
+
+
+        public DbSet<ProfileNetwork> ProfileNetworks { get; set; }
+        public DbSet<SocialNetwork> SocialNetworks { get; set; }
+
 
         public DataContext(): base("Default")
         {
@@ -32,10 +39,8 @@ namespace Reolin.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.AddFromAssembly(typeof(ProfileConfig).Assembly);
-            
         }
 
         public class StoreProcedures

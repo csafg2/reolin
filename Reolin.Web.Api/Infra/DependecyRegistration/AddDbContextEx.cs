@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Reolin.Data;
 using System;
-using System.Data.Entity;
 
 namespace Reolin.Web.Api.Infra.DependecyRegistration
 {
@@ -15,7 +14,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
                 throw new ArgumentNullException(nameof(connectionString));
             }
 
-            return source.AddTransient(typeof(DataContext), isp => new DataContext(connectionString));
+            return source.AddScoped(typeof(DataContext), isp => new DataContext(connectionString));
         }
     }
 }

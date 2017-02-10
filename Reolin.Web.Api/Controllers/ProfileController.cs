@@ -248,5 +248,36 @@ namespace Reolin.Web.Api.Controllers
             int result = await this.ProfileService.EditEducation(dto.ProfileId, dto);
             return Ok(result);
         }
+
+
+        /// <summary>
+        /// Add a skill to the specified profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AddSkill(ProfileAddSkillModel model)
+        {
+            await this.ProfileService.AddSkill(model.ProfileId, model.SkillName);
+            
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// add a new network to networks collection of the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [RequireValidModel]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AddNetwork(ProfileAddNetworkModel model)
+        {
+            await this.ProfileService.AddSocialNetwork(model.ProfielId, model.SocialNetworkId, model.Url);
+
+            return Ok();
+        }
     }
 }

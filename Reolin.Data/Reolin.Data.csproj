@@ -61,6 +61,7 @@
     <Content Include="RawSql\InsertTagStoreProcedure.sql" />
     <Content Include="RawSql\GetRelatedProfiles.sql" />
     <Content Include="RawSql\GetRelateProfilesWithingRadius.sql" />
+    <Compile Include="Seeds\JobCategorySeeds.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

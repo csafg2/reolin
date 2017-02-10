@@ -45,12 +45,6 @@ namespace Reolin.Data.EntityFramework.Config
                         .MapRightKey("UserId")
                         .ToTable("User_Certificates"));
 
-            // 1:* Intelisence is necessary
-            this.HasMany(u => u.Skills)
-                .WithMany(s => s.Users)
-                .Map(t => t.MapLeftKey("UserId")
-                        .MapRightKey("SkillId")
-                        .ToTable("UserSkill"));
 
             // user must set a location
             // but an address object might not be accuired just by a user
