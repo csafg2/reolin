@@ -103,6 +103,7 @@ namespace Reolin.Web.Api.Controllers
 
             using (var stream = file.OpenReadStream())
             {
+                // TODO: fix this to accept other info
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
                 int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
                 return Ok(path);

@@ -13,7 +13,7 @@ namespace Reolin.Data.Domain
        // public User User { get; set; }
         public Profile Profile { get; set; }
         public Academy Academy { get; set; }
-        public List<Tag> Tags { get; set; }
+        //public List<Tag> Tags { get; set; }
 
     }
 }

@@ -14,7 +14,7 @@ namespace Reolin.Data.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte[] Password { get; set; }
-        public List<Tag> Tags { get; set; }
+        //public List<Tag> Tags { get; set; }
         
         public List<Certificate> Certificates { get; set; }
         //public List<Skill> Skills { get; set; }

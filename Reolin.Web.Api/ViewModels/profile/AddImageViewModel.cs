@@ -8,6 +8,9 @@ namespace Reolin.Web.Api.ViewModels
         [Required(ErrorMessage = "ProfileId is Required")]
         [Range(0, int.MaxValue, ErrorMessage = "Id is not valid")]
         public int ProfileId { get; set; }
-    }
 
+        public int[] TagIds { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
+    }
 }

@@ -1,7 +1,7 @@
 ﻿Go
 IF EXISTS ( SELECT * 
             FROM   sysobjects 
-            WHERE  id = object_id(N'[dbo].[InsertTag]') 
+            WHERE  id = object_id(N'[dbo].[InsertProfileTag]') 
                    and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
 BEGIN
     DROP PROCEDURE [dbo].InsertTag
@@ -9,10 +9,10 @@ END
 
 Go
 
-Create	Procedure	InsertTag
+Create	Procedure	InsertProfileTag
 (
 	@ProfileId		BigInt	=	-1,
-	@AddressId		BigInt	=	-1,
+	@ImageId		BigInt	=	-1,
 	@TagName		nVarchar(60)
 )
 as
@@ -47,13 +47,7 @@ if	Exists(	Select	Name
 						ProfileId	=	@ProfileId)
 						return 2;
 
-if(@AddressId	= -1)
 	Insert	ProfileTag(ProfileId,	TagId)
 			Values(@ProfileId,	@newTagId);
-else
-	Insert	AddressTag(AddressId,	TagId)
-				Values(@AddressId,	@newTagId)
-
-return 1;
 
 End

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using Reolin.Data.Services.Core;
+using System;
 
 namespace ServiceTest
 {
@@ -106,7 +107,7 @@ namespace ServiceTest
         public void Profile_AddTag()
         {
             var id = _context.Profiles.First().Id;
-            _service.AddTagAsync(id, new[] { "Soldier" }).Wait();
+            _service.AddTagAsync(id, new[] { "C#" }).Wait();
         }
 
         [TestMethod]
@@ -183,7 +184,8 @@ namespace ServiceTest
         {
             var profileId = _context.Profiles.FirstOrDefault().Id;
 
-            int r = this._service.AddSkill(profileId, "C#").Result;
+            //random skill
+            int r = this._service.AddSkill(profileId, Guid.NewGuid().ToString()).Result;
 
 
             Assert.IsTrue(r > 0);

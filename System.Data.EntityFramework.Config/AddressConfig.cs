@@ -10,9 +10,9 @@ namespace Reolin.Data.EntityFramework.Config
         {
             this.HasKey(a => a.Id);
 
-            this.HasMany(a => a.Tags)
-                .WithMany(t => t.Addresses)
-                .Map(t => t.MapLeftKey("AddressId").MapRightKey("TagId"));
+            //this.HasMany(a => a.Tags)
+            //    .WithMany(t => t.Addresses)
+            //    .Map(t => t.MapLeftKey("AddressId").MapRightKey("TagId"));
         }
     }
 }

@@ -8,6 +8,10 @@ namespace Reolin.Data.EntityFramework.Config
         public ImageConfig()
         {
             this.HasKey(i => i.Id);
+            
+            this.HasMany(im => im.Tags)
+                .WithOptional(t => t.Image)
+                .HasForeignKey(t => t.ImageId);
         }
     }
 }

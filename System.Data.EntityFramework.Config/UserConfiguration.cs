@@ -76,11 +76,11 @@ namespace Reolin.Data.EntityFramework.Config
                 .WillCascadeOnDelete(true);
 
             // 1:* Intelissence is necessary
-            this.HasMany(u => u.Tags)
-                .WithMany(t => t.Users)
-                .Map(t => t.MapLeftKey("UserId")
-                        .MapRightKey("TagId")
-                        .ToTable("UserTag"));
+            //this.HasMany(u => u.Tags)
+            //    .WithMany(t => t.Users)
+            //    .Map(t => t.MapLeftKey("UserId")
+            //            .MapRightKey("TagId")
+            //            .ToTable("UserTag"));
 
 
             // 1:* Intelissence is necessary
