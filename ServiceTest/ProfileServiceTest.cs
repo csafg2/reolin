@@ -4,8 +4,6 @@ using Reolin.Data.DTO;
 using Reolin.Data.Services;
 using System.Linq;
 using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using Reolin.Data.Services.Core;
 using System;
 
@@ -118,6 +116,7 @@ namespace ServiceTest
             Assert.IsTrue(comments.Count > 0);
         }
 
+        
         [TestMethod]
         public void Profile_Edit()
         {
@@ -137,7 +136,8 @@ namespace ServiceTest
                 Longitude = 87,
                 City = "Qom",
                 Country = "Iran",
-                PhoneNumber = "230489324"
+                PhoneNumber = "230489324",
+                JobCategoryId = 1
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateWorkAsync(userId, dto).Result;
@@ -152,7 +152,8 @@ namespace ServiceTest
                 Description = "software architect",
                 Name = "Hassan",
                 Latitude = 87,
-                Longitude = 87
+                Longitude = 87,
+                JobCategoryId = null
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreatePersonalAsync(userId, dto).Result;

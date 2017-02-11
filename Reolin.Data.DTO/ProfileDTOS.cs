@@ -49,6 +49,7 @@ namespace Reolin.Data.DTO
         public string City { get; set; }
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
+        public int? JobCategoryId { get; set; }
     }
 
     public class ProfileByTagDTO

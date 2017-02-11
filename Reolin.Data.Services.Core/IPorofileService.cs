@@ -72,5 +72,6 @@ namespace Reolin.Data.Services.Core
         Task<int> AddSkill(int profileId, string skill);
 
         Task<int> AddSocialNetwork(int profileId, int netowrkId, string url);
+        Task<List<JobCategoryInfoDTO>> QueryJobCategories();
     }
 }

@@ -173,6 +173,7 @@ namespace Reolin.Data.Services
                 Description = dto.Description,
                 Name = dto.Name,
                 PhoneNumber = dto.PhoneNumber,
+                JobCategoryId = dto.JobCategoryId,
                 Address = new Address()
                 {
                     City = dto.City,
@@ -341,6 +342,15 @@ namespace Reolin.Data.Services
             Context.ProfileNetworks.Add(network);
 
             return Context.SaveChangesAsync();
+        }
+
+        public Task<List<JobCategoryInfoDTO>> QueryJobCategories()
+        {
+            return this.Context.JobCategories.Select(jc => new JobCategoryInfoDTO()
+            {
+                Id = jc.Id,
+                Name = jc.Name
+            }).ToListAsync();
         }
     }
 }

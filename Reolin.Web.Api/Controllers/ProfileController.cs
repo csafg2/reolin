@@ -142,7 +142,8 @@ namespace Reolin.Web.Api.Controllers
                     Longitude = model.Longitude,
                     Name = model.Name,
                     City = model.City,
-                    Country = model.Country
+                    Country = model.Country,
+                    JobCategoryId = model.JobCategoryId
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
@@ -279,6 +280,17 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.AddSocialNetwork(model.ProfielId, model.SocialNetworkId, model.Url);
 
             return Ok();
+        }
+        
+        /// <summary>
+        /// Gets a list of all available job categories
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AvailableJobCategories()
+        {
+            return Ok(await this.ProfileService.QueryJobCategories());
         }
     }
 }

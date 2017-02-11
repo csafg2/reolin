@@ -25,7 +25,7 @@ namespace ServiceTest
         [TestMethod]
         public void UserSecurityManager_Create()
         {
-            int r = this._manager.CreateAsync("Hoola", "123456").Result;
+            int r = this._manager.CreateAsync("Hassan", "123456", "HassanHashemi@yahoo.com").Result;
 
             Assert.IsTrue(r > 0);
         }
