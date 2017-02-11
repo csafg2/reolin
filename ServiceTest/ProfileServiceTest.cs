@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using Reolin.Data.Services.Core;
 using System;
+using Reolin.Data.Domain;
 
 namespace ServiceTest
 {
@@ -131,12 +132,12 @@ namespace ServiceTest
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "ZSfot is a software company that dose many things",
-                Name = "ZSoft inc",
+                Description = "Second Profile for example",
+                Name = "Mortazavi restaurent",
                 Latitude = 87,
                 Longitude = 87,
-                City = "Qom",
-                Country = "Iran",
+                City = "US",
+                Country = "Newyork",
                 PhoneNumber = "230489324"
             };
             var userId = _context.Users.First().Id;
@@ -162,21 +163,56 @@ namespace ServiceTest
         [TestMethod]
         public void Profile_AddLike()
         {
-            var profile = this._context.Profiles.First();
-            var user = this._context.Users.First();
+            this._service.AddLikeAsync(1, 3).Wait();
+            this._service.AddLikeAsync(2, 3).Wait();
 
-            var result = this._service.AddLikeAsync(user.Id, profile.Id).Result;
-            Assert.IsTrue(result > 0);
+            Profile receiveTest =
+                _context.Profiles
+                .Include(p => p.Likes)
+                .Include(p => p.ReceivedLikes).First(p => p.Id == 3);
+
+            Profile sentTest =
+                _context.Profiles.Include(p => p.Likes).First(p => p.Id == 1);
+
+            Assert.IsTrue(receiveTest.ReceivedLikes.Count == 2);
+            Assert.IsTrue(sentTest.Likes.Count == 1);
+
+            //reload object from db
+            receiveTest =
+                _context.Profiles
+                .Include(p => p.Likes)
+                .Include(p => p.ReceivedLikes).First(p => p.Id == 3);
+
+            //check senderId
+            Assert.IsTrue(receiveTest.ReceivedLikes.Any(l => l.SenderId == 1));
         }
 
         [TestMethod]
         public void Profile_AddImage()
         {
+            var profile = this._context
+                .Profiles
+                   .Include(p => p.ImageCategories)
+                     .First();
+            if (profile.ImageCategories.Count < 1)
+            {
+                profile.ImageCategories.Add(new ImageCategory()
+                {
+                    Name = "Sample Category"
+                });
 
-            var profileId = this._context.Profiles.First().Id;
-            int result = _service.AddProfileImageAsync(profileId, @"\99\100\2.jpg").Result;
+                _context.SaveChanges();
+            }
+
+            var catId = _context.ImageCategories.First(imc => imc.ProfileId == profile.Id).Id;
+
+            int result = _service
+                .AddProfileImageAsync(profile.Id, catId, "Image title", "this is a wedding", "/e/a.jpg").Result;
 
             Assert.IsTrue(result > 0);
+
+            var prof = _context.Profiles.Include("ImageCategories.Images").First(p => p.Id == profile.Id);
+            Assert.IsTrue(prof.ImageCategories.Any(imc => imc.Images.Count > 0));
         }
 
         [TestMethod]

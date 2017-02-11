@@ -105,7 +105,7 @@ namespace Reolin.Web.Api.Controllers
             {
                 // TODO: fix this to accept other info
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
-                int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, path);
+                int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, model.CategoryId, model.Subject, model.Description, path);
                 return Ok(path);
             }
         }

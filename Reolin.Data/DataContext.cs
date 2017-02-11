@@ -20,7 +20,7 @@ namespace Reolin.Data
         public DbSet<Role> Roles { get; set; }
         //public DbSet<PhoneNumber> PhoneNumbers { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
-
+        public DbSet<ImageCategory> ImageCategories { get; set; }
         public DbSet<Education> Educations { get; set; }
 
 

@@ -15,10 +15,12 @@ namespace Reolin.Data.Domain
         public ProfileType Type { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Like> Likes { get; set; }
+        public List<Like> ReceivedLikes { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Certificate> Certificates { get; set; }
         public List<Image> Images { get; set; }
         public List<Skill> Skills { get; set; }
+        public List<ImageCategory> ImageCategories { get; set; }
         public JobCategory JobCategory { get; set; }
         public int? JobCategoryId { get; set; }
         public Education Education { get; set; }

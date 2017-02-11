@@ -59,6 +59,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="JobCategory.cs" />
     <Compile Include="Education.cs" />
+    <Compile Include="ImageCategory.cs" />
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="Role.cs" />

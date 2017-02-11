@@ -56,6 +56,7 @@
     <Compile Include="CertificateConfig.cs" />
     <Compile Include="CommentConfig.cs" />
     <Compile Include="EducationConfig.cs" />
+    <Compile Include="ImageCategoryConfig.cs" />
     <Compile Include="ImageConfig.cs" />
     <Compile Include="JobCategoryConfig.cs" />
     <Compile Include="LikeConfig.cs" />

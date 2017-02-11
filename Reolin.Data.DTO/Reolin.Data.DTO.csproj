@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentDTO.cs" />
+    <Compile Include="ImageCategoryInfoDTO.cs" />
     <Compile Include="JobCategoryDTO.cs" />
     <Compile Include="ProfileDTOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

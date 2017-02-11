@@ -14,14 +14,14 @@ namespace Reolin.Data.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte[] Password { get; set; }
-        //public List<Tag> Tags { get; set; }
+        
         
         public List<Certificate> Certificates { get; set; }
-        //public List<Skill> Skills { get; set; }
+        
         public List<Profile> Profiles { get; set; }
 
         // thumbs up s that user has done.
-        public List<Like> Likes { get; set; }
+        //public List<Like> Likes { get; set; }
         public List<Role> Roles { get; set; }
         public bool Confirmed { get; set; }
 

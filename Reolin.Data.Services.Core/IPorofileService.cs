@@ -11,6 +11,8 @@ namespace Reolin.Data.Services.Core
     /// </summary>
     public interface IProfileService
     {
+        Task<int> AddImageCategory(int profileId, string name);
+
         /// <summary>
         /// Asynchronously add a descriptions string to a profile
         /// </summary>
@@ -40,10 +42,10 @@ namespace Reolin.Data.Services.Core
         /// <param name="profileId">the id of profile to be update</param>
         /// <param name="imagePath">the patch of image after it`s been saved</param>
         /// <returns></returns>f
-        Task<int> AddProfileImageAsync(int profileId, string imagePath);
+        Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath);
 
 
-        Task<int> AddLikeAsync(int senderUserId, int targetProfileId);
+        Task<int> AddLikeAsync(int senderProfileId, int targetProfileId);
 
         /// <summary>
         /// Create a new profile entry with the description, for the specified userId.

@@ -98,18 +98,27 @@ namespace Reolin.Data.Services
                         });
         }
 
-        public Task<int> AddProfileImageAsync(int profileId, string imagePath)
+        public Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath)
         {
-            this.Context.Images.Add(new Image() { ProfileId = profileId, Path = imagePath, UploadDate = DateTime.Now });
+            this.Context.Images.Add(new Image()
+            {
+                ProfileId = profileId,
+                Subject = subject,
+                Description = descrption,
+                Path = imagePath,
+                UploadDate = DateTime.Now,
+                ImageCategoryId = categoryId
+            });
+
             return this.Context.SaveChangesAsync();
         }
 
-        public Task<int> AddLikeAsync(int senderUserId, int targetProfileId)
+        public Task<int> AddLikeAsync(int senderProfileId, int targetProfileId)
         {
             this.Context.Likes.Add(new Like()
             {
-                ProfileId = targetProfileId,
-                SenderId = senderUserId
+                TargetProfileId = targetProfileId,
+                SenderId = senderProfileId
             });
 
             return Context.SaveChangesAsync();
@@ -258,7 +267,7 @@ namespace Reolin.Data.Services
 
             if (profile == null)
             {
-                throw new InvalidOperationException($"no profile with id {profile} found. ");
+                throw new InvalidOperationException($"no profile with id '{profile}' found. ");
             }
             else if (profile.Type == ProfileType.Work)
             {
@@ -341,6 +350,22 @@ namespace Reolin.Data.Services
             Context.ProfileNetworks.Add(network);
 
             return Context.SaveChangesAsync();
+        }
+
+        //TODO: move this to ImageCategoryService for god sake.
+        public async Task<int> AddImageCategory(int profileId, string name)
+        {
+            if (await Context.ImageCategories.AnyAsync(i => i.ProfileId == profileId && i.Name == name))
+            {
+                throw new InvalidOperationException($"user alreadys has {name}.");
+            }
+
+            Context.ImageCategories.Add(new ImageCategory()
+            {
+                Name = name
+            });
+
+            return await this.Context.SaveChangesAsync();
         }
     }
 }

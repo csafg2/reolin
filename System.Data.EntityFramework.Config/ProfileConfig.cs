@@ -10,6 +10,11 @@ namespace Reolin.Data.EntityFramework.Config
         {
             this.HasKey(p => p.Id);
 
+            this.HasMany(p => p.ImageCategories)
+                .WithRequired(imc => imc.Profile)
+                .HasForeignKey(imc => imc.ProfileId)
+                .WillCascadeOnDelete(false);
+
             this.HasMany(p => p.Networks)
                 .WithRequired(pn => pn.Profile)
                 .HasForeignKey(pn => pn.ProfileId)
@@ -67,11 +72,24 @@ namespace Reolin.Data.EntityFramework.Config
                 .WithOptional(a => a.Profile);
 
 
+            // keeping track of where the users likes
+            //this.HasMany(u => u.Likes)
+            //    .WithRequired(l => l.Sender)
+            //    .HasForeignKey(l => l.SenderId)
+            //    .WillCascadeOnDelete(true);
+
+            //where user liked stuff
             this.HasMany(p => p.Likes)
-                .WithRequired(l => l.Profile)
-                .HasForeignKey(l => l.ProfileId)
+                .WithRequired(l => l.Sender)
+                .HasForeignKey(l => l.SenderId)
                 .WillCascadeOnDelete(false);
 
+            // likes that user has received
+            this.HasMany(p => p.ReceivedLikes)
+                .WithRequired(l => l.TargetProfile)
+                .HasForeignKey(l => l.TargetProfileId)
+                .WillCascadeOnDelete(false);
+            
             this.HasMany(p => p.Comments)
                 .WithRequired(c => c.Profile)
                 .HasForeignKey(c => c.ProfileId)

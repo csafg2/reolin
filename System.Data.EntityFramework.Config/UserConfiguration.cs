@@ -70,10 +70,10 @@ namespace Reolin.Data.EntityFramework.Config
                 .HasForeignKey(p => p.UserId);
             
             // keeping track of where the users likes
-            this.HasMany(u => u.Likes)
-                .WithRequired(l => l.Sender)
-                .HasForeignKey(l => l.SenderId)
-                .WillCascadeOnDelete(true);
+            //this.HasMany(u => u.Likes)
+            //    .WithRequired(l => l.Sender)
+            //    .HasForeignKey(l => l.SenderId)
+            //    .WillCascadeOnDelete(true);
 
             // 1:* Intelissence is necessary
             //this.HasMany(u => u.Tags)

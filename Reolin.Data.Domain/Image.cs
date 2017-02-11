@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Reolin.Data.Domain
 {
+
     public class Image
     {
         public int Id { get; set; }
@@ -16,5 +17,8 @@ namespace Reolin.Data.Domain
         public int ProfileId { get; set; }
         public DateTime UploadDate { get; set; }
         public List<Tag> Tags { get; set; }
+
+        public int ImageCategoryId { get; set; }
+        public ImageCategory ImageCategory { get; set; }
     }
 }

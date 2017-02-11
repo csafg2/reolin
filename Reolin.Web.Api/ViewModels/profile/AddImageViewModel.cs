@@ -12,5 +12,6 @@ namespace Reolin.Web.Api.ViewModels
         public int[] TagIds { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
+        public int CategoryId { get; set; }
     }
 }
