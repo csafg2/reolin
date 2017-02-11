@@ -31,6 +31,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddJobCategoryService();

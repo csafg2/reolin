@@ -60,8 +60,8 @@ namespace ServiceTest_
         [TestMethod]
         public void User_AddCommentAsync()
         {
-            int userId = 4;
-            int profileId = 6;
+            int userId = context.Users.First().Id;
+            int profileId = context.Profiles.First().Id;
 
             int result = this.Service.AddCommentAsync(userId, profileId, "HELLOW COMMENT!").Result;
             Assert.IsTrue(result > 0);

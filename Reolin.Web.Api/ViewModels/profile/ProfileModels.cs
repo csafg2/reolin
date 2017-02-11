@@ -81,7 +81,6 @@ namespace Reolin.Web.Api.ViewModels.profile
         [Range(-180, 180, ErrorMessage = "Longitude is not valid")]
         public double Longitude { get; set; }
 
-
         [Required( ErrorMessage = "Phone Number is required", AllowEmptyStrings = false)]
         public string PhoneNumber { get; set; }
 
@@ -91,7 +90,12 @@ namespace Reolin.Web.Api.ViewModels.profile
 
         [Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
         public string Country { get; set; }
-        public int JobCategoryId { get; set; }
+
+        
+        [Range(1, int.MaxValue, ErrorMessage = "Not valid JobCategoryID")]
+        [Required(ErrorMessage = "JobCategoryID is required, you can query them first")]
+        public int? JobCategoryId { get; set; }
+
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);

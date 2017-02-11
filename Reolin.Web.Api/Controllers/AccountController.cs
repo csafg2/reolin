@@ -127,8 +127,8 @@ namespace Reolin.Web.Api.Controllers
         {
             try
             {
-                await this.UserManager.CreateAsync(model.UserName, model.Password);
-                return Ok(new {model.UserName });
+                await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
+                return Ok(new {model.UserName, model.Email });
             }
             catch (IdentityException ex)
             {

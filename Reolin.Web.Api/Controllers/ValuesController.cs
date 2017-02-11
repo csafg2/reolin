@@ -6,9 +6,15 @@ using Reolin.Web.Api.Infra.mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
+using Reolin.Web.Api.Infra.Filters;
 
 namespace Reolin.Web.Api.Controllers
 {
+    public class SampleModel
+    {
+        public int ProfileId { get; set; }
+    }
+
     [EnableCors("AllowAll")]
     public class ValuesController : BaseController
     {
@@ -19,8 +25,9 @@ namespace Reolin.Web.Api.Controllers
             this._logger = logger;
         }
 
-        [HttpGet]
-        public string Get2()
+        [HttpPost]
+        [CheckPermission]
+        public string Get2(SampleModel model)
         {
 
             return "HELLOW WORLD!!";
