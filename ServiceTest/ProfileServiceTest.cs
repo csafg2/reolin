@@ -130,10 +130,10 @@ namespace ServiceTest
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "ZSfot is a software company that dose many things",
-                Name = "ZSoft inc",
-                Latitude = 87,
-                Longitude = 87,
+                Description = "Mortazavi Restaurent is a nice thing",
+                Name = "Mortazavi Restaurent has every food you want",
+                Latitude = 83,
+                Longitude = 35,
                 City = "Qom",
                 Country = "Iran",
                 PhoneNumber = "230489324",
