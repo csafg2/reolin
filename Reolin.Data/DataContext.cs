@@ -45,7 +45,7 @@ namespace Reolin.Data
 
         public class StoreProcedures
         {
-            public const string INSERT_TAG_PROCEDURE = "InsertProfileTag @ProfileId, @AddressId, @TagName ";
+            public const string INSERT_TAG_PROCEDURE = "InsertProfileTag @ProfileId, @TagName ";
             public const string GET_RELATED_PROFILES_PROCEDURE = "GetRelatedProfilesByTag @ProfileId ";
         }
     }

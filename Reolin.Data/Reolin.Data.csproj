@@ -58,7 +58,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="RawSql\InsertTagStoreProcedure.sql" />
+    <Content Include="RawSql\InsertProfileTagProcedure.sql" />
     <Content Include="RawSql\GetRelatedProfiles.sql" />
     <Content Include="RawSql\GetRelateProfilesWithingRadius.sql" />
     <Compile Include="Seeds\JobCategorySeeds.cs" />

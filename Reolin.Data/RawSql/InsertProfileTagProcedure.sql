@@ -4,7 +4,7 @@ IF EXISTS ( SELECT *
             WHERE  id = object_id(N'[dbo].[InsertProfileTag]') 
                    and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
 BEGIN
-    DROP PROCEDURE [dbo].InsertTag
+    DROP PROCEDURE [dbo].InsertProfileTag
 END
 
 Go
@@ -12,7 +12,6 @@ Go
 Create	Procedure	InsertProfileTag
 (
 	@ProfileId		BigInt	=	-1,
-	@ImageId		BigInt	=	-1,
 	@TagName		nVarchar(60)
 )
 as

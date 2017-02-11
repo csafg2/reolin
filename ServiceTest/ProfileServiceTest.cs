@@ -108,7 +108,15 @@ namespace ServiceTest
         public void Profile_AddTag()
         {
             var id = _context.Profiles.First().Id;
-            _service.AddTagAsync(id, new[] { "C#" }).Wait();
+            string tag = Guid.NewGuid().ToString();
+            _service.AddTagAsync(id, new[] { tag }).Wait();
+
+            Assert.IsTrue(
+                _context.Profiles.Include("Tags")
+                    .First(p => p.Id == id)
+                        .Tags
+                        .Any(t => t.Name == tag)
+                );
         }
 
         [TestMethod]
@@ -132,13 +140,14 @@ namespace ServiceTest
         {
             var dto = new CreateProfileDTO()
             {
-                Description = "Second Profile for example",
-                Name = "Mortazavi restaurent",
+                Description = "Second Profile for " + Guid.NewGuid().ToString(),
+                Name = "Cacke",
                 Latitude = 87,
                 Longitude = 87,
                 City = "US",
-                Country = "Newyork",
-                PhoneNumber = "230489324"
+                Country = "Iran",
+                PhoneNumber = "230489324",
+                JobCategoryId = _service.QueryJobCategories().Result.OrderBy(s => Guid.NewGuid().ToString()).First().Id
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateWorkAsync(userId, dto).Result;

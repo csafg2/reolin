@@ -61,7 +61,6 @@ namespace Reolin.Data.Services
                         .ExecuteSqlCommandAsync(
                                                 INSERT_TAG_PROCEDURE,
                                                 new SqlParameter("ProfileId", (long)profileId),
-                                                new SqlParameter("AddressId", -1),
                                                 tagParameter));
             }
 
@@ -182,6 +181,7 @@ namespace Reolin.Data.Services
                 Description = dto.Description,
                 Name = dto.Name,
                 PhoneNumber = dto.PhoneNumber,
+                JobCategoryId = dto.JobCategoryId,
                 Address = new Address()
                 {
                     City = dto.City,
@@ -366,6 +366,11 @@ namespace Reolin.Data.Services
             });
 
             return await this.Context.SaveChangesAsync();
+        }
+
+        public Task<List<JobCategoryInfoDTO>> QueryJobCategories()
+        {
+            return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name }).ToListAsync();
         }
     }
 }
