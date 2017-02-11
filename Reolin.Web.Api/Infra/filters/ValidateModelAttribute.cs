@@ -32,7 +32,7 @@ namespace Reolin.Web.Api.Infra.Filters
             }
 
             int profileId = (int)info.GetValue(model);
-
+            
             int userId = int.Parse(context.HttpContext.User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault().Value);
 
             var ids = await dbContext.Profiles.Where(p => p.UserId == userId).Select(p => p.Id).ToArrayAsync();
@@ -41,7 +41,6 @@ namespace Reolin.Web.Api.Infra.Filters
             {
                 context.Result = new UnauthorizedResult();
             }
-
         }
     }
 
