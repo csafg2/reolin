@@ -12,6 +12,5 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
             return source.Configure<UploadDirectorySettings>
                 (o => config.GetSection("UploadDirectorySettings").Bind(o));
         }
-
     }
 }

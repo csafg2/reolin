@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
-using Reolin.Web.Api.ViewModels;
+using Reolin.Web.ViewModels;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers

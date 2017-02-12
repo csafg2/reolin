@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reolin.Data;
 using Reolin.Data.Services;
 using Reolin.Web.Api.Controllers;
-using Reolin.Web.Api.ViewModels;
+using Reolin.Web.ViewModels;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership;
 using Reolin.Web.Security.Membership.Core;

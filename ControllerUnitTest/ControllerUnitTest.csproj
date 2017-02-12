@@ -466,6 +466,10 @@
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj">
+      <Project>{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}</Project>
+      <Name>Reolin.Web.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

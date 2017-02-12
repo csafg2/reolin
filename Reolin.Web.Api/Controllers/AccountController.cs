@@ -9,6 +9,7 @@ using Reolin.Web.Api.ViewModels;
 using Reolin.Web.Security;
 using Reolin.Web.Security.Jwt;
 using Reolin.Web.Security.Membership.Core;
+using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

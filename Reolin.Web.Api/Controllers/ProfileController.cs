@@ -11,7 +11,7 @@ using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.Api.ViewModels;
-using Reolin.Web.Api.ViewModels.profile;
+using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -92,7 +92,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="file">image file</param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [RequireValidModel]
         [RequestFormSizeLimit(3000)]
         [Route("/[controller]/[action]")]
@@ -105,7 +105,12 @@ namespace Reolin.Web.Api.Controllers
             {
                 // TODO: fix this to accept other info
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
-                int result = await this.ProfileService.AddProfileImageAsync(model.ProfileId, model.CategoryId, model.Subject, model.Description, path);
+                int result = await ProfileService
+                                    .AddProfileImageAsync(model.ProfileId,
+                                        model.CategoryId,
+                                        model.Subject,
+                                        model.Description, 
+                                        path);
                 return Ok(path);
             }
         }

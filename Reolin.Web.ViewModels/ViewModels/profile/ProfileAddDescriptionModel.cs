@@ -1,7 +1,7 @@
 ﻿#pragma warning disable CS1591
 using System.ComponentModel.DataAnnotations;
 
-namespace Reolin.Web.Api.ViewModels.profile
+namespace Reolin.Web.ViewModels
 {
     public class ProfileAddDescriptionModel
     {

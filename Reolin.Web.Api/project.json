@@ -33,6 +33,9 @@
       "dependencies": {
         "Reolin.Diagnostics.Logging": {
           "target": "project"
+        },
+        "Reolin.Web.ViewModels": {
+          "target": "project"
         }
       }
     }

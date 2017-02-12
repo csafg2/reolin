@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
 
-namespace Reolin.Web.Api.ViewModels.profile
+namespace Reolin.Web.ViewModels
 {
     public class ProfileAddNetworkModel
     {

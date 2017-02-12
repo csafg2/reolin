@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>aae1a33e-3fb7-47bb-8c07-c19adaa048c2</ProjectGuid>
-    <RootNamespace>Reolin.Web.Api</RootNamespace>
+    <ProjectGuid>2972d9f3-04bf-41de-912c-6c2d86155bb5</ProjectGuid>
+    <RootNamespace>Reolin.Web</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -16,6 +16,13 @@
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <ItemGroup>
+    <DnxInvisibleContent Include="bower.json" />
+    <DnxInvisibleContent Include=".bowerrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reolin.Data.Domain\Reolin.Data.Domain.csproj" />
+    <ProjectReference Include="..\Reolin.Data.DTO\Reolin.Data.DTO.csproj" />
+    <ProjectReference Include="..\Reolin.Data\Reolin.Data.csproj" />
     <ProjectReference Include="..\Reolin.Diagnostics.Logging\Reolin.Diagnostics.Logging.csproj" />
     <ProjectReference Include="..\Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj" />
   </ItemGroup>
