@@ -21,8 +21,8 @@ namespace Reolin.Data.Domain
         public List<Image> Images { get; set; }
         public List<Skill> Skills { get; set; }
         public List<ImageCategory> ImageCategories { get; set; }
-        public JobCategory JobCategory { get; set; }
-        public int? JobCategoryId { get; set; }
+        public List<JobCategory> JobCategories { get; set; }
+        //public int? JobCategoryId { get; set; }
         public Education Education { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }

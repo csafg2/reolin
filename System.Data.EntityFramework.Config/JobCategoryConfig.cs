@@ -10,9 +10,8 @@ namespace System.Data.EntityFramework.Config
             this.HasKey(j => j.Id);
 
             this.HasMany(j => j.Profiles)
-                .WithOptional(p => p.JobCategory)
-                .HasForeignKey(p => p.JobCategoryId)
-                .WillCascadeOnDelete(false);
+                .WithMany(p => p.JobCategories)
+                .Map(t => t.MapLeftKey("JobCategoryId").MapRightKey("ProfileId"));
         }
     }
 }

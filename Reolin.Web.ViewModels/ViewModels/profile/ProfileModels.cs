@@ -19,6 +19,8 @@ namespace Reolin.Web.ViewModels
 
         [Required(ErrorMessage = "Url is Required", AllowEmptyStrings = false)]
         public string Url { get; set; }
+
+        public string Description { get; set; }
     }
 
     public class ProfileAddSkillModel
@@ -96,6 +98,9 @@ namespace Reolin.Web.ViewModels
         [Required(ErrorMessage = "JobCategoryID is required, you can query them first")]
         public int? JobCategoryId { get; set; }
 
+        [Range(1, int.MaxValue, ErrorMessage = "Not valid SubJobCategoryID")]
+        [Required(ErrorMessage = "SubJobCategoryID is required")]
+        public int? SubJobCategoryId { get; set; }
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);

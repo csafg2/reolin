@@ -7,6 +7,7 @@ using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Reolin.Web.Api.Infra.Filters;
+using Reolin.Web.Api.Infra.filters;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -15,6 +16,7 @@ namespace Reolin.Web.Api.Controllers
         public int ProfileId { get; set; }
     }
 
+    [InvalidOperationSerializerFilter]
     [EnableCors("AllowAll")]
     public class ValuesController : BaseController
     {
@@ -42,5 +44,11 @@ namespace Reolin.Web.Api.Controllers
             return "HELLOW WORLD!!";
         }
         
+        [HttpGet]
+        public JsonResult Get3()
+        {
+            throw new InvalidOperationException("Some eception !");
+            return Json(new { Name = "Hassan" });
+        }
     }
 }

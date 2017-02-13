@@ -33,7 +33,8 @@ namespace Reolin.Data.Services
                     .Select(j => new JobCategoryInfoDTO()
                         {
                             Name = j.Name,
-                            Id = j.Id
+                            Id = j.Id,
+                            IsSubCategory = j.IsSubCategory
                         }).ToListAsync();
         }
     }

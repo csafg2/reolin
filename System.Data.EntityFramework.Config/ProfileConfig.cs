@@ -71,13 +71,6 @@ namespace Reolin.Data.EntityFramework.Config
             this.HasRequired(p => p.Address)
                 .WithOptional(a => a.Profile);
 
-
-            // keeping track of where the users likes
-            //this.HasMany(u => u.Likes)
-            //    .WithRequired(l => l.Sender)
-            //    .HasForeignKey(l => l.SenderId)
-            //    .WillCascadeOnDelete(true);
-
             //where user liked stuff
             this.HasMany(p => p.Likes)
                 .WithRequired(l => l.Sender)

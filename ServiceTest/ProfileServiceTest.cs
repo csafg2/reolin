@@ -31,7 +31,7 @@ namespace ServiceTest
             var networkId = this._context.SocialNetworks.First().Id;
             var profileId = this._context.Profiles.First().Id;
 
-            int r = _service.AddSocialNetwork(profileId, networkId, "Http://t.me/hassanHashemi").Result;
+            int r = _service.AddSocialNetwork(profileId, networkId, "Http://t.me/hassanHashemi", "this is my acc").Result;
 
             Assert.IsTrue(r > 0);
             var profile = _context
@@ -47,7 +47,7 @@ namespace ServiceTest
             int profileId = _context.Profiles.First().Id;
             int r = _service.EditEducation(profileId, new EducationEditDTO()
             {
-                Field = "Microbilogy",
+                Field = "Microbiology",
                 GraduationYear = 2000,
                 Level = "Bachelore",
                 University = "MIT"
@@ -138,20 +138,26 @@ namespace ServiceTest
         [TestMethod]
         public void Profile_CreateWork()
         {
+            var categories = _service.QueryJobCategories().Result.OrderBy(j => Guid.NewGuid().ToString());
+            int jobCategoryId = categories.Where(j => !j.IsSubCategory).First().Id;
+            int subCategoryId = categories.First(j => j.IsSubCategory).Id;
+
             var dto = new CreateProfileDTO()
             {
-                Description = "Second Profile for " + Guid.NewGuid().ToString(),
-                Name = "Cacke",
+                Description = "We build cars",
+                Name = "Audi",
                 Latitude = 87,
                 Longitude = 87,
-                City = "US",
-                Country = "Iran",
+                City = "Berlin",
+                Country = "Germany",
                 PhoneNumber = "230489324",
-                JobCategoryId = _service.QueryJobCategories().Result.OrderBy(s => Guid.NewGuid().ToString()).First().Id
+                JobCategoryId = jobCategoryId,
+                SubJobCategoryId = subCategoryId
             };
             var userId = _context.Users.First().Id;
             var p = this._service.CreateWorkAsync(userId, dto).Result;
             Assert.IsTrue(p.Id > 0);
+            
         }
 
         [TestMethod]

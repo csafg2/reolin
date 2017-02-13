@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
+using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
@@ -20,6 +21,7 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
+    [InvalidOperationSerializerFilterAttribute]
     [EnableCors("AllowAll")]
     [RequireValidModel]
     public class ProfileController : BaseController
@@ -148,7 +150,8 @@ namespace Reolin.Web.Api.Controllers
                     Name = model.Name,
                     City = model.City,
                     Country = model.Country,
-                    JobCategoryId = model.JobCategoryId
+                    JobCategoryId = model.JobCategoryId,
+                    SubJobCategoryId = model.SubJobCategoryId
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
@@ -282,7 +285,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> AddNetwork(ProfileAddNetworkModel model)
         {
-            await this.ProfileService.AddSocialNetwork(model.ProfielId, model.SocialNetworkId, model.Url);
+            await this.ProfileService.AddSocialNetwork(model.ProfielId, model.SocialNetworkId, model.Description, model.Url);
 
             return Ok();
         }

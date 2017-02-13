@@ -14,6 +14,7 @@ namespace Reolin.Data.Migrations
         {
             context.AddDefaultNetworks();
             context.AddDefaultJobCategories();
+            context.AddDefaultJobSubCategoies();
         }
     }
 }

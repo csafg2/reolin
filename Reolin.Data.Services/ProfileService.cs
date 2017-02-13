@@ -140,8 +140,9 @@ namespace Reolin.Data.Services
 
         public async Task<Profile> CreatePersonalAsync(int userId, CreateProfileDTO dto)
         {
-            User user = await Context.Users.Include("Profiles").FirstOrDefaultAsync(u => u.Id == userId);
-
+            //User user = await Context.Users.Include("Profiles").FirstOrDefaultAsync(u => u.Id == userId);
+            User user = await Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            user.Profiles = new List<Profile>();
             if (user == null)
             {
                 throw new InvalidOperationException($"No user with specified Id {userId} found.");
@@ -164,7 +165,7 @@ namespace Reolin.Data.Services
                 user.Profiles = new List<Profile>();
             }
 
-            Profile result = InstantiateProfile(dto, type);
+            Profile result = await InstantiateProfile(dto, type);
             user.Profiles.Add(result);
 
             await Context.SaveChangesAsync();
@@ -173,7 +174,7 @@ namespace Reolin.Data.Services
         }
 
 
-        private Profile InstantiateProfile(CreateProfileDTO dto, ProfileType type)
+        private async Task<Profile> InstantiateProfile(CreateProfileDTO dto, ProfileType type)
         {
             return new Profile()
             {
@@ -181,7 +182,7 @@ namespace Reolin.Data.Services
                 Description = dto.Description,
                 Name = dto.Name,
                 PhoneNumber = dto.PhoneNumber,
-                JobCategoryId = dto.JobCategoryId,
+                JobCategories = await this.Context.JobCategories.Where(j => j.Id == dto.JobCategoryId || j.Id == dto.SubJobCategoryId).ToListAsync(),
                 Address = new Address()
                 {
                     City = dto.City,
@@ -333,7 +334,7 @@ namespace Reolin.Data.Services
             return skillItem;
         }
 
-        public Task<int> AddSocialNetwork(int profileId, int networkId, string url)
+        public Task<int> AddSocialNetwork(int profileId, int networkId, string url, string desciption)
         {
             if (string.IsNullOrEmpty(url))
             {
@@ -344,7 +345,8 @@ namespace Reolin.Data.Services
             {
                 NetworkId = networkId,
                 ProfileId = profileId,
-                Url = url
+                Url = url,
+                Description = desciption
             };
 
             Context.ProfileNetworks.Add(network);
@@ -370,7 +372,7 @@ namespace Reolin.Data.Services
 
         public Task<List<JobCategoryInfoDTO>> QueryJobCategories()
         {
-            return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name }).ToListAsync();
+            return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name, IsSubCategory = j.IsSubCategory }).ToListAsync();
         }
     }
 }

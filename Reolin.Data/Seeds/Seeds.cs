@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Reolin.Data.Seeds
 {
-    public static class JobCategorySeeds
+    public static class Seeds
     {
         #region InitalJobCategoryItems
         private static string[] InitialJobCategoryItems = new string[]
@@ -39,7 +39,7 @@ namespace Reolin.Data.Seeds
 
             foreach (var item in networks)
             {
-                if(!source.SocialNetworks.Any(s => s.Name == item))
+                if (!source.SocialNetworks.Any(s => s.Name == item))
                 {
                     source.SocialNetworks.Add(new SocialNetwork()
                     {
@@ -60,6 +60,24 @@ namespace Reolin.Data.Seeds
                     source.JobCategories.Add(new JobCategory()
                     {
                         Name = item
+                    });
+                }
+            }
+
+            source.SaveChanges();
+        }
+
+        internal static void AddDefaultJobSubCategoies(this DataContext source)
+        {
+            string[] items = new[] { "Sale", "Manufacture", "Services" };
+            foreach (var cat in items)
+            {
+                if (!source.JobCategories.Any(j => j.Name == cat && j.IsSubCategory))
+                {
+                    source.JobCategories.Add(new JobCategory()
+                    {
+                        Name = cat,
+                        IsSubCategory = true
                     });
                 }
             }

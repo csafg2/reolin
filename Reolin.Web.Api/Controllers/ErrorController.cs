@@ -8,7 +8,7 @@ namespace Reolin.Web.Api.Controllers
 {
 
     /// <summary>
-    /// Global Exception handler to prevent any unhandled exception to be serialized to client
+    /// Global Exception handler to prevent any unhandled exception to be serialized down to client
     /// </summary>
     public class ErrorController : BaseController
 
@@ -16,7 +16,7 @@ namespace Reolin.Web.Api.Controllers
         private readonly IHostingEnvironment _environemnt;
         private readonly ILogger<ErrorController>   _logger;
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CS1591
         public ErrorController(ILogger<ErrorController> logger, IHostingEnvironment env)
         {
             this._logger = logger;

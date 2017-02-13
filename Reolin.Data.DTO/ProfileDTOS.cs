@@ -50,6 +50,7 @@ namespace Reolin.Data.DTO
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public int? JobCategoryId { get; set; }
+        public int? SubJobCategoryId { get; set; }
     }
 
     public class ProfileByTagDTO
