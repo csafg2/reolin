@@ -7,7 +7,6 @@
         Password: string;
         ConfirmPassword: string;
         Email: string;
-        PhoneNumber: string;
     }
 
 

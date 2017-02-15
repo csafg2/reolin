@@ -2,6 +2,7 @@
 
 module Reolin.Web.Client.Controllers
 {
+
     export class AccountController
     {
         LoginButton: JQuery = $('#LoginButton');
@@ -10,15 +11,17 @@ module Reolin.Web.Client.Controllers
         PasswordTextBox: JQuery = $('#Password');
         ConfirmPasswordTextBox: JQuery = $('#ConfirmPassword');
         EmailTextBox: JQuery = $('#Email');
-        UserNameTextBox: JQuery = $('#Username');
-        PhoneNumberTextBox: JQuery = $('#PhoneNumber');
+        UserNameTextBox: JQuery = $('#UserName');
+
         ErrorList: JQuery;
 
         private _service: Reo.AccountService = new Reo.AccountService(manager);
-        constructor()
+        private _userLoggedInCallBack: UserLoggedInCallBack;
+
+        constructor(userLoggedInCallBack: UserLoggedInCallBack)
         {
             this.SetGlobalHandlers();
-
+            this._userLoggedInCallBack = userLoggedInCallBack;
             this.LoginButton.click(e => this.LoginButton_ClickHandler(e));
             this.RegisterButton.click(e => this.RegisterButton_ClickHandler(e));
         }
@@ -57,8 +60,8 @@ module Reolin.Web.Client.Controllers
             info.Password = this.PasswordTextBox.val();
             info.ConfirmPassword = this.ConfirmPasswordTextBox.val();
             info.Email = this.EmailTextBox.val();
-            info.PhoneNumber = this.PhoneNumberTextBox.val();
-            
+
+
             var handler: HttpServiceHandler = new HttpServiceHandler();
             handler.HandleResponse = (r: HttpResponse): void =>
             {
@@ -66,8 +69,9 @@ module Reolin.Web.Client.Controllers
                 var loginInfo: LoginInfo = new LoginInfo();
                 loginInfo.UserName = info.UserName;
                 loginInfo.Password = info.Password;
-
+                console.log(loginInfo);
                 this._service.Login(loginInfo);
+                this._userLoggedInCallBack();
             };
 
             this._service.Register(info, handler);
@@ -82,6 +86,6 @@ module Reolin.Web.Client.Controllers
             this._service.Login(info);
         }
     }
+
 }
 
-var controller = new Reolin.Web.Client.Controllers.AccountController();

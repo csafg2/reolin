@@ -98,16 +98,16 @@ namespace Reolin.Web.ViewModels
         [Required(ErrorMessage = "Profile Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Description text is mandatory", AllowEmptyStrings = false)]
+        //[Required(ErrorMessage = "Description text is mandatory", AllowEmptyStrings = false)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Latitude is Mandatory")]
         [Range(-90, 90, ErrorMessage = "Latitude is not Valid")]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [Required(ErrorMessage = "Longitude is Mandatory")]
         [Range(-180, 180, ErrorMessage = "Longitude is not valid")]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         [Required( ErrorMessage = "Phone Number is required", AllowEmptyStrings = false)]
         public string PhoneNumber { get; set; }

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> .::Test::. </title>
+</head>
+<body>
+    
+    <form id="registerForm">
+        <p>
+            <label>username: </label>
+            <input type="text" id="Username" value="HassanHashemi" required tabindex="1" autofocus/>
+
+        <p>
+            <label>email: </label>
+            <input type="email" id="Email" tabindex="2" />
+        </p>
+
+        <p>
+            <label>Password: </label>
+            <input type="text" id="Password" required value="123456" />
+        </p>
+
+        <p>
+            <label>ConfirmPassword: </label>
+            <input type="text" id="ConfirmPassword" required value="123456" />
+        </p>
+
+        <p>
+            <label>PhoneNumber: </label>
+            <input type="text" id="PhoneNumber" value="45646654" />
+        </p>
+
+
+
+        <input type="button" value="Login" id="LoginButton" tabindex="3" />
+        <input type="button" value="Relogin" id="ReloginButton"  tabindex="4"/>
+        <input type="button" value="Register" id="RegisterButton" tabindex="5" />
+
+        <ul id="info"></ul>
+    </form>
+    <input type="button" value="GetValues" id="GetValueButton" />
+
+    <script src="lib/ex/jquery-3.1.1.min.js"></script>
+    <script src="lib/WebClient/DefaultJwtManager.js"></script>
+    <script src="lib/WebClient/HttpService.js"></script>
+    <script src="lib/WebClient/LocalJwtStore.js"></script>
+    <script src="lib/WebClient/RemoteJwtSource.js"></script>
+    <script src="lib/WebClient/LoginInfo.js"></script>
+    <script src="lib/WebClient/HttpResponse.js"></script>
+    <script src="lib/WebClient/JwtSecurityToken.js"></script>
+    <script src="lib/Infra/User.js"></script>
+
+    <script src="lib/WebClient/Services/AccountService.js"></script>
+    <script src="lib/WebClient/Helpers/URLS.js"></script>
+    <script src="lib/WebClient/Global.js"></script>
+    <script src="lib/WebClient/run.js"></script>
+
+
+    <script src="lib/WebClient/controllers/AccountController.js"></script>
+    <script src="lib/WebClient/Services/ProfileServices.js"></script>
+</body>
+</html>

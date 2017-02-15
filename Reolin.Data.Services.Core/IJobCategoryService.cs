@@ -7,5 +7,7 @@ namespace Reolin.Data.Services.Core
     public interface IJobCategoryService
     {
         Task<List<JobCategoryInfoDTO>> GetAllAsync();
+        Task<List<JobCategoryInfoDTO>> GetJobCategories();
+        Task<List<JobCategoryInfoDTO>> GetSubJobCategories();
     }
 }

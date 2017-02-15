@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ namespace Reolin.Web.Api.Controllers
         public double Longitude { get; set; }
     }
 
+    [EnableCors("AllowAll")]
     public class GeoServiceController : Controller
     {
         private Dictionary<string, List<CityModel>> _countries { get; set; }

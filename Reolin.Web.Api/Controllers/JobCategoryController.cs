@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 namespace Reolin.Web.Api.Controllers
 {
 #pragma warning disable CS1591
+    [EnableCors("AllowAll")]
     public class JobCategoryController: BaseController
     {
         private IJobCategoryService _service;
@@ -37,6 +39,30 @@ namespace Reolin.Web.Api.Controllers
             var data = await this.Service.GetAllAsync();
 
             return Ok(data);
+        }
+
+
+        /// <summary>
+        /// Get all Main Job Categories
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> JobCateogries()
+        {
+            return Ok(await this.Service.GetJobCategories());
+        }
+
+
+        /// <summary>
+        /// Get all Sub job Categories
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> SubJobCategories()
+        {
+            return Ok(await this.Service.GetSubJobCategories());
         }
     }
 }

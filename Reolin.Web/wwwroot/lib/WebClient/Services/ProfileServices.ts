@@ -45,28 +45,23 @@ module Reolin.Web.UI.Services
         {
             this.AuthService.Post(UrlSource.CreateWorkProfile, info, {}, 2, true, handlers);
         }
-
-
     }
-
 
     export class RegisterProfileModel
     {
         public Name: string;
         public Description: string;
+        public City: string;
+        public Country: string;
         public PhoneNumber: string;
         public Longitude: number;
         public Latitude: number;
+        public JobCategoryId: number;
+        public SubJobCategoryID : number;
     }
-
 }
-
-
 
 // TODO: remove this in production (for test purposes)
 import Service = Reolin.Web.UI.Services;
 
-
 var profileService = new Service.ProfileService();
-
-

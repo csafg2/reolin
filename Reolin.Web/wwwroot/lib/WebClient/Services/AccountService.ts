@@ -14,7 +14,7 @@
             // send off a request to register this user
             var service: HttpService = new HttpService();
 
-            service.Post(URLs.RegisterAccount, registerInfo, null, 2, true, handler);
+            service.Post(UrlSource.RegisterAccount, registerInfo, null, 2, true, handler);
         }
 
         public Login(info: LoginInfo): void

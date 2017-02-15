@@ -1,67 +1,149 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Reolin.Web</title>
 
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LAYOOT!</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <meta name="referrer" content="no-referrer">
+
+    <link href="~/content/font/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/content/css/bootstrap.css">
+    <!--Main styles-->
+    <link rel="stylesheet" type="text/css" href="/content/css/main.css">
+    <!--Adaptive styles-->
+    <link rel="stylesheet" type="text/css" href="/content/css/adaptive.css">
+    <!--Swipe menu-->
+    <link rel="stylesheet" type="text/css" href="/content/css/pushy.css">
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="/content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--animation css-->
+    <link rel="stylesheet" type="text/css" href="/content/css/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="/content/css/cs-select.css" />
+    <link rel="stylesheet" type="text/css" href="/content/css/cs-skin-border.css" />
+    <link rel="stylesheet" type="text/css" href="/content/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/content/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/content/css/stylesheet.css" />
+    <link href="/content/css/responsive.css" rel="stylesheet" />
+
+
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Reolin.Web</a>
+<body onload="" class="promo back">
+    <!--navigation swipe-->
+    <div class="add_place none" id="pl">
+        <div class="place_form">
+            <i class="fa fa-times close_window" id="close"></i>
+            <h3>Layoot Multiple Platform,Scan and Download Your App!</h3>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="ios">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="/content/img/ios.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="/content/img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                    <div class="android">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="/content/img/android.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="/content/img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
+
+        </div>
+    </div>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+    <div class="headmenu">
+        <div class="">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 pull-right">
+                    <div class="topheader" id="shiftheader">
+                        <ul>
+
+                            <li class="has-submenu">
+                                <a href="#" class="language"></a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">فارسی</a></li>
+                                    <li><a href="#">enlish</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" id="ad" class="download">
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 pull-right ">
+                    <div class="sitename wow fadeInDown">
+                        <h1>
+
+                            <img class="register-cv-logo" src="/content/img/layoot.png" alt="Layoot Logo" />
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs  pull-left">
+                    <div>
+                        <a href="Suggest.html" class="suggest">
+
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - Reolin.Web</p>
-        </footer>
+
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
     </div>
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer">
+                    <ul>
+                        <li>
+                            <a href="#">Privacy</a>
 
-    @RenderSection("scripts", required: false)
+                        </li>
+                        <li>
+                            <a href="#">help</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/content/js/jquery.min.js"></script>
+    <script src="/content/js/Custom.js"></script>
+    <!--scroll animate block-->
+    <script src="/content/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--Other main scripts-->
+    <script src="/content/js/all_scr.js"></script>
+    <!--Bootstrap js-->
+    <script src="/content/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -9,6 +9,7 @@ using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.Filters;
+using Reolin.Web.Api.Infra.GeoServices;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.ViewModels;
@@ -28,7 +29,7 @@ namespace Reolin.Web.Api.Controllers
         private readonly IProfileService _profileService;
         private readonly IMemoryCache _cache;
         private readonly IFileService _fileService;
-
+        private readonly IGeoService _geoService = new FakeGeoService();
         public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService)
         {
             this._profileService = service;
@@ -164,19 +165,21 @@ namespace Reolin.Web.Api.Controllers
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
+        [Authorize]
         public async Task<IActionResult> CreatePersonal(ProfileCreateModel model)
         {
             Profile result = await this.ProfileService.CreatePersonalAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
-                    PhoneNumber = model.PhoneNumber,
+                    Name = model.Name,
                     Description = model.Description,
-                    Latitude = model.Latitude,
-                    Longitude = model.Longitude,
                     City = model.City,
                     Country = model.Country,
-                    Name = model.Name,
-                    JobCategoryId = model.JobCategoryId
+                    PhoneNumber = model.PhoneNumber,
+                    Latitude = model.Latitude,// ?? _geoService.GetGeoInfo(model.City, model.Country).Latitude,
+                    Longitude = model.Longitude,// ?? _geoService.GetGeoInfo(model.City, model.Country).Longitude,
+                    JobCategoryId = model.JobCategoryId,
+                    SubJobCategoryId = model.SubJobCategoryId
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
