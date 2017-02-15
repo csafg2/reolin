@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
-    [InvalidOperationSerializerFilterAttribute]
+    [InvalidOperationSerializerFilter]
     [EnableCors("AllowAll")]
     [RequireValidModel]
     public class ProfileController : BaseController
@@ -111,7 +111,7 @@ namespace Reolin.Web.Api.Controllers
                                     .AddProfileImageAsync(model.ProfileId,
                                         model.CategoryId,
                                         model.Subject,
-                                        model.Description, 
+                                        model.Description,
                                         path);
                 return Ok(path);
             }
@@ -175,12 +175,13 @@ namespace Reolin.Web.Api.Controllers
                     Longitude = model.Longitude,
                     City = model.City,
                     Country = model.Country,
-                    Name = model.Name
+                    Name = model.Name,
+                    JobCategoryId = model.JobCategoryId
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
-        
+
         /// <summary>
         /// Retrieve Profile information by Id
         /// </summary>
@@ -270,7 +271,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> AddSkill(ProfileAddSkillModel model)
         {
             await this.ProfileService.AddSkill(model.ProfileId, model.SkillName);
-            
+
             return Ok();
         }
 
@@ -289,7 +290,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-        
+
         /// <summary>
         /// Gets a list of all available job categories
         /// </summary>
@@ -299,6 +300,27 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> AvailableJobCategories()
         {
             return Ok(await this.ProfileService.QueryJobCategories());
+        }
+
+
+        /// <summary>
+        /// finds the matches profiles
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> Find(ProfileSearchModel model)
+        {
+            var data = await this.ProfileService.SearchByCategoriesTagsAndDistance(
+                model.JobCategoryId,
+                model.SubJobCategoryId,
+                model.SearchTerm,
+                model.Distance,
+                model.SourceLatitude,
+                model.SourceLongitude);
+
+            return Ok(data);
         }
     }
 }

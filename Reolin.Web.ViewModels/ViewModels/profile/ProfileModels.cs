@@ -6,6 +6,32 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.ViewModels
 {
+    public class ProfileSearchModel
+    {
+        [Required(ErrorMessage = "JobCategoryID is required")]
+        public int JobCategoryId { get; set; }
+
+        [Required(ErrorMessage = "SubJobCategoryID is required")]
+        public int SubJobCategoryId { get; set; }
+
+        
+        [Required(ErrorMessage = "SearchTerm is required", AllowEmptyStrings = false)]
+        public string SearchTerm { get; set; }
+
+
+        [Required(ErrorMessage = "SourceLongitude is required")]
+        [Range(-180, 180, ErrorMessage = "Longitude is not valid")]
+        public double SourceLongitude { get; set; }
+
+        [Required(ErrorMessage = "SourceLatitude is required")]
+        [Range(-90, 90, ErrorMessage = "Latitude is not Valid")]
+        public double SourceLatitude { get; set; }
+
+        [Range(1, 100000)]
+        public int Distance { get; set; }
+    }
+
+
     public class ProfileAddNetworkModel
     {
         [Range(1, int.MaxValue, ErrorMessage = "ProfileId is not valid")]

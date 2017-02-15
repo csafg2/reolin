@@ -26,6 +26,54 @@ namespace ServiceTest
 
 
         [TestMethod]
+        public void Profile_Search()
+        {
+            // first filters by job categories
+            // then by profile name
+            // then profiles that contain this as tag
+            //DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(88, 88);
+            //return this._context.
+            //    Profiles
+            //    .Where(p => p.JobCategories.Any(jc => jc.Id == 43) && p.JobCategories.Any(j => j.Id == 1))
+            //    .Where(p => p.Name.Contains("B"))
+            //    .Where(p => p.Tags.Any(t => t.Name.Contains("B")))
+            //    .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
+            //    .Select(p => new ProfileInfoDTO()
+            //    {
+            //        City = p.Address.City,
+            //        Country = p.Address.Country,
+            //        Description = p.Description,
+            //        Latitude = p.Address.Location.Latitude,
+            //        Longitude = p.Address.Location.Longitude,
+            //        Name = p.Name
+            //    })
+
+
+            int jobCategory = 43, subJobCategory = 64, userId;
+            userId = _context.Users.First().Id;
+            var dto = new CreateProfileDTO()
+            {
+                Description = "BMW is a car manufacturer",
+                Name = "BMW",
+                Latitude = 87,
+                Longitude = 87,
+                City = "Berlin",
+                Country = "Germany",
+                PhoneNumber = "230489324",
+                JobCategoryId = jobCategory,
+                SubJobCategoryId = subJobCategory
+            };
+
+            int profileId = this._service.CreateWorkAsync(userId, dto).Result.Id;
+            _service.AddTagAsync(profileId, new[] { "BMW" }).Wait();
+
+            var profiles = _service
+                .SearchByCategoriesTagsAndDistance(jobCategory, subJobCategory, "B", 5000, 87, 87).Result;
+                
+            Assert.IsTrue(profiles.Count > 0);
+        }
+
+        [TestMethod]
         public void Profile_AddNetwork()
         {
             var networkId = this._context.SocialNetworks.First().Id;
@@ -157,7 +205,7 @@ namespace ServiceTest
             var userId = _context.Users.First().Id;
             var p = this._service.CreateWorkAsync(userId, dto).Result;
             Assert.IsTrue(p.Id > 0);
-            
+
         }
 
         [TestMethod]

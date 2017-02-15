@@ -75,5 +75,8 @@ namespace Reolin.Data.Services.Core
 
         Task<int> AddSocialNetwork(int profileId, int netowrkId, string url, string description);
         Task<List<JobCategoryInfoDTO>> QueryJobCategories();
+
+
+        Task<List<ProfileInfoDTO>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, int distance, double sourceLatitude, double sourceLongitude);
     }
 }
