@@ -27,7 +27,8 @@ namespace Reolin.Web
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-           // loggerFactory.AddDebug();
+            // loggerFactory.AddDebug();
+            app.UseStaticFiles();
 
             //if (env.IsDevelopment())
             //{
@@ -39,7 +40,6 @@ namespace Reolin.Web
             // app.UseExceptionHandler("/Home/Error");
             //}
 
-            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
