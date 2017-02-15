@@ -19,12 +19,5 @@
     <DnxInvisibleContent Include="bower.json" />
     <DnxInvisibleContent Include=".bowerrc" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Reolin.Data.Domain\Reolin.Data.Domain.csproj" />
-    <ProjectReference Include="..\Reolin.Data.DTO\Reolin.Data.DTO.csproj" />
-    <ProjectReference Include="..\Reolin.Data\Reolin.Data.csproj" />
-    <ProjectReference Include="..\Reolin.Diagnostics.Logging\Reolin.Diagnostics.Logging.csproj" />
-    <ProjectReference Include="..\Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj" />
-  </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LAYOOT!</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!--Main styles-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--Adaptive styles-->
+    <link rel="stylesheet" type="text/css" href="css/adaptive.css">
+    <!--Swipe menu-->
+    <link rel="stylesheet" type="text/css" href="css/pushy.css">
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--animation css-->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- Slider Revolution -->
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+    <link href="css/responsive.css" rel="stylesheet" />
+ 
+</head>
+<body onload="initialize()" class="promo">
+    <!--navigation swipe-->
+    <nav class="pushy pushy-left hidden-xs" id="pushy">
+        <div class="iconleft  " id="iconleft">
+            <div class="suggestleft"></div>
+        </div>
+        <div class="" id="leftside-category">
+            <div class="firstul ">
+                <ul class="tabs-rightside">
+                    <li>
+                        <a class="tab-link current-link " title="search in Distance" data-tab="Distance" href="#Distance">Distance</a>
+                    </li>
+                    <li class=""><a class="tab-link " id="Popularity" title="search in popularity" data-tab="Popularity" href="#Popularity">Popularity</a></li>
+                </ul>
+            </div>
+            <div class="secondul">
+                <ul class="tabs-rightside">
+                    <li><a class="tab-link disable-a" title="search in global" data-tab="Global" href="#Global"> Global </a>  </li>
+                    <li><a class="tab-link disable-a" title="search in country" data-tab="Country" href="#Country">Country</a></li>
+                    <li><a id="cityfirst" class="tab-link disable-a" title="search in city" data-tab="city" href="#city">city </a></li>
+                </ul>
+                <hr />
+            </div>
+        </div>
+        <div class="menu-left-content">
+            <div class="menu-left-side">
+                <div id="Distance" class="tab-content current-content">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(distance)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div id="city" class="tab-content ">
+                    <ul class="side_menu">
+
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(city)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="Country" class="tab-content">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(country)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="Global" class="tab-content ">
+                    <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(global)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+            <div class="cover-bar"></div>
+        </div>
+    </nav>
+    <nav class="pushy-r pushy-right hidden-xs">
+        <div class="menuright">
+            <ul>
+                <li class="suggest-right-side">
+                    <div class="profileplace">
+                        <img class="img-right-side" src="img/pl3.jpg" alt="" />
+                        <div class="hover-me"></div>
+                    </div>
+                    <div class="profileplace-caption suggest-caption" id="caption">
+                        <div class="profileplace-share">
+                            <a href="#" data-placeparent="place001">
+                                <img title="share this palce!" src="img/icon/tab-globalgreen.png" alt="" />
+                            </a>
+                            <ul data-palceitem="place001" class="social-share wow fadeIn">
+                                <li class="share-item">
+                                    <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfileInfo" style="border-bottom:unset;">
+                        <label>Poul Cafee</label>
+                    </div>
+                </li>
+
+
+
+            </ul>
+            <ul class="laze-load">
+                <li class="suggest-right-side">
+                    <div class="profileplace">
+                        <img class="img-right-side" src="img/pl3.jpg" alt="" />
+                        <div class="hover-me"></div>
+                    </div>
+                    <div class="profileplace-caption suggest-caption" id="caption">
+                        <div class="profileplace-share">
+                            <a href="#" data-placeparent="place002">
+                                <img title="share this palce!" src="img/icon/tab-globalgreen.png" alt="" />
+                            </a>
+                            <ul data-palceitem="place002" class="social-share wow fadeIn">
+                                <li class="share-item">
+                                    <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
+                                </li>
+                                <li class="share-item">
+                                    <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfileInfo" style="border-bottom:unset;">
+                        <label>Poul Cafee</label>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </nav>
+    <div class="add_place none" id="pl">
+        <div class="place_form">
+            <i class="fa fa-times close_window" id="close"></i>
+            <h3>Layoot Multiple Platform,Scan and Download Your App!</h3>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="ios">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="img/ios.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                    <div class="android">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="img/android.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="top_promo_block hidden-xs">
+        <div class="menu-btn" id="btnleft">
+            <p class="arrowleft"></p>
+        </div>
+    </div>
+    <div class="top_promo_block hidden-xs">
+        <div class="menu-btn-right" id="btnrightt">
+            <p class="arrowright"></p>
+        </div>
+
+    </div>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+    <div class="row hidden-sm">
+        <div class="profilecv-head wow fadeInDown">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 pull-right">
+                    <div class="topheader company-header">
+                        <ul>
+                            <li class="has-submenu">
+                                <a href="#" class="language"></a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">فارسی</a></li>
+                                    <li><a href="#">enlish</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="Login.html" class="user">
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="ad" class="download">
+
+                                </a>
+                            </li>
+                            <li class="has-submenu-edit">
+                                <a href="#" id="ad"><i id="edit-profile" class="fa fa-gear settingicon"></i></a>
+                                <ul class="sub-menu-edit">
+                                    <li><a href="CompanyEdit.html">back to Profile</a></li>
+                                    <li><a href="#">Related Profile</a></li>
+                                    <li><a href="#">Log-out</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-xs-12  pull-right">
+                    <div class="search_promo margin-searchbox" id="search_promo">
+                        <div class="input-group search group-search ">
+
+                            <div class="input-group-btn btn_cat btn-group-search">
+                                <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
+                                    <span><span class="caret"></span></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
+                                    <li class="select-cat"><a href="#" class="automotive-machinary"><i class="fa fa-automobile"></i>automotive & machinery</a></li>
+                                    <li class="select-cat"><a href="#" class="home-office"><i class="fa fa-home"></i>home & office</a></li>
+                                    <li class="select-cat"><a href="#" class="computer-Electronics"><i class="fa fa-microchip"></i>computer & Electronics</a></li>
+                                    <li class="select-cat"><a href="#" class="food-beverage"><i class="fa fa-cutlery"></i>food & beverage</a></li>
+                                    <li class="select-cat"><a href="#" class="Media-Entertainment-Art"><i class="fa fa-film"></i>Media , Entertainment , Art</a></li>
+                                    <li class="select-cat"><a href="#" class="Medical-health"><i class="fa fa-heart"></i>Medical & health</a></li>
+                                    <li class="select-cat"><a href="#" class="Legal-Financial"><i class="fa fa-dollar"></i>Legal & Financial</a></li>
+                                    <li class="select-cat"><a href="#" class="clothing-beauty"><i class="fa fa-leaf"></i>clothing & beauty</a></li>
+                                    <li class="select-cat"><a href="#" class="Travel-Transportation"><i class="fa fa-fighter-jet"></i>Travel & Transportation</a></li>
+                                    <li class="select-cat"><a href="#" class="Pets-Livestock"><i class="fa fa-github"></i>Pets & Livestock</a></li>
+                                    <li class="select-cat"><a href="#" class="Kids"><i class="fa fa-smile-o"></i>Kids</a></li>
+                                    <li class="select-cat"><a href="#" class="Sport-Hobbies"><i class="fa fa-hand-rock-o"></i>Sport & Hobbies</a></li>
+                                    <li class="select-cat"><a href="#" class="Nonprofit"><i class="fa fa-institution"></i>Nonprofit</a></li>
+                                    <li class="select-cat"><a href="#" class="Agricultural-Gardening"><i class="fa fa-leaf"></i>Agricultural & Gardening</a></li>
+                                    <li class="select-cat"><a href="#" class="Industial"><i class="fa fa-industry"></i>Industial</a></li>
+                                    <li class="select-cat"><a href="#" class="Advertising"><i class="fa fa-bullhorn"></i>Advertising</a></li>
+                                    <li class="select-cat"><a href="#" class="Constraction"><i class="fa fa-building"></i>Constraction</a></li>
+                                    <li class="select-cat"><a href="#" class="Cermonie-wedding"><i class="fa fa-birthday-cake"></i>Ceremony & wedding</a></li>
+                                    <li class="select-cat"><a href="#" class="Barganing-Dealing"><i class="fa fa-handshake-o"></i>Barganing & Dealing</a></li>
+                                    <li class="select-cat"><a href="#" class="Educational"><i class="fa fa-graduation-cap"></i>Educational </a></li>
+                                    <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall"><i class="fa fa-shopping-cart"></i>Hypermarkets & Shoppingmall</a></li>
+                                </ul>
+                            </div>
+                            <input type="text" class="form-control bordersearch input-search" data-category="" aria-label="...">
+                            <input id="Submit1" class="serch-btn" type="submit" value="" />
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs pull-left">
+                    <div class="col-md-6 pull-right">
+                        <div class="sitename" style="text-align:right;">
+                            <img src="img/layoot.png" alt="Layoot Logo" style="height:40px;margin-top:20px;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="" style="text-align:left;">
+                            <a href="Suggest.html" class="suggest">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="z-index:-1;">                
+        <div class="col-md-8 col-md-offset-2">
+         <div class="create-suggest">
+            <ul class="suggest-head">
+                <li>
+                    <a href="#add-new-suggest" class="suggest-tablink-active" data-tab-suggest="add-suggest">Add New Suggest</a>
+                </li>
+                <li>
+                    <a href="#add-new-suggest" class="" data-tab-suggest="suggests">Suggests</a>
+                </li>
+            </ul>
+             <div class="suggestedit-content-tab">
+
+                 <div class="create-suggest-body suggest-tab-active" data-suggest-content="add-suggest">
+                     <div class="suggest-title">
+                         <h4>Suggest Your company Profile as You want to others , which will present some info about your Profile to who customers that looking for right place </h4>
+                     </div>                     
+                     <div class="define-place" id="">
+                         <label class="label-edit suggest-lable">Add a name</label>
+                         <input class="inpu-edit suggest-input" id="Text1" type="text" maxlength="25" />
+                         <label  class="label-edit suggest-lable">Add some desciption</label>
+                         <textarea class="inpu-edit " id="TextArea1" rows="2" maxlength="400" cols="20"></textarea>
+                         <label  class="label-edit suggest-lable">Add photo for this place</label>
+                         <input class="inpu-edi suggest-inputt" id="File1"   type="file" />
+                          <div class="suggest-btn">
+                              <input id="Button1" class="suggest-btn-save" type="button" value="Save" />  
+                          </div>
+
+
+                     </div>
+                 </div>
+
+                 <div class="create-suggest-body" data-suggest-content="suggests">
+                     <div class="suggest-title">
+                         <h4> All Your suggested place that you created ,also You can Modify them ! </h4>
+                     </div>
+                     <div class="col-md-10 col-md-offset-1">
+                         <div class="col-md-4 nopad wow  fadeIn lazy">
+                             <div class="suggest-palce" data-place="001">
+                                 <div class="position-edit-form">
+                                     <div class="edit-from editable-left1" style="width:450px;" data-editform="editpic1">
+                                         <div class="company-add-picture">
+                                             <div class="">
+                                                 <div class="add-item">
+                                                     <label>Edit name</label>
+                                                     <input id="Text1" class="form-control" type="text" />                             
+                                                     <label>Explanation</label>
+                                                     <textarea id="TextArea1" class="form-control" rows="2" cols="20"></textarea>
+                                                     <label>Edit photo of this suggest</label>
+                                                     <input id="File1" type="file" />
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="edit-btn">
+                                             <input id="Button1" type="button" value="save" />
+                                             <input id="Button1" type="button" class="close-form" value="cancel" />
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="suggest-picture-place">
+                                     <img class="lazy overopacity" data-src="img/pl3.jpg" alt="" />
+                                     <div class="edit-overlay">
+                                         <i class="fa fa-edit" data-editbtn="editpic1"></i>
+                                         <i class="fa fa-trash trash"></i>
+                                     </div>
+                                 </div>
+
+                                 <div class="suggest-desc">
+                                     <div class="sharebtn">                                         
+                                         <h6 class="place-title">eram resturant</h6>
+                                         <div class="loade-more">
+                                             <p class="show-less" data-text="001">
+                                                 The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+                                                 The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+                                                 The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+
+                                             </p>
+                                             <div class="show-more-btn">
+                                                 <i class="fa fa-angle-down" data-more="001"></i>
+                                             </div>
+
+                                         </div>
+                                     </div>
+
+
+                                 </div>
+
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+        </div>
+        
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer">
+                    <ul>
+                        <li>
+                            <a href="#">Privacy</a>
+
+                        </li>
+                        <li>
+                            <a href="#">help</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Custom.js"></script>
+    <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.lazy').Lazy();
+        });
+    </script>
+
+    <!--scroll animate block-->
+    <script src="js/wow.min.js"></script>
+    <!--Other main scripts-->
+    <script src="js/all_scr.js"></script>
+    <!--Bootstrap js-->
+    <script src="js/bootstrap.min.js"></script>
+    <!--scroll animation-->
+    <script>
+new WOW().init();
+    </script>
+    <script type="text/javascript">
+"use strict";
+setHeiHeight();
+$(window).resize( setHeiHeight );
+    </script>
+
+    
+        
+</body>
+</html>

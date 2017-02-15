@@ -10,7 +10,7 @@ namespace Reolin.Web.Controllers
 {
     public class AccountController : Controller
     {
-        [HttpGet]
+        [Route("/Login")]
         public Task<ActionResult> Login()
         {
             throw new NotImplementedException();
@@ -19,6 +19,7 @@ namespace Reolin.Web.Controllers
 
         private async Task SignInInternal(string userName, string[] roles)
         {
+            throw new NotImplementedException();
             //var authProperties = new AuthenticationProperties();
             //var identity = new ClaimsIdentity(Config.AUTHENTICATION_SCHEME);
             //identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userName));

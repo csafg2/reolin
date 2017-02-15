@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 #pragma warning disable CS1591
-namespace Reolin.Web.Api.ViewModels
+namespace Reolin.Web.ViewModels
 {
 
     public class AddImageToProfileViewModel

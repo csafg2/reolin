@@ -11,7 +11,6 @@ using Reolin.Web.Api.Infra.filters;
 using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
-using Reolin.Web.Api.ViewModels;
 using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -140,6 +139,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
+            
             Profile result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {

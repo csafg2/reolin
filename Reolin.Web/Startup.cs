@@ -27,17 +27,17 @@ namespace Reolin.Web
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddDebug();
+           // loggerFactory.AddDebug();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //if (env.IsDevelopment())
+            //{
+            app.UseDeveloperExceptionPage();
+            app.UseBrowserLink();
+            //}
+            //else
+            //{
+            // app.UseExceptionHandler("/Home/Error");
+            //}
 
             app.UseStaticFiles();
 

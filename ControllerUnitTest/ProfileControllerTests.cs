@@ -1,16 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Reolin.Web.Api.Controllers;
-using Reolin.Data.Services.Core;
-using Reolin.Data.Services;
-using Reolin.Data;
-using Reolin.Web.Api.Infra.IO;
-using System.IO;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Reolin.Web.Api.ViewModels;
+using Reolin.Data;
+using Reolin.Data.Services;
+using Reolin.Data.Services.Core;
+using Reolin.Web.Api.Controllers;
+using Reolin.Web.Api.Infra.IO;
+using Reolin.Web.ViewModels;
+using System.IO;
+using System.Linq;
 
 namespace ControllerUnitTest
 {
