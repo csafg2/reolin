@@ -155,6 +155,7 @@ namespace Reolin.Web.Api.Controllers
                     SubJobCategoryId = model.SubJobCategoryId
                 });
 
+            
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
 

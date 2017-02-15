@@ -43,6 +43,11 @@
                     alert("damn! error!");
                 };
 
+                handler.HandleResponse = (r: HttpResponse): void =>
+                {
+                    console.log(r);
+                }
+
                 var info = me.GetLocationInfo(d.results);
                 model.City = info.city;
                 model.Country = info.country;

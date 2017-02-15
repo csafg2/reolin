@@ -35,6 +35,7 @@ namespace Reolin.Data.Domain
         {
             return new ProfileInfoDTO()
             {
+                Id = source.Id,
                 City = source.Address?.City,
                 Country = source.Address?.Country,
                 Name = source.Name,

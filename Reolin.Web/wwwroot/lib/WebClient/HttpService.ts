@@ -75,6 +75,7 @@ module Reolin.Web.Client {
                         response.StatusCode = jqXHR.status;
                         response.ResponseText = jqXHR.responseText;
                         handler.HandleResponse(response);
+                        
                     }
                 },
                 error: function (xhr, status, error) {
@@ -83,6 +84,7 @@ module Reolin.Web.Client {
                         response.StatusCode = xhr.status;
                         response.ResponseBody = xhr.responseText;
                         response.Error = error;
+                        
                         handler.HandleError(response);
                     }
 

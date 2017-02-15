@@ -56,8 +56,7 @@ module Reolin.Web.Client
             return this._text;
 
         }
-
-
+        
         set ResponseText(value: string) {
             this._text = value;
         }
