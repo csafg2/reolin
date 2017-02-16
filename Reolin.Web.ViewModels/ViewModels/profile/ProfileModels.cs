@@ -9,10 +9,10 @@ namespace Reolin.Web.ViewModels
     public class ProfileSearchModel
     {
         //[Required(ErrorMessage = "JobCategoryID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "not valid value for JobCategoryId")]
-        public int JobCategoryId { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "not valid value for JobCategoryId")]
+        public int? JobCategoryId { get; set; }
 
-        [Required(ErrorMessage = "SubJobCategoryID is required")]
+        //[Required(ErrorMessage = "SubJobCategoryID is required")]
         [Range(1, int.MaxValue, ErrorMessage = "Not valid value for SubJobCategoryId")]
         public int SubJobCategoryId { get; set; }
 
@@ -31,6 +31,7 @@ namespace Reolin.Web.ViewModels
 
         [Range(1, 100000)]
         public int Distance { get; set; }
+
     }
 
 

@@ -28,10 +28,21 @@ module Reolin.Web.Client {
             retryCount: number,
             isAsync: boolean = false,
             handler: HttpServiceHandler): void {
-
             this.MakeRequest("GET", url, null, headers, retryCount, handler, isAsync);
-
         }
+
+
+        public GetWithData(url: string,
+            headers: { [key: string]: string },
+            retryCount: number,
+            isAsync: boolean = false,
+            data: any,
+            handler: HttpServiceHandler): void
+        {
+            this.MakeRequest("GET", url, data, headers, retryCount, handler, isAsync);
+        }
+
+
 
         public Post(url: string,
             requestData: any,

@@ -308,7 +308,9 @@ namespace Reolin.Web.Api.Controllers
 
 
         /// <summary>
-        /// finds the matched profiles
+        /// Finds matched profiels first filters by job categories (AND operation) 
+        /// then by profile name
+        /// then profiles that contain search term as tag
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -316,11 +318,11 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> Find(ProfileSearchModel model)
         {
-            List<ProfileInfoDTO> result = null;
-            if (model.JobCategoryId == default(int))
+            List<ProfileSearchResult> result = null;
+            if (model.JobCategoryId != null)
             {
                 result = await this.ProfileService.SearchByCategoriesTagsAndDistance(
-                            model.JobCategoryId,
+                            (int)model.JobCategoryId,
                             model.SubJobCategoryId,
                             model.SearchTerm,
                             model.SourceLatitude,

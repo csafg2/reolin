@@ -37,6 +37,10 @@ namespace Reolin.Data.DTO
         public IEnumerable<TagDTO> Tags { get; set; }
     }
 
+    public class ProfileSearchResult : ProfileInfoDTO
+    {
+        public double? DistanceWithSource { get; set; }
+    }
 
     public class ProfileInfoDTO: ProfileByTagDTO
     {

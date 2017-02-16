@@ -46,10 +46,10 @@ module Reolin.Web.UI.Services
             this.AuthService.Post(UrlSource.CreateWorkProfile, info, {}, 2, true, handlers);
         }
 
-        public SearchByCategoriesTagsAndDistance(model: SearchProfileModel, handler: Net.HttpServiceHandler): void
+        public Find(model: SearchProfileModel, handler: Net.HttpServiceHandler): void
         {
             var httpService = new Net.HttpService();
-            httpService.Get(UrlSource.MainSearch, {}, 2, true, handler);
+            httpService.GetWithData(UrlSource.MainSearch, {}, 2, true, model, handler);
         }
     }
 
@@ -69,7 +69,7 @@ module Reolin.Web.UI.Services
     export class SearchProfileModel
     {
         public JobCategoryId: number;
-        public SubCategoryId: number;
+        public SubJobCategoryId: number;
         public SearchTerm: string;
         public Distance: number;
         public SourceLatitude: number;

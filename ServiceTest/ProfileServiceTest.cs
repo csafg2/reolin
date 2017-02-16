@@ -28,9 +28,6 @@ namespace ServiceTest
         [TestMethod]
         public void Profile_Search()
         {
-            // first filters by job categories
-            // then by profile name
-            // then profiles that contain this as tag
             //DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(88, 88);
             //return this._context.
             //    Profiles
@@ -51,24 +48,26 @@ namespace ServiceTest
 
             int jobCategory = 43, subJobCategory = 64, userId;
             userId = _context.Users.First().Id;
-            var dto = new CreateProfileDTO()
-            {
-                Description = "BMW is a car manufacturer",
-                Name = "BMW",
-                Latitude = 87,
-                Longitude = 87,
-                City = "Berlin",
-                Country = "Germany",
-                PhoneNumber = "230489324",
-                JobCategoryId = jobCategory,
-                SubJobCategoryId = subJobCategory
-            };
+            //var dto = new CreateProfileDTO()
+            //{
+            //    Description = "BMW is a car manufacturer",
+            //    Name = "BMW",
+            //    Latitude = 87,
+            //    Longitude = 87,
+            //    City = "Berlin",
+            //    Country = "Germany",
+            //    PhoneNumber = "230489324",
+            //    JobCategoryId = jobCategory,
+            //    SubJobCategoryId = subJobCategory
+            //};
 
-            int profileId = this._service.CreateWorkAsync(userId, dto).Result.Id;
+            //int profileId = this._service.CreateWorkAsync(userId, dto).Result.Id;
+            int profileId = 33;
             _service.AddTagAsync(profileId, new[] { "BMW" }).Wait();
 
             var profiles = _service
-                .SearchByCategoriesTagsAndDistance(jobCategory, subJobCategory, "B", 5000, 87, 87).Result;
+                .SearchByCategoriesTagsAndDistance(jobCategory, subJobCategory, "B", 87, 87).Result;
+                
                 
             Assert.IsTrue(profiles.Count > 0);
         }
