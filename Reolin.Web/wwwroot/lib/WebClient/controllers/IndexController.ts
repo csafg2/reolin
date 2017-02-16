@@ -93,6 +93,8 @@ module Reolin.Web.Client.Controllers
                     menu.append(html);
                 }
                 menu.children(":first-child").addClass("active-main-cat");
+                
+                me._currentSubCatId = d[0].id;
             });
             controller.GetJobCategorieList(function (d)
             {

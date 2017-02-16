@@ -1,0 +1,26 @@
+﻿@*@inject Microsoft​.AspNetCore​.Http.IHttpContextAccessor HttpContextAccessor
+
+<h1>
+    @HttpContextAccessor.HttpContext.Session.ToString()
+</h1>*@
+    <ul id="userProfilesList" style="font-size: 25px; color: red">
+
+</ul>
+@section Scripts{
+
+    <script src="/lib/WebClient/DefaultJwtManager.js"></script>
+    <script src="/lib/WebClient/HttpService.js"></script>
+    <script src="/lib/WebClient/LocalJwtStore.js"></script>
+    <script src="/lib/WebClient/RemoteJwtSource.js"></script>
+    <script src="/lib/WebClient/LoginInfo.js"></script>
+    <script src="/lib/WebClient/HttpResponse.js"></script>
+    <script src="/lib/WebClient/JwtSecurityToken.js"></script>
+
+
+
+    <script src="/lib/WebClient/Helpers/URLS.js"></script>
+    <script src="/lib/WebClient/Global.js"></script>
+
+    <script src="~/lib/WebClient/HttpService.js"></script>
+    <script src="~/lib/WebClient/controllers/ChooseProfileController.js"></script>
+}

@@ -8,6 +8,17 @@ module Reolin.Web.Client
         private _responseBody: any;
         private _error: string;
         private _text: string;
+        private _xhr: JQueryXHR;
+
+        get XHR(): JQueryXHR
+        {
+            return this._xhr;
+        }
+
+        set XHR(value: JQueryXHR)
+        {
+            this._xhr = value;
+        }
 
         get Error(): string
         {

@@ -170,7 +170,7 @@ namespace Reolin.Web.Security.Membership
             User user = null;
             try
             {
-                user = await this.UserService.GetByUserName(userName, "Roles");
+                user = await this.UserService.GetByUserName(userName, "Roles", "Profiles");
             }
             catch (Exception ex)
             {

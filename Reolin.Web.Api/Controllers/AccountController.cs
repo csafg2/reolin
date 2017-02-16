@@ -122,7 +122,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("/[controller]/[action]")]
-        //[RequireValidModel]
+        [RequireValidModel]
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             try
@@ -149,7 +149,6 @@ namespace Reolin.Web.Api.Controllers
         [RequireValidModel]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            
             IdentityResult result = (await this.UserManager.GetLoginInfo(model.UserName, model.Password));
             if (!result.Succeeded)
             {
@@ -160,6 +159,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(new
             {
+                profileIds = result.User.Profiles.Select(p => p.Id).ToArray(),
                 accessToken = this.JwtManager.IssueJwt(this.Options),
                 expiresIn = Options.Expiration
             });

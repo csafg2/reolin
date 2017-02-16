@@ -416,5 +416,17 @@ namespace Reolin.Data.Services
                 })
                 .ToListAsync();
         }
+
+        public Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description)
+        {
+            this.Context.RelatedTypes.Add(new Related()
+            {
+                SourceProfileId = sourceId,
+                TargetProfileId = targetId,
+                Date = date,
+                Description = description
+            });
+            return this.Context.SaveChangesAsync();
+        }
     }
 }

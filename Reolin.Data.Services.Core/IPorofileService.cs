@@ -1,5 +1,6 @@
 ﻿using Reolin.Data.Domain;
 using Reolin.Data.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -79,5 +80,8 @@ namespace Reolin.Data.Services.Core
 
         Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
         Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
+
+        Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description);
+         
     }
 }

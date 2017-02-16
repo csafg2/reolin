@@ -22,8 +22,24 @@ namespace ServiceTest
         {
             this._context = new DataContext();
             this._service = new ProfileService(_context);
+            
         }
 
+
+
+        [TestMethod]
+        public void Profile_AddRelatedType()
+        {
+            var targetId = _context.Profiles.OrderBy(p => p.Name).First().Id;
+            var sourceIds = _context.Profiles.OrderBy(p => p.Name).Skip(1).Select(p => p.Id).ToArray();
+            foreach (var source in sourceIds)
+            {
+                _service.AddRelate(source, targetId, DateTime.Now, "Helow world!").Wait();
+            }
+            var profile = _context.Profiles.Include(p => p.Relatedes).First(p => p.Id == targetId);
+            
+            Assert.IsNotNull(profile.Relatedes.Count > 2);
+        }
 
         [TestMethod]
         public void Profile_Search()

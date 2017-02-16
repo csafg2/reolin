@@ -8,9 +8,9 @@ var authService: Reo.AuthenticatedHttpServiceProvider = new Reo.AuthenticatedHtt
     alert("authentication failed");
 });
 
-$("#GetValueButton").click(function (e) {
-    var handler = new Reo.HttpServiceHandler();
-    //handler.HandleError = (r: Reo.HttpResponse) => console.log(r.Error);
-    handler.HandleResponse = (r: Reo.HttpResponse) => console.log(r.ResponseText);
-    authService.Get("http://178.63.55.123/Values/Get", {}, 2, true, handler);
-});
+//$("#GetValueButton").click(function (e) {
+//    var handler = new Reo.HttpServiceHandler();
+//    //handler.HandleError = (r: Reo.HttpResponse) => console.log(r.Error);
+//    handler.HandleResponse = (r: Reo.HttpResponse) => console.log(r.ResponseText);
+//    authService.Get("http://178.63.55.123/Values/Get", {}, 2, true, handler);
+//});

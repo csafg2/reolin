@@ -23,6 +23,8 @@
 
 
         public static MainSearch: string = "http://localhost:6987/Profile/Find";
+
+        public static QueryUserProfiles: string = "http://localhost:6987/User/QueryProfiles";
     }
 
     export class URLs
@@ -50,5 +52,7 @@
         public static GetCountry: string = "http://178.63.55.123/GeoService/Countries";
 
         public static MainSearch: string = "http://178.63.55.123/Profile/Find";
+
+        public static QueryUserProfiles: string = "http://178.63.55.123/User/QueryProfiles";
     }
 }

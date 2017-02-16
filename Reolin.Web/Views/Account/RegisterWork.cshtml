@@ -190,27 +190,27 @@
         var controller = new Reolin.Web.Client.Controllers.JobCategoryController();
         controller.GetJobCategories($("#MainCategory"));
         controller.GetSubCategories($("#SubCategory"));
-        $.getJSON("http://maps.googleapis.com/maps/api/geocode/json?latlng=33.00167849978695,54.190244435058844&sensor=true", null, function (d) {
-            var results = d.results;
-            if (d.status === 'OK') {
-                if (results[0]) {
-                    var add = results[0].formatted_address;
-                    var value = add.split(",");
+        //$.getJSON("http://maps.googleapis.com/maps/api/geocode/json?latlng=33.00167849978695,54.190244435058844&sensor=true", null, function (d) {
+        //    var results = d.results;
+        //    if (d.status === 'OK') {
+        //        if (results[0]) {
+        //            var add = results[0].formatted_address;
+        //            var value = add.split(",");
 
-                    count = value.length;
-                    country = value[count - 1];
-                    state = value[count - 2];
-                    city = value[count - 3];
-                    console.log("city: " + city);
-                    console.log("country: " + country);
-                }
-                else {
-                    alert("address not found");
-                }
-            }
-            else {
-                alert("Geocoder failed due to: " + status);
-            }
-        })
+        //            count = value.length;
+        //            country = value[count - 1];
+        //            state = value[count - 2];
+        //            city = value[count - 3];
+        //            console.log("city: " + city);
+        //            console.log("country: " + country);
+        //        }
+        //        else {
+        //            alert("address not found");
+        //        }
+        //    }
+        //    else {
+        //        alert("Geocoder failed due to: " + status);
+        //    }
+        //})
     </script>
 }

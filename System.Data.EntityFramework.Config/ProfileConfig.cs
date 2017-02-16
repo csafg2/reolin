@@ -10,6 +10,8 @@ namespace Reolin.Data.EntityFramework.Config
         {
             this.HasKey(p => p.Id);
 
+           
+
             this.HasMany(p => p.ImageCategories)
                 .WithRequired(imc => imc.Profile)
                 .HasForeignKey(imc => imc.ProfileId)
@@ -82,7 +84,17 @@ namespace Reolin.Data.EntityFramework.Config
                 .WithRequired(l => l.TargetProfile)
                 .HasForeignKey(l => l.TargetProfileId)
                 .WillCascadeOnDelete(false);
-            
+
+            this.HasMany(p => p.RelatedTos)
+                .WithRequired(rt => rt.TargetProfile)
+                .HasForeignKey(rt => rt.TargetProfileId)
+                .WillCascadeOnDelete(false);
+
+            this.HasMany(p => p.Relatedes)
+                .WithRequired(rt => rt.SourceProfile)
+                .HasForeignKey(rt => rt.SourceProfileId)
+                .WillCascadeOnDelete(false);
+
             this.HasMany(p => p.Comments)
                 .WithRequired(c => c.Profile)
                 .HasForeignKey(c => c.ProfileId)

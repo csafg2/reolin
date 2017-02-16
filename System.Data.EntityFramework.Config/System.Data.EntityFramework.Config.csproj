@@ -63,6 +63,7 @@
     <Compile Include="PhoneNumberConfig.cs" />
     <Compile Include="ProfileConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatedTypeConfig.cs" />
     <Compile Include="RoleConfig.cs" />
     <Compile Include="SkillConfig.cs" />
     <Compile Include="SocialNetworkConig.cs" />

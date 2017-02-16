@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.ViewModels;
@@ -9,6 +10,7 @@ namespace Reolin.Web.Api.Controllers
     /// <summary>
     /// User related apis 
     /// </summary>
+    [EnableCors("AllowAll")]
     public class UserController : BaseController
     {
         private readonly IUserService _service;
@@ -50,11 +52,11 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="id">the id of desired user</param>
         /// <returns></returns>
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> QueryProfiles(int id)
         {
             var profiles = await this.UserService.QueryProfilesAsync(id);
             return Ok(profiles);
-            
         }
     }
 }

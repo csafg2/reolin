@@ -85,6 +85,7 @@ module Reolin.Web.Client {
                         response.ResponseBody = responseData;
                         response.StatusCode = jqXHR.status;
                         response.ResponseText = jqXHR.responseText;
+                        response.XHR = jqXHR;
                         handler.HandleResponse(response);
                         
                     }

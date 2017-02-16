@@ -115,7 +115,7 @@ namespace Reolin.Data.Services
                 throw new ArgumentNullException(nameof(userName));
             }
 
-            return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            return this.Context.Users.Include(u => u.Profiles).FirstOrDefaultAsync(u => u.UserName == userName);
         }
         
         public async Task<int> AddToRole(int userId, int roleId)
@@ -204,6 +204,7 @@ namespace Reolin.Data.Services
                 .Where(p => p.UserId == userId)
                     .Select(p => new ProfileInfoDTO()
                     {
+                        Id = p.Id,
                         Description = p.Description,
                         Latitude = p.Address.Location.Latitude,
                         Longitude = p.Address.Location.Longitude,

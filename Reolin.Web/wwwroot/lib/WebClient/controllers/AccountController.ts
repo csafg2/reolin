@@ -35,12 +35,11 @@ module Reolin.Web.Client.Controllers
                 {
                     return;
                 }
-
-                console.log(jqxhr.responseJSON);
+                
                 me.ErrorList.html("");
                 for (var key in jqxhr.responseJSON)
                 {
-                    me.ErrorList.append('<p style="color:red">' + jqxhr.responseJSON[key][0] + '</p>');
+                    me.ErrorList.append('<p style="color:red">' + jqxhr.responseJSON[key] + '</p>');
                 }
             });
 
@@ -50,14 +49,14 @@ module Reolin.Web.Client.Controllers
                 {
                     return;
                 }
-
+                
                 me._userLoggedInCallBack();
-                console.log(xhr.responseText);
             });
         }
 
         public RegisterButton_ClickHandler(e: JQueryEventObject): any
         {
+            e.preventDefault();
             var info: RegisterInfo = new RegisterInfo();
             info.UserName = this.UserNameTextBox.val();
             info.Password = this.PasswordTextBox.val();
@@ -72,9 +71,10 @@ module Reolin.Web.Client.Controllers
                 var loginInfo: LoginInfo = new LoginInfo();
                 loginInfo.UserName = info.UserName;
                 loginInfo.Password = info.Password;
-                console.log(loginInfo);
+                
                 this._service.Login(loginInfo);
-                this._userLoggedInCallBack();
+                
+                //this._userLoggedInCallBack();
             };
 
             this._service.Register(info, handler);
@@ -91,10 +91,10 @@ module Reolin.Web.Client.Controllers
     }
 }
 
-var controller: Reolin.Web.Client.Controllers.AccountController =
-    new Reolin.Web.Client.Controllers.AccountController(() =>
-    {
-        window.location.href = "/Home/Index";
-    });
+//var controller: Reolin.Web.Client.Controllers.AccountController =
+//    new Reolin.Web.Client.Controllers.AccountController(() =>
+//    {
+//       // window.location.href = "/User/ChooseYourProfile";
+//    });
 
 

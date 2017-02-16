@@ -18,7 +18,7 @@ namespace Reolin.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        //public DbSet<PhoneNumber> PhoneNumbers { get; set; }
+        public DbSet<Related> RelatedTypes { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<ImageCategory> ImageCategories { get; set; }
         public DbSet<Education> Educations { get; set; }

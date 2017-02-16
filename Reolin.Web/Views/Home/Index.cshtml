@@ -1,4 +1,5 @@
 ﻿@(Layout = null)
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,6 +65,8 @@
 </head>
 
 <body onload="initialize()" class="promo back">
+    
+    @Html.Partial("ProfileIdField")
     <script>
         function initialize(e) { }
     </script>
@@ -100,11 +103,12 @@
                     data-city="${city}"
                     data-country="${country}"
                     data-name="${name}"
+                    data-id="${id}"
                     data-latitude="${latitude}"
                     data-longitude="${longitude}">
 
                     <li class="basic-info-main">
-                        <a href="#" class="side-p">
+                        <a href="/View/${id}" class="side-p">
                             ${name}
                         </a>
                         <div class="basic-info">
@@ -481,7 +485,6 @@
 
     </script>
 
-    <script src="~/js/tinysort.min.js"></script>
     <script src="~/js/templating.js"></script>
     <script src="~/lib/WebClient/controllers/JobCategoryController.js"></script>
     <script src="/lib/WebClient/DefaultJwtManager.js"></script>

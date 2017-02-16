@@ -15,45 +15,50 @@
 
         private _profileService: UI.ProfileService = new UI.ProfileService();
 
+        ///when user has been logged in by account controller we create a work profile for he/she
+        private _accountController: AccountController;
 
-        private _accountController: AccountController = new AccountController(() =>
+        constructor()
         {
-            var model = new UI.RegisterProfileModel();
-            model.Name = this.FullNameTextBox.val();
-            model.PhoneNumber = this.PhoneNumberTextBox.val();
-            model.JobCategoryId = this.MajorCategoryDropdown.find("option:selected").val();
-            model.SubJobCategoryID = this.SubCategoryDropdown.find("option:selected").val();
-            model.Latitude = parseFloat(this.Latitude.val());
-            model.Longitude = parseFloat(this.Longitude.val());
-            var geoCodeUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + this.Latitude.val() + "," + this.Longitude.val() + "& sensor=true";
-            var me = this;
-            $.getJSON(geoCodeUrl, null, function (d)
+            this._accountController = new AccountController(() =>
             {
-                if (d.status !== 'OK')
+                var model = new UI.RegisterProfileModel();
+                model.Name = this.FullNameTextBox.val();
+                model.PhoneNumber = this.PhoneNumberTextBox.val();
+                model.JobCategoryId = this.MajorCategoryDropdown.find("option:selected").val();
+                model.SubJobCategoryID = this.SubCategoryDropdown.find("option:selected").val();
+                model.Latitude = parseFloat(this.Latitude.val());
+                model.Longitude = parseFloat(this.Longitude.val());
+                var geoCodeUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + this.Latitude.val() + "," + this.Longitude.val() + "& sensor=true";
+                var me = this;
+                //get city and country name
+                $.getJSON(geoCodeUrl, null, function (d)
                 {
-                    return;
-                }
+                    if (d.status !== 'OK')
+                    {
+                        return;
+                    }
 
-                console.log(d.status);
-                
-                var handler = new Reo.HttpServiceHandler();
+                    var handler = new Reo.HttpServiceHandler();
 
-                handler.HandleError = (r: HttpResponse): void =>
-                {
-                    alert("damn! error!");
-                };
+                    handler.HandleError = (r: HttpResponse): void =>
+                    {
+                        alert("damn! error!");
+                    };
 
-                handler.HandleResponse = (r: HttpResponse): void =>
-                {
-                    console.log(r);
-                }
+                    handler.HandleResponse = (r: HttpResponse): void =>
+                    {
+                        
+                        window.location.href = "/User/ChooseYourProfile";
+                    }
 
-                var info = me.GetLocationInfo(d.results);
-                model.City = info.city;
-                model.Country = info.country;
-                me._profileService.CreateWorkProfile(model, handler);
-            })
-        });
+                    var info = me.GetLocationInfo(d.results);
+                    model.City = info.city;
+                    model.Country = info.country;
+                    me._profileService.CreateWorkProfile(model, handler);
+                })
+            });
+        }
 
         GetLocationInfo(results: any): any
         {
@@ -76,10 +81,7 @@
             }
             return { country: country, city: city };
         }
-
     }
-
 }
 
-
-var rController: Reolin.Web.Client.Controllers.RegisterWorkController = new Reolin.Web.Client.Controllers.RegisterWorkController();
+new Reolin.Web.Client.Controllers.RegisterWorkController();
