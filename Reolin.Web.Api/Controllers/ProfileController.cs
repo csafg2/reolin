@@ -140,7 +140,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
-            
+
             Profile result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
@@ -155,7 +155,7 @@ namespace Reolin.Web.Api.Controllers
                     SubJobCategoryId = model.SubJobCategoryId
                 });
 
-            
+
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
 
@@ -308,7 +308,7 @@ namespace Reolin.Web.Api.Controllers
 
 
         /// <summary>
-        /// finds the matches profiles
+        /// finds the matched profiles
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -316,15 +316,28 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> Find(ProfileSearchModel model)
         {
-            var data = await this.ProfileService.SearchByCategoriesTagsAndDistance(
-                model.JobCategoryId,
-                model.SubJobCategoryId,
-                model.SearchTerm,
-                model.Distance,
-                model.SourceLatitude,
-                model.SourceLongitude);
+            List<ProfileInfoDTO> result = null;
+            if (model.JobCategoryId == default(int))
+            {
+                result = await this.ProfileService.SearchByCategoriesTagsAndDistance(
+                            model.JobCategoryId,
+                            model.SubJobCategoryId,
+                            model.SearchTerm,
+                            model.SourceLatitude,
+                            model.SourceLongitude,
+                            model.Distance);
+            }
+            else
+            {
+                result = await this.ProfileService.SearchBySubCategoryTagsAndDistance(
+                            model.SubJobCategoryId,
+                            model.SearchTerm,
+                            model.SourceLatitude,
+                            model.SourceLongitude,
+                            model.Distance);
+            }
 
-            return Ok(data);
+            return Ok(result);
         }
     }
 }

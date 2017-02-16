@@ -1,0 +1,63 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="">
+            <div class="login-position">
+                <div class="login-form  wow fadeInDown form-login-responsive login-form-margin">
+                    <div class="login-body">
+                        <section class="content bgcolor-8">
+                            <h2 class="register-title">Login</h2>
+                            <div class="login-input">
+                                <input id="UserName" type="text" placeholder="Username" />
+                                <input id="Password" type="password" placeholder="Password" />
+                                <a href="ForgotPassword.html">Forget Your Password?</a>
+                            </div>
+                            <p id="ErrorList">
+
+                            </p>
+
+                            <div class="">
+                                <input id="LoginButton" class="login-btn" type="button" value="login" />
+                            </div>
+                            <div class="login-toregister">
+                                <p>
+                                    Not registered?
+                                    <a href="register.html">
+                                        Create an account
+                                    </a>
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+
+    <script src="/content/js/locationpicker.jquery.min.js"></script>
+    <script src="~/lib/WebClient/controllers/JobCategoryController.js"></script>
+
+
+    <script src="/lib/WebClient/DefaultJwtManager.js"></script>
+    <script src="/lib/WebClient/HttpService.js"></script>
+    <script src="/lib/WebClient/LocalJwtStore.js"></script>
+    <script src="/lib/WebClient/RemoteJwtSource.js"></script>
+    <script src="/lib/WebClient/LoginInfo.js"></script>
+    <script src="/lib/WebClient/HttpResponse.js"></script>
+    <script src="/lib/WebClient/JwtSecurityToken.js"></script>
+    <script src="/lib/Infra/User.js"></script>
+
+
+    <script src="/lib/WebClient/Helpers/URLS.js"></script>
+    <script src="/lib/WebClient/Global.js"></script>
+    <script src="/lib/WebClient/run.js"></script>
+
+    <script src="/lib/WebClient/Services/AccountService.js"></script>
+    <script src="/lib/WebClient/Services/ProfileServices.js"></script>
+    <script src="/lib/WebClient/controllers/AccountController.js"></script>
+
+}

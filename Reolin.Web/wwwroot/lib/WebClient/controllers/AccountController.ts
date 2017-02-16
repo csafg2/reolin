@@ -13,7 +13,7 @@ module Reolin.Web.Client.Controllers
         EmailTextBox: JQuery = $('#Email');
         UserNameTextBox: JQuery = $('#UserName');
 
-        ErrorList: JQuery;
+        ErrorList: JQuery = $("#ErrorList");
 
         private _service: Reo.AccountService = new Reo.AccountService(manager);
         private _userLoggedInCallBack: UserLoggedInCallBack;
@@ -37,6 +37,7 @@ module Reolin.Web.Client.Controllers
                 }
 
                 console.log(jqxhr.responseJSON);
+                me.ErrorList.html("");
                 for (var key in jqxhr.responseJSON)
                 {
                     me.ErrorList.append('<p style="color:red">' + jqxhr.responseJSON[key][0] + '</p>');
@@ -49,6 +50,8 @@ module Reolin.Web.Client.Controllers
                 {
                     return;
                 }
+
+                me._userLoggedInCallBack();
                 console.log(xhr.responseText);
             });
         }
@@ -86,6 +89,12 @@ module Reolin.Web.Client.Controllers
             this._service.Login(info);
         }
     }
-
 }
+
+var controller: Reolin.Web.Client.Controllers.AccountController =
+    new Reolin.Web.Client.Controllers.AccountController(() =>
+    {
+        window.location.href = "/Home/Index";
+    });
+
 

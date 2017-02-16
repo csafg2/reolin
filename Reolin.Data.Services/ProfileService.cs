@@ -10,6 +10,7 @@ using System.Data.Entity;
 using static Reolin.Data.DataContext.StoreProcedures;
 using System.Data.SqlClient;
 using System.Data.Entity.Spatial;
+using System.Linq.Expressions;
 
 namespace Reolin.Data.Services
 {
@@ -376,12 +377,30 @@ namespace Reolin.Data.Services
             return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name, IsSubCategory = j.IsSubCategory }).ToListAsync();
         }
 
-        public Task<List<ProfileInfoDTO>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, int distance, double sourceLatitude, double sourceLongitude)
+        public Task<List<ProfileInfoDTO>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
+        {
+            return Search(p => p.JobCategories.Any(j => j.Id == subCatId),
+              searchTerm,
+              sourceLatitude,
+              sourceLongitude,
+              distance);
+        }
+
+        public Task<List<ProfileInfoDTO>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm,  double sourceLatitude, double sourceLongitude, int distance = 5000)
+        {
+            return Search(p => p.JobCategories.Any(jc => jc.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId), 
+                searchTerm, 
+                sourceLatitude, 
+                sourceLongitude, 
+                distance);
+        }
+
+        private Task<List<ProfileInfoDTO>> Search(Expression<Func<Profile, bool>> categoryPredicate, string searchTerm, double sourceLatitude, double sourceLongitude, int distance)
         {
             DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
             return this.Context.
                 Profiles
-                .Where(p => p.JobCategories.Any(jc => jc.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId))
+                .Where(categoryPredicate)
                 .Where(p => p.Name.Contains(searchTerm) || p.Tags.Any(t => t.Name.Contains(searchTerm)))
                 .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
                 .Select(p => new ProfileInfoDTO()

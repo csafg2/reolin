@@ -77,6 +77,7 @@ namespace Reolin.Data.Services.Core
         Task<List<JobCategoryInfoDTO>> QueryJobCategories();
 
 
-        Task<List<ProfileInfoDTO>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, int distance, double sourceLatitude, double sourceLongitude);
+        Task<List<ProfileInfoDTO>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
+        Task<List<ProfileInfoDTO>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
     }
 }

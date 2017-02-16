@@ -62,7 +62,11 @@
     </scri-->
 
 </head>
+
 <body onload="initialize()" class="promo back">
+    <script>
+        function initialize(e) { }
+    </script>
     <div id="map"></div>
     <!--navigation swipe-->
     <nav class="pushy pushy-left hidden-xs" id="pushy">
@@ -93,6 +97,22 @@
             <div class="menu-left-side">
                 <div id="Distance" class="tab-content current-content">
                     <ul class="side_menu">
+                        <li class="basic-info-main">
+                            <a href="#" class="side-p">
+                                Profile Name(distance)
+                            </a>
+                            <div class="basic-info">
+                                <ul class="side-menu-submenu">
+                                    <li class="basic-info-Distance">30m</li>
+                                    <li class="basic-info-like" data-type="like">
+                                        <a href="#" class="" id="likebtn">
+                                            <i class="mdi mdi-thumb-up like-btn like-active"></i>
+                                            <span class="num">135</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="basic-info-main">
                             <a href="#" class="side-p">
                                 Profile Name(distance)
@@ -358,50 +378,20 @@
                             <button type="button" class="btn btn-default dropdown-toggle bordercategory " data-toggle="dropdown" aria-expanded="false">
                                 <span><span class="caret"></span></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
-                                <li class="select-cat"><a href="#" class="automotive-machinary"><i class="fa fa-automobile"></i>automotive & machinery</a></li>
-                                <li class="select-cat"><a href="#" class="home-office"><i class="fa fa-home"></i>home & office</a></li>
-                                <li class="select-cat"><a href="#" class="computer-Electronics"><i class="fa fa-microchip"></i>computer & Electronics</a></li>
-                                <li class="select-cat"><a href="#" class="food-beverage"><i class="fa fa-cutlery"></i>food & beverage</a></li>
-                                <li class="select-cat"><a href="#" class="Media-Entertainment-Art"><i class="fa fa-film"></i>Media , Entertainment , Art</a></li>
-                                <li class="select-cat"><a href="#" class="Medical-health"><i class="fa fa-heart"></i>Medical & health</a></li>
-                                <li class="select-cat"><a href="#" class="Legal-Financial"><i class="fa fa-dollar"></i>Legal & Financial</a></li>
-                                <li class="select-cat"><a href="#" class="clothing-beauty"><i class="fa fa-leaf"></i>clothing & beauty</a></li>
-                                <li class="select-cat"><a href="#" class="Travel-Transportation"><i class="fa fa-fighter-jet"></i>Travel & Transportation</a></li>
-                                <li class="select-cat"><a href="#" class="Pets-Livestock"><i class="fa fa-github"></i>Pets & Livestock</a></li>
-                                <li class="select-cat"><a href="#" class="Kids"><i class="fa fa-smile-o"></i>Kids</a></li>
-                                <li class="select-cat"><a href="#" class="Sport-Hobbies"><i class="fa fa-hand-rock-o"></i>Sport & Hobbies</a></li>
-                                <li class="select-cat"><a href="#" class="Nonprofit"><i class="fa fa-institution"></i>Nonprofit</a></li>
-                                <li class="select-cat"><a href="#" class="Agricultural-Gardening"><i class="fa fa-leaf"></i>Agricultural & Gardening</a></li>
-                                <li class="select-cat"><a href="#" class="Industial"><i class="fa fa-industry"></i>Industial</a></li>
-                                <li class="select-cat"><a href="#" class="Advertising"><i class="fa fa-bullhorn"></i>Advertising</a></li>
-                                <li class="select-cat"><a href="#" class="Constraction"><i class="fa fa-building"></i>Constraction</a></li>
-                                <li class="select-cat"><a href="#" class="Cermonie-wedding"><i class="fa fa-birthday-cake"></i>Ceremony & wedding</a></li>
-                                <li class="select-cat"><a href="#" class="Barganing-Dealing"><i class="fa fa-handshake-o"></i>Barganing & Dealing</a></li>
-                                <li class="select-cat"><a href="#" class="Educational"><i class="fa fa-graduation-cap"></i>Educational </a></li>
-                                <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall"><i class="fa fa-shopping-cart"></i>Hypermarkets & Shoppingmall</a></li>
-
+                            <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu" id="catMenu">
+                              
                             </ul>
                         </div>
                         <input type="text" id="mainserach" class="form-control bordersearch" data-category="" aria-label="...">
-                        <input id="Submit1" type="submit" data-search-open="false" value="" />
+                        <input id="Submit1" type="submit" data-search-open="false" />
 
 
                     </div>
 
                 </div>
                 <div class="search-category">
-                    <ul class="">
-                        <li class="active-main-cat">
-                            <a href="#sale" data-search="Sale">Sale</a>
-                        </li>
-                        <li>
-                            <a href="#Manufacture" data-search="Manufacture">Manufacture</a>
-                        </li>
-                        <li>
-                            <a href="#Services" data-search="Services">Services</a>
-                        </li>
-
+                    <ul class="" id="subCatMenu">
+                    
                     </ul>
                 </div>
             </div>
@@ -480,10 +470,10 @@
         }
 
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ?
-                                  'Error: The Geolocation service failed.' :
-                                  'Error: Your browser doesn\'t support geolocation.');
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent(browserHasGeolocation ?
+            //                      'Error: The Geolocation service failed.' :
+            //                      'Error: Your browser doesn\'t support geolocation.');
         }
     </script>
     <!--scroll animation-->
@@ -498,5 +488,70 @@
 
     </script>
 
+    <script src="~/lib/WebClient/controllers/JobCategoryController.js"></script>
+    <script src="/lib/WebClient/DefaultJwtManager.js"></script>
+    <script src="/lib/WebClient/HttpService.js"></script>
+    <script src="/lib/WebClient/LocalJwtStore.js"></script>
+    <script src="/lib/WebClient/RemoteJwtSource.js"></script>
+    <script src="/lib/WebClient/LoginInfo.js"></script>
+    <script src="/lib/WebClient/HttpResponse.js"></script>
+    <script src="/lib/WebClient/JwtSecurityToken.js"></script>
+    <script src="/lib/Infra/User.js"></script>
+
+
+    <script src="/lib/WebClient/Helpers/URLS.js"></script>
+    <script src="/lib/WebClient/Global.js"></script>
+    <script src="/lib/WebClient/run.js"></script>
+
+    <script src="/lib/WebClient/Services/AccountService.js"></script>
+    <script src="/lib/WebClient/Services/ProfileServices.js"></script>
+    <script src="/lib/WebClient/controllers/AccountController.js"></script>
+
+    <script src="~/lib/WebClient/controllers/RegisterWorkController.js"></script>
+    <script src="~/lib/WebClient/controllers/IndexController.js"></script>
+    <script>
+        var currentMainCatId, currentSubCatId;
+        $("#catMenu").on('click', '.catItem', function () {
+            currentMainCatId = $(this).attr("data-catId")
+        });
+
+        $("#subCatMenu").on('click', '.subCatItem', function () {
+            currentSubCatId = $(this).attr("data-subCatId");
+            $(".active-main-cat").removeClass("active-main-cat");
+            $(this).addClass("active-main-cat");
+        });
+
+        var controller = new Reolin.Web.Client.Controllers.JobCategoryController();
+
+        controller.GetSubCategoriesList(function (d) {
+            var menu = $("#subCatMenu");
+            for (p in d) {
+                var item = { name: d[p].name, id: d[p].id };
+                var html = '<li>'
+                                + '<a href="#" data-search="Manufacture" class="subCatItem" data-subCatId="'
+                                + item.id
+                                + '">'
+                                + item.name + '</a>'
+                        + '</li>';
+                menu.append(html);
+            }
+            menu.children(":first-child").addClass("active-main-cat");
+        });
+
+        controller.GetJobCategorieList(function (d) {
+            var menu = $("#catMenu");
+            for (p in d) {
+                var item = { name: d[p].name, id: d[p].id };
+                var html = '<li class="select-cat">' +
+                     '<a href="#" class="catItem" click="()" data-catId="' + item.id + '">' + item.name + '</a></li>';
+                menu.append(html);
+            }
+        });
+
+
+        Reolin.Web.Client.Controllers.IndexController.Start();
+    </script>
+
+    
 </body>
 </html>

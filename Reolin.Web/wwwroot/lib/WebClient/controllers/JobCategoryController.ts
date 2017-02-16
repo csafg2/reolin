@@ -1,8 +1,18 @@
 ﻿module Reolin.Web.Client.Controllers
 {
+    export interface GetJsonCallBack
+    {
+        (data: any): void;
+    }
+    
     export class JobCategoryController
     {
-        public GetJobCategories(dropDown: JQuery)
+        public GetJobCategorieList(callBack: GetJsonCallBack): any {
+            $.getJSON(UrlSource.GetJobCategories, null, callBack);
+        }
+
+
+        public GetJobCategories(dropDown: JQuery): void
         {
             var me = this;
             $.getJSON(UrlSource.GetJobCategories, null, function (d)
@@ -15,7 +25,7 @@
             });
         }
 
-        public GetSubCategories(dropDown: JQuery)
+        public GetSubCategories(dropDown: JQuery): void
         {
             var me = this;
 
@@ -28,6 +38,10 @@
                     dropDown.append("<option value=" + item.id + ">" + item.name + "</option>");
                 }
             });
+        }
+
+        public GetSubCategoriesList(callBack: GetJsonCallBack): any {
+            $.getJSON(UrlSource.GetSubJobCategories, null, callBack);
         }
     }
 }

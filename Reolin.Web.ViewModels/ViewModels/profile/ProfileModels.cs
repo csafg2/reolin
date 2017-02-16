@@ -8,10 +8,12 @@ namespace Reolin.Web.ViewModels
 {
     public class ProfileSearchModel
     {
-        [Required(ErrorMessage = "JobCategoryID is required")]
+        //[Required(ErrorMessage = "JobCategoryID is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "not valid value for JobCategoryId")]
         public int JobCategoryId { get; set; }
 
         [Required(ErrorMessage = "SubJobCategoryID is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "Not valid value for SubJobCategoryId")]
         public int SubJobCategoryId { get; set; }
 
         

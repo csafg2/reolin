@@ -29,7 +29,7 @@ namespace Reolin.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // loggerFactory.AddDebug();
-            #region UseStaticFiles()
+            
             // TODO: modify this into a separat extension method
             //StaticFileOptions options = new StaticFileOptions();
             //FileExtensionContentTypeProvider typeProvider = new FileExtensionContentTypeProvider();
@@ -39,7 +39,7 @@ namespace Reolin.Web
             //}
             //options.ContentTypeProvider = typeProvider;
             app.UseStaticFiles();
-            #endregion
+            
             //if (env.IsDevelopment())
             //{
             app.UseDeveloperExceptionPage();

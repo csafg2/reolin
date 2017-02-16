@@ -42,4 +42,4 @@ module Reolin.Web.Client.Controllers
     }
 }
 
-var controller = new Reolin.Web.Client.Controllers.RegisterCVController();
+var registerCVController: Reolin.Web.Client.Controllers.RegisterCVController = new Reolin.Web.Client.Controllers.RegisterCVController();

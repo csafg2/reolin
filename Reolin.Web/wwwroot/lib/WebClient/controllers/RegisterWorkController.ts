@@ -82,4 +82,4 @@
 }
 
 
-var controller:  = new Reolin.Web.Client.Controllers.RegisterWorkController();
+var rController: Reolin.Web.Client.Controllers.RegisterWorkController = new Reolin.Web.Client.Controllers.RegisterWorkController();
