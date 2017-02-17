@@ -26,6 +26,25 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void Profile_AddCertificate()
+        {
+            int id = 21;
+            int r = 0;
+            r += _service.AddCertificateAsync(id, 2014, "MCSDN").Result;
+            r += _service.AddCertificateAsync(id, 2014, "C++ Couch").Result;
+
+            Assert.IsTrue(r > 0);
+        }
+
+        [TestMethod]
+        public void Profile_GetImages()
+        {
+            var id = 21;
+            var all = this._service.GetImages(id).Result;
+            Assert.IsTrue(all.Count > 0);
+        }
+
+        [TestMethod]
         public void Profile_GetBasicInfo()
         {
             var result = _service.GetBasicInfo(21).Result;
@@ -40,16 +59,20 @@ namespace ServiceTest
             int r = this._service.AddRelatedType(profielId, "Employee").Result;
             Assert.IsTrue(r > 0);
         }
-                
+             
+        
+           
         [TestMethod]
         public void Profile_AddRelated()
         {
-            var targetId = _context.Profiles.OrderBy(p => p.Name).First().Id;
+            //var targetId = _context.Profiles.OrderBy(p => p.Name).First().Id;
+            var targetId = 21;
             var sourceIds = _context.Profiles.OrderBy(p => p.Name).Skip(1).Select(p => p.Id).ToArray();
             foreach (var source in sourceIds)
             {
-                _service.AddRelate(source, targetId, DateTime.Now, "Helow world!", 1).Wait();
+                _service.AddRelate(source, targetId, DateTime.Now, "some description", 2).Wait();
             }
+
             var profile = _context.Profiles.Include(p => p.Relatedes).First(p => p.Id == targetId);
 
             Assert.IsNotNull(profile.Relatedes.Count > 2);
@@ -299,26 +322,25 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void Profile_AddImageCategory()
+        {
+            var profieID = 21;
+            int r = this._service.AddImageCategory(profieID, "Offic").Result;
+            Assert.IsTrue(r > 0);
+        }
+
+        [TestMethod]
         public void Profile_AddImage()
         {
             var profile = this._context
                 .Profiles
                    .Include(p => p.ImageCategories)
                      .First();
-            if (profile.ImageCategories.Count < 1)
-            {
-                profile.ImageCategories.Add(new ImageCategory()
-                {
-                    Name = "Sample Category"
-                });
-
-                _context.SaveChanges();
-            }
-
+            
             var catId = _context.ImageCategories.First(imc => imc.ProfileId == profile.Id).Id;
 
             int result = _service
-                .AddProfileImageAsync(profile.Id, catId, "Image title", "this is a wedding", "/e/a.jpg").Result;
+                .AddProfileImageAsync(profile.Id, catId, "Image title", "this is a wedding", "/ea/a2/a.jpg").Result;
 
             Assert.IsTrue(result > 0);
 

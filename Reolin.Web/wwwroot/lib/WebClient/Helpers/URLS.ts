@@ -1,8 +1,8 @@
 ﻿module Reolin.Web.Client
 {
-
     export class LocalURLs
     {
+        public static Host: string = "http://localhost:6987/";
         public static RegisterAccount: string = "http://localhost:6987/account/register";
         public static ExhangeTokenUrl: string = "http://localhost:6987/account/ExchangeToken";
         public static GetTokenUrl: string = "http://localhost:6987/account/Login";
@@ -35,10 +35,19 @@
         public static GetRelatedType: string = "http://localhost:6987/Profile/RelatedTypes";
 
         public static AddRelate: string = "http://localhost:6987/Profile/AddRelation";
+
+        public static GetImageCategories: string = "http://localhost:6987/Profile/GetImageCategories";
+        public static GetImages: string = "http://localhost:6987/Profile/Images";
+
+
+        public static GetRequestRelated: string = "http://localhost:6987/Profile/RequestRelatedProfiles";
+
+        public static GetCertificates: string = "http://localhost:6987/Profile/Certificates";
     }
 
     export class URLs
     {
+        public static Host: string = "http://178.63.55.123/";
         public static RegisterAccount: string = "http://178.63.55.123/account/register";
         public static ExhangeTokenUrl: string = "http://178.63.55.123/account/ExchangeToken";
         public static GetTokenUrl: string = "http://178.63.55.123/account/Login";
@@ -71,5 +80,14 @@
 
         public static GetRelatedType: string = "http://178.63.55.123/Profile/RelatedTypes";
         public static AddRelate: string = "http://178.63.55.123/Profile/AddRelation";
+
+        public static GetImageCategories: string = "http://178.63.55.123/Profile/GetImageCategories";
+
+        public static GetImages: string = "http://178.63.55.123/Profile/Images";
+
+        public static GetRequestRelated: string = "http://178.63.55.123/Profile/RequestRelatedProfiles";
+
+
+        public static GetCertificates: string = "http://178.63.55.123/Profile/Certificates";
     }
 }

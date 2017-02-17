@@ -4,7 +4,7 @@ module Reolin.Web.Client.Controllers
    
     declare var renderEngine;
 
-    export class ProfileViewController
+    export class ProfileEditController
     {
         ProfileName: JQuery = $("#ProfileName");
         LikeCount: JQuery = $("#LikeCount");

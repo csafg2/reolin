@@ -16,7 +16,7 @@ namespace Reolin.Data.Domain
         public byte[] Password { get; set; }
         
         
-        public List<Certificate> Certificates { get; set; }
+        //public List<Certificate> Certificates { get; set; }
         
         public List<Profile> Profiles { get; set; }
 

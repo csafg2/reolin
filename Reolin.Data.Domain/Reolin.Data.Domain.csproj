@@ -57,6 +57,7 @@
     <Compile Include="City.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="ImageDTO.cs" />
     <Compile Include="JobCategory.cs" />
     <Compile Include="Education.cs" />
     <Compile Include="ImageCategory.cs" />

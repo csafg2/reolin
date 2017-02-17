@@ -5,6 +5,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Reolin.Data.DTO
 {
+    public class RequestRelatedProfile
+    {
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
+        public bool Confirmed { get; set; }
+    }
+
     public class ProfileBasicInfoDTO
     {
         public int Id { get; set; }

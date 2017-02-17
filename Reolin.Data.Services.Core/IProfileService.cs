@@ -89,5 +89,13 @@ namespace Reolin.Data.Services.Core
 
         Task<List<TagDTO>> GetTags(int profileId);
         Task<string> GetPhoneNumbers(int id);
+
+
+        Task<List<ImageDTO>> GetImages(int profileId);
+
+        Task<List<RequestRelatedProfile>> GetRequestRelatedProfiles(int profileId);
+
+        Task<int> AddCertificateAsync(int profileId, int year, string description);
+        Task<List<Certificate>> GetCertificates(int profileId);
     }
 }

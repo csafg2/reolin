@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using static Reolin.Web.ViewModels.ProfileCreateModel;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -30,14 +31,25 @@ namespace Reolin.Web.Api.Controllers
         private readonly IMemoryCache _cache;
         private readonly IFileService _fileService;
         private readonly IGeoService _geoService = new FakeGeoService();
-        public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService)
+        private readonly IImageCategoryService _imageCategoryService;
+
+        public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService, IImageCategoryService imageCategoryService)
         {
             this._profileService = service;
             this._fileService = fileService;
             this._cache = cache;
+            this._imageCategoryService = imageCategoryService;
         }
 #pragma warning restore CS1591 
 
+        private IImageCategoryService ImageCategoryService
+        {
+            get
+            {
+                return _imageCategoryService;
+            }
+        }
+        
         private IProfileService ProfileService
         {
             get
@@ -442,5 +454,85 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// get all profile images
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Images(int id)
+        {
+            return Ok(await this.ProfileService.GetImages(id));
+        }
+
+
+        /// <summary>
+        /// add a new imageCategory to ImageCategory collection of the profile
+        /// </summary>
+        /// <param name="model">the model to parsed as param</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> AddImageCategory(AddImageCategoryModel model)
+        {
+            await this.ProfileService.AddImageCategory(model.ProfileId, model.Name);
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// get all Image categories
+        /// </summary>
+        /// <param name="id">the id of the profile to get categories</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> GetImageCategories(int id)
+        {
+            return Ok(await this.ImageCategoryService.GetByProfile(id));
+        }
+
+        /// <summary>
+        /// Get all profiles that are related to this profile by request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> RequestRelatedProfiles(int id)
+        {
+            var data = await this.ProfileService.GetRequestRelatedProfiles(id);
+            return Ok(data);
+        }
+
+
+        /// <summary>
+        /// Add a certificate to profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> AddCertificate(CertificateCreateModel model)
+        {
+            await this.ProfileService.AddCertificateAsync(model.ProfileId, model.Year, model.Description);
+
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// Get all certificates for profile
+        /// </summary>
+        /// <param name="id">the id of profile</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Certificates(int id)
+        {
+            var data = await this.ProfileService.GetCertificates(id);
+            return Ok(data);
+        }
     }
 }

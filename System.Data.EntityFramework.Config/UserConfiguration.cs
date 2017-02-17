@@ -39,11 +39,11 @@ namespace Reolin.Data.EntityFramework.Config
 
 
             // 1:* intellisence is necessary
-            this.HasMany(u => u.Certificates)
-                .WithMany(c => c.Users)
-                .Map(t => t.MapLeftKey("CertificateId")
-                        .MapRightKey("UserId")
-                        .ToTable("User_Certificates"));
+            //this.HasMany(u => u.Certificates)
+            //    .WithMany(c => c.Users)
+            //    .Map(t => t.MapLeftKey("CertificateId")
+            //            .MapRightKey("UserId")
+            //            .ToTable("User_Certificates"));
 
 
             // user must set a location
@@ -56,11 +56,11 @@ namespace Reolin.Data.EntityFramework.Config
             // *:*
             // maybe a certificate like mcsd is earned by multiple users
             // providing intelisence to user when selecting certificate is necessary
-            this.HasMany(u => u.Certificates)
-                .WithMany(c => c.Users)
-                .Map(t => t.MapLeftKey("UserId")
-                        .MapRightKey("CertificateId")
-                        .ToTable("UserCertificate"));
+            //this.HasMany(u => u.Certificates)
+            //    .WithMany(c => c.Users)
+            //    .Map(t => t.MapLeftKey("UserId")
+            //            .MapRightKey("CertificateId")
+            //            .ToTable("UserCertificate"));
             
             // the user might have multiple profile entries
             // such as one personal profile and multiple business profile

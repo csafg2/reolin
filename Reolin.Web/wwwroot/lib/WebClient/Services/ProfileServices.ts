@@ -32,7 +32,7 @@ module Reolin.Web.UI.Services
 
             this.AuthService = new Net.AuthenticatedHttpServiceProvider(manager, () =>
             {
-                alert("auth error!");
+                alert("auth error! redirecting to login page.");
                 window.location.href = "/account/login";
             });
         }
@@ -86,9 +86,28 @@ module Reolin.Web.UI.Services
 
         public SendRelateRequest(model: any, handler: Net.HttpServiceHandler)
         {
-            var httpService = new Net.HttpService();
             this.AuthService.Post(UrlSource.AddRelate, model, {}, 2, true, handler);
+        }
 
+        public GetImageCategories(id: number, handler: Net.HttpServiceHandler)
+        {
+            //var httpService = new Net.HttpService();
+            this.HttpService.GetWithData(UrlSource.GetImageCategories, {}, 2, true, { id: id }, handler);
+        }
+
+        public GetImageGalleryItems(id: number, handler: Net.HttpServiceHandler)
+        {
+            this.HttpService.GetWithData(UrlSource.GetImages, {}, 2, true, { id: id }, handler);
+        }
+
+        public GetRequestRelatedProfiles(id: number, handler: Net.HttpServiceHandler)
+        {
+            this.HttpService.GetWithData(UrlSource.GetRequestRelated, {}, 2, true, { id: id }, handler);
+        }
+
+        public GetCertificates(id: number, handler: Net.HttpServiceHandler)
+        {
+            this.HttpService.GetWithData(UrlSource.GetCertificates, {}, 2, true, { id: id }, handler);
         }
     }
 

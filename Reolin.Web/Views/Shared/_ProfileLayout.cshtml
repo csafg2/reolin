@@ -54,6 +54,8 @@
 
 <body onload="initialize()" class="promo">
     @Html.Partial("ProfileIdField")
+    <input type="hidden" value="@ViewBag.TargetProfileId" id="ViewingProfileId" />
+
     <!--navigation swipe-->
     <nav class="pushy pushy-left hidden-xs" id="pushy">
         <div class="iconleft  " id="iconleft">
@@ -670,7 +672,7 @@
     <script>
         var renderEngine = { template: $.template, tmpl: $.tmpl };
     </script>
-    <script src="~/lib/WebClient/controllers/JobCategoryController.js"></script>
+    <script src="/lib/WebClient/controllers/JobCategoryController.js"></script>
     <script src="/lib/WebClient/DefaultJwtManager.js"></script>
     <script src="/lib/WebClient/HttpService.js"></script>
     <script src="/lib/WebClient/LocalJwtStore.js"></script>
@@ -686,8 +688,8 @@
 
     <script src="/lib/WebClient/Services/AccountService.js"></script>
     <script src="/lib/WebClient/Services/ProfileServices.js"></script>
-    <script src="~/lib/WebClient/controllers/ProfileBaseController.js"></script>
 
+    <script src="~/lib/WebClient/controllers/ProfileCommonController.js"></script>
     @RenderSection("Scripts", required: false)
 
 </body>

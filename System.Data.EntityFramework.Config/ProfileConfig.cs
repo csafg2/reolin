@@ -31,10 +31,8 @@ namespace Reolin.Data.EntityFramework.Config
 
             // *:*
             this.HasMany(p => p.Certificates)
-                .WithMany(c => c.Profiles)
-                .Map(t => t.MapLeftKey("ProfileId")
-                        .MapRightKey("CertificateId")
-                        .ToTable("ProfileCertificate"));
+                .WithRequired(c => c.Profile)
+                .HasForeignKey(c => c.ProfileId);
 
             // a profile record can have multiple #tags 
             // #tags must be extracted from profile description string
@@ -61,12 +59,10 @@ namespace Reolin.Data.EntityFramework.Config
                 .HasForeignKey(c => c.ProfileId);
 
             // a profile record might have multiple certificates
-            // take a restaurent for example: it might have a certificate from fucking secretary of health or what ever
-            this.HasMany(p => p.Certificates)
-                .WithMany(c => c.Profiles)
-                .Map(p => p.MapLeftKey("ProfileId")
-                        .MapRightKey("CertificateId")
-                        .ToTable("Profile_Certificate"));
+            //// take a restaurent for example: it might have a certificate from fucking secretary of health or what ever
+            //this.HasMany(p => p.Certificates)
+            //    .WithRequired(c => c.Profile)
+            
 
 
             // a profile record must have an address (location, etc..)

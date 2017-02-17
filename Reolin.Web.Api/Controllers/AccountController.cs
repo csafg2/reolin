@@ -159,7 +159,6 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(new
             {
-                profileIds = result.User.Profiles.Select(p => p.Id).ToArray(),
                 accessToken = this.JwtManager.IssueJwt(this.Options),
                 expiresIn = Options.Expiration
             });

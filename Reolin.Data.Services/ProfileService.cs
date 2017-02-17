@@ -366,6 +366,7 @@ namespace Reolin.Data.Services
 
             Context.ImageCategories.Add(new ImageCategory()
             {
+                ProfileId = profileId,
                 Name = name
             });
 
@@ -452,7 +453,7 @@ namespace Reolin.Data.Services
 
         public async Task<List<TagDTO>> GetTags(int profileId)
         {
-            var profile = 
+            var profile =
                 await Context
                 .Profiles
                 .Include("Tags")
@@ -486,6 +487,56 @@ namespace Reolin.Data.Services
                 .Where(rt => rt.ProfileId == profileId)
                     .Select(rt => new RelatedTypeDTO() { Id = rt.Id, Name = rt.Type })
                         .ToListAsync();
+        }
+
+        //TODO:  candidate to be moved to Separat service
+        public Task<List<ImageDTO>> GetImages(int profileId)
+        {
+            return this.Context
+                .Images
+                .Where(i => i.ProfileId == profileId)
+                .Select(i => new ImageDTO()
+                {
+                    Id = i.Id,
+                    Category = i.ImageCategory.Name,
+                    Description = i.Description,
+                    Subject = i.Subject,
+                    Path = i.Path
+                }).ToListAsync(); 
+        }
+
+        public Task<List<RequestRelatedProfile>> GetRequestRelatedProfiles(int profileId)
+        {
+            return this.Context.Relations.Where(r => r.TargetProfileId == profileId)
+                .Select(r => new RequestRelatedProfile()
+                {
+                    Date = r.Date,
+                    Id = r.Id,
+                    Description = r.Description,
+                    Type = r.RelatedType.Type,
+                    Name = r.SourceProfile.Name,
+                    Confirmed = r.Confirmed
+                })
+                .ToListAsync();
+        }
+
+        public Task<int> AddCertificateAsync(int profileId, int year, string description)
+        {
+            Certificate c = new Certificate()
+            {
+                Description = description,
+                ProfileId = profileId,
+                Year = year
+            };
+
+            this.Context.Certificates.Add(c);
+
+            return Context.SaveChangesAsync();
+        }
+
+        public Task<List<Certificate>> GetCertificates(int profileId)
+        {
+            return this.Context.Certificates.Where(c => c.ProfileId == profileId).ToListAsync();
         }
     }
 }

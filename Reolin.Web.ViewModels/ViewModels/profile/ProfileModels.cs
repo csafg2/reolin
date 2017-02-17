@@ -6,6 +6,15 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.ViewModels
 {
+    public class CertificateCreateModel
+    {
+        public int ProfileId { get; set; }
+        public int Year { get; set; }
+
+        [Required(ErrorMessage = "Description is required", AllowEmptyStrings = false)]
+        public string Description { get; set; }
+    }
+
     public class AddTagModel
     {
         public int ProfileId { get; set; }
@@ -142,5 +151,15 @@ namespace Reolin.Web.ViewModels
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);
         }
+
+
+        public class AddImageCategoryModel
+        {
+            public int ProfileId { get; set; }
+
+            [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
+            public string Name { get; set; }
+        }
+
     }
 }

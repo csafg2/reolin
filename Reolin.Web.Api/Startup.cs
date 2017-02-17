@@ -35,7 +35,8 @@ namespace Reolin.Web.Api
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddJobCategoryService();
-            services.AddProfileService();
+            //services.AddProfileService();
+            services.AddEntityServices();
             services.AddCorsWithDefaultConfig();
             services.AddFileService();
             services.AddJwtDependencies();

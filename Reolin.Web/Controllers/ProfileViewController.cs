@@ -10,5 +10,14 @@ namespace Reolin.Web.Controllers
             ViewBag.TargetProfileId = id;
             return View();
         }
+
+        [Route("/Edit/{id}")]
+        public ActionResult EditProfile(int id)
+        {
+            ViewBag.TargetProfileId = id;
+            return View();
+        }
+
+
     }
 }

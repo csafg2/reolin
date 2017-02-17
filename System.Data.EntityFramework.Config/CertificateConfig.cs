@@ -8,7 +8,6 @@ namespace Reolin.Data.EntityFramework.Config
         public CertificateConfig()
         {
             this.HasKey(c => c.Id);
-            this.Property(c => c.Title).IsRequired();
         }
     }
 }

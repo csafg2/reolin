@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "_ProfileLayout";
 }
-<input type="hidden" value="@ViewBag.TargetProfileId" id="ViewingProfileId" />
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="awards-body wow fadeIn" id="awards">
         <div class="awrads-title">
@@ -13,142 +12,26 @@
                 <img src="/content/img/icon/award.png" alt="awards-logo" />
             </div>
         </div>
-        <div class="award-content">
+        <div id="certificateItemTemplate" style="display:none;">
             <div class="awards-item wow fadein" data-wow-delay="0.1s">
                 <div class="year-company">
-                    <p>Year</p>
+                    <p>${year}</p>
                 </div>
                 <div class="certificate">
                     <img src="/content/img/awards.jpg" alt="" />
                 </div>
                 <div class="award-explaine">
-                    <p>award explain</p>
+                    <p>${description}</p>
                 </div>
                 <div class="award-icon">
                     <img src="/content/img/icon/arrow-top.png" />
                 </div>
             </div>
             <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.2s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.3s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.4s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.5s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.6s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.7s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.8s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
-            <div class="awards-item wow fadein" data-wow-delay="0.9s">
-                <div class="year-company">
-                    <p>Year</p>
-                </div>
-                <div class="certificate">
-                    <img src="/content/img/awards.jpg" alt="" />
-                </div>
-                <div class="award-explaine">
-                    <p>award explain</p>
-                </div>
-                <div class="award-icon">
-                    <img src="/content/img/icon/arrow-top.png" />
-                </div>
-            </div>
-            <hr />
+
+        </div>
+        <div class="award-content" id="certificateList">
+
         </div>
     </div>
     <div class="profile-company-body wow" id="profile" data-wow-delay="1.5s">
@@ -310,196 +193,128 @@
                                         <div class="related-Emploters">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-6">
-                                                        <div class="tabs-related" style="margin-top: -4px;">
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
+                                                    <div id="relatedTemplate" style="display:none;">
+                                                        <div class="item-related">
+                                                            <div class="related-location">
+                                                                <img src="/content/img/android.png" alt="" />
                                                             </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
+                                                            <div class="related-body">
+                                                                <ul>
+                                                                    <li class="company-name">
+                                                                        <b>${name}</b>
+                                                                        ${description}
+                                                                    </li>
+                                                                    <li>
+                                                                        <span style="color: orange;">
+                                                                            year: ${date}
+                                                                        </span>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
+                                                        <hr />
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="tabs-related" style="margin-top: -4px;">
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="item-related">
-                                                                <div class="related-location">
-                                                                    <img src="/content/img/android.png" alt="" />
-                                                                </div>
-                                                                <div class="related-body">
-                                                                    <ul>
-                                                                        <li>related</li>
-                                                                        <li class="company-name">Company name</li>
-                                                                        <li>year start</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                        <div class="tabs-related" id="relationsList" style="margin-top: -4px;">
+
 
                                                         </div>
                                                     </div>
+                                                    @*<div class="col-md-6">
+                                                            <div class="tabs-related" style="margin-top: -4px;">
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <hr />
+                                                                <div class="item-related">
+                                                                    <div class="related-location">
+                                                                        <img src="/content/img/android.png" alt="" />
+                                                                    </div>
+                                                                    <div class="related-body">
+                                                                        <ul>
+                                                                            <li>related</li>
+                                                                            <li class="company-name">Company name</li>
+                                                                            <li>year start</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>*@
                                                 </div>
                                             </div>
                                         </div>
@@ -516,90 +331,108 @@
 
                     </div>
                     <div id="Picture" class="tabcontent test">
+                        <div id="imageCategoryTemplate" style="display:none;">
+                            <li><a href="#section-bar-1" data-value="${id}"><span>${name}</span></a></li>
+                        </div>
                         <section>
                             <div class="tabs tabs-style-bar">
                                 <nav>
-                                    <ul>
-
-                                        <li><a href="#section-bar-1"><span>Employers</span></a></li>
-                                        <li><a href="#section-bar-2"><span>Employee</span></a></li>
-                                        <li><a href="#section-bar-3"><span>Builder</span></a></li>
-                                        <li><a href="#section-bar-4"><span>Contractor</span></a></li>
-                                        <li><a href="#section-bar-6"><span>Units</span></a></li>
-                                        <li><a href="#section-bar-6"><span>Friend</span></a></li>
-                                        <li><a href="#section-bar-7"><span>work</span></a></li>
+                                    <ul id="imageCategoryList">
+                                        <li style="display:none;"><a href="#section-bar-1" data-value="${id}" style="display:none;"><span>${name}</span></a></li>
+                                        @*<li><a href="#section-bar-1"><span>Employers</span></a></li>
+                                            <li><a href="#section-bar-2"><span>Employee</span></a></li>
+                                            <li><a href="#section-bar-3"><span>Builder</span></a></li>
+                                            <li><a href="#section-bar-4"><span>Contractor</span></a></li>
+                                            <li><a href="#section-bar-6"><span>Units</span></a></li>
+                                            <li><a href="#section-bar-6"><span>Friend</span></a></li>
+                                            <li><a href="#section-bar-7"><span>work</span></a></li>*@
 
 
                                     </ul>
                                 </nav>
+                                <div id="imagesTemplate" style="display:none;">
+                                    <div style="float: left; border: 4px solid black; margin: 3px;">
+                                        <p>
+                                            <img src="${$item.Host}${path}" style="max-width:200px !important;" />
+                                            <h1>subject: ${subject}</h1>
+                                            <h2>category: ${category}</h2>
+                                            <h3>${description}</h3>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="content-wrap">
-                                    <section id="section-bar-1">
-                                        <div class="company-picture">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="col-md-4 nopad wow  fadeIn lazy">
-                                                        <div class="suggest-palce" data-place="001">
-                                                            <div class="suggest-picture-place">
-                                                                <img class="lazy" data-src="/content/img/pl3.jpg" alt="" />
-                                                            </div>
-                                                            <div class="suggest-desc">
-                                                                <div class="sharebtn">
-                                                                    <a href="#" class="share-btn" data-sharebtn="001">
-                                                                        <img title="share this palce!" src="/content/img/icon/tab-globalgreen.png" alt="" />
-                                                                    </a>
-                                                                    <a href="#001" class="like-btn-1" data-likebtn="001">
-                                                                        <i title="like this item" class="mdi mdi-thumb-up"></i>
-                                                                    </a>
-                                                                    <ul data-shareitem="001" class="social-share nopad wow fadeIn">
-                                                                        <li class="share-item">
-                                                                            <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
-                                                                        </li>
-                                                                        <li class="share-item">
-                                                                            <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
-                                                                        </li>
-                                                                        <li class="share-item">
-                                                                            <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
-                                                                        </li>
-                                                                        <li class="share-item">
-                                                                            <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
-                                                                        </li>
-                                                                        <li class="share-item">
-                                                                            <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <h6 class="place-title">eram resturant</h6>
-                                                                    <div class="loade-more">
-                                                                        <p class="show-less" data-text="001">
-                                                                            The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
-                                                                            The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
-                                                                            The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+                                    <section id="imageList"></section>
+                                    @*<section id="section-bar-7">
+                                            <p>Images!</p>
+                                        </section>*@
+                                    @*<section id="section-bar-1">
+                                            <div class="company-picture">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4 nopad wow  fadeIn lazy">
+                                                            <div class="suggest-palce" data-place="001">
+                                                                <div class="suggest-picture-place">
+                                                                    <img class="lazy" data-src="/content/img/pl3.jpg" alt="" />
+                                                                </div>
+                                                                <div class="suggest-desc">
+                                                                    <div class="sharebtn">
+                                                                        <a href="#" class="share-btn" data-sharebtn="001">
+                                                                            <img title="share this palce!" src="/content/img/icon/tab-globalgreen.png" alt="" />
+                                                                        </a>
+                                                                        <a href="#001" class="like-btn-1" data-likebtn="001">
+                                                                            <i title="like this item" class="mdi mdi-thumb-up"></i>
+                                                                        </a>
+                                                                        <ul data-shareitem="001" class="social-share nopad wow fadeIn">
+                                                                            <li class="share-item">
+                                                                                <a href="#" title="facebook"><i class="mdi mdi-facebook"></i></a>
+                                                                            </li>
+                                                                            <li class="share-item">
+                                                                                <a href="#" title="twitter"><i class="mdi mdi-twitter"></i></a>
+                                                                            </li>
+                                                                            <li class="share-item">
+                                                                                <a href="#" title="youtube"><i class="mdi mdi-youtube-play"></i></a>
+                                                                            </li>
+                                                                            <li class="share-item">
+                                                                                <a href="#" title="telegram"><i class="mdi mdi-telegram"></i></a>
+                                                                            </li>
+                                                                            <li class="share-item">
+                                                                                <a href="#" title="google-plus"><i class="mdi mdi-google-plus"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <h6 class="place-title">eram resturant</h6>
+                                                                        <div class="loade-more">
+                                                                            <p class="show-less" data-text="001">
+                                                                                The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+                                                                                The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
+                                                                                The country's central location in Eurasia and Western Asia, and its proximity to the Strait of Hormuz, make it of great geostrategic
 
-                                                                        </p>
-                                                                        <div class="show-more-btn">
-                                                                            <i class="fa fa-angle-down" data-more="001"></i>
+                                                                            </p>
+                                                                            <div class="show-more-btn">
+                                                                                <i class="fa fa-angle-down" data-more="001"></i>
+                                                                            </div>
+
                                                                         </div>
-
                                                                     </div>
+
+
                                                                 </div>
 
-
                                                             </div>
-
                                                         </div>
+
+
+
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
-                                        </div>
-                                    </section>
-                                    <section id="section-bar-2"><p>Employee</p></section>
-                                    <section id="section-bar-3"><p>Builder</p></section>
-                                    <section id="section-bar-4"><p>Contractor</p></section>
-                                    <section id="section-bar-5"><p>Units</p></section>
-                                    <section id="section-bar-6"><p>Friend</p></section>
-                                    <section id="section-bar-7"><p>work</p></section>
+                                        </section>
+
+                                        <section id="section-bar-2"><p>Employee</p></section>
+                                        <section id="section-bar-3"><p>Builder</p></section>
+                                        <section id="section-bar-4"><p>Contractor</p></section>
+                                        <section id="section-bar-5"><p>Units</p></section>
+                                        <section id="section-bar-6"><p>Friend</p></section>
+                                        <section id="section-bar-7"><p>work</p></section>*@
                                 </div><!-- /content -->
                             </div><!-- /tabs -->
                         </section>
@@ -663,68 +496,33 @@
                                             </div>
                                         </div>
                                     </section>
+                                    <div id="relationRequestTemplate" style="display:none;">
+                                        <div class="accept-item">
+                                            <ul>
+                                                <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
+                                                <li class="accept-item-logo">
+                                                    <img src="/content/img/ios.png" alt="" />
+                                                </li>
+                                                <li class="accept-item-info">
+                                                    <p class="">${name}</p>
+                                                    <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">
+                                                        ${type} \ ${date} \${description}
+                                                    </p>
+                                                </li>
+                                                <li class="accept-item-action">
+                                                    <div class="action">
+                                                        <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
+                                                        <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <hr />
+                                        </div>
+                                    </div>
                                     <section id="section-bar-2">
-                                        <div class="accept-request">
-                                            <div class="accept-item">
-                                                <ul>
-                                                    <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
-                                                    <li class="accept-item-logo">
-                                                        <img src="/content/img/ios.png" alt="" />
-                                                    </li>
-                                                    <li class="accept-item-info">
-                                                        <p class="">Profile name</p>
-                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
-                                                        <p class=""> time</p>
-                                                    </li>
-                                                    <li class="accept-item-action">
-                                                        <div class="action">
-                                                            <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
-                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <hr />
-                                            </div>
-                                            <div class="accept-item">
-                                                <ul>
-                                                    <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
-                                                    <li class="accept-item-logo">
-                                                        <img src="/content/img/ios.png" alt="" />
-                                                    </li>
-                                                    <li class="accept-item-info">
-                                                        <p class="">Profile name</p>
-                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
-                                                        <p class=""> time</p>
-                                                    </li>
-                                                    <li class="accept-item-action">
-                                                        <div class="action">
-                                                            <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
-                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <hr />
-                                            </div>
-                                            <div class="accept-item">
-                                                <ul>
-                                                    <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
-                                                    <li class="accept-item-logo">
-                                                        <img src="/content/img/ios.png" alt="" />
-                                                    </li>
-                                                    <li class="accept-item-info">
-                                                        <p class="">Profile name</p>
-                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
-                                                        <p class=""> time</p>
-                                                    </li>
-                                                    <li class="accept-item-action">
-                                                        <div class="action">
-                                                            <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
-                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <hr />
-                                            </div>
+                                        <div class="accept-request" id="relationRequestList">
+
+
                                         </div>
                                     </section>
                                     <section id="section-bar-3" style="height:600px;"><p>question</p></section>
