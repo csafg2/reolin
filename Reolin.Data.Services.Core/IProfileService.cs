@@ -81,7 +81,13 @@ namespace Reolin.Data.Services.Core
         Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
         Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
 
-        Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description);
-         
+        Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId);
+        Task<int> AddRelatedType(int profileId, string relatedType);
+        Task<List<RelatedTypeDTO>> GetRelatedTypes(int profileId);
+
+        Task<ProfileBasicInfoDTO> GetBasicInfo(int profileId);
+
+        Task<List<TagDTO>> GetTags(int profileId);
+        Task<string> GetPhoneNumbers(int id);
     }
 }

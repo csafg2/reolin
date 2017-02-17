@@ -1,10 +1,19 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Reolin.Data.DTO
 {
-    
+    public class ProfileBasicInfoDTO
+    {
+        public int Id { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public int LikeCount { get; set; }
+        public string Name { get; set; }
+    }
+
     public class EducationEditDTO
     {
         [Required(ErrorMessage = "ProfileId is required")]
@@ -16,6 +25,22 @@ namespace Reolin.Data.DTO
         public int GraduationYear { get; set; }
         public string University { get; set; }
     }
+
+    public class RelateCreateModel
+    {
+        public int SourceId { get; set; }
+        public int TargetId { get; set; }
+        public int RelatedTypeId { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
+    }
+
+    public class RelatedTypeDTO
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
 
     public class RelatedProfileDTO 
     {

@@ -60,6 +60,7 @@
     <Compile Include="JobCategory.cs" />
     <Compile Include="Education.cs" />
     <Compile Include="ImageCategory.cs" />
+    <Compile Include="Related.cs" />
     <Compile Include="RelatedType.cs" />
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="PhoneNumber.cs" />

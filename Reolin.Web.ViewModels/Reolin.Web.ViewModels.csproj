@@ -59,6 +59,7 @@
     <Compile Include="ViewModels\profile\ProfileAddDescriptionModel.cs" />
     <Compile Include="ViewModels\profile\ProfileModels.cs" />
     <Compile Include="ViewModels\profile\UpdateAddressModel.cs" />
+    <Compile Include="ViewModels\User\CommentCreateMode.cs" />
     <Compile Include="ViewModels\User\LoginViewModel.cs" />
     <Compile Include="ViewModels\User\SetFirstNameLastNameModel.cs" />
     <Compile Include="ViewModels\User\UserRegisterViewModel.cs" />

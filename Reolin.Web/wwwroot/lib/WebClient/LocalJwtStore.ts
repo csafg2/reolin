@@ -20,6 +20,7 @@ module Reolin.Web.Client
 
         Save(jwt: JwtSecurityToken): void
         {
+            console.log("saveing" + jwt.Token);
             if (jwt === null)
             {
                 throw Error("jwt can not be null");

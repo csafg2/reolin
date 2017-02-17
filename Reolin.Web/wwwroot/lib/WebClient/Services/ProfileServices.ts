@@ -32,7 +32,8 @@ module Reolin.Web.UI.Services
 
             this.AuthService = new Net.AuthenticatedHttpServiceProvider(manager, () =>
             {
-                alert("auth error");
+                alert("auth error!");
+                window.location.href = "/account/login";
             });
         }
 
@@ -50,6 +51,44 @@ module Reolin.Web.UI.Services
         {
             var httpService = new Net.HttpService();
             httpService.GetWithData(UrlSource.MainSearch, {}, 2, true, model, handler);
+        }
+
+        public GetBasicInfo(profileId: number, handler: Net.HttpServiceHandler): void
+        {
+            var httpService = new Net.HttpService();
+            httpService.GetWithData(UrlSource.GetBasicProfileInfo, {}, 2, true, { id: profileId }, handler);
+        }
+
+        public GetLatestComments(profileId: number, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.GetWithData(UrlSource.GetComments, {}, 3, true, { id: profileId }, handler);
+        }
+
+        public GetTags(profileId: number, handler: Net.HttpServiceHandler)
+        {
+            var httpService = new Net.HttpService();
+            httpService.GetWithData(UrlSource.GetTags, {}, 2, true, { id: profileId }, handler);
+        }
+
+        public GetPhoneNumber(profileId: number, handler: Net.HttpServiceHandler)
+        {
+            var httpService = new Net.HttpService();
+            httpService.GetWithData(UrlSource.GetPhoneNumbers, {}, 2, true, { id: profileId }, handler);
+
+        }
+
+        public GetRelatedType(profileId: number, handler: Net.HttpServiceHandler)
+        {
+            var httpService = new Net.HttpService();
+            httpService.GetWithData(UrlSource.GetRelatedType, {}, 2, true, { id: profileId }, handler);
+
+        }
+
+        public SendRelateRequest(model: any, handler: Net.HttpServiceHandler)
+        {
+            var httpService = new Net.HttpService();
+            this.AuthService.Post(UrlSource.AddRelate, model, {}, 2, true, handler);
+
         }
     }
 

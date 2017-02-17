@@ -25,6 +25,16 @@
         public static MainSearch: string = "http://localhost:6987/Profile/Find";
 
         public static QueryUserProfiles: string = "http://localhost:6987/User/QueryProfiles";
+
+        public static GetBasicProfileInfo: string = "http://localhost:6987/Profile/BasicInfo";
+
+        public static GetComments: string = "http://localhost:6987/Profile/LatestComments";
+        public static GetTags: string = "http://localhost:6987/Profile/GetTags";
+
+        public static GetPhoneNumbers: string = "http://localhost:6987/Profile/PhoneNumbers";
+        public static GetRelatedType: string = "http://localhost:6987/Profile/RelatedTypes";
+
+        public static AddRelate: string = "http://localhost:6987/Profile/AddRelation";
     }
 
     export class URLs
@@ -43,10 +53,8 @@
 
         public static DashboardLocation: string = "http://178.63.55.123/Account/Dashboard.html";
 
-
         public static GetJobCategories: string = "http://178.63.55.123/JobCategory/JobCateogries";
         public static GetSubJobCategories: string = "http://178.63.55.123/JobCategory/SubJobCategories";
-
 
         public static GetCity: string = "http://178.63.55.123/GeoService/Cities";
         public static GetCountry: string = "http://178.63.55.123/GeoService/Countries";
@@ -54,5 +62,14 @@
         public static MainSearch: string = "http://178.63.55.123/Profile/Find";
 
         public static QueryUserProfiles: string = "http://178.63.55.123/User/QueryProfiles";
+        public static GetBasicProfileInfo: string = "http://178.63.55.123/Profile/BasicInfo";
+
+        public static GetComments: string = "http://178.63.55.123/Profile/LatestComments";
+        public static GetTags: string = "http://178.63.55.123/Profile/GetTags";
+
+        public static GetPhoneNumbers: string = "http://178.63.55.123/Profile/PhoneNumbers";
+
+        public static GetRelatedType: string = "http://178.63.55.123/Profile/RelatedTypes";
+        public static AddRelate: string = "http://178.63.55.123/Profile/AddRelation";
     }
 }

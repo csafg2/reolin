@@ -36,9 +36,9 @@
 
 @section Scripts{
 
-    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+    @*<script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>*@
 
-    <script src="/content/js/locationpicker.jquery.min.js"></script>
+    @*<script src="/content/js/locationpicker.jquery.min.js"></script>*@
     <script src="~/lib/WebClient/controllers/JobCategoryController.js"></script>
 
 
@@ -60,4 +60,13 @@
     <script src="/lib/WebClient/Services/ProfileServices.js"></script>
     <script src="/lib/WebClient/controllers/AccountController.js"></script>
 
+    <script>
+
+        var controller =
+            new Reolin.Web.Client.Controllers.AccountController(() => {
+                
+                window.location.href = "/User/ChooseYourProfile";
+            });
+
+    </script>
 }

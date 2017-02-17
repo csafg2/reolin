@@ -27,8 +27,13 @@ module Reolin.Web.Client.Controllers
             model.SubJobCategoryID = this.SubCategoryDropdown.find("option:selected").val();
             model.Latitude = parseFloat(this.CityDropDown.find("option:selected").attr("data-lat"));
             model.Longitude = parseFloat(this.CityDropDown.find("option:selected").attr("data-long"));
-            console.log(model);
+
             var handler = new Reo.HttpServiceHandler();
+
+            handler.HandleResponse = (r: HttpResponse) =>
+            {
+                window.location.href = "/User/chooseYourProfile";
+            }
 
             handler.HandleError = (r: HttpResponse): void =>
             {
@@ -42,4 +47,5 @@ module Reolin.Web.Client.Controllers
     }
 }
 
-var registerCVController: Reolin.Web.Client.Controllers.RegisterCVController = new Reolin.Web.Client.Controllers.RegisterCVController();
+var registerCVController: Reolin.Web.Client.Controllers.RegisterCVController =
+    new Reolin.Web.Client.Controllers.RegisterCVController();

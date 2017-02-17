@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using Reolin.Web.ViewModels;
+using Reolin.Web.ViewModels.ViewModels.User;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
@@ -53,10 +54,27 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="id">the id of desired user</param>
         /// <returns></returns>
         [Route("/[controller]/[action]")]
+        [HttpGet]
         public async Task<IActionResult> QueryProfiles(int id)
         {
             var profiles = await this.UserService.QueryProfilesAsync(id);
             return Ok(profiles);
         }
+
+
+        /// <summary>
+        /// add a comment to profile by userId
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> AddComment(CommentCreateModel model)
+        {
+            await this._service.AddCommentAsync(model.UserId, model.ProfileId, model.Message);
+
+            return Ok();
+        }
     }
+    
 }

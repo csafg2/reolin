@@ -29,7 +29,7 @@ namespace Reolin.Web
 
             services.AddSession(o =>
             {
-                o.IdleTimeout = TimeSpan.FromSeconds(10);
+                o.IdleTimeout = TimeSpan.FromDays(10);
             });
 
             services.AddMvc();

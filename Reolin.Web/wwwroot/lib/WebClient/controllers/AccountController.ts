@@ -50,7 +50,8 @@ module Reolin.Web.Client.Controllers
                     return;
                 }
                 
-                me._userLoggedInCallBack();
+                //me._userLoggedInCallBack();
+                //window.location.href = "/";
             });
         }
 
@@ -68,13 +69,16 @@ module Reolin.Web.Client.Controllers
             handler.HandleResponse = (r: HttpResponse): void =>
             {
                 console.log("User has been registered");
+
                 var loginInfo: LoginInfo = new LoginInfo();
                 loginInfo.UserName = info.UserName;
                 loginInfo.Password = info.Password;
-                
+
+                console.log("initiating login");
+
                 this._service.Login(loginInfo);
                 
-                //this._userLoggedInCallBack();
+                this._userLoggedInCallBack();
             };
 
             this._service.Register(info, handler);
@@ -82,19 +86,16 @@ module Reolin.Web.Client.Controllers
 
         LoginButton_ClickHandler(e: JQueryEventObject): any
         {
+            
             var info: LoginInfo = new LoginInfo();
             info.UserName = this.UserNameTextBox.val();
             info.Password = this.PasswordTextBox.val();
 
             this._service.Login(info);
+            this._userLoggedInCallBack();
+
         }
     }
 }
-
-//var controller: Reolin.Web.Client.Controllers.AccountController =
-//    new Reolin.Web.Client.Controllers.AccountController(() =>
-//    {
-//       // window.location.href = "/User/ChooseYourProfile";
-//    });
 
 

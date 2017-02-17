@@ -341,5 +341,106 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(result);
         }
+
+
+        /// <summary>
+        /// returns basic information about the profile by it`s id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> BasicInfo(int id)
+        {
+            var data = await this.ProfileService.GetBasicInfo(id);
+            return Ok(data);
+        }
+
+
+        /// <summary>
+        /// retrieve latest comments for prfile page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        [Authorize]
+        public async Task<IActionResult> LatestComments(int id)
+        {
+            var data = await this.ProfileService.GetLatestComments(id);
+            return Ok(data);
+        }
+
+        /// <summary>
+        /// adds desired to tags collection of the profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize]
+        public async Task<IActionResult> AddTag(AddTagModel model)
+        {
+            await this.ProfileService.AddTagAsync(model.ProfileId, new[] { model.Tag });
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// return profile tags
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> GetTags(int id)
+        {
+            return Ok(await this.ProfileService.GetTags(id));
+        }
+
+        /// <summary>
+        /// Get phone number of the profile
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> PhoneNumbers(int id)
+        {
+            return Ok(new
+            {
+                number = await this.ProfileService.GetPhoneNumbers(id)
+            });
+        }
+
+
+        /// <summary>
+        /// Get all related types
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> RelatedTypes(int id)
+        {
+            var data = await this.ProfileService.GetRelatedTypes(id);
+            return Ok(data);
+        }
+
+
+        /// <summary>
+        /// send a relation request to the target profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> AddRelation(RelateCreateModel model)
+        {
+            await this.ProfileService.AddRelate(model.SourceId, model.TargetId, model.Date, model.Description, model.RelatedTypeId);
+
+            return Ok();
+        }
+
     }
 }

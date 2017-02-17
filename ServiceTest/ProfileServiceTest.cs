@@ -24,18 +24,34 @@ namespace ServiceTest
             this._service = new ProfileService(_context);
             
         }
-        
+
+        [TestMethod]
+        public void Profile_GetBasicInfo()
+        {
+            var result = _service.GetBasicInfo(21).Result;
+            Assert.IsTrue(!String.IsNullOrEmpty(result.Country));
+        }
+
+
         [TestMethod]
         public void Profile_AddRelatedType()
+        {
+            int profielId = 21;
+            int r = this._service.AddRelatedType(profielId, "Employee").Result;
+            Assert.IsTrue(r > 0);
+        }
+                
+        [TestMethod]
+        public void Profile_AddRelated()
         {
             var targetId = _context.Profiles.OrderBy(p => p.Name).First().Id;
             var sourceIds = _context.Profiles.OrderBy(p => p.Name).Skip(1).Select(p => p.Id).ToArray();
             foreach (var source in sourceIds)
             {
-                _service.AddRelate(source, targetId, DateTime.Now, "Helow world!").Wait();
+                _service.AddRelate(source, targetId, DateTime.Now, "Helow world!", 1).Wait();
             }
             var profile = _context.Profiles.Include(p => p.Relatedes).First(p => p.Id == targetId);
-            
+
             Assert.IsNotNull(profile.Relatedes.Count > 2);
         }
 
@@ -166,24 +182,37 @@ namespace ServiceTest
         }
 
         [TestMethod]
-        public void Profile_AddTag()
+        public void Profile_GetTags()
         {
             var id = _context.Profiles.First().Id;
-            string tag = Guid.NewGuid().ToString();
-            _service.AddTagAsync(id, new[] { tag }).Wait();
+
+            var tags = this._service.GetTags(id).Result;
+            Assert.IsTrue(tags.Count > 0);
+        }
+
+        [TestMethod]
+        public void Profile_AddTag()
+        {
+            var id = 21;
+            for (int i = 0; i < 10; i++)
+            {
+                string tag = Guid.NewGuid().ToString();
+                _service.AddTagAsync(id, new[] { tag }).Wait();
+
+            }
 
             Assert.IsTrue(
                 _context.Profiles.Include("Tags")
                     .First(p => p.Id == id)
                         .Tags
-                        .Any(t => t.Name == tag)
+                     .Count > 0
                 );
         }
 
         [TestMethod]
         public void Profile_GetlatestComments()
         {
-            var profileId = 6;
+            var profileId = 21;
             var comments = _service.GetLatestComments(profileId).Result;
             Assert.IsTrue(comments.Count > 0);
         }
@@ -234,6 +263,12 @@ namespace ServiceTest
             var userId = _context.Users.First().Id;
             var p = this._service.CreatePersonalAsync(userId, dto).Result;
             Assert.IsTrue(p.Id > 0);
+        }
+
+        [TestMethod]
+        public void Profile_AddComment()
+        {
+            
         }
 
         [TestMethod]

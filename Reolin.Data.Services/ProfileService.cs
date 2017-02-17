@@ -417,16 +417,75 @@ namespace Reolin.Data.Services
                 .ToListAsync();
         }
 
-        public Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description)
+        public Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId)
         {
-            this.Context.RelatedTypes.Add(new Related()
+            this.Context.Relations.Add(new Related()
             {
                 SourceProfileId = sourceId,
                 TargetProfileId = targetId,
+                RelatedTypeId = relatedTypeId,
                 Date = date,
                 Description = description
             });
+
             return this.Context.SaveChangesAsync();
+        }
+
+        public Task<ProfileBasicInfoDTO> GetBasicInfo(int profileId)
+        {
+            var profile = Context
+                .Profiles
+                .Where(p => p.Id == profileId)
+                .Select(p => new ProfileBasicInfoDTO()
+                {
+                    Id = p.Id,
+                    City = p.Address.City,
+                    Country = p.Address.Country,
+                    LikeCount = p.ReceivedLikes.Count,
+                    Name = p.Name
+                }).FirstOrDefaultAsync();
+
+
+            return profile;
+
+        }
+
+        public async Task<List<TagDTO>> GetTags(int profileId)
+        {
+            var profile = 
+                await Context
+                .Profiles
+                .Include("Tags")
+                .FirstOrDefaultAsync(p => p.Id == profileId);
+
+            return profile.Tags.Select(t => new TagDTO() { Id = t.Id, Name = t.Name }).ToList();
+        }
+
+        public async Task<string> GetPhoneNumbers(int id)
+        {
+            var profile = await this.Context.Profiles.FirstOrDefaultAsync(p => p.Id == id);
+
+            return profile.PhoneNumber;
+        }
+
+        public Task<int> AddRelatedType(int profileId, string relatedType)
+        {
+            this.Context.RelatedTypes.Add(new RelatedType()
+            {
+                ProfileId = profileId,
+                Type = relatedType
+            });
+
+            return Context.SaveChangesAsync();
+        }
+
+        public Task<List<RelatedTypeDTO>> GetRelatedTypes(int profileId)
+        {
+            return this.Context
+                .RelatedTypes
+                .Where(rt => rt.ProfileId == profileId)
+                    .Select(rt => new RelatedTypeDTO() { Id = rt.Id, Name = rt.Type })
+                        .ToListAsync();
         }
     }
 }

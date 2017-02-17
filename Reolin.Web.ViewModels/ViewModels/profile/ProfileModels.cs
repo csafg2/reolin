@@ -6,6 +6,14 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.ViewModels
 {
+    public class AddTagModel
+    {
+        public int ProfileId { get; set; }
+
+        [Required(ErrorMessage = "Tag is required")]
+        public string Tag { get; set; }
+    }
+
     public class ProfileSearchModel
     {
         //[Required(ErrorMessage = "JobCategoryID is required")]
