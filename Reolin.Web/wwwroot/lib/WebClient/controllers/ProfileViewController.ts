@@ -17,6 +17,7 @@ module Reolin.Web.Client.Controllers
 
         public static Start(): void 
         {
+            console.log("in view controller");
             var controller: ProfileViewController = new ProfileViewController();
             controller.Initialize();
         }
@@ -137,7 +138,6 @@ module Reolin.Web.Client.Controllers
             this._service.GetBasicInfo(this.ViewingProfileId.val(), handler);
         }
 
-
         private SetTags(): void
         {
             var handler = new Net.HttpServiceHandler();
@@ -180,4 +180,4 @@ module Reolin.Web.Client.Controllers
 
     }
 }
-Reolin.Web.Client.Controllers.ProfileViewController.Start();
+//Reolin.Web.Client.Controllers.ProfileViewController.Start();

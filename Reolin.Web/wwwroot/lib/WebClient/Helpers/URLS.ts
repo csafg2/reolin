@@ -43,6 +43,12 @@
         public static GetRequestRelated: string = "http://localhost:6987/Profile/RequestRelatedProfiles";
 
         public static GetCertificates: string = "http://localhost:6987/Profile/Certificates";
+
+        public static AddTag: string = "http://localhost:6987/Profile/AddTag";
+
+        public static AddRelatedType: string = "http://localhost:6987/Profile/AddRelatedType";
+
+        public static AddImageCategory: string = "http://localhost:6987/Profile/AddImageCategory";
     }
 
     export class URLs
@@ -89,5 +95,12 @@
 
 
         public static GetCertificates: string = "http://178.63.55.123/Profile/Certificates";
+
+        public static AddTag: string = "http://178.63.55.123/Profile/AddTag";
+
+        public static AddRelatedType: string = "http://178.63.55.123/Profile/AddRelatedType";
+
+        public static AddImageCategory: string = "http://178.63.55.123/Profile/AddImageCategory";
+
     }
 }

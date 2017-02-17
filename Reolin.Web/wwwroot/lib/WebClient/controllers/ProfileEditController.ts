@@ -6,123 +6,144 @@ module Reolin.Web.Client.Controllers
 
     export class ProfileEditController
     {
+        ViewingProfileId: JQuery = $("#ViewingProfileId");
+        SaveNewTagButton: JQuery = $("#SaveNewTagButton");
+        NewCertificateButton: JQuery = $("#NewCertificateButton");
+        AddRelatedTypeButton: JQuery = $("#AddRelatedTypeButton");
+        NewImageCategoryButton: JQuery = $("#NewImageCategoryButton");
+        SaveImageButton: JQuery = $("#SaveImageButton");
         ProfileName: JQuery = $("#ProfileName");
         LikeCount: JQuery = $("#LikeCount");
         CityCountryLabel: JQuery = $("#CityAndCountryLabel");
-        ViewingProfileId: JQuery = $("#ViewingProfileId");
-        SendRelateRequestButton: JQuery = $("#SendRelateRequest");
+
 
         _service: Reolin.Web.UI.Services.ProfileService = new Reolin.Web.UI.Services.ProfileService();
 
-
-        public static Start(): void 
-        {
-            var controller: ProfileViewController = new ProfileViewController();
-            controller.Initialize();
-        }
-
-
         public Initialize(): void 
         {
-            this.SetInfoBox();
-            this.SetTags();
-            this.SetPhoneNumber();
-            this.SetRelatedTypes();
+            
+            this.SetInfo();
+            this.SetRelatedType();
             this.SetImageCategories();
-            this.SetImageGalleries();
-            this.SetRelations();
-            this.SetCertificates();
-            this.SendRelateRequestButton.click(e => this.SendRelateRequestButton_clickHandler(e));
+            this.SetTags();
+            this.SaveImageButton.click(e => this.SaveImageButton_ClickHandler(e));
+            this.SaveNewTagButton.click(e => this.SaveNewTagButton_ClickHandler(e));
+            this.NewCertificateButton.click(e => this.NewCertificateButton_ClickHandler(e));
+            this.AddRelatedTypeButton.click(e => this.AddRelatedTypeButton_ClickHandler(e));
+            this.NewImageCategoryButton.click(e => this.NewImageCategoryButton_ClickHandler(e));
         }
 
+        public SaveImageButton_ClickHandler(e: Event)
+        {
+            var subject = $("#ImageCategorySubject").val();
+            var categoryId = $("#ImageCategorySelector").val();
+            var description = $("#ImageDescription").val();
+            var tagId = $("#TagOptions").val();
+            var profileId = this.ViewingProfileId.val();
+        }
 
-        public SetCertificates(): void 
+        public SetTags(): void
         {
             var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in SetCerticates" + r.Error);
-            handler.HandleResponse = (r: HttpResponse) => 
+            handler.HandleError = r => console.log(r);
+            handler.HandleResponse = r =>
             {
-                var markUp = $("#certificateItemTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#certificateList");
+                this.AddToTagsList(r);
+                this.AddToImageTagsList(r);
             };
-
-            this._service.GetCertificates(this.ViewingProfileId.val(), handler);
+            this._service.GetTags(this.ViewingProfileId.val(), handler);
         }
 
-        public SetRelations(): void 
+        public AddToTagsList(r: HttpResponse): void 
+        {
+            var markUp = $("#TagItemTemplate");
+            renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#TagItemList");
+        }
+
+        public AddToImageTagsList(r: HttpResponse): void
+        {
+            var markUp = $("#TagOptionsTemplate");
+            renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#TagOptions");
+        }
+
+        public SetImageCategories(): void
         {
             var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in " + r.Error);
-            handler.HandleResponse = (r: HttpResponse) => 
+            handler.HandleResponse = r =>
             {
-                var markUp = $("#relatedTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#relationsList");
-
-                
-                var acceptedList = r.ResponseBody.filter(e => e.confirmed == false);
-
-                var listMarkUp = $("#relationRequestTemplate");
-                renderEngine.tmpl(listMarkUp, acceptedList).appendTo("#relationRequestList");
+                var markUp = $("#ImageCategoryTemplate");
+                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#ImageCategoryList");
             };
-            this._service.GetRequestRelatedProfiles(this.ViewingProfileId.val(), handler);
+            this._service.GetImageCategories(this.ViewingProfileId.val(), handler);
         }
 
-        public SetImageGalleries(): void 
+        public NewImageCategoryButton_ClickHandler(e: Event)
         {
-            var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in " + r.Error);
-            handler.HandleResponse = (r: HttpResponse) => 
+            var text: string = $("#NewImagCategoryTextBox").val();
+            if (IsNullOrEmpty(text))
             {
-                var markup = $("#imagesTemplate");
-                // Compile the markup as a named template
-                renderEngine.template("images", markup);
-
-                // Render the template with the movies data
-                renderEngine.tmpl("images", r.ResponseBody,
-                    {
-                        Host: UrlSource.Host,
-                    }
-                ).appendTo("#imageList");
-            };
-
-            this._service.GetImageGalleryItems(this.ViewingProfileId.val(), handler);
+                return;
+            }
+            var handler = new Net.HttpServiceHandler();
+            handler.HandleResponse = r => alert('done, refresh to see changes');
+            handler.HandleError = r => console.log(r.Error);
+            this._service.AddImageCategory({ profileId: this.ViewingProfileId.val(), name: text }, handler);
         }
 
-        public SetImageCategories(): void 
+        public SetRelatedType(): void 
         {
-            var id = this.ViewingProfileId.val();
             var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log(r.Error);
-            handler.HandleResponse = (r: HttpResponse) =>
+            handler.HandleError = r => console.log(r);
+
+            handler.HandleResponse = r => 
             {
-                var markUp = $("#imageCategoryTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#imageCategoryList");
-            };
-            this._service.GetImageCategories(id, handler);
+                var markUp = $("#relatedTypeTemplate");
+                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#relatedTypeList");
+            }
+            this._service.GetRelatedType(this.ViewingProfileId.val(), handler);
         }
 
-        public SendRelateRequestButton_clickHandler(e: Event): void
+        public AddRelatedTypeButton_ClickHandler(e: Event)
         {
-            //Task < int > AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId);
-            var relatedTypeId = $("#type").val();
-            var sourceId: number = parseInt($("#CurrentProfileId").val());
-            var targetId: number = parseInt($("#ViewingProfileId").val());
-            var date = $("#datePicker").val();
-            var description = $("#explain").val();
+            var text = $("#NewRelatedTypeTextBox").val();
+            if (IsNullOrEmpty(text))
+            {
+                alert('invalid related type');
+            }
             var handler = new Net.HttpServiceHandler();
-            handler.HandleResponse = (r: HttpResponse) => alert("done");
+            handler.HandleError = r => console.log(r.ResponseText);
+            handler.HandleResponse = r => 
+            {
+                alert('done');
+            }; 
+            var profileId = this.ViewingProfileId.val();
+            this._service.AddRelatedType({ profileId: profileId, type: text }, handler);
+        }
+
+        public NewCertificateButton_ClickHandler(e: Event)
+        {
+            
+        }
+
+        public SaveNewTagButton_ClickHandler(e: Event)
+        {
+            var handler = new Net.HttpServiceHandler();
             handler.HandleError = (r: HttpResponse) => console.log(r);
-            this._service.SendRelateRequest(
-                {
-                    relatedTypeId: relatedTypeId,
-                    sourceId: sourceId,
-                    targetId: targetId,
-                    date: date,
-                    description: description
-                }, handler);
+            handler.HandleResponse = (r: HttpResponse) => 
+            {
+                alert('done, to view new tags refresh the page.');
+                console.log(r.ResponseText);
+            };
+            var tagText = $("#tagName").val();
+            var id = this.ViewingProfileId.val();
+            this._service.AddTag({ profileId: id, tag: tagText }, handler);
         }
 
-        public SetInfoBox(): void
+        public SetCertificates(): void
+        {
+        }
+
+        public SetInfo(): void
         {
             var handler = new Net.HttpServiceHandler();
             handler.HandleError = (r: HttpResponse) => console.log("error in ProfileViewController");
@@ -132,52 +153,21 @@ module Reolin.Web.Client.Controllers
                 this.CityCountryLabel.text(result.city + "/ " + result.country);
                 this.LikeCount.text(result.likeCount);
                 this.ProfileName.text(result.name);
+                
+                $("#ProfileNameTextBox").val(result.name);
+                $("#CityTextBox").val(result.city);
+                $("#CountryText").val(result.country);
             };
 
             this._service.GetBasicInfo(this.ViewingProfileId.val(), handler);
         }
 
-
-        private SetTags(): void
+        public static Start()
         {
-            var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in ProfileViewController -- set tags");
-            handler.HandleResponse = (r: HttpResponse) =>
-            {
-                var markUp = $("#secondTagTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#secondTagList");
-            };
-
-            this._service.GetTags(this.ViewingProfileId.val(), handler);
-
+            var controller: ProfileEditController = new ProfileEditController();
+            controller.Initialize();
         }
-
-        private SetPhoneNumber(): void
-        {
-            var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in ProfileViewController -- set phoneNumber");
-            handler.HandleResponse = (r: HttpResponse) =>
-            {
-                var markUp = $("#phoneNumberTemplateContainer");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#phoneNumberList");
-            };
-
-            this._service.GetPhoneNumber(this.ViewingProfileId.val(), handler);
-        }
-        
-        public SetRelatedTypes(): void
-        {
-            var handler = new Net.HttpServiceHandler();
-            handler.HandleError = (r: HttpResponse) => console.log("error in ProfileViewController -- set relatedtype");
-            handler.HandleResponse = (r: HttpResponse) =>
-            {
-                var markUp = $("#relatedTypeTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#type");
-            };
-
-            this._service.GetRelatedType(this.ViewingProfileId.val(), handler);
-        }
-
     }
 }
-Reolin.Web.Client.Controllers.ProfileViewController.Start();
+
+Reolin.Web.Client.Controllers.ProfileEditController.Start();

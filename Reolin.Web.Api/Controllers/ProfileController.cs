@@ -124,7 +124,8 @@ namespace Reolin.Web.Api.Controllers
                                         model.CategoryId,
                                         model.Subject,
                                         model.Description,
-                                        path);
+                                        path,
+                                        model.TagIds);
                 return Ok(path);
             }
         }
@@ -391,6 +392,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         [Route("/[controller]/[action]")]
         [Authorize]
+        [RequireValidModel]
         public async Task<IActionResult> AddTag(AddTagModel model)
         {
             await this.ProfileService.AddTagAsync(model.ProfileId, new[] { model.Tag });
@@ -533,6 +535,19 @@ namespace Reolin.Web.Api.Controllers
         {
             var data = await this.ProfileService.GetCertificates(id);
             return Ok(data);
+        }
+
+        /// <summary>
+        /// Add a related type to profile
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> AddRelatedType(AddRelatedTypeModel model)
+        {
+            await this.ProfileService.AddRelatedType(model.ProfileId, model.Type);
+            return Ok();
         }
     }
 }

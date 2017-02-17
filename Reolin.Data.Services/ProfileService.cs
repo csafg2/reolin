@@ -55,18 +55,14 @@ namespace Reolin.Data.Services
             // otherwise create and then attack it to profileId
 
             List<SqlParameter> tagNames = this.GetTagSqlParams(tags);
-            List<Task<int>> operations = new List<Task<int>>();
             foreach (var tagParameter in tagNames)
             {
-                operations.Add(new DataContext()
-                    .Database
-                        .ExecuteSqlCommandAsync(
+                await this.Context.Database.ExecuteSqlCommandAsync(
                                                 INSERT_TAG_PROCEDURE,
                                                 new SqlParameter("ProfileId", (long)profileId),
-                                                tagParameter));
+                                                tagParameter);
             }
-
-            await Task.WhenAll(operations);
+            
         }
 
         private List<SqlParameter> GetTagSqlParams(IEnumerable<string> tags)
@@ -99,19 +95,21 @@ namespace Reolin.Data.Services
                         });
         }
 
-        public Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath)
+        public async Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath, int[] tagsIds)
         {
+            var tags = await Context.Tags.Where(t => tagsIds.Contains(t.Id)).ToListAsync();
             this.Context.Images.Add(new Image()
             {
                 ProfileId = profileId,
                 Subject = subject,
                 Description = descrption,
+                Tags = tags,
                 Path = imagePath,
                 UploadDate = DateTime.Now,
                 ImageCategoryId = categoryId
             });
 
-            return this.Context.SaveChangesAsync();
+            return await this.Context.SaveChangesAsync();
         }
 
         public Task<int> AddLikeAsync(int senderProfileId, int targetProfileId)

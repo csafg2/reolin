@@ -6,6 +6,13 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.ViewModels
 {
+    public class AddRelatedTypeModel
+    {
+        public int ProfileId { get; set; }
+        [Required(ErrorMessage = "type is required")]
+        public string Type { get; set; }
+    }
+    
     public class CertificateCreateModel
     {
         public int ProfileId { get; set; }

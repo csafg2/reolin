@@ -42,8 +42,8 @@ namespace Reolin.Data.Services.Core
         /// </summary>
         /// <param name="profileId">the id of profile to be update</param>
         /// <param name="imagePath">the patch of image after it`s been saved</param>
-        /// <returns></returns>f
-        Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath);
+        /// <returns></returns>
+        Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath, int[] tags);
 
 
         Task<int> AddLikeAsync(int senderProfileId, int targetProfileId);

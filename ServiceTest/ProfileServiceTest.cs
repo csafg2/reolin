@@ -340,7 +340,7 @@ namespace ServiceTest
             var catId = _context.ImageCategories.First(imc => imc.ProfileId == profile.Id).Id;
 
             int result = _service
-                .AddProfileImageAsync(profile.Id, catId, "Image title", "this is a wedding", "/ea/a2/a.jpg").Result;
+                .AddProfileImageAsync(profile.Id, catId, "wedding image", "this is a wedding", "/ea/a2/a.jpg", new[] { 5, 6 }).Result;
 
             Assert.IsTrue(result > 0);
 

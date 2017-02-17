@@ -2,22 +2,28 @@
 /// <reference path="jwtsecuritytoken.ts" />
 /// <reference path="../typing/jquery.d.ts" />
 
-module Reolin.Web.Client {
-    export class HttpErrorEventArgs {
+module Reolin.Web.Client
+{
+    export class HttpErrorEventArgs
+    {
         private _retry: boolean = false;
 
 
-        get Retry(): boolean {
+        get Retry(): boolean
+        {
             return this._retry;
         }
 
-        set Retry(value: boolean) {
+        set Retry(value: boolean)
+        {
             this._retry = value;
         }
     }
 
-    export class HttpService {
-        protected headerCreating(headers: { [key: string]: string }): void {
+    export class HttpService
+    {
+        protected headerCreating(headers: { [key: string]: string }): void
+        {
             if (headers === null) headers = {};
 
             console.log("in http service");
@@ -27,7 +33,8 @@ module Reolin.Web.Client {
             headers: { [key: string]: string },
             retryCount: number,
             isAsync: boolean = false,
-            handler: HttpServiceHandler): void {
+            handler: HttpServiceHandler): void
+        {
             this.MakeRequest("GET", url, null, headers, retryCount, handler, isAsync);
         }
 
@@ -49,7 +56,8 @@ module Reolin.Web.Client {
             headers: { [key: string]: string },
             retryCount: number,
             isAsync: boolean = false,
-            handler: HttpServiceHandler): void {
+            handler: HttpServiceHandler): void
+        {
 
             this.MakeRequest("POST", url, requestData, headers, retryCount, handler, isAsync);
         }
@@ -59,7 +67,8 @@ module Reolin.Web.Client {
             requestData: any,
             headers: { [key: string]: string },
             retryCount: number,
-            handler: HttpServiceHandler, isAsync: boolean = false): void {
+            handler: HttpServiceHandler, isAsync: boolean = false): void
+        {
 
             this.headerCreating(headers);
 
@@ -72,52 +81,61 @@ module Reolin.Web.Client {
                 crossDomain: true,
                 //dataType: "json",
                 data: requestData,
-                beforeSend: function (xhr) {
+                beforeSend: function (xhr)
+                {
                     console.log(httpMethod);
-                    for (var key in headers) {
+                    for (var key in headers)
+                    {
                         console.log("adding " + key + " " + headers[key] + " in XHR header");
                         xhr.setRequestHeader(key, headers[key]);
                     }
                 },
-                success: function (responseData, textStatus: string, jqXHR: JQueryXHR) {
-                    if (handler !== null && handler.HandleResponse !== undefined) {
+                success: function (responseData, textStatus: string, jqXHR: JQueryXHR)
+                {
+                    if (handler !== null && handler.HandleResponse !== undefined)
+                    {
                         var response: HttpResponse = new HttpResponse();
                         response.ResponseBody = responseData;
                         response.StatusCode = jqXHR.status;
                         response.ResponseText = jqXHR.responseText;
                         response.XHR = jqXHR;
                         handler.HandleResponse(response);
-                        
                     }
                 },
-                error: function (xhr, status, error) {
-                    if (handler !== null && handler.HandleError !== undefined) {
+                error: function (xhr, status, error)
+                {
+                    if (handler !== null && handler.HandleError !== undefined)
+                    {
                         var response: HttpResponse = new HttpResponse();
                         response.StatusCode = xhr.status;
                         response.ResponseBody = xhr.responseText;
                         response.Error = error;
-                        
+
                         handler.HandleError(response);
                     }
 
                     // allow sub class to play a role
                     var args: HttpErrorEventArgs = new HttpErrorEventArgs();
                     me.OnError(xhr, error, args);
-                    if (args.Retry === true && retryCount > 0) {
+                    if (args.Retry === true && retryCount > 0)
+                    {
                         return me.MakeRequest(httpMethod, url, requestData, headers, --retryCount, handler);
                     }
                 }
             });
         };
 
-        protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs): void {
+        protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs): void
+        {
 
         }
 
-        public CreateFormData(input: any): FormData {
+        public CreateFormData(input: any): FormData
+        {
             var formData = new FormData();
 
-            for (var key in input) {
+            for (var key in input)
+            {
                 formData.append(key, input[key]);
             }
 
@@ -125,7 +143,8 @@ module Reolin.Web.Client {
         }
     }
 
-    export class AuthenticatedHttpServiceProvider extends HttpService {
+    export class AuthenticatedHttpServiceProvider extends HttpService
+    {
         private _manager: IJwtManager;
         private _jwt: JwtSecurityToken;
         private _newTokenUrl: string;
@@ -134,21 +153,25 @@ module Reolin.Web.Client {
         private _authenticationScheme: string = "bearer ";
         private _headerKey: string = "Authorization";
 
-        constructor(manager?: IJwtManager, authenticaionFailed?: AuthenticationFailedCallBack) {
+        constructor(manager?: IJwtManager, authenticaionFailed?: AuthenticationFailedCallBack)
+        {
             super();
 
             this._manager = manager;
             this._authenticaionFailed = authenticaionFailed;
         }
 
-        protected headerCreating(headers: { [key: string]: string }): void {
-            if (headers === null) {
+        protected headerCreating(headers: { [key: string]: string }): void
+        {
+            if (headers === null)
+            {
                 return;
             }
 
             var jwt: JwtSecurityToken = this._manager.GetLocalJwt();
 
-            if (jwt === null) {
+            if (jwt === null)
+            {
                 // the fucking user is not logged in!! :D
                 // force his ass to move to login page.
                 this._authenticaionFailed();
@@ -160,26 +183,31 @@ module Reolin.Web.Client {
             }
         }
 
-        protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs) {
+        protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs)
+        {
             // 401 states that token is expired basically
-            if (xhr.status === 401 && this._manager.GetLocalJwt() !== null) {
+            if (xhr.status === 401 && this._manager.GetLocalJwt() !== null)
+            {
                 this._manager.ProvideJwtbyOldJwt(this._manager.GetLocalJwt());
                 args.Retry = true;
             }
 
             // this FUCKING user some how invalidated token
-            else if (xhr.status === 403) {
+            else if (xhr.status === 403)
+            {
                 args.Retry = false;
                 this._authenticaionFailed();
             }
         }
     }
 
-    export interface AuthenticationFailedCallBack {
+    export interface AuthenticationFailedCallBack
+    {
         (): void;
     }
 
-    export class HttpServiceHandler {
+    export class HttpServiceHandler
+    {
         public HandleResponse: (response: HttpResponse) => void;
         public HandleError: (response: HttpResponse) => void;
     }

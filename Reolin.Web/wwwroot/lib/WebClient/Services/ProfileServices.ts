@@ -39,6 +39,7 @@ module Reolin.Web.UI.Services
 
         public CreatePersonal(info: RegisterProfileModel, handlers: Net.HttpServiceHandler): void
         {
+            
             this.AuthService.Post(UrlSource.CreatePersonalProfile, info, {}, 2, true, handlers);
         }
 
@@ -108,6 +109,21 @@ module Reolin.Web.UI.Services
         public GetCertificates(id: number, handler: Net.HttpServiceHandler)
         {
             this.HttpService.GetWithData(UrlSource.GetCertificates, {}, 2, true, { id: id }, handler);
+        }
+
+        public AddTag(data: any, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.AddTag, data, {}, 2, true, handler);
+        }
+
+        public AddRelatedType(data: any, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.AddRelatedType, data, {}, 2, true, handler);
+        }
+
+        public AddImageCategory(data: any, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.AddImageCategory, data, {}, 2, true, handler);
         }
     }
 

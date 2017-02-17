@@ -23,7 +23,7 @@
                 <label>upload image</label>
                 <input id="File1" type="file">
                 <div class="edit-btn">
-                    <input id="Button1" type="button" value="save">
+                    <input id="NewCertificateButton" type="button" value="save">
                 </div>
             </div>
             <hr>
@@ -108,11 +108,11 @@
                     <div class="position-edit-form">
                         <div class="edit-from editable-left1" data-editform="userprofileeducation">
                             <label>Edit Your Profile Name</label>
-                            <input id="Text1" type="text">
+                            <input id="ProfileNameTextBox" type="text">
                             <label>Edit city</label>
-                            <input id="Text1" type="text">
+                            <input id="CityTextBox" type="text">
                             <label>Edit Your country</label>
-                            <input id="Text1" type="text">
+                            <input id="CountryText" type="text">
                             <div class="edit-btn">
                                 <input id="Button1" type="button" value="save">
                                 <input id="Button1" type="button" class="close-form" value="cancel">
@@ -120,14 +120,15 @@
                         </div>
                     </div>
                     <div class="show-city">
-                        <p>city/country</p>
+                        <p id="CityAndCountryLabel">city/country</p>
                     </div>
+
                     <div class="show-profilename">
-                        <p>Profile Name</p>
+                        <p id="ProfileName">Profile Name</p>
                     </div>
                     <div class="show-info">
                         <ul>
-                            <li class="show-info-distance">1234KM</li>
+                            <li class="show-info-distance" id="LikeCount"></li>
                             <li class="show-info-icon">
                                 <i class="mdi mdi-thumb-up"></i>
                             </li>
@@ -268,16 +269,22 @@
                                     </div>
                                     <!---->
                                     <!--<div class="arrow-tab" style="max-width:30px;background-color:#fff;"><i class="mdi mdi-arrow-left" style="font-size:18px;"></i></div>-->
-
-                                    <ul style="max-width: 620px;">
+                                    <div id="relatedTypeTemplate" style="display:none;">
+                                        <li><a href="#section-bar-3"><span>${name}</span></a></li>
+                                    </div>
+                                    <ul style="max-width: 620px;" id="relatedTypeList">
                                         <li class="tab-current"><a href="#section-bar-1"><span>add new type</span></a></li>
-                                        <li class=""><a href="#section-bar-2"><span>Employers</span></a></li>
-                                        <li><a href="#section-bar-3"><span>Employee</span></a></li>
-                                        <li><a href="#section-bar-4"><span>Builder</span></a></li>
-                                        <li><a href="#section-bar-5"><span>Contractor</span></a></li>
-                                        <li><a href="#section-bar-6"><span>Units</span></a></li>
-                                        <li><a href="#section-bar-7"><span>Friend</span></a></li>
-                                        <li><a href="#section-bar-8"><span>work</span></a></li>
+                                        @*<li class="">
+                                                <a href="#section-bar-2">
+                                                    <span>Employers</span>
+                                                </a>
+                                            </li>
+                                            <li><a href="#section-bar-3"><span>Employee</span></a></li>
+                                            <li><a href="#section-bar-4"><span>Builder</span></a></li>
+                                            <li><a href="#section-bar-5"><span>Contractor</span></a></li>
+                                            <li><a href="#section-bar-6"><span>Units</span></a></li>
+                                            <li><a href="#section-bar-7"><span>Friend</span></a></li>
+                                            <li><a href="#section-bar-8"><span>work</span></a></li>*@
 
                                     </ul>
                                 </nav>
@@ -288,10 +295,10 @@
                                                 <div class="col-md-10 col-md-offset-1">
                                                     <div class="add-newgroup-type">
                                                         <label class="label-edit">add new type</label>
-                                                        <input class="inpu-edit" maxlength="15" id="Text1" type="text">
+                                                        <input class="inpu-edit" maxlength="15" id="NewRelatedTypeTextBox" type="text">
                                                         <span class="some-info">character limitation-15 character.</span>
                                                         <div class="suggest-btn">
-                                                            <input id="Button1" class="suggest-btn-save" type="button" value="Save">
+                                                            <input id="AddRelatedTypeButton" class="suggest-btn-save" type="button" value="Save">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -341,20 +348,15 @@
                                                                     <i class="fa fa-plus" id="openmngimg" title="manage group of your picture"></i>
                                                                     <label class="text-newgroup">add new group</label>
                                                                 </div>
-                                                                <select id="Select1" class="form-control">
-                                                                    <option>Employers</option>
-                                                                    <option>Employee</option>
-                                                                    <option>Builder</option>
-                                                                    <option>Contractor</option>
-                                                                    <option>Units</option>
-                                                                    <option>Friend</option>
-                                                                    <option>work</option>
-                                                                </select>
+                                                                <div id="ImageCategoryTemplate" style="display:none;">
+                                                                    <option value="${id}">${name}</option>
+                                                                </div>
+                                                                <select id="ImageCategoryList" class="form-control"></select>
                                                                 <div class="group-picture">
                                                                     <h5 class="title-info">here you can manage group of your picture , add new item ,edit or delete your current picture</h5>
                                                                     <div class="group-picture-main">
-                                                                        <input id="Text1" type="text">
-                                                                        <input id="Submit1" type="submit" value="save">
+                                                                        <input id="NewImagCategoryTextBox" type="text">
+                                                                        <input id="NewImageCategoryButton" type="submit" value="Save">
                                                                         <table class="grouppicture-table">
                                                                             <tbody>
                                                                                 <tr>
@@ -374,17 +376,14 @@
                                                                     </div>
                                                                 </div>
                                                                 <label>select your hashtag to this photo</label>
-
-                                                                <select id="Select1" style="width:100%!important" class="form-control">
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
-                                                                    <option>#test</option>
+                                                                <span id="TagOptionsTemplate" style="display:none;">
+                                                                    <option value="${id}">${name}</option>
+                                                                </span>
+                                                                <select id="TagOptions" style="width:100%!important" class="form-control">
+                                                                    
+                                                                  
                                                                 </select>
-                                                                <table class="grouppicture-table">
+                                                                @*<table class="grouppicture-table">
                                                                     <tbody>
                                                                         <tr>
                                                                             <th>#</th>
@@ -399,14 +398,14 @@
                                                                             <td class="item-action-group"><i class="fa fa-trash" data-grouppic-delete="hashtag2"></i></td>
                                                                         </tr>
                                                                     </tbody>
-                                                                </table>
+                                                                </table>*@
 
                                                                 <label>Explanation</label>
-                                                                <textarea id="TextArea1" class="form-control" rows="2" cols="20"></textarea>
-                                                                <input id="File1" type="file">
+                                                                <textarea id="ImageDescription" class="form-control" rows="2" cols="20"></textarea>
+                                                                <input id="ImageFile" type="file">
 
                                                                 <div class="edit-btn">
-                                                                    <input id="Button1" type="button" value="save">
+                                                                    <input id="SaveImageButton" type="button" value="save">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -427,9 +426,9 @@
                                                                         <div class="">
                                                                             <div class="add-item">
                                                                                 <label>subject</label>
-                                                                                <input id="Text1" class="form-control" type="text">
-                                                                                <label>select your group</label>
-                                                                                <select id="Select1" style="width:100%!important" class="form-control">
+                                                                                <input id="ImageSubject" class="form-control" type="text">
+                                                                                <label>Select Category:</label>
+                                                                                <select id="ImageCategorySelector" style="width:100%!important" class="form-control">
                                                                                     <option>Employers</option>
                                                                                     <option>Employee</option>
                                                                                     <option>Builder</option>
@@ -764,35 +763,41 @@
                             </div><!-- /tabs -->
                         </section>
                     </div>
+                    <div id="TagItemTemplate" style="display:none;">
+                        <div class="service-item">
+                            <div class="number-service">
+                                <p>1</p>
+                            </div>
+                            <div class="service-main">
+                                <i class="fa fa-hashtag"></i>
+                                <p data-servicename="1">${name}</p>
+                                <div class="service-last-object">
+                                    <span>2</span>
+                                    <img src="/content/img/icon/copy.png" class="hashtag-height">
+                                </div>
+                                <div class="edit-hover-service">
+                                    <a class="" href="#servicebtn"><i class="fa fa-edit coloredit" data-servicebtn="1"></i></a>
+                                    <a class="" href="#servicedelete" data-servicedelete="">
+                                    <i class="fa fa-trash trash" data-delete="${id}"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
                     <div id="Service" class="tabcontent" style="display: none;">
                         <div class="company-service">
                             <!--<p style="font-weight:700;padding:6px">Service name #1</p>-->
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="TagItemList">
                                 <div class="add-service col-md-10 col-md-offset-1 col-xs-12">
-                                    <lable class="label-edit">Enter Service name</lable>
-                                    <input id="Text1" class="inpu-edit" type="text">
+                                    <lable class="label-edit">Enter  name</lable>
+                                    <input id="tagName" class="inpu-edit" type="text">
                                     <div class="edit-btn">
-                                        <input id="Button1" type="button" value="save">
+                                        <input id="SaveNewTagButton" type="button" value="save">
                                     </div>
                                 </div>
-                                <div class="service-item">
-                                    <div class="number-service">
-                                        <p>1</p>
-                                    </div>
-                                    <div class="service-main">
-                                        <i class="fa fa-hashtag"></i>
-                                        <p data-servicename="1">Service name</p>
-                                        <div class="service-last-object">
-                                            <span>2</span>
-                                            <img src="/content/img/icon/copy.png" class="hashtag-height">
-                                        </div>
-                                        <div class="edit-hover-service">
-                                            <a class="" href="#servicebtn"><i class="fa fa-edit coloredit" data-servicebtn="1"></i></a>
-                                            <a class="" href="#servicedelete" data-servicedelete=""><i class="fa fa-trash trash"></i></a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                
 
 
                             </div>
@@ -864,3 +869,7 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    @*<script src="~/lib/WebClient/controllers/ProfileViewController.js"></script>*@
+    <script src="~/lib/WebClient/controllers/ProfileEditController.js"></script>
+}
