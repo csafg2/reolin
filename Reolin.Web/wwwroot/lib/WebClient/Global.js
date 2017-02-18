@@ -1,5 +1,5 @@
 var Reo = Reolin.Web.Client;
-var UrlSource = Reo.LocalURLs;
+var UrlSource = Reo.URLs;
 var source = new Reo.RemoteJwtSource(UrlSource.ExhangeTokenUrl, UrlSource.GetTokenUrl);
 var store = new Reo.LocalJwtStore();
 var manager = new Reo.DefaultJwtManager(source, store);
