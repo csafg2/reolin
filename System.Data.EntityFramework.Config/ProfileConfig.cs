@@ -10,7 +10,9 @@ namespace Reolin.Data.EntityFramework.Config
         {
             this.HasKey(p => p.Id);
 
-           
+            this.HasMany(p => p.Suggestions)
+                 .WithRequired(s => s.Profile)
+                 .HasForeignKey(s => s.ProfileId);
 
             this.HasMany(p => p.ImageCategories)
                 .WithRequired(imc => imc.Profile)

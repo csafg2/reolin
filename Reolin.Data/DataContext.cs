@@ -23,7 +23,7 @@ namespace Reolin.Data
         public DbSet<ImageCategory> ImageCategories { get; set; }
         public DbSet<Education> Educations { get; set; }
         public DbSet<RelatedType> RelatedTypes { get; set; }
-
+        public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ProfileNetwork> ProfileNetworks { get; set; }
         public DbSet<SocialNetwork> SocialNetworks { get; set; }
 

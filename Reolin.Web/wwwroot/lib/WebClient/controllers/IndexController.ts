@@ -43,15 +43,13 @@ module Reolin.Web.Client.Controllers
         {
             var me = this;
             var model = new Services.SearchProfileModel();
-            model.Distance = 20000;
+            model.Distance = 60000;
             model.JobCategoryId = me._currentMainCatId;
             model.SubJobCategoryId = me._currentSubCatId;
             model.SearchTerm = searchTerm;
-            //model.SourceLatitude = currentPos.lat;
-            //model.SourceLongitude = currentPos.lng;
-            model.SourceLatitude = 87;
-            model.SourceLongitude = 84;
-
+            model.SourceLatitude = currentPos.lat;
+            model.SourceLongitude = currentPos.lng;
+        
             me._profileService.Find(model, me._searchProfilehandler);
         }
 

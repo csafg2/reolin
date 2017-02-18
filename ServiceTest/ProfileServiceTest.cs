@@ -24,6 +24,7 @@ namespace ServiceTest
             this._service = new ProfileService(_context);
             
         }
+        
 
         [TestMethod]
         public void Profile_GetAddress()

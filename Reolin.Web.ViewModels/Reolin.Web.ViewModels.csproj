@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuggestionModels.cs" />
     <Compile Include="ViewModels\profile\AddImageViewModel.cs" />
     <Compile Include="ViewModels\profile\CreateProfessionalProfileModel.cs" />
     <Compile Include="ViewModels\profile\ProfileAddDescriptionModel.cs" />

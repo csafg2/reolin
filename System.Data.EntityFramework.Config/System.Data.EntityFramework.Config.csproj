@@ -68,6 +68,7 @@
     <Compile Include="RoleConfig.cs" />
     <Compile Include="SkillConfig.cs" />
     <Compile Include="SocialNetworkConig.cs" />
+    <Compile Include="SuggestionCOnfig.cs" />
     <Compile Include="TagConfig.cs" />
     <Compile Include="UserConfiguration.cs" />
   </ItemGroup>

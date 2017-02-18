@@ -11,5 +11,6 @@ namespace Reolin.Data.Domain
         
         public int? ImageId { get; set; }
         public Image Image { get; set; }
+        public List<Suggestion> Suggestions { get; set; }
     }
 }

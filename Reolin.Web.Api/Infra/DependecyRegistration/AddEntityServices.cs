@@ -14,7 +14,8 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
         public static IServiceCollection AddEntityServices(this IServiceCollection source)
         {
             return AddProfileService(source)
-                .AddTransient(typeof(IImageCategoryService), typeof(ImageCategoryService));
+                .AddTransient(typeof(IImageCategoryService), typeof(ImageCategoryService))
+                .AddTransient(typeof(ISuggestionService), typeof(SuggestionService));
         }
     }
 }

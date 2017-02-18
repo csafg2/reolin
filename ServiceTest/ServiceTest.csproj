@@ -81,6 +81,7 @@
     <Compile Include="JobCategoryTests.cs" />
     <Compile Include="ProfileServiceTest.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="SuggestionTest.cs" />
     <Compile Include="UserSecurityManagerTest.cs" />
     <Compile Include="UserServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
