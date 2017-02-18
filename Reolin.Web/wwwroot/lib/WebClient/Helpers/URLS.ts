@@ -49,6 +49,14 @@
         public static AddRelatedType: string = "http://localhost:6987/Profile/AddRelatedType";
 
         public static AddImageCategory: string = "http://localhost:6987/Profile/AddImageCategory";
+
+        public static DeleteRelationRequest: string = "http://localhost:6987/Profile/DeleteRelationRequest";
+        public static ConfirmRelationRequest: string = "http://localhost:6987/Profile/ConfirmRelationRequest";
+        public static AddComment: string = "http://localhost:6987/User/AddComment";
+
+        public static AddCertificate: string = "http://localhost:6987/Profile/AddCertificate";
+
+        public static GetLocation: string = "http://localhost:6987/Profile/Location";
     }
 
     export class URLs
@@ -102,5 +110,13 @@
 
         public static AddImageCategory: string = "http://178.63.55.123/Profile/AddImageCategory";
 
+        public static DeleteRelationRequest: string = "http://178.63.55.123/Profile/DeleteRelationRequest";
+        public static ConfirmRelationRequest: string = "http://178.63.55.123/Profile/ConfirmRelationRequest";
+
+        public static AddComment: string = "http://178.63.55.123/User/AddComment";
+
+        public static AddCertificate: string = "http://178.63.55.123/Profile/AddCertificate";
+
+        public static GetLocation: string = "http://178.63.55.123/Profile/Location";
     }
 }

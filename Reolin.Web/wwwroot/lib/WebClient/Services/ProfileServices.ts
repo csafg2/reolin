@@ -65,6 +65,11 @@ module Reolin.Web.UI.Services
             this.AuthService.GetWithData(UrlSource.GetComments, {}, 3, true, { id: profileId }, handler);
         }
 
+        public GetLocation(profileId: number, handler: Net.HttpServiceHandler)
+        {
+            this.HttpService.GetWithData(UrlSource.GetLocation, {}, 2, true, { id: profileId }, handler);
+        }
+
         public GetTags(profileId: number, handler: Net.HttpServiceHandler)
         {
             var httpService = new Net.HttpService();
@@ -124,6 +129,37 @@ module Reolin.Web.UI.Services
         public AddImageCategory(data: any, handler: Net.HttpServiceHandler)
         {
             this.AuthService.Post(UrlSource.AddImageCategory, data, {}, 2, true, handler);
+        }
+
+        public DeleteRelationRequest(id: number, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.DeleteRelationRequest, { id: id }, {}, 2, true, handler);
+        }
+
+        public ConfirmRelationRequest(id: number, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.ConfirmRelationRequest, { id: id }, {}, 2, true, handler);
+        }
+
+        public AddImage(data: any, handler: Net.HttpServiceHandler)
+        {
+            var formData = this.HttpService.CreateFormData(data);
+            var options = {
+                processData: false,
+                contentType: false,     
+            }
+
+            this.AuthService.Post(UrlSource.AddImage, formData, {}, 2, true, handler, options);
+        }
+
+        public AddComment(data: any, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.AddComment, data, {}, 2, true, handler);
+        }
+
+        public AddCertificate(data: any, handler: Net.HttpServiceHandler)
+        {
+            this.AuthService.Post(UrlSource.AddCertificate, data, {}, 2, true, handler);
         }
     }
 

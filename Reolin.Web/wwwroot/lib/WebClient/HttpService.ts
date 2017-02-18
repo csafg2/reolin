@@ -55,31 +55,34 @@ module Reolin.Web.Client
             requestData: any,
             headers: { [key: string]: string },
             retryCount: number,
-            isAsync: boolean = false,
-            handler: HttpServiceHandler): void
+            isAsync = false,
+            handler: HttpServiceHandler,
+            userOptions?: any): void
         {
 
-            this.MakeRequest("POST", url, requestData, headers, retryCount, handler, isAsync);
+            this.MakeRequest("POST", url, requestData, headers, retryCount, handler, isAsync, userOptions);
         }
+
+
 
         public MakeRequest(httpMethod: string,
             url: string,
             requestData: any,
             headers: { [key: string]: string },
             retryCount: number,
-            handler: HttpServiceHandler, isAsync: boolean = false): void
+            handler: HttpServiceHandler, isAsync: boolean = false, userOptions?: any): void
         {
 
             this.headerCreating(headers);
 
             var me: HttpService = this;
             console.log(isAsync);
-            $.ajax({
+
+            var options = {
                 method: httpMethod,
                 async: isAsync,
                 url: url,
                 crossDomain: true,
-                //dataType: "json",
                 data: requestData,
                 beforeSend: function (xhr)
                 {
@@ -122,7 +125,13 @@ module Reolin.Web.Client
                         return me.MakeRequest(httpMethod, url, requestData, headers, --retryCount, handler);
                     }
                 }
-            });
+            };
+            for (var p in userOptions)
+            {
+                options[p] = userOptions[p];
+                console.log(options[p]);
+            }
+            $.ajax(options);
         };
 
         protected OnError(xhr: JQueryXHR, error: string, args: HttpErrorEventArgs): void

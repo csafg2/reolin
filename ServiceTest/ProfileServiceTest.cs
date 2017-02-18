@@ -26,6 +26,13 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void Profile_GetAddress()
+        {
+            var location = this._service.GetLocation(_context.Profiles.First().Id);
+            Assert.IsTrue(location.Result.Location != null);
+        }
+
+        [TestMethod]
         public void Profile_AddCertificate()
         {
             int id = 21;
@@ -258,11 +265,11 @@ namespace ServiceTest
             var dto = new CreateProfileDTO()
             {
                 Description = "We build cars",
-                Name = "Audi",
-                Latitude = 87,
-                Longitude = 87,
-                City = "Berlin",
-                Country = "Germany",
+                Name = "Physics Inst",
+                Latitude = 34.5,
+                Longitude = 50,
+                City = "Qom",
+                Country = "Iran",
                 PhoneNumber = "230489324",
                 JobCategoryId = jobCategoryId,
                 SubJobCategoryId = subCategoryId

@@ -496,33 +496,52 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <div id="relationRequestTemplate" style="display:none;">
-                                        <div class="accept-item">
-                                            <ul>
-                                                <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
-                                                <li class="accept-item-logo">
-                                                    <img src="/content/img/ios.png" alt="" />
-                                                </li>
-                                                <li class="accept-item-info">
-                                                    <p class="">${name}</p>
-                                                    <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">
-                                                        ${type} \ ${date} \${description}
-                                                    </p>
-                                                </li>
-                                                <li class="accept-item-action">
-                                                    <div class="action">
-                                                        <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
-                                                        <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <hr />
-                                        </div>
-                                    </div>
+                                    @*<div id="relationRequestTemplate" style="display:none;">
+                                            <div class="accept-item">
+                                                <ul>
+                                                    <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
+                                                    <li class="accept-item-logo">
+                                                        <img src="/content/img/ios.png" alt="" />
+                                                    </li>
+                                                    <li class="accept-item-info">
+                                                        <p class="">${name}</p>
+                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">
+                                                            ${type} \ ${date} \${description}
+                                                        </p>
+                                                    </li>
+                                                    <li class="accept-item-action">
+                                                        <div class="action">
+                                                            <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline"></i> </a>
+                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <hr />
+                                            </div>
+                                        </div>*@
                                     <section id="section-bar-2">
-                                        <div class="accept-request" id="relationRequestList">
+                                        @*<div class="accept-request" id="relationRequestList">
 
 
+                                            </div>*@
+                                        <div class="write-comment">
+
+                                            <div class="comment-body">
+                                                @*<label class="label-edit lable-comment">Your name<span class="required">*</span></label>
+                                                    <input class="inpu-edit input-comment" id="comment-name" type="text" required="">
+
+                                                    <span class="some-info display-none">this field can not be empty</span>
+                                                    <label class="label-edit lable-comment">Your Email<span class="required">*</span></label>
+                                                    <input class="inpu-edit input-comment" id="CommentEmail" type="email" required="">*@
+
+                                                <span class="some-info display-none">this field can not be empty</span>
+                                                <label class="label-edit lable-comment">Write a comment here<span class="required">*</span></label>
+                                                <textarea class="inpu-edit textarea-comment" placeholder="Your text is here ..." id="CommentText" rows="4" cols="20" required=""></textarea>
+                                                <span class="some-info display-none">this field can not be empty</span>
+                                                <div class="suggest-btn">
+                                                    <input id="SendCommentButton" class="suggest-btn-save" type="button" value="Send !">
+                                                </div>
+                                            </div>
                                         </div>
                                     </section>
                                     <section id="section-bar-3" style="height:600px;"><p>question</p></section>
@@ -657,7 +676,9 @@
             <div class="col-md-3 hidden-xs nopad">
                 <div class="company-location">
                     <label class="company-distance">30m</label>
-                    <img src="/content/img/icon/location.png" />
+                    <a href="#" id="routeButton">
+                        <img src="/content/img/icon/location.png" />
+                    </a>
                 </div>
             </div>
         </div>

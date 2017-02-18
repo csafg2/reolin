@@ -12,22 +12,45 @@
                 <img src="/content/img/icon/award.png" alt="awards-logo">
             </div>
         </div>
-        <div class="award-content">
+        <div id="CertificateItemTemplate" style="display:none;">
+            <div class="awards-item wow fadein animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s;">
+                <div class="year-company">
+                    <p>${year}</p>
+                </div>
+                <div class="certificate">
+                    <img src="/content/img/awards.jpg" alt="">
+                </div>
+                <div class="award-explaine">
+                    <p>${description}</p>
+                </div>
+                <div class="award-icon">
+                    <img src="/content/img/icon/arrow-top.png">
+                </div>
+                <div class="edit-hover">
+                    <a class="" href="#editaward" data-awardbtn="1"><i class="fa fa-edit"></i></a>
+                    <a class="" href="#deletaward" data-item-delete=""><i class="fa fa-trash trash"></i></a>
+                </div>
+            </div>
+            <hr>
+
+        </div>
+        <div class="award-content" id="CertificateList">
             <div class="edit-award col-md-10 col-md-offset-1">
                 <label>enter year's that you achived award </label>
-                <input id="Text1" type="text">
-                <label class="label-edit">select related user to this award </label>
-                <input class="inpu-edit text" id="Text1" type="text">
-                <label>explanatin</label>
-                <textarea id="TextArea1" rows="2" cols="20"></textarea>
+                <input id="CertrificationYear" type="number">
+
+                @*<label class="label-edit">select related user to this award </label>
+                <input class="inpu-edit text" id="Text1" type="text">*@
+
+                <label>Description: </label>
+                <textarea id="CertificateDescription" rows="2" cols="20"></textarea>
                 <label>upload image</label>
                 <input id="File1" type="file">
                 <div class="edit-btn">
                     <input id="NewCertificateButton" type="button" value="save">
                 </div>
             </div>
-            <hr>
-            <div class="awards-item wow fadein animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s;">
+            @*<div class="awards-item wow fadein animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s;">
                 <div class="year-company">
                     <p>Year</p>
                 </div>
@@ -44,8 +67,8 @@
                     <a class="" href="#editaward" data-awardbtn="1"><i class="fa fa-edit"></i></a>
                     <a class="" href="#deletaward" data-item-delete=""><i class="fa fa-trash trash"></i></a>
                 </div>
-            </div>
-            <div class="edit-award-form" data-award="1">
+            </div>*@
+            @*<div class="edit-award-form" data-award="1">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-edit">enter year's that you achived award </label>
                     <input class="inpu-edit text" id="Text1" type="text">
@@ -60,9 +83,9 @@
                         <input id="Button1" type="button" class="close-form" value="cancel">
                     </div>
                 </div>
-            </div>
+            </div>*@
             <hr>
-            <div class="awards-item wow fadein animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s;">
+            @*<div class="awards-item wow fadein animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s;">
                 <div class="year-company">
                     <p>Year</p>
                 </div>
@@ -79,8 +102,8 @@
                     <a class="" href="#editaward" data-awardbtn="2"><i class="fa fa-edit"></i></a>
                     <a class="" href="#deletaward" data-item-delete=""><i class="fa fa-trash trash"></i></a>
                 </div>
-            </div>
-            <div class="edit-award-form" data-award="2">
+            </div>*@
+            @*<div class="edit-award-form" data-award="2">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-edit">enter year's that you achived award </label>
                     <input class="inpu-edit text" id="Text1" type="text">
@@ -95,7 +118,7 @@
                         <input id="Button1" type="button" class="close-form" value="cancel">
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
     <div class="profile-company-body wow animated" id="profile" data-wow-delay="1.5s" style="visibility: visible; animation-delay: 1.5s;">
@@ -341,7 +364,7 @@
                                                         <div class="add-picture-body">
                                                             <div class="add-item">
                                                                 <label>subject</label>
-                                                                <input id="Text1" class="form-control" type="text">
+                                                                <input id="ImageSubject" class="form-control" type="text">
 
                                                                 <label>select your group</label>
                                                                 <div class="add-newgroup">
@@ -379,26 +402,23 @@
                                                                 <span id="TagOptionsTemplate" style="display:none;">
                                                                     <option value="${id}">${name}</option>
                                                                 </span>
-                                                                <select id="TagOptions" style="width:100%!important" class="form-control">
-                                                                    
-                                                                  
-                                                                </select>
+                                                                <select id="TagOptions" style="width:100%!important" class="form-control"></select>
                                                                 @*<table class="grouppicture-table">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th>hashtag</th>
-                                                                            <th>edit</th>
-                                                                            <th>delete</th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>1</td>
-                                                                            <td class="item-add-group" data-grouppic="hashtag2">#test</td>
-                                                                            <td class="edit-action-group"><i class="fa fa-edit" data-grouppic-edit="hashtag2"></i></td>
-                                                                            <td class="item-action-group"><i class="fa fa-trash" data-grouppic-delete="hashtag2"></i></td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>*@
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th>#</th>
+                                                                                <th>hashtag</th>
+                                                                                <th>edit</th>
+                                                                                <th>delete</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td class="item-add-group" data-grouppic="hashtag2">#test</td>
+                                                                                <td class="edit-action-group"><i class="fa fa-edit" data-grouppic-edit="hashtag2"></i></td>
+                                                                                <td class="item-action-group"><i class="fa fa-trash" data-grouppic-delete="hashtag2"></i></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>*@
 
                                                                 <label>Explanation</label>
                                                                 <textarea id="ImageDescription" class="form-control" rows="2" cols="20"></textarea>
@@ -637,78 +657,122 @@
 
                                     </ul>
                                 </nav>
+
+
+                                <div id="RelationRequestTemplate" style="display:none;">
+                                    <div class="accept-item relationRequestItem">
+                                        <ul>
+                                            <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
+                                            <li class="accept-item-logo">
+                                                <img src="/content/img/ios.png" alt="">
+                                            </li>
+                                            <li class="accept-item-info">
+                                                <p class="">${name}</p>
+                                                <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">
+                                                    <b>${name}</b> \ ${type} \${date} \${description}
+                                                </p>
+                                                <p class=""> ${date}</p>
+                                            </li>
+                                            <li class="accept-item-action">
+                                                <div class="action">
+                                                    <a href="#" class="cheched ConfirmRelatinRequest" data-id="${id}">
+                                                        <i class="mdi mdi-checkbox-marked-outline" title="Confirm"></i>
+                                                    </a>
+                                                    <a href="#relatededit" class="cheched">
+                                                        <i class="mdi mdi-grease-pencil" data-editrelatebtn="item00${id}" title="Edit this request"></i>
+                                                    </a>
+                                                    <a href="#" class="trash">
+                                                        <i class="mdi mdi-close-box-outline" title="Block this request"></i>
+                                                    </a>
+                                                    <a href="#" class="trash deleteRelationRequestButton" data-id="${id}">
+                                                        <i class="mdi mdi-delete " title="Delete this request"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <hr>
+                                    </div>
+                                    <div class="edit-related" data-editrelated="item00${id}">
+                                        <label class="label-edit">Profile name</label>
+                                        <input class="inpu-edit" id="Text1" placeholder="Profile name-this item is not editable" type="text" readonly="">
+                                        <label class="label-edit">related</label>
+                                        <input class="inpu-edit" id="Text1" type="text">
+                                        <label class="label-edit">related type</label>
+                                        <select class="inpu-edit" id="Select1">
+                                            <option>Employers</option>
+                                            <option>Employee</option>
+                                            <option>builder</option>
+                                            <option>contractor</option>
+                                            <option>unit</option>
+                                            <option>freind</option>
+                                            <option>work</option>
+                                        </select>
+                                        <label class="label-edit">time</label>
+                                        <input class="inpu-edit" id="Text1" type="text">
+                                        <label class="label-edit">Explain</label>
+                                        <textarea id="TextArea1" rows="2" cols="20"></textarea>
+                                        <div class="edit-btn">
+                                            <input id="Button1" type="button" value="save">
+                                            <input id="Button1" type="button" data-editrelatebtn="item001" value="cancel">
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="content-wrap">
                                     <section id="section-bar-1" class="content-current">
+                                        <div class="accept-request" id="relationRequestList">
+                                        </div>
+                                    </section>
+                                    <section id="section-bar-2">
                                         <div class="accept-request">
+
+
                                             <div class="accept-item">
+                                                <ul>
+                                                    <li class="accept-item-arrow">
+                                                        <i class="mdi mdi-arrow-down"></i>
+                                                    </li>
+                                                    <li class="accept-item-logo">
+                                                        <img src="/content/img/ios.png" alt="">
+                                                    </li>
+                                                    <li class="accept-item-info">
+                                                        <p class="">Hassan</p>
+                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">                                                         Employee \ 2017-01-01T00:00:00 \123                                                     </p>
+                                                    </li>
+                                                    <li class="accept-item-action">
+                                                        <div class="action">
+                                                            <a href="#" class="cheched">
+                                                                <i class="mdi mdi-checkbox-marked-outline"></i>
+                                                            </a>
+                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <hr>
+                                            </div><div class="accept-item">
                                                 <ul>
                                                     <li class="accept-item-arrow"><i class="mdi mdi-arrow-down"></i></li>
                                                     <li class="accept-item-logo">
                                                         <img src="/content/img/ios.png" alt="">
                                                     </li>
                                                     <li class="accept-item-info">
-                                                        <p class="">Profile name</p>
-                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">Related \ relate type \time \explain</p>
-                                                        <p class=""> time</p>
+                                                        <p class="">12312312</p>
+                                                        <p class="" style="padding-top:10px!important;padding-bottom:10px!important;">                                                         Employee \ 2017-02-17T18:03:15.203 \some description                                                     </p>
                                                     </li>
                                                     <li class="accept-item-action">
                                                         <div class="action">
-                                                            <a href="#" class="cheched"><i class="mdi mdi-checkbox-marked-outline" title="Confirm"></i> </a>
-                                                            <a href="#relatededit" class="cheched"><i class="mdi mdi-grease-pencil" data-editrelatebtn="item001" title="Edit this request"></i> </a>
-                                                            <a href="#" class="trash"><i class="mdi mdi-close-box-outline" title="Block this request"></i> </a>
-                                                            <a href="#" class="trash"><i class="mdi mdi-delete" title="Delete this request"></i> </a>
+                                                            <a href="#" class="cheched">
+                                                                <i class="mdi mdi-checkbox-marked-outline">
+                                                                </i>
+                                                            </a>
+                                                            <a href="#" class="trash"><i class="mdi mdi-delete"></i> </a>
                                                         </div>
                                                     </li>
                                                 </ul>
                                                 <hr>
                                             </div>
-                                            <div class="edit-related" data-editrelated="item001">
-                                                <label class="label-edit">Profile name</label>
-                                                <input class="inpu-edit" id="Text1" placeholder="Profile name-this item is not editable" type="text" readonly="">
-                                                <label class="label-edit">related</label>
-                                                <input class="inpu-edit" id="Text1" type="text">
-                                                <label class="label-edit">related type</label>
-                                                <select class="inpu-edit" id="Select1">
-                                                    <option>Employers</option>
-                                                    <option>Employee</option>
-                                                    <option>builder</option>
-                                                    <option>contractor</option>
-                                                    <option>unit</option>
-                                                    <option>freind</option>
-                                                    <option>work</option>
-                                                </select>
-                                                <label class="label-edit">time</label>
-                                                <input class="inpu-edit" id="Text1" type="text">
-                                                <label class="label-edit">Explain</label>
-                                                <textarea id="TextArea1" rows="2" cols="20"></textarea>
-                                                <div class="edit-btn">
-                                                    <input id="Button1" type="button" value="save">
-                                                    <input id="Button1" type="button" data-editrelatebtn="item001" value="cancel">
-                                                </div>
-                                            </div>
+                                        </div>
 
-                                        </div>
-                                    </section>
-                                    <section id="section-bar-2">
-                                        <div class="write-comment">
-                                            <div class="suggest-title">
-                                                <h4>your not register or login on this website , please <a href="Login.html" class="hyper-link">login</a> or <a href="register.html" class="hyper-link">register</a> to write a comment for this Profile! or you can just fill filds below!</h4>
-                                            </div>
-                                            <div class="comment-body">
-                                                <label class="label-edit lable-comment">Your name<span class="required">*</span></label>
-                                                <input class="inpu-edit input-comment" id="comment-name" type="text" required="">
-                                                <span class="some-info display-none">this field can not be empty</span>
-                                                <label class="label-edit lable-comment">Your Email<span class="required">*</span></label>
-                                                <input class="inpu-edit input-comment" id="comment-email" type="email" required="">
-                                                <span class="some-info display-none">this field can not be empty</span>
-                                                <label class="label-edit lable-comment">Write a comment here<span class="required">*</span></label>
-                                                <textarea class="inpu-edit textarea-comment" placeholder="Your text is here ..." id="comment-text" rows="4" cols="20" required=""></textarea>
-                                                <span class="some-info display-none">this field can not be empty</span>
-                                                <div class="suggest-btn">
-                                                    <input id="comment-btn" class="suggest-btn-save" type="button" value="Send !">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </section>
                                     <section id="section-bar-3" style="height:600px;"></section>
                                     <section id="section-bar-4" style="height:600px;">
@@ -778,7 +842,8 @@
                                 <div class="edit-hover-service">
                                     <a class="" href="#servicebtn"><i class="fa fa-edit coloredit" data-servicebtn="1"></i></a>
                                     <a class="" href="#servicedelete" data-servicedelete="">
-                                    <i class="fa fa-trash trash" data-delete="${id}"></i></a>
+                                        <i class="fa fa-trash trash" data-delete="${id}"></i>
+                                    </a>
                                 </div>
                             </div>
 
@@ -797,7 +862,7 @@
                                         <input id="SaveNewTagButton" type="button" value="save">
                                     </div>
                                 </div>
-                                
+
 
 
                             </div>

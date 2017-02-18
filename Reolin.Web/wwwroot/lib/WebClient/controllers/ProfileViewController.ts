@@ -1,16 +1,18 @@
 ﻿
 module Reolin.Web.Client.Controllers
 {
-   
+
     declare var renderEngine;
 
     export class ProfileViewController
     {
+        CurrentProfile: JQuery = $("#CurrentProfileId");
         ProfileName: JQuery = $("#ProfileName");
         LikeCount: JQuery = $("#LikeCount");
         CityCountryLabel: JQuery = $("#CityAndCountryLabel");
         ViewingProfileId: JQuery = $("#ViewingProfileId");
         SendRelateRequestButton: JQuery = $("#SendRelateRequest");
+        SendCommentButton: JQuery = $("#SendCommentButton");
 
         _service: Reolin.Web.UI.Services.ProfileService = new Reolin.Web.UI.Services.ProfileService();
 
@@ -33,9 +35,62 @@ module Reolin.Web.Client.Controllers
             this.SetImageGalleries();
             this.SetRelations();
             this.SetCertificates();
+            this.SetRouteButton();
             this.SendRelateRequestButton.click(e => this.SendRelateRequestButton_clickHandler(e));
+            this.SendCommentButton.click(e => this.SendCommentButton_ClickHandler(e));
         }
 
+        public SetRouteButton(): void
+        {
+            var button = $("#routeButton");
+            var setSourceHandler = new Net.HttpServiceHandler();
+            setSourceHandler.HandleError = r => console.log(r);
+            setSourceHandler.HandleResponse = r => 
+            {
+                var source = r.ResponseBody;
+                button.attr('src-lat', source.latitude);
+                button.attr('src-long', source.longitude);
+            };
+
+            this._service.GetLocation(this.CurrentProfile.val(), setSourceHandler);
+
+            var setDestinationHandler = new Net.HttpServiceHandler();
+            setDestinationHandler.HandleError = r => console.log(r);
+            setDestinationHandler.HandleResponse = r => 
+            {
+                var dest = r.ResponseBody;
+                button.attr('dest-lat', dest.latitude);
+                button.attr('dest-long', dest.longitude);
+            };
+
+            this._service.GetLocation(this.ViewingProfileId.val(), setDestinationHandler);
+            
+            button.click(e =>
+            {
+                window.location.href =
+                    '/'
+                    + button.attr('src-lat')
+                    + '/and/'
+                    + button.attr('src-long')
+                    + '/to/' + button.attr('dest-lat')
+                    + '/and/' + button.attr('dest-long');
+            });
+        }
+
+        public SendCommentButton_ClickHandler(e: Event): void
+        {
+            var data =
+                {
+                    ProfileId: this.ViewingProfileId.val(),
+                    Message: $("#CommentText").val()
+                };
+            console.log(data);
+            var handler = new Net.HttpServiceHandler();
+            handler.HandleError = r => console.log(r);
+            handler.HandleResponse = r => alert('comment sent, and will be visible after has been approved');
+
+            this._service.AddComment(data, handler);
+        }
 
         public SetCertificates(): void 
         {
@@ -56,14 +111,15 @@ module Reolin.Web.Client.Controllers
             handler.HandleError = (r: HttpResponse) => console.log("error in " + r.Error);
             handler.HandleResponse = (r: HttpResponse) => 
             {
+                var acceptedList = r.ResponseBody.filter(e => e.confirmed == true);
+
                 var markUp = $("#relatedTemplate");
-                renderEngine.tmpl(markUp, r.ResponseBody).appendTo("#relationsList");
+                renderEngine.tmpl(markUp, acceptedList).appendTo("#relationsList");
 
-                
-                var acceptedList = r.ResponseBody.filter(e => e.confirmed == false);
 
-                var listMarkUp = $("#relationRequestTemplate");
-                renderEngine.tmpl(listMarkUp, acceptedList).appendTo("#relationRequestList");
+
+                //var listMarkUp = $("#relationRequestTemplate");
+                //renderEngine.tmpl(listMarkUp, acceptedList).appendTo("#relationRequestList");
             };
             this._service.GetRequestRelatedProfiles(this.ViewingProfileId.val(), handler);
         }
@@ -164,7 +220,7 @@ module Reolin.Web.Client.Controllers
 
             this._service.GetPhoneNumber(this.ViewingProfileId.val(), handler);
         }
-        
+
         public SetRelatedTypes(): void
         {
             var handler = new Net.HttpServiceHandler();
@@ -180,4 +236,4 @@ module Reolin.Web.Client.Controllers
 
     }
 }
-//Reolin.Web.Client.Controllers.ProfileViewController.Start();
+Reolin.Web.Client.Controllers.ProfileViewController.Start();

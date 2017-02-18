@@ -71,7 +71,8 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> AddComment(CommentCreateModel model)
         {
-            await this._service.AddCommentAsync(model.UserId, model.ProfileId, model.Message);
+            var userId = this.GetUserId();
+            await this._service.AddCommentAsync(userId, model.ProfileId, model.Message);
 
             return Ok();
         }

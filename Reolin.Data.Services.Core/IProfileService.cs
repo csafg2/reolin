@@ -97,5 +97,10 @@ namespace Reolin.Data.Services.Core
 
         Task<int> AddCertificateAsync(int profileId, int year, string description);
         Task<List<Certificate>> GetCertificates(int profileId);
+
+        Task<int> DeleteRelationRequest(int id);
+        Task<int> ConfirmRelationRequest(int id);
+
+        Task<Address> GetLocation(int id);
     }
 }

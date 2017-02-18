@@ -536,5 +536,26 @@ namespace Reolin.Data.Services
         {
             return this.Context.Certificates.Where(c => c.ProfileId == profileId).ToListAsync();
         }
+
+        public Task<int> DeleteRelationRequest(int id)
+        {
+            return this.Context.Relations.Where(r => r.Id == id).DeleteAsync();
+        }
+
+        public Task<int> ConfirmRelationRequest(int id)
+        {
+            return this.Context
+                .Relations
+                .Where(r => r.Id == id)
+                .UpdateAsync(r => new Related()
+                {
+                    Confirmed = true
+                });
+        }
+
+        public Task<Address> GetLocation(int id)
+        {
+            return this.Context.Addresses.FirstAsync(a => a.Id == id);
+        }
     }
 }

@@ -16,6 +16,7 @@ using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Threading.Tasks;
 using static Reolin.Web.ViewModels.ProfileCreateModel;
@@ -548,6 +549,53 @@ namespace Reolin.Web.Api.Controllers
         {
             await this.ProfileService.AddRelatedType(model.ProfileId, model.Type);
             return Ok();
+        }
+
+
+        /// <summary>
+        /// Deletes a relation request
+        /// </summary>
+        /// <param name="id">the id of the relation to be deleted</param>
+        /// <returns></returns>
+        [Route("/[controller]/[action]")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteRelationRequest(int id)
+        {
+            await this.ProfileService.DeleteRelationRequest(id);
+
+            return Ok();
+        }
+
+
+
+        /// <summary>
+        /// Confirm a request
+        /// </summary>
+        /// <param name="id">the id of the relation to be deleted</param>
+        /// <returns></returns>
+        [Route("/[controller]/[action]")]
+        [HttpPost]
+        public async Task<IActionResult> ConfirmRelationRequest(int id)
+        {
+            await this.ProfileService.ConfirmRelationRequest(id);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// get the location of the profile
+        /// </summary>
+        /// <param name="id">the id of profile</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> Location(int id)
+        {
+            var location = (await this.ProfileService.GetLocation(id)).Location;
+            return Ok(new
+            {
+                Latitude = location.Latitude,
+                Longitude = location.Longitude
+            });
         }
     }
 }
