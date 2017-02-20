@@ -54,6 +54,7 @@
 /// <reference path="js/tinysort.min.js" />
 /// <reference path="lib/infra/profile.js" />
 /// <reference path="lib/infra/user.js" />
+/// <reference path="lib/WebClient/bundle.min.js" />
 /// <reference path="lib/webclient/controllers/accountcontroller.js" />
 /// <reference path="lib/webclient/controllers/chooseprofilecontroller.js" />
 /// <reference path="lib/webclient/controllers/indexcontroller.js" />
