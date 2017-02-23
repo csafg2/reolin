@@ -1,4 +1,4 @@
-﻿@font-face {
+﻿/*@font-face {
 font-family:"Iransens";
 src: url( "../font/IRANSans-Light.eot" );
 src: local( "?" ),
@@ -18,7 +18,7 @@ format( "truetype" );
     font-family: "Material Design Icons";
     src: url("../font/materialdesignicons-webfont.eot?v=1.7.22");
     src: url("../font/materialdesignicons-webfont.eot?#iefix&v=1.7.22") format("embedded-opentype"),url("../font/materialdesignicons-webfont.woff2?v=1.7.22") format("woff2"),url("../font/materialdesignicons-webfont.woff?v=1.7.22") format("woff"),url("../font/materialdesignicons-webfont.ttf?v=1.7.22") format("truetype"),url("../font/materialdesignicons-webfont.svg?v=1.7.22#materialdesigniconsregular") format("svg");
-}
+}*/
 
 
 body h1 h2 h3 h4 h5 h6 p span label html div {font-family:Iransens!important;}
