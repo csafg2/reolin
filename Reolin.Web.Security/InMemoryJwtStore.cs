@@ -19,7 +19,7 @@ namespace Reolin.Web.Security.Jwt
 
             if(string.IsNullOrEmpty(key) || string.IsNullOrEmpty(tokenId))
             {
-                throw new ArgumentException("Key or tokenId Can not be null");
+                throw new ArgumentNullException("Key or tokenId Can not be null");
             }
             _store[key] = new List<string>() { tokenId };
         }
