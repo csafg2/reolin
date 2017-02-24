@@ -3,8 +3,31 @@
     width: 100%;
 }
 
-.mid-cell{
-    width:48%;
+.mid-cell {
+    width: 48%;
     text-align: center;
     margin: 1%;
+}
+
+.slideMenu {
+    background: white;
+    z-index: 2000;
+    border: 2px dashed purple;
+}
+
+.searchItem {
+    border-bottom: 1px solid #d5cfcf;
+    margin-top: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 1%;
+}
+
+    .searchItem span {
+        border-radius: 10px;
+    }
+
+.certificateItem {
+    display: block;
+    margin-left: 5%;
 }

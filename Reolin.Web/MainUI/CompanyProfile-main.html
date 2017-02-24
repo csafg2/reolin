@@ -30,10 +30,11 @@
     <link rel="shortcut icon" href="favicon.ico" />
 
     <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body>
+<body class="a">
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel hidden-sm">
         <div class="color-mode-icons icon-color"></div>
@@ -69,7 +70,7 @@
                 <!-- END RESPONSIVE MENU TOGGLER -->
                 <!-- BEGIN LOGO (you can use logo image instead of text)-->
                 <a class="navbar-brand logo-v1" href="index.html">
-                    <img src="assets/img/logo_blue.png" id="logoimg" alt="">
+                    <img style="width:142px; height: 28px;" src="assets/img/layoot.png" id="logoimg" alt="">
                 </a>
                 <!-- END LOGO -->
             </div>
@@ -124,7 +125,7 @@
                                         <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall"><i class="fa fa-shopping-cart"></i>Hypermarkets &amp; Shoppingmall</a></li>
                                     </ul>
                                 </div>
-                                <input type="text" class="form-control bordersearch input-search" data-category="" aria-label="...">
+                                <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
                                 <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
 
 
@@ -148,7 +149,7 @@
             <div class="col-md-3 col-sm-3 blog-sidebar">
 
                 <!-- BEGIN RECENT NEWS -->
-                <h2>Recent News</h2>
+                <h2>Staff theme 2</h2>
                 <div class="recent-news margin-bottom-10">
                     <div class="row margin-bottom-10">
                         <div class="col-md-3">
@@ -179,7 +180,6 @@
                     </div>
                 </div>
                 <!-- END RECENT NEWS -->
-               
                 <!-- BEGIN BLOG PHOTOS STREAM -->
                 <div class="blog-photo-stream margin-bottom-20">
                     <h2>Staff</h2>
@@ -195,20 +195,6 @@
                     </ul>
                 </div>
                 <!-- END BLOG PHOTOS STREAM -->
-                <!-- BEGIN BLOG TAGS -->
-                <div class="blog-tags margin-bottom-20">
-                    <h2>Tags</h2>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-tags"></i>OS</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Metronic</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Dell</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Conquer</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>MS</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Google</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Keenthemes</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Twitter</a></li>
-                    </ul>
-                </div>
                 <!-- END BLOG TAGS -->
             </div>
             <!-- END FIRST COLUMN -->
@@ -233,19 +219,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-5" style="border: 1px solid black;">
-                                <h1>1</h1>
+                        <div  class="row" style="margin-top: 3%;">
+                            <div id="suggestionModalButton" class="col-sm-5">
+                                <div class="service-box-v1" style="cursor:pointer;">
+                                    <div><i class="fa fa-dropbox color-white"></i></div>
+                                    Suggestes
+                                </div>
                             </div>
 
-                            <div class="col-md-6" style="border: 1px solid black; float: right;">
-                                <h1>2</h1>
+                            <div class="col-md-6" id="certButton" style="float: right; cursor:pointer;">
+                                <div class="service-box-v1">
+                                    <div><i class="fa fa-certificate color-yellow"></i></div>
+                                    Certificates
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 col-sm-5 mid-cell" >
+                    <div class="col-md-5 col-sm-5 mid-cell">
                         <div class="row">
-                            <img src="http://placehold.it/350x300?text=LOGO!" />
+                            <img src="http://placehold.it/310x300?text=LOGO!" />
                         </div>
                     </div>
                 </div>
@@ -258,7 +250,7 @@
                         <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:100%">
                             <ul class="nav nav-tabs">
                                 <li>
-                                    <a href="#tab-1" data-toggle="tab" class="icon-btn">
+                                    <a href="#tab-1" data-toggle="tab" class="icon-btn active">
                                         <i class="fa fa-group"></i>
                                         <div>Related</div>
                                         <span class="badge badge-important">2</span>
@@ -294,7 +286,7 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane row fade in" id="tab-1">
+                                <div class="tab-pane row fade in active" id="tab-1">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <ul class="ver-inline-menu tabbable margin-bottom-10">
@@ -888,7 +880,7 @@
                     <div class="clearfix">
                         <hr />
                     </div>
-                    
+
                     <div class="row margin-bottom-10">
                         <div class="col-md-3">
                             <img src="assets/img/people/img4-large.jpg" alt="" class="img-responsive">
@@ -904,7 +896,7 @@
 
                     <div class="row margin-bottom-10">
                         <div class="col-md-3">
-                            
+
                             <img src="assets/img/pics/img2-large.jpg" alt="" class="img-responsive">
                         </div>
                         <div class="col-md-9 recent-news-inner">
@@ -917,29 +909,12 @@
                     </div>
 
                 </div>
-                <!-- END RECENT NEWS -->
-          
-                <!-- BEGIN BLOG PHOTOS STREAM -->
-                <div class="blog-photo-stream margin-bottom-20">
-                    <h2>Photos Stream</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><img src="assets/img/people/img5-small.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/works/img1.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/people/img4-large.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/works/img6.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/pics/img1-large.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/pics/img2-large.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/works/img3.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/people/img2-large.jpg" alt=""></a></li>
-                    </ul>
-                </div>
-                <!-- END BLOG PHOTOS STREAM -->
                 <!-- BEGIN BLOG TAGS -->
                 <div class="blog-tags margin-bottom-20">
                     <h2>other services</h2>
                     <ul>
                         <li><a href="#"><i class="fa fa-tags"></i>OS</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Metronic</a></li>
+                        <li><a href="#"><i class="fa fa-tags"></i> </a></li>
                         <li><a href="#"><i class="fa fa-tags"></i>Dell</a></li>
                         <li><a href="#"><i class="fa fa-tags"></i>Conquer</a></li>
                         <li><a href="#"><i class="fa fa-tags"></i>MS</a></li>
@@ -1046,6 +1021,96 @@
             </div>
         </div>
     </div>
+    <!-- PushMenu -->
+    <div class="col-md-6 slideMenu" id="menu" role="navigation" style="height: 40% !important;width: 40%;">
+
+        <a href="#" class="btn btn-lg purple leftOpener push" style="position:relative; left: 100%; top: 40%;">
+            <i class="fa fa-arrow-circle-o-left" style="font-size: 25px;"></i>
+        </a>
+
+        <div class="clearfix"></div>
+        <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-default">Popularity</a>
+            <a href="#" class="btn btn-default">Distance</a>
+
+        </div>
+        <hr />
+        <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-default">Global</a>
+            <a href="#" class="btn btn-default">City</a>
+            <a href="#" class="btn btn-default">Country</a>
+        </div>
+
+        <div class="row searchItem">
+            <p>Profile name</p>
+            <span style="float: left;">30m</span>
+            <div style="float: right;cursor:pointer; color: coral">
+                <i class="fa fa-thumbs-up" style="font-size: 20px"></i>
+            </div>
+        </div>
+
+        <div class="row searchItem">
+            <p>Profile name</p>
+            <span style="float: left;">30m</span>
+            <div style="float: right;cursor:pointer; color: coral">
+                <i class="fa fa-thumbs-up" style="font-size: 20px"></i>
+            </div>
+        </div>
+
+        <div class="row searchItem">
+            <p>Profile name</p>
+            <span style="float: left;">30m</span>
+            <div style="float: right;cursor:pointer; color: coral">
+                <i class="fa fa-thumbs-up" style="font-size: 20px"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 slideMenu" id="rightMenu" role="navigation" style="height: 40%; width: 40%;">
+        <a href="#" class="btn btn-lg purple rightOpener push" style="position:relative; right: 20%; top: 40%;">
+            <i class="fa fa-arrow-circle-o-right" style="font-size: 25px;"></i>
+        </a>
+        <div style="overflow: scroll !important; width:100%; height: 100%;">
+            <div class="service-box-v1">
+                <div>
+                    <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
+                </div>
+                <h2>Profile Name</h2>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+            <div class="service-box-v1">
+                <div>
+                    <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
+                </div>
+                <h2>Profile Name</h2>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+            <div class="service-box-v1">
+                <div>
+                    <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
+                </div>
+                <h2>Profile Name</h2>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+            <div class="service-box-v1">
+                <div>
+                    <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
+                </div>
+                <h2>Profile Name</h2>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+            <div class="service-box-v1">
+                <div>
+                    <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
+                </div>
+                <h2>Profile Name</h2>
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            </div>
+
+        </div>
+    </div>
+
+
     <!-- END FOOTER -->
     <!-- BEGIN COPYRIGHT -->
     <div class="copyright">
@@ -1053,8 +1118,8 @@
             <div class="row">
                 <div class="col-md-8 col-sm-8">
                     <p>
-                        <span class="margin-right-10">2013 © Metronic. ALL Rights Reserved.</span>
-                        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        <span class="margin-right-10">2013 ©  . ALL Rights Reserved.</span>
+                        <a href="#" id="testButton">Privacy Policy</a> | <a href="#">Terms of Service</a>
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -1073,6 +1138,122 @@
             </div>
         </div>
     </div>
+
+    
+    <div style="display:none;" id="suggestionsModal" class="col-md-9">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">Post new Suggestion</h3></div>
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label" for="inputSuccess"> Choose a name: </label>
+                            <div class="input-icon right">
+                                <i class="fa fa-info-circle tooltips" data-original-title="Email address" data-container="body"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group has-success">
+                            <label class="control-label" for="inputSuccess">Add some description</label>
+                            <div class="input-icon right">
+                                <i class="fa fa-check  tooltips" data-original-title="You look OK!" data-container="body"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                            <p class="help-block">you can attach tags by doing #your_tag</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file">
+                            <p class="help-block">an image of certificate that you want your audience to see.</p>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="button" class="btn default " id="cancelModal">Cancel</button>
+                        <button type="submit" class="btn green">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row front-team">
+            <p style="color: white;">Other suggestions made by me.</p>
+            <ul class="list-unstyled">
+                <li class="col-md-3 space-mobile">
+                    <div class="thumbnail">
+                        <img src="assets/img/people/img1-large.jpg" alt="">
+                        <h3>
+                            <a>Lina Doe</a>
+                            <small>Chief Executive Officer / CEO</small>
+                        </h3>
+                        <p>Donec id elit non #mi porta gravida at eget #metus. Fusce dapibus, justo sit# amet risus etiam porta sem...</p>
+                    </div>
+                </li>
+                <li class="col-md-3 space-mobile">
+                    <div class="thumbnail">
+                        <img src="assets/img/people/img4-large.jpg" alt="">
+                        <h3>
+                            <a>Carles Puyol</a>
+                            <small>Chief Executive Officer / CEO</small>
+                        </h3>
+                        <p>Donec id elit non mi porta gravida at #eget #metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>
+                        
+                    </div>
+                </li>
+                <li class="col-md-3 space-mobile">
+                    <div class="thumbnail">
+                        <img src="assets/img/people/img2-large.jpg" alt="">
+                        <h3>
+                            <a>Andres Iniesta</a>
+                            <small>Chief Executive Officer / CEO</small>
+                        </h3>
+                        <p>Donec #id elit non mi porta gravida at eget metus. F#usce dapibus, justo sit amet risus etiam porta sem...</p>
+                       
+                    </div>
+                </li>
+                <li class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="assets/img/people/img5-large.jpg" alt="">
+                        <h3>
+                            <a>Jessica Alba</a>
+                            <small>Chief Executive Officer / CEO</small>
+                        </h3>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="display:none; background:white; padding: 1%;" class="col-md-9" id="certificateModal">
+
+        <div class="row certificateItem" style="margin-left: 1%;">
+            <div style="float:left;"><img src="http://placehold.it/80x80?text=LOGO!" /></div>
+            <div style="float:left; margin-left: 2%;">
+                <p><b>2015</b></p>
+                <p>we earned this when at NDC Confrences</p>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row certificateItem" style="margin-left: 1%;">
+            <div style="float:left;"><img src="http://placehold.it/80x80?text=LOGO!" /></div>
+            <div style="float:left; margin-left: 2%;">
+                <p><b>2015</b></p>
+                <p>we earned this when at NDC Confrences</p>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row certificateItem" style="margin-left: 1%;">
+            <div style="float:left;"><img src="http://placehold.it/80x80?text=LOGO!" /></div>
+            <div style="float:left; margin-left: 2%;">
+                <p><b>2015</b></p>
+                <p>we earned this when at NDC Confrences</p>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+    
     <!-- END COPYRIGHT -->
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
@@ -1080,6 +1261,8 @@
     <script src="assets/plugins/respond.min.js"></script>
     <![endif]-->
     <script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <script src="assets/plugins/bigSlide.js"></script>
     <script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="assets/plugins/hover-dropdown.js"></script>
@@ -1090,11 +1273,41 @@
     <script src="assets/plugins/jquery.mixitup.min.js"></script>
     <script src="assets/scripts/app.js"></script>
     <script src="assets/scripts/portfolio.js"></script>
+    <script src="assets/plugins/CustomDialog/custombox.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
             Portfolio.init();
+
+            var modal = new Custombox.modal({
+                content: {
+                    effect: 'slide',
+                    target: '#certificateModal'
+                }
+            });
+
+            var suggestionModal = new Custombox.modal({
+                content: {
+                    effect: 'blur',
+                    target: '#suggestionsModal'
+                }
+            });
+         
+            $("#suggestionModalButton").click(function () {
+                suggestionModal.open();
+            });
+
+            $("#certButton").click(function (e) {
+                //suggestionModal.closeAll();
+                modal.open();
+            });
+
+            $('body').on('click', "#cancelModal", function (e) {
+                Custombox.modal.closeAll();
+            });
+
         });
     </script>
     <!-- END BODY -->
+</body>
 </html>
