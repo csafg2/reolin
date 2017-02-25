@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title> RegisterCV </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+
+
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/themes/blue.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
+    <style>
+        .min-hight input[type="text"], .min-hight input[type="password"]{
+            border-radius: 5px 5px 5px !important;
+            box-shadow: 2px 2px 12px #dbd9d9;
+        }
+    </style>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="a" style="color: green !important;background:url('assets/reo-img/img/back-2.jpg')">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel hidden-sm">
+        <div class="color-mode-icons icon-color"></div>
+        <div class="color-mode-icons icon-color-close"></div>
+        <div class="color-mode">
+            <p>THEME COLOR</p>
+            <ul class="inline">
+                <li class="color-blue current color-default" data-style="blue"></li>
+                <li class="color-red" data-style="red"></li>
+                <li class="color-green" data-style="green"></li>
+                <li class="color-orange" data-style="orange"></li>
+            </ul>
+            <label>
+                <span>Header</span>
+                <select class="header-option form-control input-small">
+                    <option value="default" selected>Default</option>
+                    <option value="fixed">Fixed</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER -->
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header pull">
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN LOGO (you can use logo image instead of text)-->
+                <a class="navbar-brand logo-v1" href="index.html">
+                    <img style="width:142px; height: 28px;" src="assets/img/layoot.png" id="logoimg" alt="">
+                </a>
+                <!-- END LOGO -->
+            </div>
+
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="navbar-collapse collapse">
+                <div class="row" style="padding-top: 1.6%;">
+                    <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;">
+                        <div class="topheader company-header">
+                            <ul class="nav navbar-nav" style="color: #591171">
+                                <li>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="font-size: 25px"><i class="fa fa-gear"></i></a><span class="text-muted"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="font-size: 25px;"><i class="fa fa-user"></i></a>
+                                        <span class="text-muted"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="font-size: 25px;"><i class="fa fa-download"></i></a>
+                                        <span class="text-muted">
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="font-size: 25px;">L</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 col-xs-12 pull-right">
+                        <div class="search_promo margin-searchbox" id="search_promo">
+                            <div class="input-group search group-search ">
+                                <div class="input-group-btn btn_cat btn-group-search">
+                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
+                                        <span><span class="caret"></span></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
+                                        <li class="select-cat"><a href="#" class="automotive-machinary"><i class="fa fa-automobile"></i>automotive &amp; machinery</a></li>
+                                        <li class="select-cat"><a href="#" class="home-office"><i class="fa fa-home"></i>home &amp; office</a></li>
+                                        <li class="select-cat"><a href="#" class="computer-Electronics"><i class="fa fa-microchip"></i>computer &amp; Electronics</a></li>
+                                        <li class="select-cat"><a href="#" class="food-beverage"><i class="fa fa-cutlery"></i>food &amp; beverage</a></li>
+                                        <li class="select-cat"><a href="#" class="Media-Entertainment-Art"><i class="fa fa-film"></i>Media , Entertainment , Art</a></li>
+                                        <li class="select-cat"><a href="#" class="Medical-health"><i class="fa fa-heart"></i>Medical &amp; health</a></li>
+                                        <li class="select-cat"><a href="#" class="Legal-Financial"><i class="fa fa-dollar"></i>Legal &amp; Financial</a></li>
+                                        <li class="select-cat"><a href="#" class="clothing-beauty"><i class="fa fa-leaf"></i>clothing &amp; beauty</a></li>
+                                        <li class="select-cat"><a href="#" class="Travel-Transportation"><i class="fa fa-fighter-jet"></i>Travel &amp; Transportation</a></li>
+                                        <li class="select-cat"><a href="#" class="Pets-Livestock"><i class="fa fa-github"></i>Pets &amp; Livestock</a></li>
+                                        <li class="select-cat"><a href="#" class="Kids"><i class="fa fa-smile-o"></i>Kids</a></li>
+                                        <li class="select-cat"><a href="#" class="Sport-Hobbies"><i class="fa fa-hand-rock-o"></i>Sport &amp; Hobbies</a></li>
+                                        <li class="select-cat"><a href="#" class="Nonprofit"><i class="fa fa-institution"></i>Nonprofit</a></li>
+                                        <li class="select-cat"><a href="#" class="Agricultural-Gardening"><i class="fa fa-leaf"></i>Agricultural &amp; Gardening</a></li>
+                                        <li class="select-cat"><a href="#" class="Industial"><i class="fa fa-industry"></i>Industial</a></li>
+                                        <li class="select-cat"><a href="#" class="Advertising"><i class="fa fa-bullhorn"></i>Advertising</a></li>
+                                        <li class="select-cat"><a href="#" class="Constraction"><i class="fa fa-building"></i>Constraction</a></li>
+                                        <li class="select-cat"><a href="#" class="Cermonie-wedding"><i class="fa fa-birthday-cake"></i>Ceremony &amp; wedding</a></li>
+                                        <li class="select-cat"><a href="#" class="Barganing-Dealing"><i class="fa fa-handshake-o"></i>Barganing &amp; Dealing</a></li>
+                                        <li class="select-cat"><a href="#" class="Educational"><i class="fa fa-graduation-cap"></i>Educational </a></li>
+                                        <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall"><i class="fa fa-shopping-cart"></i>Hypermarkets &amp; Shoppingmall</a></li>
+                                    </ul>
+                                </div>
+                                <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
+                                <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN TOP NAVIGATION MENU -->
+        </div>
+    </div>
+    <div class="container min-hight">
+        <div class="col-md-3"></div>
+        <div class="panel panel-success col-md-6" style="margin-top:2%;">
+            <div class="panel-heading">
+                <h3 class="panel-title">Register CV</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">FullName: </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Major Category</label>
+                                <div class="col-md-9">
+                                    <select class="form-control input-lg">
+                                        <option>Sale</option>
+                                        <option>Manufacture</option>
+                                        <option>Services</option>  
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Main Category</label>
+                                <div class="col-md-9">
+                                    <select class="form-control input-lg">
+                                        <option>automotive &amp; machinary</option>
+                                        <option>home &amp; office</option>
+                                        <option>computer &amp; Electronics</option>
+                                        <option>food &amp; beverage</option>
+                                        <option>Media , Entertainment , Art</option>
+                                        <option>Medical &amp; health</option>
+                                        <option>Legal &amp; Financial</option>
+                                        <option>clothing &amp; beauty</option>
+                                        <option>Travel &amp; Transportation</option>
+                                        <option>Pets &amp; Livestock</option>
+                                        <option>Kids</option>
+                                        <option>Sport &amp; Hobbies</option>
+                                        <option>Nonprofit</option>
+                                        <option>Agricultural &amp; Gardening</option>
+                                        <option>Industial</option>
+                                        <option>Advertising</option>
+                                        <option>Constraction</option>
+                                        <option>Cermonie &amp; wedding</option>
+                                        <option>Barganing &amp; Dealing</option>
+                                        <option>Educational</option>
+                                        <option>Hypermarkets &amp; Shoppingmall</option>    
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="from-group">
+                            <div style="float: right; text-align: center;">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="input-group">
+                                            <span>Country: </span>
+                                            <select class="form-control input-small">
+                                                <option>Iran</option>
+                                                <option>United States</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="input-group">
+                                            <span>City: </span>
+                                            <select class="form-control input-small">
+                                                <option>Option 1</option>
+                                                <option>Option 2</option>
+                                                <option>Option 3</option>
+                                                <option>Option 4</option>
+                                                <option>Option 5</option>
+                                            </select>
+                                        </div><!-- /input-group -->
+                                    </div><!-- /.col-md-6 -->
+                                </div><!-- /.row -->
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label class="col-md-3 control-label">Phone number</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" >
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Username: </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email: </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password: </label>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control input-sm" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Confirm Password: </label>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control input-sm" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="button" class="btn default">Cancel</button>
+                        <button type="submit" class="btn green">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
