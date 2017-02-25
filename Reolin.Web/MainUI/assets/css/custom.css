@@ -31,3 +31,10 @@
     display: block;
     margin-left: 5%;
 }
+
+.mainButton {
+    border: 1px solid #e8e2e2;
+}
+#suggestionModalButton{
+    width: 50%;
+}
