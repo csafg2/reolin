@@ -231,7 +231,7 @@ var App = function () {
             menu: '#rightMenu', push: 'rightOpener', menuWidth: '25.6em', side: 'right'
         });
 
-        $('#searchBox').live("keypress", function (e) {
+        $('#searchBox,#mainserach').live("keypress", function (e) {
             if (e.keyCode == 13) {
                 $('.leftOpener,.rightOpener').click();
                 return false; // prevent the button click from happening

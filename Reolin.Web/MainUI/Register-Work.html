@@ -168,15 +168,18 @@
         <div class="col-md-3"></div>
         <div class="panel panel-success col-md-6" style="margin-top:1%; padding-top: 1%;">
             <div class="panel-heading">
-                <h3 class="panel-title">Register CV</h3>
+                <h3 class="panel-title">Register Work Profile</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" role="form">
                     <div class="form-body">
+                        
                         <div class="form-group">
-                            <label class="col-md-3 control-label">FullName: </label>
+                            <label class="col-md-3 control-label">Major Category</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control input-sm">
+                                <div class="perimeter">
+                                    <button  data-target="#us6-dialog" class="perimeter-btn btn btn-default" data-toggle="modal">Choose your location</button>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -192,6 +195,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Main Category</label>
                             <div class="col-md-9">
+                         
                                 <select class="form-control input-sm">
                                     <option>automotive &amp; machinary</option>
                                     <option>home &amp; office</option>
@@ -217,7 +221,12 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">FullName: </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Country: </label>
                             <div class="col-md-9">
@@ -271,8 +280,7 @@
                         </div>
                     </div>
                     <div class="form-actions right">
-                        <button type="button" class="btn default">Cancel</button>
-                        <button type="submit" class="btn green">Submit</button>
+                        <button type="submit" class="btn green">Register Me!</button>
                     </div>
                 </form>
             </div>
@@ -293,6 +301,79 @@
     <script src="assets/scripts/app.js"></script>
     <script src="assets/scripts/portfolio.js"></script>
     <script src="assets/plugins/CustomDialog/custombox.min.js"></script>
+    
+
+
+    <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+    <script src="assets/scripts/locationpicker.jquery.min.js"></script>
+
+
+    <div id="us6-dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Select You Location</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal" style="width: 550px">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Location:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control layoot-input" id="us3-address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Radius:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control layoot-input" id="us3-radius" />
+                            </div>
+                        </div>
+                        <div id="us3" style="width: 100%; height: 300px;"></div>
+                        <div class="clearfix">&nbsp;</div>
+                        <div class="m-t-small">
+                            <label class="p-r-small col-sm-1 control-label">Lat: </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control layoot-input" style="width: 110px" id="us3-lat" />
+                            </div>
+                            <label class="p-r-small col-sm-2 control-label">Long: </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control layoot-input" style="width: 110px" id="us3-lon" />
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <script>
+                            $('#us3').locationpicker({
+                                location: {
+                                    latitude: 46.15242437752303,
+                                    longitude: 2.7470703125
+                                },
+                                radius: 300,
+                                inputBinding: {
+                                    latitudeInput: $('#us3-lat'),
+                                    longitudeInput: $('#us3-lon'),
+                                    radiusInput: $('#us3-radius'),
+                                    locationNameInput: $('#us3-address')
+                                },
+                                enableAutocomplete: true,
+                                markerIcon: 'http://www.iconsdb.com/icons/preview/tropical-blue/map-marker-2-xl.png'
+                            });
+                            $('#us6-dialog').on('shown.bs.modal', function () {
+                                $('#us3').locationpicker('autosize');
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="suggest-btn-save btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="suggest-btn-save btn btn-default" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <script>
         jQuery(document).ready(function () {
             App.init();
