@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <!--AIzaSyAcl6M9o9HhvIUbeebjKS7gSmbYd1DYy2A-->
+    <script>
+        var apiGeolocationSuccess = function (position) {
+            alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+        };
+
+        var tryAPIGeolocation = function () {
+            jQuery.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyARTcem6rFUGp9W3nsO5x-1qp077AtkOu0", function (success) {
+                apiGeolocationSuccess({ coords: { latitude: success.location.lat, longitude: success.location.lng } });
+            })
+          .fail(function (err) {
+              alert("API Geolocation error! \n\n" + err);
+          });
+        };
+
+        var browserGeolocationSuccess = function (position) {
+            alert("Browser geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+        };
+
+        var browserGeolocationFail = function (error) {
+            switch (error.code) {
+                case error.TIMEOUT:
+                    alert("Browser geolocation error !\n\nTimeout.");
+                    break;
+                case error.PERMISSION_DENIED:
+                    if (error.message.indexOf("Only secure origins are allowed") == 0) {
+                        tryAPIGeolocation();
+                    }
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Browser geolocation error !\n\nPosition unavailable.");
+                    break;
+            }
+        };
+
+        var tryGeolocation = function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    browserGeolocationSuccess,
+                  browserGeolocationFail,
+                  {
+                      maximumAge: 50000,
+                      timeout: 20000,
+                      enableHighAccuracy: true
+                  });
+            }
+        };
+
+        tryGeolocation();
+    </script>
+</body>
+</html>
