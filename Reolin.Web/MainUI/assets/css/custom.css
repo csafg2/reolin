@@ -134,3 +134,7 @@
 .mainBody {
     background-image: url('../img/main-bg.png');
 }
+
+.whiteBox{
+    background: white;
+}

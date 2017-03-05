@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title> RegisterCV </title>
+    <title> Suggest-Final </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -17,35 +17,20 @@
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
-
-
     <!-- END PAGE LEVEL PLUGIN STYLES -->
     <!-- BEGIN THEME STYLES -->
     <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/themes/blue.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/pages/prices.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
-
-    <link href="assets/css/custom.css" rel="stylesheet" />
-    <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
-    <style>
-        .min-hight input[type="text"], .min-hight input[type="password"] {
-            border-radius: 5px 5px 5px !important;
-            box-shadow: 2px 2px 12px #dbd9d9;
-        }
-
-        .control-label, .form-horizontal {
-            text-align: left !important;
-            padding-left: 2%;
-        }
-    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="a" style="color: green !important;background:url('assets/reo-img/img/back-2.jpg')">
+<body>
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel hidden-sm">
         <div class="color-mode-icons icon-color"></div>
@@ -80,16 +65,18 @@
                 </button>
                 <!-- END RESPONSIVE MENU TOGGLER -->
                 <!-- BEGIN LOGO (you can use logo image instead of text)-->
-                <a class="navbar-brand logo-v1" href="index.html">
+                <!--<a class="navbar-brand logo-v1" href="index.html">
                     <img style="width:142px; height: 28px;" src="assets/img/layoot-gray.png" id="logoimg" alt="">
-                </a>
+                </a>-->
                 <!-- END LOGO -->
             </div>
 
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="navbar-collapse collapse">
                 <div class="row" style="padding-top: 1.6%;">
+
                     <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;">
+
                         <div class="topheader company-header">
                             <ul class="nav navbar-nav">
                                 <li>
@@ -161,128 +148,150 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <a href="#" class="btn">Global</a>
+                    <a href="#" class="btn">Country</a>
+                    <a href="#" class="btn">City</a>
+                </div>
             </div>
             <!-- BEGIN TOP NAVIGATION MENU -->
         </div>
     </div>
-    <div class="container min-hight">
-        <div class="col-md-3"></div>
-        <div class="panel panel-success col-md-6" style="margin-top:1%; padding-top: 1%;">
-            <div class="panel-heading">
-                <h3 class="panel-title">Register CV</h3>
-            </div>
-            <div class="panel-body">
-                <form class="form-horizontal" role="form">
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">FullName: </label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Major Category</label>
-                            <div class="col-md-9">
-                                <select class="form-control input-sm">
-                                    <option>Sale</option>
-                                    <option>Manufacture</option>
-                                    <option>Services</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Main Category</label>
-                            <div class="col-md-9">
-                                <select class="form-control input-sm">
-                                    <option>automotive &amp; machinary</option>
-                                    <option>home &amp; office</option>
-                                    <option>computer &amp; Electronics</option>
-                                    <option>food &amp; beverage</option>
-                                    <option>Media , Entertainment , Art</option>
-                                    <option>Medical &amp; health</option>
-                                    <option>Legal &amp; Financial</option>
-                                    <option>clothing &amp; beauty</option>
-                                    <option>Travel &amp; Transportation</option>
-                                    <option>Pets &amp; Livestock</option>
-                                    <option>Kids</option>
-                                    <option>Sport &amp; Hobbies</option>
-                                    <option>Nonprofit</option>
-                                    <option>Agricultural &amp; Gardening</option>
-                                    <option>Industial</option>
-                                    <option>Advertising</option>
-                                    <option>Constraction</option>
-                                    <option>Cermonie &amp; wedding</option>
-                                    <option>Barganing &amp; Dealing</option>
-                                    <option>Educational</option>
-                                    <option>Hypermarkets &amp; Shoppingmall</option>
-                                </select>
-                            </div>
-                        </div>
+    <!-- END HEADER -->
+    <!-- BEGIN PAGE CONTAINER -->
+    <div class="page-container" style="margin-top: 2%;">
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Country: </label>
-                            <div class="col-md-9">
-                                <select class="form-control input-sm">
-                                    <option>United States</option>
-                                    <option>Democratic Republic of the Congo</option>
-                                    <option>Islamic Repulic of Iran</option>
-                                </select>
-                            </div>
+        <!-- BEGIN CONTAINER -->
+        <div class="container min-hight">
+            <!-- BEGIN PRICING OPTION1 -->
+            <div class="row margin-bottom-40">
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">City: </label>
-                            <div class="col-md-9">
-                                <select class="form-control input-sm">
-                                    <option>Mashad Province</option>
-                                    <option>Tehran</option>
-                                    <option>Jalal Abad/option>
-                                </select>
-                            </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
                         </div>
-                        <div class="form-group" style="margin-top: 20px;">
-                            <label class="col-md-3 control-label">Phone number</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control input-sm" placeholder="989121533232">
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Username: </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control input-lg">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Email: </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password: </label>
-                            <div class="col-md-8">
-                                <input type="password" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Confirm Password: </label>
-                            <div class="col-md-8">
-                                <input type="password" class="form-control input-sm">
-                            </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
                         </div>
                     </div>
-                    <div class="form-actions right">
-                        <button type="button" class="btn default">Cancel</button>
-                        <button type="submit" class="btn green">Submit</button>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
                     </div>
-                </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="row margin-bottom-40">
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="pricing">
+                        <div>
+                            <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                        </div>
+                        <div class="pricing-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                            <a href="#" class="btn theme-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PRICING OPTION1 -->
         </div>
-
+        <!-- END CONTAINER -->
     </div>
+    <!-- END PAGE CONTAINER -->
+  
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
     <script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-
-    <script src="assets/plugins/bigSlide.js"></script>
     <script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="assets/plugins/hover-dropdown.js"></script>
@@ -290,43 +299,13 @@
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS(REQUIRED ONLY FOR CURRENT PAGE) -->
     <script type="text/javascript" src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
-    <script src="assets/plugins/jquery.mixitup.min.js"></script>
     <script src="assets/scripts/app.js"></script>
-    <script src="assets/scripts/portfolio.js"></script>
-    <script src="assets/plugins/CustomDialog/custombox.min.js"></script>
-    <script>
+    <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
-            Portfolio.init();
-
-            var modal = new Custombox.modal({
-                content: {
-                    effect: 'slide',
-                    target: '#certificateModal'
-                }
-            });
-
-            var suggestionModal = new Custombox.modal({
-                content: {
-                    effect: 'blur',
-                    target: '#suggestionsModal'
-                }
-            });
-
-            $("#suggestionModalButton").click(function () {
-                suggestionModal.open();
-            });
-
-            $(".profile-award").click(function (e) {
-                //suggestionModal.closeAll();
-                modal.open();
-            });
-
-            $('body').on('click', "#cancelModal", function (e) {
-                Custombox.modal.closeAll();
-            });
-
         });
     </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
+<!-- END BODY -->
 </html>
