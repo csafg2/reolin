@@ -34,7 +34,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="a" style="color: green !important;">
+<body class="mainBody">
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel hidden-sm">
         <div class="color-mode-icons icon-color"></div>
@@ -80,28 +80,24 @@
                 <div class="row" style="padding-top: 1.6%;">
                     <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;">
                         <div class="topheader company-header">
-                            <ul class="nav navbar-nav" style="color: #591171">
+                            <ul class="nav navbar-nav">
                                 <li>
                                     <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="font-size: 25px"><i class="fa fa-gear"></i></a><span class="text-muted"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="font-size: 25px;"><i class="fa fa-user"></i></a>
+                                        <a href="#" style="all:inherit;"><i class="fa fa-download" style="color:gray;"></i></a>
                                         <span class="text-muted"></span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="font-size: 25px;"><i class="fa fa-download"></i></a>
-                                        <span class="text-muted">
-                                        </span>
+                                        <a href="#" style="all:inherit;"><i class="fa fa-user" style="color:gray;"></i></a>
+                                        <span class="text-muted"></span>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="col-md-3 col-sm-4" >
-                                        <a href="#" style="font-size: 25px;">L</a>
+                                    <div class="col-md-3 col-sm-4" style="font-family:'Times New Roman'; color:gray;">
+                                        <a href="#" style="all:inherit;">L</a>
+                                        <!--<i class="fa fa-download"></i>--><span class="text-muted">
+                                        </span>
                                     </div>
                                 </li>
                             </ul>
@@ -111,6 +107,7 @@
                     <div class="col-md-4 col-xs-12 pull-right">
                         <div class="search_promo margin-searchbox" id="search_promo">
                             <div class="input-group search group-search ">
+
                                 <div class="input-group-btn btn_cat btn-group-search">
                                     <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
                                         <span><span class="caret"></span></span>
@@ -141,7 +138,13 @@
                                 </div>
                                 <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
                                 <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
-
+                                <div class="input-group-btn btn_cat btn-group-search">
+                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height"
+                                            style="background-image: url('assets/img/icons/glob-seachicon.png');
+                                    background-size: cover;
+                                    background-color: transparent;
+                                    width: 34px; height:34px; border: none; margin-left: 20%;"></button>
+                                </div>
 
                             </div>
 
@@ -162,17 +165,17 @@
                 <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
             </div>
             <div class="col-md-5 col-sm-5" style="margin-top: 7%; padding-top: 2%;">
-                <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:100%">
+                <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:106%; padding-top: 2%; border: 1px solid gray; margin-left: -2.7%;">
                     <ul class="nav nav-tabs">
-                        <li>
-                            <a href="#tab-1" data-toggle="tab" class="icon-btn active">
+                        <li class="personalPageTabItem">
+                            <a href="#tab-1" data-toggle="tab" class="icon-btn">
                                 <!--<i class="fa fa-group"></i>-->
                                 <img src="assets/reo-img/img/icon/tab-usersgreen.png" style="max-height: 60%; max-height: 60%;" />
                                 <div>Related</div>
                                 <span class="badge badge-important">2</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="personalPageTabItem">
                             <a href="#tab-3" data-toggle="tab" class="icon-btn">
                                 <!--<i class="fa fa-globe"></i>-->
                                 <img src="assets/reo-img/img/icon/tab-globalgreen.png" class="respIcon" />
@@ -180,7 +183,7 @@
                                 <span class="badge badge-important">2</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="personalPageTabItem">
                             <a href="#tab-4" data-toggle="tab" class="icon-btn">
                                 <!--<span class="glyphicon glyphicon-envelope"></span>-->
                                 <img src="assets/reo-img/img/icon/envolve.png" class="respIcon" />
@@ -190,7 +193,7 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane row fade in active" id="tab-1">
+                        <div class="tab-pane row fade in" id="tab-1">
                             <div class="row">
                                 <!-- BEGIN TAB CONTENT -->
                                 <div class="tab-content">
@@ -628,44 +631,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="row" style="border: 1px solid gray; margin-top: 2px;">
-                        <div style="padding-left: 3%;">
-                            <h5>Education</h5>
-                        </div>
-                        <p style="text-align:center;">
-                            information about your education and stuff
-                        </p>
-                    </div>
-                    <div class="row" style="border: 1px solid gray; margin-top: 2px;">
-                        <div style="padding-left: 3%;">
-                            <h5>Skills and Expert</h5>
-                        </div>
-                        <p style="text-align:center;">
-                            ..........\..........\..........\..........\..........
-                        </p>
-                    </div>
-                    <div class="row" style="border: 1px solid gray; margin-top: 2px;">
-                        <div style="padding-left: 3%;">
-                            <h5>Experience</h5>
-                        </div>
-                        <ul style="list-style:none;">
-                            <li>
-                                <i class="fa fa-location-arrow"></i>
-                                I build buildings
-                            </li>
-                            <li>
-                                <i class="fa fa-location-arrow"></i>
-                                also can write software
-                            </li>
-                            <li>
-                                <i class="fa fa-location-arrow"></i>
-                                and some other stuff
-                            </li>
-                        </ul>
-                    </div>
+                  
                 </div>
-
+                <div class="clearfix"></div>
+                <div class="row" style="border: 1px solid gray; margin-top: 2px;">
+                    <div style="padding-left: 3%;">
+                        <strong>Education</strong>
+                    </div>
+                    <p style="text-align:center;">
+                        information about your education and stuff
+                    </p>
+                </div>
+                <div class="row" style="border: 1px solid gray; margin-top: 2px;">
+                    <div style="padding-left: 3%;">
+                        <strong>Skills and Expert</strong>
+                    </div>
+                    <p style="text-align:center;">
+                        ..........\..........\..........\..........\..........
+                    </p>
+                </div>
+                <div class="row" style="border: 1px solid gray; margin-top: 2px;">
+                    <div style="padding-left: 3%;">
+                        <strong>Experience</strong>
+                    </div>
+                    <ul style="list-style:none;">
+                        <li>
+                            <i class="fa fa-location-arrow"></i>
+                            I build buildings
+                        </li>
+                        <li>
+                            <i class="fa fa-location-arrow"></i>
+                            also can write software
+                        </li>
+                        <li>
+                            <i class="fa fa-location-arrow"></i>
+                            and some other stuff
+                        </li>
+                    </ul>
+                </div>
+                <div class="row" style="border: 1px solid gray; margin-top: 2px;padding-left: 3%;">
+                    <strong>More about me</strong>
+                </div>
             </div>
             <div class="col-md-3 col-sm-3 hidden-xs">
                 <div class="profile-right">
@@ -697,6 +703,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- xxx -->
@@ -791,37 +798,6 @@
 
         </div>
     </div>
-
-
-    <!-- END FOOTER -->
-    <!-- BEGIN COPYRIGHT -->
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-8">
-                    <p>
-                        <span class="margin-right-10">2017 ©  Layoot ALL Rights Reserved.</span>
-                        <a href="#" id="testButton">Privacy Policy</a> | <a href="#">Terms of Service</a>
-                    </p>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <ul class="social-footer">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dropbox"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div style="display:none;" id="suggestionsModal" class="col-md-9">
         <div class="panel panel-info">
             <div class="panel-heading"><h3 class="panel-title">Post new Suggestion</h3></div>

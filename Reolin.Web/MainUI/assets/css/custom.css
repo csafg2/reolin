@@ -38,7 +38,6 @@
     text-align: center;
     vertical-align: middle;
     line-height: 100%;
-
 }
 
 
@@ -58,6 +57,7 @@
 .serviceBox {
     border: 1px solid gray;
     padding: 3%;
+    background-color: white;
 }
 
 .commentBoxItem {
@@ -65,6 +65,7 @@
 }
 
 .commentBox {
+    background-color: white;
     border: 1px solid gray;
     padding: 3%;
     padding-right: 8%;
@@ -81,4 +82,55 @@
     border: 1px solid gray;
     padding-right: 7%;
     padding-left: 7%;
+    background-color: white;
+}
+
+.tabIcon {
+    max-height: 60%;
+    max-height: 60%;
+}
+
+
+.themeColor {
+    color: #359a68;
+    border-color: gray !important;
+}
+
+.tabItem {
+    width: 19%;
+    margin-left: .3%;
+    text-align: center;
+}
+
+    .tabItem a {
+        width: 100%;
+    }
+
+.profileBox {
+    background: white;
+    border: 1px solid gray;
+    width: 110%;
+    margin-left: -5%;
+    margin-bottom: 10px;
+    padding-top: 2%;
+}
+
+.mix-block {
+    background: white;
+}
+
+.badge {
+    z-index: 200;
+}
+
+.personalPageTabItem {
+    width: 32%;
+}
+
+    .personalPageTabItem a {
+        width: 100%;
+    }
+
+.mainBody {
+    background-image: url('../img/main-bg.png');
 }

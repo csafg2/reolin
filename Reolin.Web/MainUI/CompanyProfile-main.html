@@ -34,7 +34,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="a">
+<body class="mainBody">
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel hidden-sm">
         <div class="color-mode-icons icon-color"></div>
@@ -58,9 +58,9 @@
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
     <!-- BEGIN HEADER -->
-    <div class="header navbar navbar-default navbar-static-top">
+    <div class="header navbar navbar-default navbar-static-top" style="background: #e1e1e1;">
         <div class="container">
-            <div class="navbar-header pull">
+            <div class="navbar-header pull" style="margin-top: -.5%; ">
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
                 <button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -70,7 +70,7 @@
                 <!-- END RESPONSIVE MENU TOGGLER -->
                 <!-- BEGIN LOGO (you can use logo image instead of text)-->
                 <a class="navbar-brand logo-v1" href="index.html">
-                    <img style="width:142px; height: 28px;" src="assets/img/layoot.png" id="logoimg" alt="">
+                    <img style="width:142px; height: 28px;" src="assets/img/layoot-gray.png" id="logoimg" alt="">
                 </a>
                 <!-- END LOGO -->
             </div>
@@ -82,13 +82,23 @@
                         <div class="topheader company-header">
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <div class="col-md-3 col-sm-4"><i class="fa fa-asterisk"></i><span class="text-muted"></span></div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="all:inherit;"><i class="fa fa-download" style="color:gray;"></i></a>
+                                        <span class="text-muted"></span>
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="col-md-3 col-sm-4"><i class="fa fa-user"></i><span class="text-muted"></span></div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a href="#" style="all:inherit;"><i class="fa fa-user" style="color:gray;"></i></a>
+                                        <span class="text-muted"></span>
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="col-md-3 col-sm-4"><i class="fa fa-download"></i><span class="text-muted"></span></div>
+                                    <div class="col-md-3 col-sm-4" style="font-family:'Times New Roman'; color:gray;">
+                                        <a href="#" style="all:inherit;">L</a>
+                                        <!--<i class="fa fa-download"></i>--><span class="text-muted">
+                                        </span>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -97,6 +107,7 @@
                     <div class="col-md-4 col-xs-12 pull-right">
                         <div class="search_promo margin-searchbox" id="search_promo">
                             <div class="input-group search group-search ">
+
                                 <div class="input-group-btn btn_cat btn-group-search">
                                     <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
                                         <span><span class="caret"></span></span>
@@ -127,7 +138,13 @@
                                 </div>
                                 <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
                                 <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
-
+                                <div class="input-group-btn btn_cat btn-group-search">
+                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height"
+                                            style="background-image: url('assets/img/icons/glob-seachicon.png');
+                                    background-size: cover; 
+                                    background-color: transparent; 
+                                    width: 34px; height:34px; border: none; margin-left: 20%;"></button>
+                                </div>
 
                             </div>
 
@@ -142,11 +159,11 @@
     <!-- BEGIN PAGE CONTAINER -->
     <!-- END BREADCRUMBS -->
     <!-- BEGIN CONTAINER -->
-    <div class="container min-hight c-main-container" style="margin-top: 3%;">
+    <div class="container min-hight c-main-container" style="margin-top: 3%;width:95%;">
         <!-- TWO COLUMNS -->
         <div class="row margin-bottom-40 buttons-page">
             <!-- FIRST COLUMN -->
-            <div class="col-md-3 col-sm-3 blog-sidebar" style="margin-top: 2%;">
+            <div class="col-md-3 col-sm-3 blog-sidebar" style="margin-top: 2%; float:left;">
 
                 <!-- BEGIN RECENT NEWS -->
 
@@ -187,9 +204,9 @@
             </div>
             <!-- END FIRST COLUMN -->
             <!-- SECOND COLUMN -->
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-5" style="margin-left: 4%; margin-right: 2%;">
                 <!-- row for profile name and ..  -->
-                <div class="row">
+                <div class="row profileBox">
                     <div class="col-md-5 col-sm-5 mid-cell">
 
                         <div class="row">
@@ -200,22 +217,22 @@
                                     <h2 style="color: green;">Profile Name</h2>
                                 </p>
                                 <div class="row">
-                                    <span class="badge badge-info" style="width: 20%; height: 3%">
-                                        <i style="font-size: 20px;" class="fa fa-thumbs-up badge-info"></i>
+                                    <span class="badge badge-info" style="width: 20%; height: 3%; background:transparent; color: #359a68;">
                                         12K
+                                        <i style="font-size: 20px;" class="fa fa-thumbs-up badge-info"></i>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 3%;height: 100%;">
-                            <div id="suggestionModalButton" class="col-sm-5" style="height: 95%;">
-                                <div class="service-box-v1 mainButton" style="height: 47%;">
-                                        Suggestes
+                        <div class="row" style="margin-top: 3%;">
+                            <div id="suggestionModalButton" class="col-sm-5">
+                                <div class="service-box-v1 mainButton" style="height:105px;">
+                                    Suggestes
                                 </div>
                             </div>
 
-                            <div class="col-md-6" id="certButton" style="float: right; cursor:pointer; height: 95%;">
-                                <div class="service-box-v1 mainButton" style="height: 47%;">
+                            <div class="col-md-6" id="certButton" style="float: right; cursor:pointer;">
+                                <div class="service-box-v1 mainButton" style="height: 105px;">
                                     Certificates
                                 </div>
                             </div>
@@ -223,7 +240,7 @@
                     </div>
                     <div class="col-md-5 col-sm-5 mid-cell">
                         <div class="row">
-                            <img style="width: 100%; height: 100%; max-width: 100%; max-height: 270px;" src="http://placehold.it/300x270?text=LOGO!" />
+                            <img style="width: 100%; height: 100%; max-width: 100%; max-height: 270px;" src="http://placehold.it/340x270?text=LOGO!" />
                         </div>
                     </div>
                 </div>
@@ -231,49 +248,55 @@
 
                 <div class="row">
                     <!-- BEGIN TABS AND TESTIMONIALS -->
-                    <div class="row mix-block">
+                    <div class="row mix-block" style="margin-top:0px;">
                         <!-- TABS -->
-                        <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:100%">
+                        <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:100%;border: 1px solid gray;padding-top: 2%;">
                             <ul class="nav nav-tabs">
-                                <li>
-                                    <a href="#tab-1" data-toggle="tab" class="icon-btn active">
+                                <li class="tabItem">
+                                    <a href="#tab-1" data-toggle="tab" class="icon-btn">
                                         <!--<i class="fa fa-group"></i>-->
-                                        <img src="assets/reo-img/img/icon/tab-usersgreen.png" style="max-height: 60%; max-height: 60%;">
+                                        <img src="assets/reo-img/img/icon/tab-usersgreen.png" class="tabIcon">
                                         <div>Related</div>
                                         <span class="badge badge-important">2</span>
                                     </a>
                                 </li>
-                                <li>
+                                <li class="tabItem">
                                     <a href="#tab-2" data-toggle="tab" class="icon-btn">
-                                        <i class="fa fa-picture-o"></i>
+                                        <!--<i class="fa fa-picture-o"></i>-->
+                                        <img src="assets/reo-img/img/icon/copy.png" class="tabIcon" />
                                         <div>Pictures</div>
                                         <span class="badge badge-info">2</span>
                                     </a>
                                 </li>
-                                <li>
+                                <li class="tabItem">
                                     <a href="#tab-3" data-toggle="tab" class="icon-btn">
-                                        <i class="fa fa-globe"></i>
+                                        <img src="assets/reo-img/img/icon/tab-globalgreen.png" class="tabIcon" />
+
                                         <div>Networks</div>
                                         <span class="badge badge-important">2</span>
                                     </a>
                                 </li>
-                                <li>
+                                <li class="tabItem">
                                     <a href="#tab-4" data-toggle="tab" class="icon-btn">
-                                        <span class="glyphicon glyphicon-envelope"></span>
+                                        <!--<span class="glyphicon glyphicon-envelope"></span>-->
+                                        <img src="assets/reo-img/img/icon/envolve.png" class="tabIcon" />
+
                                         <div>Messages</div>
                                         <span class="badge badge-success">2</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#tab-5" data-toggle="tab" class="icon-btn">
-                                        <i class="fa fa-tags"></i>
+                                <li class="tabItem">
+                                    <a href="#tab-5" data-toggle="tab" class="icon-btn tabItem ">
+                                        <!--<i class="fa fa-tags"></i>-->
+                                        <img src="assets/reo-img/img/icon/hashtag.png" class="tabIcon" />
+
                                         <div>Services</div>
                                         <span class="badge badge-important">2</span>
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane row fade in active" id="tab-1">
+                                <div class="tab-pane row fade in" id="tab-1">
                                     <div class="col-md-12 tab-style-1 margin-bottom-20">
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#related-tab-1" data-toggle="tab">Employer</a></li>
@@ -517,10 +540,34 @@
                     </div>
 
                 </div>
+                <div class="row profileBox" style="border:none;margin-top:-20%;">
+                    <div class="col-md-7 themeColor" style="float: left; width: 69%;min-height:174px;border: 1px solid gray;padding-top: 6%;">
+                        <div class="row">
+                            <div class="col-md-3" style="font-weight:bold;"> Address: </div>
+                            <div class="col-md-9"> Iran, Tehran - Valiasr Square - Motahari St. - ally 34  </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style="font-weight:bold;"> Tel: </div>
+                            <div class="col-md-9"> +1 98325788 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style="font-weight:bold;"> Fax: </div>
+                            <div class="col-md-9"> +98 912 150 5050 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style="font-weight:bold;"> Mobile: </div>
+                            <div class="col-md-9"> +98 912 35 10320 </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4" style="border: 1px solid gray; margin-left: 1%; float: right; width: 29%; min-height:174px; margin-bottom: 2%; margin-right: 1%;">
+                        <img src="assets/img/map.png" class="img-responsive" />
+                    </div>
+                </div>
             </div>
             <!-- END CONTAINER -->
             <!--   thid column -->
-            <div class="col-md-3 col-sm-3 blog-sidebar" style="margin-top: 2%;">
+            <div class="col-md-3 col-sm-3 blog-sidebar" style="margin-top: 2%; float:right;">
                 <!-- CATEGORIES START -->
                 <ul class="nav sidebar-categories margin-bottom-40 serviceBox">
                     <li>
@@ -582,21 +629,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- BEGIN BLOG TAGS -->
-                <div class="blog-tags margin-bottom-20">
-                    <h2>other services</h2>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-tags"></i>OS</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i> </a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Dell</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Conquer</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>MS</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Google</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Keenthemes</a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i>Twitter</a></li>
-                    </ul>
-                </div>
-                <!-- END BLOG TAGS -->
+
             </div>
             <!-- end third column  -->
         </div>
