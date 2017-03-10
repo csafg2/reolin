@@ -58,6 +58,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> QueryProfiles(int id)
         {
             var profiles = await this.UserService.QueryProfilesAsync(id);
+            
             return Ok(profiles);
         }
 

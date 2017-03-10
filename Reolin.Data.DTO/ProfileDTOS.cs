@@ -82,6 +82,7 @@ namespace Reolin.Data.DTO
         public int? Id { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public bool IsWork { get; set; }
     }
 
     public class CreateProfileDTO : ProfileByTagDTO

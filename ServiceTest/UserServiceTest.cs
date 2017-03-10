@@ -23,9 +23,12 @@ namespace ServiceTest_
 
         {
             var id = context.Users.First().Id;
+            
             var profiles = Service.QueryProfilesAsync(id).Result;
 
             Assert.IsTrue(profiles.Count() > 0);
+            Assert.IsTrue(profiles.First().IsWork == false);
+            Assert.IsTrue(profiles.Skip(1).First().IsWork == true);
         }
 
         public UserServiceTest_()

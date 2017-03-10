@@ -204,6 +204,7 @@ namespace Reolin.Data.Services
                 .Where(p => p.UserId == userId)
                     .Select(p => new ProfileInfoDTO()
                     {
+                        IsWork = p.Type == ProfileType.Work,
                         Id = p.Id,
                         Description = p.Description,
                         Latitude = p.Address.Location.Latitude,
