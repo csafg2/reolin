@@ -66,7 +66,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/[controller]/[action]")]
-        [OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
+        //[OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<ProfileByTagDTO>))]
         public async Task<IActionResult> GetByTag(string tag)
         {
@@ -77,7 +77,6 @@ namespace Reolin.Web.Api.Controllers
             }
 
             var result = await this.ProfileService.GetByTagAsync(tag).ToListAsync();
-
             return Ok(result);
         }
 
