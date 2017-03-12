@@ -74,6 +74,7 @@
 /// <reference path="../mainui/assets/plugins/revolution_slider/previewjs/preview-normal.js" />
 /// <reference path="../mainui/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js" />
 /// <reference path="../mainui/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.js" />
+/// <reference path="../mainui/assets/plugins/slick/slick.js" />
 /// <reference path="../mainui/assets/plugins/uniform/jquery.uniform.js" />
 /// <reference path="../mainui/assets/reo-js/js/all_scr.js" />
 /// <reference path="../mainui/assets/reo-js/js/bootstrap.min.js" />

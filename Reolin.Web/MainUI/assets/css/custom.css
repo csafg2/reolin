@@ -135,6 +135,44 @@
     background-image: url('../img/main-bg.png');
 }
 
-.whiteBox{
+.whiteBox {
     background: white;
+}
+
+
+.top10Container {
+    margin-top: -1% !important;
+    width: 13%;
+    border: 1px solid gray;
+    border-top: none;
+}
+
+.pricing {
+    box-shadow: -2px 2px 2px gray;
+    -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+}
+
+.top10Container .pricing {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: none;
+    padding: 4%; 
+    
+}
+
+
+.suggestLine {
+    clear: both;
+    width: 100%;
+    border: 1px solid gray;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.staffBox .row{
+    margin-top: 10px;
 }

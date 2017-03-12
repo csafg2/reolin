@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="wwwroot/content/old/js/jquery.min.js"></script>
+    <link href="MainUI/assets/plugins/slick/slick-theme.css" rel="stylesheet" />
+    <link href="MainUI/assets/plugins/slick/slick.css" rel="stylesheet" />
+    <script src="MainUI/assets/plugins/slick/slick.min.js"></script>
+</head>
+<body>
+    <style>
+     .your-class div 
+     {
+     }
+     .slick-next{
+         background-color: red;
+
+     }
+      .slick-prev{
+         background-color: red;
+
+     }
+    </style>
+    <div style="width: 30%;border: 1px solid black; margin-left: 50px;">
+        <div class="your-class" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+            <div>your content1</div>
+            <div>your content2</div>
+            <div>your content3</div>
+            <div>your content4</div>
+            <div>your content5</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.your-class').slick({
+            arrows: true,
+        });
+    });
+    </script>
+</body>
+</html>

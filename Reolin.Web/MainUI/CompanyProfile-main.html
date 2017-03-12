@@ -29,6 +29,9 @@
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
 
+    <link href="assets/plugins/slick/slick-theme.css" rel="stylesheet" />
+    <link href="assets/plugins/slick/slick.css" rel="stylesheet" />
+
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
 </head>
@@ -141,8 +144,8 @@
                                 <div class="input-group-btn btn_cat btn-group-search">
                                     <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height"
                                             style="background-image: url('assets/img/icons/glob-seachicon.png');
-                                    background-size: cover; 
-                                    background-color: transparent; 
+                                    background-size: cover;
+                                    background-color: transparent;
                                     width: 34px; height:34px; border: none; margin-left: 20%;"></button>
                                 </div>
 
@@ -170,7 +173,7 @@
                 <div class="recent-news margin-bottom-10 staffBox">
                     <h2>Staff</h2>
                     <hr />
-                    <div class="row margin-bottom-10">
+                    <div class="row">
                         <div class="col-md-3">
                             <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
                         </div>
@@ -179,8 +182,8 @@
                             <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
                         </div>
                     </div>
-                    <hr />
-                    <div class="row margin-bottom-10">
+                    <div class="border"></div>
+                    <div class="row">
                         <div class="col-md-3">
                             <img src="assets/img/people/img1-large.jpg" alt="" class="img-responsive">
                         </div>
@@ -189,8 +192,8 @@
                             <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
                         </div>
                     </div>
-                    <hr />
-                    <div class="row margin-bottom-10">
+                    <div class="border"></div>
+                    <div class="row">
                         <div class="col-md-3">
                             <img src="assets/img/people/img3-large.jpg" alt="" class="img-responsive">
                         </div>
@@ -252,8 +255,8 @@
                         <!-- TABS -->
                         <div class="col-md-9 tab-style-1 margin-bottom-20" style="width:100%;border: 1px solid gray;padding-top: 2%;">
                             <ul class="nav nav-tabs">
-                                <li class="tabItem">
-                                    <a href="#tab-1" data-toggle="tab" class="icon-btn">
+                                <li class="tabItem active">
+                                    <a href="#tab-1" data-toggle="tab" class="icon-btn ">
                                         <!--<i class="fa fa-group"></i>-->
                                         <img src="assets/reo-img/img/icon/tab-usersgreen.png" class="tabIcon">
                                         <div>Related</div>
@@ -295,25 +298,60 @@
                                     </a>
                                 </li>
                             </ul>
+                            <style>
+                                .slick-next, .slick-prev {
+                                    background-color: #e1e1e1;
+                                    width: 30px;
+                                    height: 30px;
+                                    border-radius: 15px;
+                                }
+
+                                    .slick-prev:hover, .slick-next:hover {
+                                        background: red;
+                                    }
+                            </style>
                             <div class="tab-content">
-                                <div class="tab-pane row fade in" id="tab-1">
+                                <div class="tab-pane row fade in active" id="tab-1">
+                                    <div class="tabsList" data-slick='{"slidesToShow": 3, "slidesToScroll": 2}'>
+                                        <div class="btn btn-default">Employee</div>
+                                        <div class="btn btn-default">Employer</div>
+                                        <div class="btn btn-default">Contractor</div>
+                                        <div class="btn btn-default">Servant</div>
+                                        <div class="btn btn-default">Builder</div>
+                                        <div class="btn btn-default">Dude</div>
+                                        <div class="btn btn-default">Some one</div>
+                                    </div>
                                     <div class="col-md-12 tab-style-1 margin-bottom-20">
-                                        <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#related-tab-1" data-toggle="tab">Employer</a></li>
+                                        <form role="form">
+                                            <div class="form-body">
+                                                <div class="form-group">
+                                                    <label>Related Type</label>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-actions right">
+                                                <button type="submit" class="btn green">Submit</button>
+                                            </div>
+                                        </form>
+                                        <!--<ul class="nav nav-tabs">
+                                            <li class="active"><a href="#related-tab-1" data-toggle="tab">New Related Type</a></li>
                                             <li><a href="#related-tab-2" data-toggle="tab">Employee</a></li>
                                             <li><a href="#related-tab-3" data-toggle="tab">Contractor</a></li>
                                             <li><a href="#related-tab-4" data-toggle="tab">what ever</a></li>
-                                        </ul>
-                                        <div class="tab-content">
+                                        </ul>-->
+                                        <!--<div class="tab-content">
                                             <div class="tab-pane row fade in active" id="related-tab-1">
-                                                <div class="col-md-3">
-                                                    <a href="assets/img/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                                        <img class="img-responsive" src="assets/img/photos/img7.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                                                </div>
+                                                <form role="form">
+                                                    <div class="form-body">
+                                                        <div class="form-group">
+                                                            <label>Related Type</label>
+                                                            <input type="text" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-actions right">
+                                                        <button type="submit" class="btn green">Submit</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                             <div class="tab-pane row fade" id="related-tab-2">
                                                 <div class="col-md-9">
@@ -331,7 +369,7 @@
                                             <div class="tab-pane fade" id="related-tab-4">
                                                 <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="tab-pane row fade" id="tab-2">
@@ -572,11 +610,10 @@
                 <ul class="nav sidebar-categories margin-bottom-40 serviceBox">
                     <li>
                         <h5>Services </h5>
-                    </li>
-                    <li>
                         <hr />
+
                     </li>
-                    <li>
+                    <li style="margin-top: -20px;">
                         <a href="#">#Software</a>
                     </li>
                     <li>
@@ -603,7 +640,7 @@
                         </div>
                         <div class="col-md-9 recent-news-inner">
                             <h3><a href="#">Letiusto gnissimos</a></h3>
-                            <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
+                            <p>Decusamus tiust111o odiodig nis simos ducimus qui sint</p>
                         </div>
                     </div>
 
@@ -635,7 +672,6 @@
         </div>
     </div>
     <!-- END BEGIN PAGE CONTAINER -->
-
     <!-- PushMenu -->
     <div class="col-md-6 slideMenu" id="menu" role="navigation" style="height: 40% !important;width: 40%;">
 
@@ -859,10 +895,12 @@
     <script src="assets/scripts/app.js"></script>
     <script src="assets/scripts/portfolio.js"></script>
     <script src="assets/plugins/CustomDialog/custombox.min.js"></script>
+    <script src="assets/plugins/slick/slick.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
             Portfolio.init();
+            $('.tabsList').slick();
 
             var modal = new Custombox.modal({
                 content: {
@@ -889,6 +927,7 @@
             $('body').on('click', "#cancelModal", function (e) {
                 Custombox.modal.closeAll();
             });
+
         });
     </script>
     <!-- END BODY -->
