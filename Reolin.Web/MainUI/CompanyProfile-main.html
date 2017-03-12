@@ -107,7 +107,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-4 col-xs-12 pull-right">
+                    <div class="col-md-5 col-xs-12 pull-right">
                         <div class="search_promo margin-searchbox" id="search_promo">
                             <div class="input-group search group-search ">
 
@@ -264,7 +264,7 @@
                                     </a>
                                 </li>
                                 <li class="tabItem">
-                                    <a href="#tab-2" data-toggle="tab" class="icon-btn">
+                                    <a href="#tab-2" data-toggle="tab" class="icon-btn pictureTab">
                                         <!--<i class="fa fa-picture-o"></i>-->
                                         <img src="assets/reo-img/img/icon/copy.png" class="tabIcon" />
                                         <div>Pictures</div>
@@ -298,18 +298,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <style>
-                                .slick-next, .slick-prev {
-                                    background-color: #e1e1e1;
-                                    width: 30px;
-                                    height: 30px;
-                                    border-radius: 15px;
-                                }
 
-                                    .slick-prev:hover, .slick-next:hover {
-                                        background: red;
-                                    }
-                            </style>
                             <div class="tab-content">
                                 <div class="tab-pane row fade in active" id="tab-1">
                                     <div class="tabsList" data-slick='{"slidesToShow": 3, "slidesToScroll": 2}'>
@@ -372,30 +361,16 @@
                                         </div>-->
                                     </div>
                                 </div>
-                                <div class="tab-pane row fade" id="tab-2">
+                                <div class="tab-pane row fade active" id="tab-2">
                                     <div class="col-md-9" style="width:100%;">
-                                        <div class="btn-group btn-group-solid">
-                                            <button type="button" class="btn red">
-                                                Category #1
-                                            </button>
-                                            <button type="button" class="btn green">
-                                                Category #2
-                                            </button>
-                                            <button type="button" class="btn purple">
-                                                Category #3
-                                            </button>
-                                            <button type="button" class="btn red">
-                                                Category #1
-                                            </button>
-                                            <button type="button" class="btn green">
-                                                Category #2
-                                            </button>
-                                            <button type="button" class="btn purple">
-                                                Category #3
-                                            </button>
-                                            <button type="button" class="btn red">
-                                                Category #1
-                                            </button>
+                                        <div class="tabsList2" data-slick='{"slidesToShow": 3, "slidesToScroll": 2}'>
+                                            <div class="btn btn-default">Pic #1</div>
+                                            <div class="btn btn-default">Pic #2</div>
+                                            <div class="btn btn-default">Contractor</div>
+                                            <div class="btn btn-default">Servant</div>
+                                            <div class="btn btn-default">Builder</div>
+                                            <div class="btn btn-default">Dude</div>
+                                            <div class="btn btn-default">Some one</div>
                                         </div>
                                         <div class="row">
                                             items will be shown here.
@@ -441,6 +416,7 @@
                                             <li><a href="#messages-tab-2" data-toggle="tab">Comment</a></li>
                                             <li><a href="#messages-tab-3" data-toggle="tab">Question</a></li>
                                             <li><a href="#messages-tab-4" data-toggle="tab">History</a></li>
+
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane row fade in active" id="messages-tab-1">
@@ -610,10 +586,10 @@
                 <ul class="nav sidebar-categories margin-bottom-40 serviceBox">
                     <li>
                         <h5>Services </h5>
-                        <hr />
-
+                        <div class="border">
+                        </div>
                     </li>
-                    <li style="margin-top: -20px;">
+                    <li>
                         <a href="#">#Software</a>
                     </li>
                     <li>
@@ -633,8 +609,8 @@
                 <!-- BEGIN RECENT NEWS -->
                 <div class="recent-news margin-bottom-10 commentBox" style="margin-top: -9%;">
                     <h5>Comments</h5>
-                    <hr />
-                    <div class="row margin-bottom-10 commentBoxItem">
+                    <div class="border"></div>
+                    <div class="row margin-bottom-10 commentBoxItem" style="margin-top: 12px;">
                         <div class="col-md-3">
                             <img src="assets/img/people/img2-large.jpg" alt="" class="img-responsive">
                         </div>
@@ -675,8 +651,8 @@
     <!-- PushMenu -->
     <div class="col-md-6 slideMenu" id="menu" role="navigation" style="height: 40% !important;width: 40%;">
 
-        <a href="#" class="btn btn-lg purple leftOpener push" style="position:relative; left: 100%; top: 40%;">
-            <i class="fa fa-arrow-circle-o-left" style="font-size: 25px;"></i>
+        <a href="#" class="btn btn-lg leftOpener push" style="position:relative; left: 100%; top: 40%; margin-left: 8px;">
+            <img src="../wwwroot/content/old/img/icon/arrow-grey.png" style="width:10px; height:40px;" />
         </a>
 
         <div class="clearfix"></div>
@@ -718,8 +694,9 @@
     </div>
 
     <div class="col-md-6 slideMenu" id="rightMenu" role="navigation" style="height: 40%; width: 40%;">
-        <a href="#" class="btn btn-lg purple rightOpener push" style="position:relative; right: 20%; top: 40%;">
-            <i class="fa fa-arrow-circle-o-right" style="font-size: 25px;"></i>
+        <a href="#" class="btn btn-lg rightOpener push" style="position:relative; right: 20%; top: 60%;">
+            <!--<i class="fa fa-arrow-circle-o-right" style="font-size: 25px;"></i>-->
+            <img src="../wwwroot/content/old/img/icon/arrow.png" style="width:10px; height:40px;transform:rotate(180deg)" />
         </a>
         <div style="overflow: scroll !important; width:100%; height: 100%;">
             <div class="service-box-v1">
@@ -898,10 +875,13 @@
     <script src="assets/plugins/slick/slick.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
+            $('.tabsList').slick();
+            $(".pictureTab").click(function (e) {
+                $('.tabsList2').slick();
+            });
             App.init();
             Portfolio.init();
-            $('.tabsList').slick();
-
+            
             var modal = new Custombox.modal({
                 content: {
                     effect: 'slide',
