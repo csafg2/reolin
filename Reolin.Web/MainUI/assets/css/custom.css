@@ -187,3 +187,9 @@
     .slick-prev:hover, .slick-next:hover {
         background: red;
     }
+
+.registerForm .form-control:focus {
+    -webkit-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+    -moz-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+    box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+}
