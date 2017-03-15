@@ -193,3 +193,12 @@
     -moz-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
     box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
 }
+
+#tab-3 li {
+    float: none;
+    margin-top: 2px;
+}
+
+.socialItem img {
+    width: 50px;
+}
