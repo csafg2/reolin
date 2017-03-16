@@ -54,7 +54,7 @@
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
     <!-- BEGIN HEADER -->
-    <div class="header navbar navbar-default navbar-static-top">
+    <div class="header navbar navbar-default navbar-static-top" style="background:#efefef">
         <div class="container">
             <div class="navbar-header pull">
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -73,21 +73,19 @@
 
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="navbar-collapse collapse">
-                <div class="row" style="padding-top: 1.6%;">
+                <div class="row" style="padding-top: 1.6%; padding-bottom: 4px;">
 
                     <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;margin-top:4%;">
 
                         <div class="topheader company-header">
                             <ul class="nav navbar-nav">
+
                                 <li>
                                     <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="all:inherit;"><i class="fa fa-gear" style="color:gray;"></i></a>
-                                        <span class="text-muted"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="all:inherit;"><i class="fa fa-download" style="color:gray;"></i></a>
+                                        <a href="#" style="all:inherit;">
+                                            <!--<i class="fa fa-download" style="color:gray;"></i>-->
+                                            <img src="assets/reo-img/img/icon/download-grey.png" style="width:30px;" />
+                                        </a>
                                         <span class="text-muted"></span>
                                     </div>
                                 </li>
@@ -115,10 +113,10 @@
                             </div>
                             <div class="input-group search group-search ">
                                 <div class="input-group-btn btn_cat btn-group-search">
-                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
+                                    <!--<button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
                                         <span><span class="caret"></span></span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
+                                    </button>-->
+                                    <!--<ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
                                         <li class="select-cat"><a href="#" class="automotive-machinary"><i class="fa fa-automobile"></i>automotive &amp; machinery</a></li>
                                         <li class="select-cat"><a href="#" class="home-office"><i class="fa fa-home"></i>home &amp; office</a></li>
                                         <li class="select-cat"><a href="#" class="computer-Electronics"><i class="fa fa-microchip"></i>computer &amp; Electronics</a></li>
@@ -140,7 +138,7 @@
                                         <li class="select-cat"><a href="#" class="Barganing-Dealing"><i class="fa fa-handshake-o"></i>Barganing &amp; Dealing</a></li>
                                         <li class="select-cat"><a href="#" class="Educational"><i class="fa fa-graduation-cap"></i>Educational </a></li>
                                         <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall"><i class="fa fa-shopping-cart"></i>Hypermarkets &amp; Shoppingmall</a></li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                                 <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
                                 <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
@@ -156,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="margin-top: -2%;">
+                <div style="margin-top: -3%;" class="locationLinks">
                     <a href="#" class="btn">Global</a>
                     <a href="#" class="btn">Country</a>
                     <a href="#" class="btn">City</a>
@@ -213,38 +211,17 @@
                 </div>
             </div>
             <div class="col-md-8" style="margin-left:4%;">
-                <div class="row margin-bottom-40">
-                    <div class="col-md-3">
-                        <div class="pricing">
-                            <div>
-                                <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                            </div>
-                            
-                            <div>
-                                <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
-                            </div>
-                            <div class="suggestLine"></div>
-                            <div style="text-align:inherit;padding-left: 2.5%;">
-                                <p>Lorem ipsum dolor sit amet</p>
-                                <p class="expandData" style="display:none;"> 
-                                consectetur adipiscing elit. Ut non libero magna psum olor .
-                                    consectetur adipiscing elit. Ut non libero magna psum olor .
-                                </p>
-                                <a href="#" class="expandButton">
-                                    <img style="width: 16px; height:20px;" src="assets/reo-img/img/icon/traingle-ic.png" />
-                                </a>
-                                <p></p>
-                            </div>
-                        </div>
+                <div class="row margin-bottom-40 suggestionRow">
+                    <div style="width:2.2%; display:block; float:left; height: 10px;">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 suggestionItem">
                         <div class="pricing">
                             <div>
                                 <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
                             </div>
 
                             <div>
-                                <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                                <a href="#"><img class="sugges-share" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
@@ -260,14 +237,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 suggestionItem">
                         <div class="pricing">
                             <div>
                                 <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
                             </div>
 
                             <div>
-                                <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                                <a href="#"><img class="sugges-share" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
@@ -283,14 +260,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 suggestionItem">
                         <div class="pricing">
                             <div>
                                 <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
                             </div>
 
                             <div>
-                                <a href="#"><img style="max-height: 42px; max-width:42px;" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                                <a href="#"><img class="sugges-share" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
+                            </div>
+                            <div class="suggestLine"></div>
+                            <div style="text-align:inherit;padding-left: 2.5%;">
+                                <p>Lorem ipsum dolor sit amet</p>
+                                <p class="expandData" style="display:none;">
+                                    consectetur adipiscing elit. Ut non libero magna psum olor .
+                                    consectetur adipiscing elit. Ut non libero magna psum olor .
+                                </p>
+                                <a href="#" class="expandButton">
+                                    <img style="width: 16px; height:20px;" src="assets/reo-img/img/icon/traingle-ic.png" />
+                                </a>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 suggestionItem">
+                        <div class="pricing">
+                            <div>
+                                <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
+                            </div>
+
+                            <div>
+                                <a href="#"><img class="sugges-share" src="assets/reo-img/img/icon/tab-globalgreen.png"></a>
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
@@ -307,7 +307,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-sm-2 top10Container" style="margin-top: 2%; float:right;">
                 <div style="text-align: center; color: gray;">
@@ -388,6 +388,11 @@
             $(this).prev().slideToggle();
             rotate($(this), 360);
         });
+
+        $(".locationLinks a").click(function (e) {
+            $(".locationLinks a").removeClass("bottomBorder");
+            $(this).addClass("bottomBorder");
+        })
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>

@@ -55,7 +55,7 @@
 }
 
 .serviceBox {
-    border: 1px solid gray;
+    border: 1px solid #d5cfcf;
     padding: 3%;
     background-color: white;
 }
@@ -145,6 +145,7 @@
     width: 13%;
     border: 1px solid gray;
     border-top: none;
+    background: #f5f4f4;
 }
 
 .pricing {
@@ -166,7 +167,7 @@
 .suggestLine {
     clear: both;
     width: 100%;
-    border: 1px solid gray;
+    border: 1px solid #d5cfcf;
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -188,11 +189,18 @@
         background: red;
     }
 
-.registerForm .form-control:focus {
-    -webkit-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
-    -moz-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
-    box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+.registerForm {
+    -webkit-box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    background: transparent;
 }
+
+    .registerForm input[type=text]:focus {
+        -webkit-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+        -moz-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+        box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+    }
 
 #tab-3 li {
     float: none;
@@ -201,4 +209,34 @@
 
 .socialItem img {
     width: 50px;
+}
+
+.bottomBorder {
+    border-bottom: 2px solid rgba(32,194,0,1);
+}
+
+
+.suggestionItem {
+    margin-left: -1% !important;
+}
+
+.sugges-share {
+    max-height: 32px;
+    max-width: 32px;
+}
+
+.selectLocationButton {
+    float: right;
+}
+
+    .selectLocationButton img {
+        float: right;
+        max-width: 42px;
+        max-height: 42px;
+    }
+
+.registerSeparator {
+    width:100%;
+    border: 1px solid green;
+    margin-top: 8px;
 }
