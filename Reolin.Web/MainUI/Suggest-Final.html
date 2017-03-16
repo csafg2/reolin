@@ -380,13 +380,11 @@
                 '-o-transform': 'rotate(' + degrees + 'deg)',
                 'transform': 'rotate(' + degrees + 'deg)',
                 'zoom': 1
-
             });
         }
 
         $(".expandButton").click(function (e) {
             $(this).prev().slideToggle();
-            rotate($(this), 360);
         });
 
         $(".locationLinks a").click(function (e) {
