@@ -99,7 +99,7 @@
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.xproj">
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{96c280ca-ae2e-4c94-99ee-14a1f512ce9e}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
@@ -126,6 +126,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

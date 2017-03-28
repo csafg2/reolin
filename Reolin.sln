@@ -1,29 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{794E35A8-AEC0-41CD-B141-A98E0813307B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{9D13791A-6623-44A5-B4EC-74DB9FE4F549}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Web.Api", "Reolin.Web.Api\Reolin.Web.Api.xproj", "{AAE1A33E-3FB7-47BB-8C07-C19ADAA048C2}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Web.Security", "Reolin.Web.Security\Reolin.Web.Security.xproj", "{4FD9845C-3A58-4242-B697-D489525DF689}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Web.Security.Membership", "Reolin.Web.Security.Membership\Reolin.Web.Security.Membership.xproj", "{8F0F642D-6E3F-4D37-951C-535E76D153AD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Web.Security.Membership.Core", "Reolin.Web.Security.Membership.Core\Reolin.Web.Security.Membership.Core.xproj", "{35F39A8A-796C-41E3-A8F9-21A19A75D433}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2482BA64-20DA-4552-B70F-D57E7CA99CB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{99FA4CA5-3336-4602-80DC-54A0577E48C4}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Data.Services.Core", "Reolin.Data.Services.Core\Reolin.Data.Services.Core.xproj", "{24084C99-8239-4F8F-86AC-78836527E6D5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostics", "diagnostics", "{FC9A4D8E-F45A-4BF3-9FC8-514FF0BB70AA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Data.Services", "Reolin.Data.Services\Reolin.Data.Services.xproj", "{9D428C8C-1EEC-41D4-8591-16C7158EF76A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web.Api", "Reolin.Web.Api\Reolin.Web.Api.csproj", "{AAE1A33E-3FB7-47BB-8C07-C19ADAA048C2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Utilities", "Utilities\Utilities.xproj", "{96C280CA-AE2E-4C94-99EE-14A1F512CE9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web.Security", "Reolin.Web.Security\Reolin.Web.Security.csproj", "{4FD9845C-3A58-4242-B697-D489525DF689}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web.Security.Membership", "Reolin.Web.Security.Membership\Reolin.Web.Security.Membership.csproj", "{8F0F642D-6E3F-4D37-951C-535E76D153AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web.Security.Membership.Core", "Reolin.Web.Security.Membership.Core\Reolin.Web.Security.Membership.Core.csproj", "{35F39A8A-796C-41E3-A8F9-21A19A75D433}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Data.Services.Core", "Reolin.Data.Services.Core\Reolin.Data.Services.Core.csproj", "{24084C99-8239-4F8F-86AC-78836527E6D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Data.Services", "Reolin.Data.Services\Reolin.Data.Services.csproj", "{9D428C8C-1EEC-41D4-8591-16C7158EF76A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{96C280CA-AE2E-4C94-99EE-14A1F512CE9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Data", "Reolin.Data\Reolin.Data.csproj", "{7E94A2FC-F1F9-47A8-8DF8-014707618FE2}"
 EndProject
@@ -35,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTest", "DatabaseTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTest", "ServiceTest\ServiceTest.csproj", "{91E4A4A8-C3A0-43BC-872B-C62658B14356}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostics", "diagnostics", "{FC9A4D8E-F45A-4BF3-9FC8-514FF0BB70AA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Diagnostics.Logging", "Reolin.Diagnostics.Logging\Reolin.Diagnostics.Logging.csproj", "{311A2D66-1F72-410A-BE08-C5601B99676B}"
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "MainUMLProject", "MainUMLProject\MainUMLProject.modelproj", "{11261D80-EA4C-44E4-B1F7-16AE488E73EE}"
@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Data.DTO", "Reolin.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerUnitTest", "ControllerUnitTest\ControllerUnitTest.csproj", "{D294595C-B869-463B-AFB4-88514C0D40FB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Reolin.Web", "Reolin.Web\Reolin.Web.xproj", "{2972D9F3-04BF-41DE-912C-6C2D86155BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web", "Reolin.Web\Reolin.Web.csproj", "{2972D9F3-04BF-41DE-912C-6C2D86155BB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Web.ViewModels", "Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj", "{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}"
 EndProject
