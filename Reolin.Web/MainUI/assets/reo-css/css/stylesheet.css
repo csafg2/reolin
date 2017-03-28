@@ -2473,8 +2473,7 @@ background-image: url(../../reo-img/img/icon/arrow.png);
 }
 .back
 {
-    background-image:url(../../reo-img/img/back-2.jpg);
-    
+    /*background-image:url(../../reo-img/img/back-2.jpg);*/
     background-size:cover;
 }
 .login-head

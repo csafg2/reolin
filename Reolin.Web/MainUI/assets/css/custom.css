@@ -1,4 +1,9 @@
 /* here you can put your own css to customize and override the theme */
+
+#map {
+    opacity: 0.7;
+}
+
 .c-main-container {
     width: 88%;
 }
@@ -236,7 +241,22 @@
     }
 
 .registerSeparator {
-    width:100%;
+    width: 100%;
     border: 1px solid green;
     margin-top: 8px;
 }
+
+.search-category ul {
+    background: rgba(148,148,148, .6) !important;
+    background: -moz-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(148,148,148,1)), color-stop(34%, rgba(219,219,219,0.89)), color-stop(70%, rgba(209,209,209,0.77)), color-stop(100%, rgba(102,102,102,0.67))) !important;
+    background: -webkit-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    background: -o-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    background: -ms-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    background: linear-gradient(to bottom, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#949494', endColorstr='#666666', GradientType=0 );
+}
+
+    .search-category a {
+        color: white !important;
+    }
