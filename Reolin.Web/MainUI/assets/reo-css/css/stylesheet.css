@@ -283,10 +283,8 @@ margin-top:35px!important;
 }
 .topheader
 {
-   float:right;
    display:inline-block;
    background-color:transparent;
-
 }
 .topheader ul
 {
@@ -1115,8 +1113,8 @@ animation:flip 4s infinite;
  background-image:url('../../reo-img/img/icon/language-gray.png');
  background-size:cover;
  background-repeat:no-repeat;
- height:25px;
- width:25px;
+ height:35px;
+ width:35px;
  opacity:0.63;
  display: inherit;
   transition:all 0.4s ease-in-out;
@@ -1132,8 +1130,8 @@ animation:flip 4s infinite;
  background-image:url('../../reo-img/img/icon/download-grey.png');
  background-size:cover;
  background-repeat:no-repeat;
- height:25px;
- width:25px;
+ height:35px;
+ width:35px;
  opacity:0.63;
  display: inherit;
   transition:all 0.4s ease-in-out;
@@ -1149,8 +1147,8 @@ animation:flip 4s infinite;
  background-image:url('../../reo-img/img/icon/user-grey.png');
  background-size:cover;
  background-repeat:no-repeat;
- height:25px;
- width:25px;
+ height:35px;
+ width:35px;
  opacity:0.63;
  display: inherit;
   transition:all 0.4s ease-in-out;
@@ -5088,3 +5086,7 @@ a.tab-link:hover
   {
       opacity:1;
   }
+
+/*.topheader li a {
+    width: 35px !important;
+}*/

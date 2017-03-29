@@ -18,7 +18,7 @@
 .slideMenu {
     background: white;
     z-index: 2000;
-    border: 2px dashed purple;
+    box-shadow: 1px 1px 10px 1px black;
 }
 
 .searchItem {
@@ -31,6 +31,14 @@
 
     .searchItem span {
         border-radius: 10px;
+    }
+
+    .searchItem div {
+        color: gray;
+    }
+    .searchItem div:hover
+    {
+        color: #359a68;
     }
 
 .certificateItem {
@@ -91,8 +99,8 @@
 }
 
 .tabIcon {
-    max-height: 60%;
-    max-height: 60%;
+    max-height: 800%;
+    max-height: 80%;
 }
 
 
@@ -252,11 +260,68 @@
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(148,148,148,1)), color-stop(34%, rgba(219,219,219,0.89)), color-stop(70%, rgba(209,209,209,0.77)), color-stop(100%, rgba(102,102,102,0.67))) !important;
     background: -webkit-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
     background: -o-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
-    background: -ms-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
     background: linear-gradient(to bottom, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#949494', endColorstr='#666666', GradientType=0 );
 }
 
-    .search-category a {
-        color: white !important;
-    }
+.search-category a {
+    color: white !important;
+}
+
+.categoryItem a {
+    font-size: 14px;
+    margin-top: 0px;
+    border-radius: 0px 8px 8px 0px;
+    color: white;
+    background: rgba(85, 211, 169, .6);
+    padding: 2px 6px 2px 6px;
+    text-shadow: 1px 1px 0px gray;
+}
+
+.categoryItem {
+    margin-top: 4px;
+}
+
+.searchCategoryContainer {
+    width: 70%;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 280px;
+    display:block;
+    background-color: rgba(239, 239, 239, .8);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+.activeCategoryItem {
+    background-color: #55d2a8 !important;
+}
+
+.index_suggestContainer {
+    /*margin-top: -38px !important;*/
+}
+
+.filterGroup a {
+    border: 1px solid #d5cfcf;
+}
+
+.leftOpener, .rightOpener{
+    background: transparent;
+    display:inline;
+}
+.toolsMenu li{
+    width: 55px;
+
+}
+
+#searchBox {
+    -webkit-box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+}
+
+.tabButton{
+    height: 80px;
+}

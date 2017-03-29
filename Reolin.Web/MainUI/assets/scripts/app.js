@@ -150,11 +150,11 @@ var App = function () {
             }, false);
         }
         var docElem = document.documentElement,
-        header = $('.navbar-inner'),
-        headerwrap = $('.front-header'),
-        slider = $('.slider-main'),
-        didScroll = false,
-        changeHeaderOn = 300;
+            header = $('.navbar-inner'),
+            headerwrap = $('.front-header'),
+            slider = $('.slider-main'),
+            didScroll = false,
+            changeHeaderOn = 300;
 
         function scrollPage() {
             var sy = scrollY();
@@ -224,11 +224,11 @@ var App = function () {
 
 
     }
-    var setupMenus = function()
-    {
-        $('.leftOpener').bigSlide({ menu: '#menu', push: 'leftOpener', menuWidth: '25.6em' });
+    
+    var setupMenus = function () {
+        $('.leftOpener').bigSlide({ menu: '#menu', push: 'leftOpener', menuWidth: '20.6em' });
         $('.rightOpener').bigSlide({
-            menu: '#rightMenu', push: 'rightOpener', menuWidth: '25.6em', side: 'right'
+            menu: '#rightMenu', push: 'rightOpener', menuWidth: '20em', side: 'right'
         });
 
         $('#searchBox,#mainserach').live("keypress", function (e) {
@@ -236,6 +236,52 @@ var App = function () {
                 $('.leftOpener,.rightOpener').click();
                 return false; // prevent the button click from happening
             }
+        });
+
+        var rightDegree = 180;
+        $('.rightOpener').click(function (e) {
+            if (rightDegree == 0)
+            {
+                rightDegree = 180;
+            }
+            else
+            {
+                rightDegree = 0;
+            }
+
+            $(".slideMenuArrow").css("transform", "rotate(" + rightDegree + "deg)");
+        });
+
+        var leftDegree = 0;
+        $('.leftOpener').click(function (e) {
+
+            if (leftDegree == 180) {
+                leftDegree = 0;
+            }
+            else {
+                leftDegree = 180;
+            }
+
+            $(".leftSlideMenuArrow").css("transform", "rotate(" + leftDegree + "deg)");
+        });
+
+
+        $(".categoryItem a").click(function (e) {
+            $(".categoryItem a").removeClass("activeCategoryItem");
+            $(this).addClass("activeCategoryItem");
+            return false;
+        });
+
+        $(".suggest-share").click(function (e) {
+            $(this).next().slideToggle();
+        });
+
+        $("#distanceButton").click(function (e) {
+            $("#secondFilterGroup a").removeAttr('disabled');
+        });
+
+        $("#popularityButton").click(function (e) {
+            $("#secondFilterGroup a").attr('disabled', 'disabled');
         });
     }
 
