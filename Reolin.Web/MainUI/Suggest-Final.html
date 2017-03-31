@@ -78,8 +78,7 @@
                     <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;margin-top:4%;">
 
                         <div class="topheader company-header">
-                            <ul class="nav navbar-nav">
-
+                            <ul class="nav navbar-nav suggestPage_Menu">
                                 <li>
                                     <div class="col-md-3 col-sm-4">
                                         <a href="#" style="all:inherit;">
@@ -154,7 +153,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="margin-top: -3%;" class="locationLinks">
+                <div style="margin-top: -3%; width: 21%; margin-left: 4%;" class="locationLinks">
                     <a href="#" class="btn">Global</a>
                     <a href="#" class="btn">Country</a>
                     <a href="#" class="btn">City</a>
@@ -167,10 +166,11 @@
     <!-- BEGIN PAGE CONTAINER -->
     <div class="page-container" style="margin-top: 1%;">
         <!-- BEGIN CONTAINER -->
-        <div class="container min-hight" style="width: 100%;">
+        <div class="container min-hight" style="width: 100%;padding:0px;">
 
             <div class="col-md-2 top10Container" style="margin-top: 2%; float:left;">
                 <div style="text-align:center;color:gray;">
+                    <br/>
                     Top 10
                     <br />
                 </div>
@@ -210,7 +210,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8" style="margin-left:4%;">
+            <div class="col-md-8" style="margin-left:6%;">
                 <div class="row margin-bottom-40 suggestionRow">
                     <div style="width:2.2%; display:block; float:left; height: 10px;">
                     </div>
@@ -225,7 +225,8 @@
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <b>Microsoft</b>
+                                <p>Lorem ipsum dolor sit amet      consectetur adipisc</p>
                                 <p class="expandData" style="display:none;">
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
@@ -248,7 +249,8 @@
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <b>CISCO</b>
+                                <p>Lorem ipsum dolor sit amet     consectetur adipisc</p>
                                 <p class="expandData" style="display:none;">
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
@@ -271,7 +273,8 @@
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <b>YAHOO!</b>
+                                <p>Lorem ipsum dolor sit amet     consectetur adipisc</p>
                                 <p class="expandData" style="display:none;">
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
@@ -294,7 +297,8 @@
                             </div>
                             <div class="suggestLine"></div>
                             <div style="text-align:inherit;padding-left: 2.5%;">
-                                <p>Lorem ipsum dolor sit amet</p>
+                                <b>Oracle</b>
+                                <p>Lorem ipsum dolor sit amet     consectetur adipisc</p>
                                 <p class="expandData" style="display:none;">
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
                                     consectetur adipiscing elit. Ut non libero magna psum olor .
@@ -305,12 +309,15 @@
                                 <p></p>
                             </div>
                         </div>
+                    </div>
+                    <div style="width:2.2%; display:block; float:right; height: 10px;">
                     </div>
                 </div>
 
             </div>
-            <div class="col-sm-2 top10Container" style="margin-top: 2%; float:right;">
+            <div class="col-sm-2 top10Container" style="margin-top: 2%; float:right;border-right: none !important">
                 <div style="text-align: center; color: gray;">
+                    <br />
                     Top 10
                     <br />
                 </div>
@@ -389,7 +396,10 @@
 
         $(".locationLinks a").click(function (e) {
             $(".locationLinks a").removeClass("bottomBorder");
+            $(".locationLinks a").removeClass("activeLocationFilter");
+
             $(this).addClass("bottomBorder");
+            $(this).addClass("activeLocationFilter");
         })
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->

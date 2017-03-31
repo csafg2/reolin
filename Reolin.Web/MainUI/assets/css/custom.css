@@ -19,6 +19,8 @@
     background: white;
     z-index: 2000;
     box-shadow: 1px 1px 10px 1px black;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .searchItem {
@@ -36,10 +38,10 @@
     .searchItem div {
         color: gray;
     }
-    .searchItem div:hover
-    {
-        color: #359a68;
-    }
+
+        .searchItem div:hover {
+            color: #359a68;
+        }
 
 .certificateItem {
     display: block;
@@ -96,7 +98,12 @@
     padding-right: 7%;
     padding-left: 7%;
     background-color: white;
+    color: black;
 }
+
+    .staffBox a {
+        color: black;
+    }
 
 .tabIcon {
     max-height: 800%;
@@ -121,7 +128,6 @@
 
 .profileBox {
     background: white;
-    border: 1px solid gray;
     width: 110%;
     margin-left: -5%;
     margin-bottom: 10px;
@@ -229,8 +235,8 @@
 }
 
 
-.suggestionItem {
-    margin-left: -1% !important;
+.suggestionItem:not(:first-child) {
+    margin-left: -2.2% !important;
 }
 
 .sugges-share {
@@ -288,7 +294,7 @@
     margin-left: auto;
     margin-right: auto;
     height: 280px;
-    display:block;
+    display: block;
     background-color: rgba(239, 239, 239, .8);
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
@@ -299,21 +305,18 @@
     background-color: #55d2a8 !important;
 }
 
-.index_suggestContainer {
-    /*margin-top: -38px !important;*/
-}
 
 .filterGroup a {
     border: 1px solid #d5cfcf;
 }
 
-.leftOpener, .rightOpener{
+.leftOpener, .rightOpener {
     background: transparent;
-    display:inline;
+    display: inline;
 }
-.toolsMenu li{
-    width: 55px;
 
+.toolsMenu li {
+    width: 55px;
 }
 
 #searchBox {
@@ -322,6 +325,47 @@
     box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
 }
 
-.tabButton{
+.tabButton {
     height: 80px;
+}
+
+.socialContainer div {
+    float: left;
+    margin-left: 9px;
+}
+
+    .socialContainer div img {
+        max-height: 45px;
+    }
+
+        .socialContainer div img:hover {
+            border: 1px solid #09a2b7;
+            border-radius: 51px !important;
+        }
+
+.badge {
+    position: absolute;
+    top: 10% !important;
+    right: 10% !important;
+}
+
+.tab-style-1 ul.nav-tabs .active > a, .tab-style-1 ul.nav-tabs .active > a:hover, .tab-style-1 ul.nav-tabs .active > a:focus {
+    border: none !important;
+    background: #e5e0e0 !important;
+}
+
+.suggestPage_Menu li {
+    width: 50px;
+}
+
+.locationLinks a {
+    color: rgba(102,102,102,0.67);
+}
+
+.activeLocationFilter {
+    color: #359a68 !important;
+}
+
+.top10Container .img-responsive{
+    height:120px;
 }
