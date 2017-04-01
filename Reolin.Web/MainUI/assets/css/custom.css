@@ -213,12 +213,17 @@
     -moz-box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
     box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
     background: transparent;
+    width: 44%;
 }
 
-    .registerForm input[type=text]:focus {
-        -webkit-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
-        -moz-box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
-        box-shadow: -1px 0px 17px 0px rgba(32,194,0,1) !important;
+    .registerForm input[type=text]:focus, .registerForm input[type=password]:focus {
+        border: 1px solid rgba(32,194,0,1);
+    }
+
+    .registerForm input[type=text], .registerForm input[type=password] {
+        -webkit-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
     }
 
 #tab-3 li {
@@ -256,8 +261,8 @@
 
 .registerSeparator {
     width: 100%;
-    border: 1px solid green;
-    margin-top: 8px;
+    border: 1px solid #349967;
+    margin-top: 15px;
 }
 
 .search-category ul {
@@ -366,6 +371,15 @@
     color: #359a68 !important;
 }
 
-.top10Container .img-responsive{
-    height:120px;
+.top10Container .img-responsive {
+    height: 120px;
+}
+
+.register_Continue {
+    -webkit-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    color: gray !important;
+    width: 25%;
+    margin-right: -12px;
 }

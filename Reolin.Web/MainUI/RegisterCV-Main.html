@@ -33,8 +33,7 @@
     <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
     <style>
         .min-hight input[type="text"], .min-hight input[type="password"] {
-            border-radius: 5px 5px 5px !important;
-            box-shadow: 2px 2px 12px #dbd9d9;
+            border: 1px solid #dbd9d9;
         }
 
         .control-label, .form-horizontal {
@@ -45,135 +44,15 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="registerPage" style="color: green !important;background:url('assets/reo-img/img/light-bg.png')">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-        <div class="color-mode-icons icon-color"></div>
-        <div class="color-mode-icons icon-color-close"></div>
-        <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-blue current color-default" data-style="blue"></li>
-                <li class="color-red" data-style="red"></li>
-                <li class="color-green" data-style="green"></li>
-                <li class="color-orange" data-style="orange"></li>
-            </ul>
-            <label>
-                <span>Header</span>
-                <select class="header-option form-control input-small">
-                    <option value="default" selected>Default</option>
-                    <option value="fixed">Fixed</option>
-                </select>
-            </label>
-        </div>
-    </div>
-    <!--<div class="header navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header pull">
-                <button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <a class="navbar-brand logo-v1" href="index.html">
-                    <img style="width:142px; height: 28px;" src="assets/img/layoot-gray.png" id="logoimg" alt="">
-                </a>
-            </div>
-
-            <div class="navbar-collapse collapse">
-                <div class="row" style="padding-top: 1.6%;">
-                    <div class="col-md-4 col-xs-12 pull-right" style="font-size: 25px;">
-                        <div class="topheader company-header">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="all:inherit;"><i class="fa fa-gear" style="color:gray;"></i></a>
-                                        <span class="text-muted"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="all:inherit;"><i class="fa fa-download" style="color:gray;"></i></a>
-                                        <span class="text-muted"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-3 col-sm-4">
-                                        <a href="#" style="all:inherit;"><i class="fa fa-user" style="color:gray;"></i></a>
-                                        <span class="text-muted"></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-3 col-sm-4" style="font-family:'Times New Roman'; color:gray;">
-                                        <a href="#" style="all:inherit;">L</a>
-                                        <span class="text-muted">
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-5 col-xs-12 pull-right">
-                        <div class="search_promo margin-searchbox" id="search_promo">
-                            <div class="input-group search group-search ">
-
-                                <div class="input-group-btn btn_cat btn-group-search">
-                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height" data-toggle="dropdown" aria-expanded="false">
-                                        <span><span class="caret"></span></span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right place_dd " role="menu">
-                                        <li class="select-cat"><a href="#" class="automotive-machinary">automotive &amp; machinery</a></li>
-                                        <li class="select-cat"><a href="#" class="home-office">home &amp; office</a></li>
-                                        <li class="select-cat"><a href="#" class="computer-Electronics">computer &amp; Electronics</a></li>
-                                        <li class="select-cat"><a href="#" class="food-beverage">food &amp; beverage</a></li>
-                                        <li class="select-cat"><a href="#" class="Media-Entertainment-Art">Media , Entertainment , Art</a></li>
-                                        <li class="select-cat"><a href="#" class="Medical-health">Medical &amp; health</a></li>
-                                        <li class="select-cat"><a href="#" class="Legal-Financial">Legal &amp; Financial</a></li>
-                                        <li class="select-cat"><a href="#" class="clothing-beauty">clothing &amp; beauty</a></li>
-                                        <li class="select-cat"><a href="#" class="Travel-Transportation">Travel &amp; Transportation</a></li>
-                                        <li class="select-cat"><a href="#" class="Pets-Livestock">Pets &amp; Livestock</a></li>
-                                        <li class="select-cat"><a href="#" class="Kids">Kids</a></li>
-                                        <li class="select-cat"><a href="#" class="Sport-Hobbies">Sport &amp; Hobbies</a></li>
-                                        <li class="select-cat"><a href="#" class="Nonprofit">Nonprofit</a></li>
-                                        <li class="select-cat"><a href="#" class="Agricultural-Gardening">Agricultural &amp; Gardening</a></li>
-                                        <li class="select-cat"><a href="#" class="Industial">Industial</a></li>
-                                        <li class="select-cat"><a href="#" class="Advertising">Advertising</a></li>
-                                        <li class="select-cat"><a href="#" class="Constraction">Constraction</a></li>
-                                        <li class="select-cat"><a href="#" class="Cermonie-wedding">Ceremony &amp; wedding</a></li>
-                                        <li class="select-cat"><a href="#" class="Barganing-Dealing">Barganing &amp; Dealing</a></li>
-                                        <li class="select-cat"><a href="#" class="Educational">Educational </a></li>
-                                        <li class="select-cat"><a href="#" class="Hypermarkets-Shoppingmall">Hypermarkets &amp; Shoppingmall</a></li>
-                                    </ul>
-                                </div>
-                                <input type="text" id="searchBox" class="form-control bordersearch input-search" data-category="" aria-label="...">
-                                <input id="Submit1" class="serch-btn" data-search-open="false" type="submit" value="" style="display:none;">
-                                <div class="input-group-btn btn_cat btn-group-search">
-                                    <button type="button" class="btn btn-default dropdown-toggle bordercategory search-height"
-                                            style="background-image: url('assets/img/icons/glob-seachicon.png');
-                                    background-size: cover;
-                                    background-color: transparent;
-                                    width: 34px; height:34px; border: none; margin-left: 20%;"></button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
+<body class="registerPage" style="color: green !important; background: url('assets/reo-img/img/light-bg.png'),url('assets/reo-img/img/bg2.png'), silver;">
     <div style="width:100%; text-align:center; margin-top: 20px;">
-        <img style="width:142px; height: 28px;" src="assets/img/layoot-gray.png" id="logoimg" alt="">
-
+        <img style="width:142px; height: 48px;" src="assets/img/layoot-gray.png" id="logoimg" alt="">
     </div>
     <div class="container min-hight">
         <div class="col-md-3"></div>
         <div class="panel panel-success col-md-6 registerForm" style="margin-top:1%; padding-top: 1%;">
-            <div class="panel-heading" style="text-align:center; background:transparent;">
-                <h3 class="panel-title"><strong>Register your personal CV</strong></h3>
+            <div class="panel-heading" style="text-align:center; background:transparent;border:none;">
+                <h3 class="panel-title"><strong style="color: gray;">Register your personal CV</strong></h3>
 
                 <a href="" style="float:right;color:gray;">back to register</a>
             </div>
@@ -254,11 +133,12 @@
                                 <input type="text" class="form-control input-sm" placeholder="989121533232">
                             </div>
                         </div>
-                        <hr />
+                        <div class="registerSeparator"></div>
+                        <br/>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Username: </label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control input-lg">
+                                <input type="text" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
@@ -281,7 +161,7 @@
                         </div>
                     </div>
                     <div class="form-actions right">
-                        <button type="submit" class="btn green">Continue</button>
+                        <button type="submit" class="btn btn-default register_Continue">Continue</button>
                     </div>
                 </form>
             </div>

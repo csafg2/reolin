@@ -34,11 +34,16 @@
 
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
+    <style>
+        .slick-prev, .slick-next{
+            margin-top: -.5%;
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="mainBody">
-    
+
     <!-- BEGIN HEADER -->
     <div class="header navbar navbar-default navbar-static-top" style="background: #e1e1e1;">
         <div class="container">
@@ -161,9 +166,9 @@
             </div>
             <!-- END FIRST COLUMN -->
             <!-- SECOND COLUMN -->
-            <div class="col-md-5" style="margin-left: 4%; margin-right: 2%;">
+            <div class="col-md-5" style="margin-left: 2%; margin-right: 2%; width: 46%;">
                 <!-- row for profile name and ..  -->
-                <div class="row profileBox" style="height:250px;">
+                <div class="row profileBox" style="height:250px;background:transparent;">
                     <div class="col-md-5 col-sm-5 mid-cell">
 
                         <div class="row">
@@ -183,14 +188,15 @@
                         </div>
                         <div class="row" style="margin-top: 3%; height: 103%;">
                             <div id="suggestionModalButton" class="col-sm-5">
-                                <div class="service-box-v1 mainButton" style="height:105px; text-align: center; vertical-align: middle;line-height: 80px; ">
-                                    Suggestes
+                                <div class="service-box-v1 mainButton" 
+                                     style="background-size:cover;background-image: url('assets/reo-img/img/suggest-c.png'); height: 105px; text-align: center; vertical-align: middle; line-height: 80px; ">
+                                    
                                 </div>
                             </div>
 
                             <div class="col-md-6" id="certButton" style="float: right; cursor:pointer;">
-                                <div class="service-box-v1 mainButton" style="height: 105px; text-align: center; vertical-align: middle;line-height: 80px">
-                                    Certificates
+                                <div class="service-box-v1 mainButton" style="background-image: url('assets/reo-img/img/award-c.png'); background-size:cover; height: 105px; text-align: center; vertical-align: middle; line-height: 80px">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -207,8 +213,8 @@
                     <!-- BEGIN TABS AND TESTIMONIALS -->
                     <div class="row mix-block" style="margin-top:0px;">
                         <!-- TABS -->
-                        <div class="col-md-9 tab-style-1 margin-bottom-20 tabsContainer" style="width:100%;border: 1px solid gray;padding-top: 2%;">
-                            <ul class="nav nav-tabs">
+                        <div class="col-md-9 tab-style-1 margin-bottom-20 tabsContainer" style="width:100%;border: 1px solid gray; margin-top:-5%;">
+                            <ul class="nav nav-tabs" style="border-bottom: none;">
                                 <li class="tabItem active">
                                     <a href="#tab-1" data-toggle="tab" class="icon-btn tabButton">
                                         <img style="height:85px;" src="assets/reo-img/img/icon/tab-usersgreen.png" class="tabIcon">
@@ -254,7 +260,7 @@
 
                             <div class="tab-content">
                                 <div class="tab-pane row fade in active" id="tab-1">
-                                    <div class="tabsList" data-slick='{"slidesToShow": 3, "slidesToScroll": 2}'>
+                                    <div class="tabsList" data-slick='{"slidesToShow": 5, "slidesToScroll": 2}'>
                                         <div class="btn btn-default">Employee</div>
                                         <div class="btn btn-default">Employer</div>
                                         <div class="btn btn-default">Contractor</div>
@@ -351,7 +357,7 @@
                                         </div>
                                     </div>
                                 </div>
-                         
+
                                 <div class="tab-pane fade socialContainer" id="tab-3">
                                     <div>
                                         <img src="../wwwroot/content/old/img/facebook.png" />

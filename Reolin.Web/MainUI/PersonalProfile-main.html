@@ -35,28 +35,7 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="mainBody">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-        <div class="color-mode-icons icon-color"></div>
-        <div class="color-mode-icons icon-color-close"></div>
-        <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-blue current color-default" data-style="blue"></li>
-                <li class="color-red" data-style="red"></li>
-                <li class="color-green" data-style="green"></li>
-                <li class="color-orange" data-style="orange"></li>
-            </ul>
-            <label>
-                <span>Header</span>
-                <select class="header-option form-control input-small">
-                    <option value="default" selected>Default</option>
-                    <option value="fixed">Fixed</option>
-                </select>
-            </label>
-        </div>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER -->
+    
     <!-- BEGIN HEADER -->
     <div class="header navbar navbar-default navbar-static-top" style="background: #e1e1e1;">
         <div class="container">
@@ -134,27 +113,27 @@
                 </div>
                 <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
             </div>
-            <div class="col-md-5 col-sm-5" style="margin-top: 3%; padding-top: 2%;">
+            <div class="col-md-6 col-sm-6" style="margin-top: 3%; padding-top: 2%;">
                 <div class="col-md-9 tab-style-1 margin-bottom-20 whiteBox" style="width:106%; padding-top: 2%; border: 1px solid gray; margin-left: -2.7%;">
-                    <ul class="nav nav-tabs">
-                        <li class="personalPageTabItem">
-                            <a href="#tab-1" data-toggle="tab" class="icon-btn">
+                    <ul class="nav nav-tabs" style="border:none;">
+                        <li class="personalPageTabItem tabItem">
+                            <a href="#tab-1" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<i class="fa fa-group"></i>-->
                                 <img src="assets/reo-img/img/icon/tab-usersgreen.png" style="max-height: 60%; max-height: 60%;" />
                                 <div>Related</div>
                                 <span class="badge badge-important">2</span>
                             </a>
                         </li>
-                        <li class="personalPageTabItem">
-                            <a href="#tab-3" data-toggle="tab" class="icon-btn">
+                        <li class="personalPageTabItem tabItem">
+                            <a href="#tab-3" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<i class="fa fa-globe"></i>-->
                                 <img src="assets/reo-img/img/icon/tab-globalgreen.png" class="respIcon" />
                                 <div>Networks</div>
                                 <span class="badge badge-important">2</span>
                             </a>
                         </li>
-                        <li class="personalPageTabItem">
-                            <a href="#tab-4" data-toggle="tab" class="icon-btn">
+                        <li class="personalPageTabItem tabItem">
+                            <a href="#tab-4" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<span class="glyphicon glyphicon-envelope"></span>-->
                                 <img src="assets/reo-img/img/icon/envolve.png" class="respIcon" />
                                 <div>Messages</div>
@@ -162,7 +141,16 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                    <style>
+                        .mainPersonalTabs {
+                            padding:0px !important;
+                        }
+                        .tab-pane.active{
+                            padding-top: 20px;
+                            margin-left: 1%;
+                        }
+                    </style>
+                    <div class="tab-content mainPersonalTabs">
                         <div class="tab-pane row fade in" id="tab-1">
                             <div class="row">
                                 <!-- BEGIN TAB CONTENT -->
@@ -439,7 +427,7 @@
                         </div>
                         <div class="tab-pane fade" id="tab-4">
                             <div class="col-md-7 tab-style-1 margin-bottom-20" style="width: 100%;">
-                                <ul class="nav nav-tabs">
+                                <ul class="nav nav-tabs" style="border:none;">
                                     <li class="active"><a href="#messages-tab-1" data-toggle="tab">Reqeust</a></li>
                                     <li><a href="#messages-tab-2" data-toggle="tab">Comment</a></li>
                                     <li><a href="#messages-tab-4" data-toggle="tab">History</a></li>
@@ -563,26 +551,31 @@
                     </div>
 
                 </div>
+                <style>
+                    .whiteBox{
+                        padding-top: 3px;
+                    }
+                </style>
                 <div class="clearfix"></div>
                 <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;">
                     <div style="padding-left: 3%;">
-                        <strong>Education</strong>
+                        <strong style="color:#068920;">Education</strong>
                     </div>
                     <p style="text-align:center;">
                         information about your education and stuff
                     </p>
                 </div>
-                <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;">
+                <div class="row whiteBox" style="border: 1px solid gray; min-height:120px; margin-top: 2px;">
                     <div style="padding-left: 3%;">
-                        <strong>Skills and Expert</strong>
+                        <strong style="color:#068920;">Skills and Expert</strong>
                     </div>
                     <p style="text-align:center;">
                         ..........\..........\..........\..........\..........
                     </p>
                 </div>
-                <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;">
+                <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;min-height:130px;">
                     <div style="padding-left: 3%;">
-                        <strong>Experience</strong>
+                        <strong style="color:#068920;">Experience</strong>
                     </div>
                     <ul style="list-style:none;">
                         <li>
@@ -599,21 +592,21 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;padding-left: 3%;">
-                    <strong>More about me</strong>
+                <div class="row whiteBox" style="border: 1px solid gray; margin-top: 2px;padding-left: 3%;min-height: 60px;">
+                    <strong style="color:#068920">More about me</strong>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 hidden-xs">
                 <div class="profile-right">
                     <div class="row">
-                        <div class="col-md-8 col-sm-8 nopad">
+                        <div style="width: 50%;float:left;margin-left:3%;">
                             <div class="profile-pic ">
-                                <img src="assets/img/people/img2-large.jpg" class="img-responsive" style="max-width:100%;" alt="">
+                                <img src="assets/img/people/img2-large.jpg" style="max-width:100%;">
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 nopad" style="margin-top: 20%;">
-                            <div class="profile-award">
-                                <img src="assets/reo-img/img/icon/award.png" class="img-responsive" style="max-width:100%; margin-top: 50%;" />
+                        <div style="width: 42% !important;float: left;margin-left: 4px;">
+                            <div >
+                                <img src="assets/reo-img/img/award-d.png" class="img-responsive" style="max-width:100%; margin-top: 50%;"  />
                             </div>
                         </div>
                     </div>
