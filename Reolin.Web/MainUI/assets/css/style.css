@@ -992,7 +992,7 @@ Content and content elements.
 	min-width: 100px;
 	padding: 5px 15px;
 	text-align: center;
-	background: #f4f4f4;
+	background: white !important;
 }
 
 .tab-style-1 ul.nav-tabs li > a:hover {
@@ -1011,7 +1011,7 @@ Content and content elements.
 
 .tab-style-1 .tab-content {
 	padding: 20px 15px;
-	background: #fafafa;
+	background: white !important;
 }
 
 .tab-style-1 .tab-content p {

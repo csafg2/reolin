@@ -9,11 +9,17 @@
 }
 
 .mid-cell {
-    width: 48%;
     height: 270px;
     text-align: center;
     margin: 1%;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 49.5%;
 }
+
+    .mid-cell:not(:first-child) {
+        margin-left: .5%;
+    }
 
 .slideMenu {
     background: white;
@@ -202,6 +208,8 @@
     height: 30px;
     border-radius: 15px;
     z-index: 999;
+    margin-top: -.36%;
+    height: 86%;
 }
 
     .slick-prev:hover, .slick-next:hover {
@@ -382,4 +390,18 @@
     color: gray !important;
     width: 25%;
     margin-right: -12px;
+}
+
+.personalPageTabItem .badge {
+    top: 7% !important;
+    right: 25% !important;
+}
+
+.tab-style-1 ul.nav-tabs > li {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.rightLabel {
+    text-align: right !important;
 }
