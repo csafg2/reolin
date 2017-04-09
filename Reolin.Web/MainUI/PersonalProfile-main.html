@@ -31,11 +31,16 @@
 
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href="assets/plugins/CustomDialog/custombox.min.css" rel="stylesheet" />
+    <style>
+        .personal_tabIcon {
+            max-height:70%;
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="mainBody">
-    
+
     <!-- BEGIN HEADER -->
     <div class="header navbar navbar-default navbar-static-top" style="background: #e1e1e1;">
         <div class="container">
@@ -106,7 +111,7 @@
     </div>
     <div class="container min-hight">
         <div class="row service-box">
-            <div class="col-md-2 col-sm-2" style="visibility:hidden;">
+            <div class="col-md-2 col-sm-2" style="visibility:hidden; width: 8%;">
                 <div class="service-box-heading">
                     <em><i class="fa fa-location-arrow blue"></i></em>
                     <span>Multipurpose Template</span>
@@ -119,7 +124,7 @@
                         <li class="personalPageTabItem tabItem">
                             <a href="#tab-1" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<i class="fa fa-group"></i>-->
-                                <img src="assets/reo-img/img/icon/tab-usersgreen.png" style="max-height: 60%; max-height: 60%;" />
+                                <img src="assets/reo-img/img/icon/tab-usersgreen.png" class="personal_tabIcon"/>
                                 <div>Related</div>
                                 <span class="badge badge-important">2</span>
                             </a>
@@ -127,7 +132,7 @@
                         <li class="personalPageTabItem tabItem">
                             <a href="#tab-3" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<i class="fa fa-globe"></i>-->
-                                <img src="assets/reo-img/img/icon/tab-globalgreen.png" class="respIcon" />
+                                <img src="assets/reo-img/img/icon/tab-globalgreen.png" class="respIcon personalPageTabItem" />
                                 <div>Networks</div>
                                 <span class="badge badge-important">2</span>
                             </a>
@@ -135,7 +140,7 @@
                         <li class="personalPageTabItem tabItem">
                             <a href="#tab-4" data-toggle="tab" class="icon-btn tabButton">
                                 <!--<span class="glyphicon glyphicon-envelope"></span>-->
-                                <img src="assets/reo-img/img/icon/envolve.png" class="respIcon" />
+                                <img src="assets/reo-img/img/icon/envolve.png" class="respIcon personalPageTabItem" />
                                 <div>Messages</div>
                                 <span class="badge badge-important">2</span>
                             </a>
@@ -143,9 +148,10 @@
                     </ul>
                     <style>
                         .mainPersonalTabs {
-                            padding:0px !important;
+                            padding: 0px !important;
                         }
-                        .tab-pane.active{
+
+                        .tab-pane.active {
                             padding-top: 20px;
                             margin-left: 1%;
                         }
@@ -160,7 +166,7 @@
                                         <div class="col-md-7 tab-style-1 margin-bottom-20" style="width:100%; margin-top: -8%;">
                                             <div class="row">
                                                 <div style="margin-left: 4%;width: 17%; float:left;">
-                                                    <img style="max-width: 100%;"  src="assets/reo-img/img/android.png" />
+                                                    <img style="max-width: 100%;" src="assets/reo-img/img/android.png" />
                                                 </div>
                                                 <div style="margin-left: 2%;float:right;width:74%;">
                                                     <br />
@@ -552,7 +558,7 @@
 
                 </div>
                 <style>
-                    .whiteBox{
+                    .whiteBox {
                         padding-top: 3px;
                     }
                 </style>
@@ -595,7 +601,7 @@
                     <strong style="color:#068920">More about me</strong>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3 hidden-xs">
+            <div class="col-md-4 col-sm-3 hidden-xs">
                 <div class="profile-right">
                     <div class="row">
                         <div style="width: 50%;float:left;margin-left:3%;">
@@ -604,8 +610,8 @@
                             </div>
                         </div>
                         <div style="width: 42% !important;float: left;margin-left: 4px;">
-                            <div >
-                                <img src="assets/reo-img/img/award-d.png" class="img-responsive" style="max-width:100%; margin-top: 50%;"  />
+                            <div>
+                                <img src="assets/reo-img/img/award-d.png" class="img-responsive" style="max-width:100%; margin-top: 50%;" />
                             </div>
                         </div>
                     </div>
