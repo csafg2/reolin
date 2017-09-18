@@ -7,11 +7,9 @@ using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.ConfigExtensions;
 using Reolin.Web.Api.Infra.DependecyRegistration;
 using Reolin.Web.Api.Infra.Middlewares;
-using Reolin.Web.Api.Infra.OptionsConfig;
 
 namespace Reolin.Web.Api
 {
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -31,7 +29,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.UseJwtValidation();
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
             services.AddJobCategoryService();
@@ -64,7 +62,7 @@ namespace Reolin.Web.Api
 
             //app.UseDeveloperExceptionPage();
 
-            app.UseJwtValidation();
+            //app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
 
             app.UseSwagger();

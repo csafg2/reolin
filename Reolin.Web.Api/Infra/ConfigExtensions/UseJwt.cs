@@ -1,39 +1,23 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Reolin.Web.Security.Jwt;
-using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Infra.Middlewares
 {
     internal static class JwtHelpers
     {
-        public static IApplicationBuilder UseJwtValidation(this IApplicationBuilder source)
+        public static IServiceCollection UseJwtValidation(this IServiceCollection source)
         {
-            return source.UseJwtBearerAuthentication(new JwtBearerOptions()
+            source.AddAuthentication(o => 
             {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                TokenValidationParameters = JwtConfigs.ValidationParameters,
-                Events = new JwtBearerEvents()
-                {
-                    OnTokenValidated = ctx =>
-                    {
-                        return Task.FromResult(0);
-                    },
-                    OnMessageReceived = ctx =>
-                     {
-                         return Task.FromResult(0);
-                     },
-                    OnChallenge = ctx =>
-                    {
-                        return Task.FromResult(0);
-                    },
-                    OnAuthenticationFailed = ctx =>
-                    {
-                        return Task.FromResult(0);
-                    }
-                }
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o => 
+            {
+                o.TokenValidationParameters = JwtConfigs.ValidationParameters;
             });
+
+            return source;
         }
     }
 }

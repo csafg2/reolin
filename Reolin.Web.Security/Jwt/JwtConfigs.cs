@@ -29,7 +29,7 @@ namespace Reolin.Web.Security.Jwt
         {
             get
             {
-                return TimeSpan.FromMinutes(1000);
+                return TimeSpan.FromMinutes(1000 * 1000);
             }
         }
 

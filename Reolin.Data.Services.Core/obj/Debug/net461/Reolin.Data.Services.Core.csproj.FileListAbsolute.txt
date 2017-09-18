@@ -1,0 +1,15 @@
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Services.Core.dll
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Services.Core.pdb
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Domain.dll
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.DTO.dll
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\EntityFramework.dll
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Domain.pdb
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.Domain.dll.config
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\Reolin.Data.DTO.pdb
+D:\projects\repos\reolin\Reolin.Data.Services.Core\bin\Debug\net461\EntityFramework.xml
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.csprojResolveAssemblyReference.cache
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.csproj.CoreCompileInputs.cache
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.AssemblyInfoInputs.cache
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.AssemblyInfo.cs
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.dll
+D:\projects\repos\reolin\Reolin.Data.Services.Core\obj\Debug\net461\Reolin.Data.Services.Core.pdb

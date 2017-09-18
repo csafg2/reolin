@@ -1,0 +1,5 @@
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Data.DTO\bin\Release\Reolin.Data.DTO.dll
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Data.DTO\bin\Release\Reolin.Data.DTO.pdb
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Data.DTO\obj\Release\Reolin.Data.DTO.csprojResolveAssemblyReference.cache
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Data.DTO\obj\Release\Reolin.Data.DTO.dll
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Data.DTO\obj\Release\Reolin.Data.DTO.pdb

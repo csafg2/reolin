@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.1",
+    "StackExchange.Redis": "1.2.0",
+    "System.IdentityModel.Tokens.Jwt": "5.1.2",
+    "System.Security.Claims": "4.3.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6.1": {
+      "imports": "dnxcore50"
+    },
+    "net461": {
+
+    }
+  }
+}

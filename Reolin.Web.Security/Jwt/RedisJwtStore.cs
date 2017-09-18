@@ -13,8 +13,7 @@ namespace Reolin.Web.Security.Jwt
         {
             this._dataBase = mutex.GetDatabase();
         }
-
-
+        
         private IDatabase RedisDatabase
         {
             get
@@ -22,8 +21,7 @@ namespace Reolin.Web.Security.Jwt
                 return _dataBase;
             }
         }
-
-
+        
         public void Add(string userName, string tokenId)
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(tokenId))

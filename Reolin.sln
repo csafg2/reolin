@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{794E35A8-AEC0-41CD-B141-A98E0813307B}"
 EndProject
@@ -50,6 +50,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reolin.Web", "Reolin.Web\Reolin.Web.csproj", "{2972D9F3-04BF-41DE-912C-6C2D86155BB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reolin.Web.ViewModels", "Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj", "{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui", "ui", "{8FD2067D-E7BE-4868-8424-1A58BE2869B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{07D445CC-2B70-40C0-904B-0EF65E5AC437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +137,10 @@ Global
 		{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D445CC-2B70-40C0-904B-0EF65E5AC437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D445CC-2B70-40C0-904B-0EF65E5AC437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D445CC-2B70-40C0-904B-0EF65E5AC437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D445CC-2B70-40C0-904B-0EF65E5AC437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,5 +163,9 @@ Global
 		{D294595C-B869-463B-AFB4-88514C0D40FB} = {2482BA64-20DA-4552-B70F-D57E7CA99CB7}
 		{2972D9F3-04BF-41DE-912C-6C2D86155BB5} = {9D13791A-6623-44A5-B4EC-74DB9FE4F549}
 		{893B78E4-CCC8-4C0B-A93D-BA01B7A2CF17} = {99FA4CA5-3336-4602-80DC-54A0577E48C4}
+		{07D445CC-2B70-40C0-904B-0EF65E5AC437} = {8FD2067D-E7BE-4868-8424-1A58BE2869B0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15A4AC27-60E1-48E1-921D-F9754C0E57C1}
 	EndGlobalSection
 EndGlobal

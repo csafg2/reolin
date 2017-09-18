@@ -1,0 +1,404 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "EntityFramework.Extended/6.1.0.168": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.1.0"
+        },
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.Extended.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.Extended.dll": {}
+        }
+      },
+      "System.Data.Common/4.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net451/System.Data.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net451/System.Data.Common.dll": {}
+        }
+      },
+      "System.Data.SqlClient/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Data.Common": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System.Data",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Data.SqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.Data.SqlClient.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net46/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "Reolin.Data/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Reolin.Data.Domain": "1.0.0",
+          "System.Data.EntityFramework.Config": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Reolin.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.dll": {}
+        }
+      },
+      "Reolin.Data.Domain/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Reolin.Data.DTO": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Reolin.Data.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.Domain.dll": {}
+        }
+      },
+      "Reolin.Data.DTO/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Reolin.Data.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.DTO.dll": {}
+        }
+      },
+      "Reolin.Data.Services.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Reolin.Data.DTO": "1.0.0",
+          "Reolin.Data.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Reolin.Data.Services.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.Services.Core.dll": {}
+        }
+      },
+      "System.Data.EntityFramework.Config/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Reolin.Data.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/System.Data.EntityFramework.Config.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/System.Data.EntityFramework.Config.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "EntityFramework": "6.1.3"
+        },
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EntityFramework/6.1.3": {
+      "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
+      "type": "package",
+      "path": "entityframework/6.1.3",
+      "files": [
+        "content/App.config.transform",
+        "content/Web.config.transform",
+        "entityframework.6.1.3.nupkg.sha512",
+        "entityframework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
+    "EntityFramework.Extended/6.1.0.168": {
+      "sha512": "jICFgwzDjwj11mcAwKnI8eucayaqD5yMVfUhJC0PE+sWEh7kcv/Py2KQwJRlMcJTYzdl9/Sn+EWjTkYE9iMwtw==",
+      "type": "package",
+      "path": "entityframework.extended/6.1.0.168",
+      "files": [
+        "entityframework.extended.6.1.0.168.nupkg.sha512",
+        "entityframework.extended.nuspec",
+        "lib/net40/EntityFramework.Extended.dll",
+        "lib/net40/EntityFramework.Extended.dll.config",
+        "lib/net40/EntityFramework.Extended.xml",
+        "lib/net45/EntityFramework.Extended.dll",
+        "lib/net45/EntityFramework.Extended.dll.config",
+        "lib/net45/EntityFramework.Extended.xml"
+      ]
+    },
+    "System.Data.Common/4.3.0": {
+      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
+      "type": "package",
+      "path": "system.data.common/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.Common.dll",
+        "lib/netstandard1.2/System.Data.Common.dll",
+        "lib/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.xml",
+        "ref/netstandard1.2/de/System.Data.Common.xml",
+        "ref/netstandard1.2/es/System.Data.Common.xml",
+        "ref/netstandard1.2/fr/System.Data.Common.xml",
+        "ref/netstandard1.2/it/System.Data.Common.xml",
+        "ref/netstandard1.2/ja/System.Data.Common.xml",
+        "ref/netstandard1.2/ko/System.Data.Common.xml",
+        "ref/netstandard1.2/ru/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/de/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/es/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/fr/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/it/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ja/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ko/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ru/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hans/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hant/System.Data.Common.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.data.common.4.3.0.nupkg.sha512",
+        "system.data.common.nuspec"
+      ]
+    },
+    "System.Data.SqlClient/4.3.0": {
+      "sha512": "XmWg+/uUcME++m/vsRzxq1fo0GvlYzFfZM5fCqIIDT+O7AwDdpfd1LkRXmcxeTJQTCgx5AN3Y3t5qSz5XxQLVw==",
+      "type": "package",
+      "path": "system.data.sqlclient/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.SqlClient.dll",
+        "lib/net46/System.Data.SqlClient.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.SqlClient.dll",
+        "ref/net46/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/System.Data.SqlClient.dll",
+        "ref/netstandard1.3/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hant/System.Data.SqlClient.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net451/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net46/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "system.data.sqlclient.4.3.0.nupkg.sha512",
+        "system.data.sqlclient.nuspec"
+      ]
+    },
+    "Reolin.Data/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data/Reolin.Data.csproj",
+      "msbuildProject": "../Reolin.Data/Reolin.Data.csproj"
+    },
+    "Reolin.Data.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data.Domain/Reolin.Data.Domain.csproj",
+      "msbuildProject": "../Reolin.Data.Domain/Reolin.Data.Domain.csproj"
+    },
+    "Reolin.Data.DTO/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data.DTO/Reolin.Data.DTO.csproj",
+      "msbuildProject": "../Reolin.Data.DTO/Reolin.Data.DTO.csproj"
+    },
+    "Reolin.Data.Services.Core/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data.Services.Core/Reolin.Data.Services.Core.csproj",
+      "msbuildProject": "../Reolin.Data.Services.Core/Reolin.Data.Services.Core.csproj"
+    },
+    "System.Data.EntityFramework.Config/1.0.0": {
+      "type": "project",
+      "path": "../System.Data.EntityFramework.Config/System.Data.EntityFramework.Config.csproj",
+      "msbuildProject": "../System.Data.EntityFramework.Config/System.Data.EntityFramework.Config.csproj"
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "EntityFramework >= 6.1.3",
+      "EntityFramework.Extended >= 6.1.0.168",
+      "Reolin.Data >= 1.0.0",
+      "Reolin.Data.Domain >= 1.0.0",
+      "Reolin.Data.Services.Core >= 1.0.0",
+      "System.Data.SqlClient >= 4.3.0",
+      "Utilities >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Hassan\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
+    "restore": {
+      "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj",
+      "projectName": "Reolin.Data.Services",
+      "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj",
+      "packagesPath": "C:\\Users\\Hassan\\.nuget\\packages\\",
+      "outputPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Hassan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {
+            "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj"
+            },
+            "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj"
+            },
+            "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj"
+            },
+            "D:\\projects\\repos\\reolin\\Utilities\\Utilities.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Utilities\\Utilities.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "EntityFramework.Extended": {
+            "target": "Package",
+            "version": "6.1.0.168"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "4.3.0"
+          },
+          "EntityFramework": {
+            "target": "Package",
+            "version": "6.1.3"
+          }
+        }
+      }
+    }
+  }
+}

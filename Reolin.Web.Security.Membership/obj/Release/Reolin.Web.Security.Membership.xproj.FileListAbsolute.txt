@@ -1,0 +1,4 @@
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.Security.Membership\bin\SqlServerTypes\x64\msvcr100.dll
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.Security.Membership\bin\SqlServerTypes\x64\SqlServerSpatial110.dll
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.Security.Membership\bin\SqlServerTypes\x86\msvcr100.dll
+C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.Security.Membership\bin\SqlServerTypes\x86\SqlServerSpatial110.dll

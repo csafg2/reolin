@@ -1,9 +1,12 @@
-﻿
+﻿#pragma warning disable CS1591
+
 using System;
 
 namespace Reolin.Web.Api.Infra.GeoServices
 {
+
     public class FakeGeoService : IGeoService
+
     {
         public GeoInfo GetGeoInfo(string cityName, string countryName)
         {
@@ -22,3 +25,5 @@ namespace Reolin.Web.Api.Infra.GeoServices
         GeoInfo GetGeoInfo(string cityName, string countryName);
     }
 }
+
+#pragma warning restore CS1591

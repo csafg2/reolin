@@ -1,0 +1,9 @@
+D:\projects\repos\reolin\Utilities\bin\Debug\net461\Utilities.dll
+D:\projects\repos\reolin\Utilities\bin\Debug\net461\Utilities.pdb
+D:\projects\repos\reolin\Utilities\bin\Debug\net461\EntityFramework.SqlServer.dll
+D:\projects\repos\reolin\Utilities\bin\Debug\net461\EntityFramework.dll
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.csproj.CoreCompileInputs.cache
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.AssemblyInfoInputs.cache
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.AssemblyInfo.cs
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.dll
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.pdb

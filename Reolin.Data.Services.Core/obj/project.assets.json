@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Reolin.Data.Domain/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Reolin.Data.DTO": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Reolin.Data.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.Domain.dll": {}
+        }
+      },
+      "Reolin.Data.DTO/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Reolin.Data.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Reolin.Data.DTO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Reolin.Data.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data.Domain/Reolin.Data.Domain.csproj",
+      "msbuildProject": "../Reolin.Data.Domain/Reolin.Data.Domain.csproj"
+    },
+    "Reolin.Data.DTO/1.0.0": {
+      "type": "project",
+      "path": "../Reolin.Data.DTO/Reolin.Data.DTO.csproj",
+      "msbuildProject": "../Reolin.Data.DTO/Reolin.Data.DTO.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "Reolin.Data.DTO >= 1.0.0",
+      "Reolin.Data.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Hassan\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
+    "restore": {
+      "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj",
+      "projectName": "Reolin.Data.Services.Core",
+      "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj",
+      "packagesPath": "C:\\Users\\Hassan\\.nuget\\packages\\",
+      "outputPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Hassan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {
+            "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj"
+            },
+            "D:\\projects\\repos\\reolin\\Reolin.Data.DTO\\Reolin.Data.DTO.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.DTO\\Reolin.Data.DTO.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net461": {}
+    }
+  }
+}

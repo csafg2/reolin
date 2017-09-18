@@ -25,7 +25,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
         {
             return source.AddTransient(typeof(IJwtProvider), typeof(JwtProvider))
                             .AddTransient(typeof(IOptions<TokenProviderOptions>), p => TokenOptions)
-                            .AddSingleton<IJwtStore>(ResolveJwtStore())
+                            .AddSingleton(ResolveJwtStore())
                             .AddTransient(typeof(IJwtManager), typeof(JwtManager));
         }
 

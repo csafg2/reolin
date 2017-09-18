@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Reolin.Web.Api.Helpers
                 return null;
             }
 
-            jwt = jwt.Replace(TOKEN_SCHEME, string.Empty);
+            jwt = jwt.Replace(JwtBearerDefaults.AuthenticationScheme, string.Empty);
 
             return new JwtSecurityToken(jwt);
         }

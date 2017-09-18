@@ -1,0 +1,14 @@
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\System.Data.EntityFramework.Config.dll.config
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\System.Data.EntityFramework.Config.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\System.Data.EntityFramework.Config.pdb
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\EntityFramework.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\Reolin.Data.Domain.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\Reolin.Data.DTO.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\Reolin.Data.Domain.pdb
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\EntityFramework.xml
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\bin\Release\Reolin.Data.DTO.pdb
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\obj\Release\System.Data.EntityFramework.Config.csprojResolveAssemblyReference.cache
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\obj\Release\System.Data.EntityFramework.Config.dll
+C:\Users\Hassan\Source\Repos\reolin\System.Data.EntityFramework.Config\obj\Release\System.Data.EntityFramework.Config.pdb

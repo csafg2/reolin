@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Reolin.Web.Api.Infra.mvc;
 using System;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.filters;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -28,19 +28,18 @@ namespace Reolin.Web.Api.Controllers
         }
 
         [HttpPost]
-        [CheckPermission]
+        //[CheckPermission]
         public string Get2(SampleModel model)
         {
 
             return "HELLOW WORLD!!";
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public string Get()
         {
-
             return "HELLOW WORLD!!";
         }
         

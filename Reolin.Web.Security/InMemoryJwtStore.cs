@@ -21,6 +21,7 @@ namespace Reolin.Web.Security.Jwt
             {
                 throw new ArgumentNullException("Key or tokenId Can not be null");
             }
+
             _store[key] = new List<string>() { tokenId };
         }
 

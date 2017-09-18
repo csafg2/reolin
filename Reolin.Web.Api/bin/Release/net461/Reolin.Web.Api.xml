@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Reolin.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Reolin.Web.Api.Controllers.AccountController.ExchangeToken">
+            <summary>
+            Exchanges an Expired Token with a new Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.AccountController.Logout">
+            <summary>
+            Logout the user, the jwt MUST BE valid and present in the requst header
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.AccountController.Register(Reolin.Web.ViewModels.UserRegisterViewModel)">
+            <summary>
+            Create a new user for specified information
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.AccountController.Login(Reolin.Web.ViewModels.LoginViewModel)">
+            <summary>
+            Login to the app by providing user information
+            </summary>
+            <param name="model"></param>
+            <returns>a json object that contains the jwt </returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.AccountController.GetRoleString(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            convert string[] into some thing like this: "admin,normalUser, ..., ..."
+            </summary>
+            <param name="roles"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Controllers.ErrorController">
+            <summary>
+            Global Exception handler to prevent any unhandled exception to be serialized down to client
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ErrorController.SomeThingWentWrong">
+            <summary>
+            this action gets called by runtime whenever an unhandled exception is thrown
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.JobCategoryController.GetAll">
+            <summary>
+            return a list of available job categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.JobCategoryController.JobCateogries">
+            <summary>
+            Get all Main Job Categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.JobCategoryController.SubJobCategories">
+            <summary>
+            Get all Sub job Categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetByTag(System.String)">
+            <summary>
+            Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
+            </summary>
+            <param name="tag">the tag text to search for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddDescription(Reolin.Web.ViewModels.ProfileAddDescriptionModel)">
+            <summary>
+            add a text description to the specified profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddImage(Reolin.Web.ViewModels.AddImageToProfileViewModel,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            adds an image to image collection of the profile
+            </summary>
+            <param name="model">a model that contians the profile id</param>
+            <param name="file">image file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Like(System.Int32)">
+            <summary>
+            Add a like entry to the specified Profile, note that the userId must be present in the request
+            </summary>
+            <param name="profileId">the Id of profile which has been liked</param>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.CreateWork(Reolin.Web.ViewModels.ProfileCreateModel)">
+            <summary>
+            Creates a new Work Profile for specified user
+            </summary>
+            <param name="model"></param>
+            <returns>the address in which the profile info is create an accessible to consume</returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.CreatePersonal(Reolin.Web.ViewModels.ProfileCreateModel)">
+            <summary>
+            Creates a new Personal Profile for the specified user
+            </summary>
+            <param name="model"></param>
+            <returns>the address in which the profile info is create an accessible to consume</returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetInfo(System.Int32)">
+            <summary>
+            Retrieve Profile information by Id
+            </summary>
+            <param name="id">profieId</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetRelated(System.Int32)">
+            <summary>
+            Get all profiles that are related to this profile by tag
+            </summary>
+            <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.SearchInAreaByTag(Reolin.Web.ViewModels.SearchProfilesInRangeModel)">
+            <summary>
+            Retrieves all profiles withing the specified range by meter which are associated with the desired #tag
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Edit(Reolin.Web.ViewModels.ProfileEditModel)">
+            <summary>
+            Updates specified fields
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.EditEducation(Reolin.Data.DTO.EducationEditDTO)">
+            <summary>
+            modify education info of the profile
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddSkill(Reolin.Web.ViewModels.ProfileAddSkillModel)">
+            <summary>
+            Add a skill to the specified profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddNetwork(Reolin.Web.ViewModels.ProfileAddNetworkModel)">
+            <summary>
+            add a new network to networks collection of the user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AvailableJobCategories">
+            <summary>
+            Gets a list of all available job categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Find(Reolin.Web.ViewModels.ProfileSearchModel)">
+            <summary>
+            Finds matched profiels first filters by job categories (AND operation) 
+            then by profile name
+            then profiles that contain search term as tag
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.BasicInfo(System.Int32)">
+            <summary>
+            returns basic information about the profile by it`s id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.LatestComments(System.Int32)">
+            <summary>
+            retrieve latest comments for prfile page
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddTag(Reolin.Web.ViewModels.AddTagModel)">
+            <summary>
+            adds desired to tags collection of the profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetTags(System.Int32)">
+            <summary>
+            return profile tags
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.PhoneNumbers(System.Int32)">
+            <summary>
+            Get phone number of the profile
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.RelatedTypes(System.Int32)">
+            <summary>
+            Get all related types
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddRelation(Reolin.Data.DTO.RelateCreateModel)">
+            <summary>
+            send a relation request to the target profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Images(System.Int32)">
+            <summary>
+            get all profile images
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddImageCategory(Reolin.Web.ViewModels.ProfileCreateModel.AddImageCategoryModel)">
+            <summary>
+            add a new imageCategory to ImageCategory collection of the profile
+            </summary>
+            <param name="model">the model to parsed as param</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetImageCategories(System.Int32)">
+            <summary>
+            get all Image categories
+            </summary>
+            <param name="id">the id of the profile to get categories</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.RequestRelatedProfiles(System.Int32)">
+            <summary>
+            Get all profiles that are related to this profile by request
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddCertificate(Reolin.Web.ViewModels.CertificateCreateModel)">
+            <summary>
+            Add a certificate to profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Certificates(System.Int32)">
+            <summary>
+            Get all certificates for profile
+            </summary>
+            <param name="id">the id of profile</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddRelatedType(Reolin.Web.ViewModels.AddRelatedTypeModel)">
+            <summary>
+            Add a related type to profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.DeleteRelationRequest(System.Int32)">
+            <summary>
+            Deletes a relation request
+            </summary>
+            <param name="id">the id of the relation to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.ConfirmRelationRequest(System.Int32)">
+            <summary>
+            Confirm a request
+            </summary>
+            <param name="id">the id of the relation to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.Location(System.Int32)">
+            <summary>
+            get the location of the profile
+            </summary>
+            <param name="id">the id of profile</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.SuggestionController.Create(Reolin.Data.DTO.SuggestionCreateModel)">
+            <summary>
+            add a suggestion for this profile, tags should will be separated by # sign
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.SuggestionController.GetSuggestions(System.Int32)">
+            <summary>
+            get all suggestions for the specified profile
+            </summary>
+            <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Controllers.UserController">
+            <summary>
+            User related apis 
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.UserController.SetFirstNameLastName(Reolin.Web.ViewModels.SetFirstNameLastNameModel)">
+            <summary>
+            set the first name and lastname of specified user, the user id has to be present in reqest header
+            </summary>
+            <param name="model"></param>
+            <returns>Ok if Succeeded</returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.UserController.QueryProfiles(System.Int32)">
+            <summary>
+            Query profile entries that are attached to a userId
+            </summary>
+            <param name="id">the id of desired user</param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.UserController.AddComment(Reolin.Web.ViewModels.ViewModels.User.CommentCreateModel)">
+            <summary>
+            add a comment to profile by userId
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.AuthorizationRequirments.ValidTokenRequirment">
+            <summary>
+            this class is responsible for validating a token against our JWT persistant storage,
+            (a valid token is tracked by jwtManager)
+            </summary>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.DependecyRegistration.AddSwaggerExtension">
+            <summary>
+            Add Swagger SwashBuckle Service to service collection
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.DependecyRegistration.AddSwaggerExtension.AddSwaggerAndConfigure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            adds swagger
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.Filters.CacheFilter">
+            <summary>
+            used to store an object into the cach
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.CacheFilter.Key">
+            <summary>
+            the key to attache the cached object with
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.CacheFilter.AbsoluteExpiration">
+            <summary>
+            the absolute time before object is disposed from undelerlying cache store
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.CacheFilter.SlidingExpiration">
+            <summary>
+            the times in second to keep object in cache if no request came for it.
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Filters.CacheFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            excecuted before the action method is called by runtime
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Filters.CacheFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            excecuted after the action method is called by runtime
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute">
+            <summary>
+            caches the api response 
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute.Key">
+            <summary>
+            the key to associate cached object with
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute.SlidingExpiration">
+            <summary>
+            amount of time to keep the object in memory if no request came to access it
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute.AbsoluteExpiration">
+            <summary>
+            absolute amount of time to keep object in memory
+            </summary>
+        </member>
+        <member name="P:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute.IsReusable">
+            <summary>
+            Determines if object can be used to serve multiple requests
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Filters.OutputCacheAttribute.CreateInstance(System.IServiceProvider)">
+            <summary>
+            Instantiates a new CacheFilter which implements IFilterMetadata
+            </summary>
+            <param name="serviceProvider">a service provider object to resolve the underlying caching store from.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.Filters.RequestFormSizeLimitAttribute">
+            <summary>
+            Filter to set size limits for request form data
+            </summary>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.IO.TwoCharDirectoryProvider">
+            <summary>
+            Provides a SubDirectory in form of "[A-z][Az]/[A-z][A-z]"
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.IO.TwoCharDirectoryProvider.ProvideDirectory">
+            <summary>
+            Generates the SubDirectory
+            </summary>
+            <returns>a string that represents the Generated subDirectory</returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.IO.FileService">
+            <summary>
+            provides file related services, like saving it in file system
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.IO.FileService.SaveAsync(System.IO.Stream,System.String)">
+            <summary>
+            Save the file into target path
+            </summary>
+            <param name="input">the stream that contains the fucking file</param>
+            <param name="fileName">the full file name to write the stream into</param>
+            <returns>the path in which, file has been stored</returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.IO.FileService.GetDirectory(System.String)">
+            <summary>
+            combine base directory and subdirectory and also ensure that it`s ready to be used
+            </summary>
+            <param name="subDirectory"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.IO.IDirectoryProvider">
+            <summary>
+            represents an object that provides a subdirectory to store the file
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.IO.IDirectoryProvider.ProvideDirectory">
+            <summary>
+            Generate subDirectory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.IO.IFileService">
+            <summary>
+            represents file i/o related operations
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.IO.IFileService.SaveAsync(System.IO.Stream,System.String)">
+            <summary>
+            store a stream into the "file name"
+            </summary>
+            <param name="input">the input stream</param>
+            <param name="fileName">the full path to the target file</param>
+            <returns></returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.Logging.SqlLogger">
+            <summary>
+            loggs messages into sql server
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Logging.SqlLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            determine logging is Enabled by this class for specified log level
+            </summary>
+            <param name="logLevel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Logging.SqlLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <summary>
+            logs the exception into underlying log provider
+            </summary>
+            <typeparam name="TState"></typeparam>
+            <param name="logLevel">the logLevel</param>
+            <param name="eventId"></param>
+            <param name="state"></param>
+            <param name="exception">the exception to be serialized</param>
+            <param name="formatter">string message formatter to formatt log message</param>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.Logging.SqlLoggerProvider">
+            <summary>
+            provides a new instance of Reolin.Web.Api.Infra.Logging.SqlLogger class
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.Logging.SqlLoggerProvider.#ctor(System.Func{System.String,Microsoft.Extensions.Logging.LogLevel,System.Boolean},Reolin.Web.Api.Infra.Logging.LogContext)">
+            <summary>
+            
+            </summary>
+            <param name="filter">a func that determines weather to log a message or not (according to level)</param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.mvc.BaseController.GetUserId">
+            <summary>
+            extracts the user if from the request token.
+            </summary>
+            <returns>the id which has been found in request</returns>
+        </member>
+        <member name="T:Reolin.Web.Api.Infra.mvc.ApiResult">
+            <summary>
+            a wrapper for for JsonResult to be able to set Http StatusCode.
+            </summary>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.mvc.ApiResult.#ctor(System.Object)">
+            <summary>
+            intializes a new instance of ApiResult
+            </summary>
+            <param name="data">the object to be serialized down to stream</param>
+        </member>
+        <member name="M:Reolin.Web.Api.Infra.mvc.ApiResult.#ctor(System.Net.HttpStatusCode,System.Object)">
+            <summary>
+            intializes a new instance of ApiResult
+            </summary>
+            <param name="statusCode">response status code</param>
+            <param name="data">the object to be serialized down to stream</param>
+        </member>
+        <member name="M:Reolin.Web.RegisterUserManager.CreateValidators">
+            <summary>
+            Finds and instantiates all classes that implement "IUserValidator"
+            </summary>
+            <returns>a list of "IUserValidator" objects</returns>
+        </member>
+    </members>
+</doc>
