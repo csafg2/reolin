@@ -22,6 +22,7 @@ namespace Reolin.Data.DTO
         public string Country { get; set; }
         public int LikeCount { get; set; }
         public string Name { get; set; }
+        public bool IsWork { get; set; }
     }
 
     public class EducationEditDTO

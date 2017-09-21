@@ -57,6 +57,5 @@ namespace Reolin.Web.Api.Controllers
         {
             return Ok(await this.Service.GetSuggestions(profileId));
         }
-
     }
 }

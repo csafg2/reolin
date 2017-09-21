@@ -1,51 +1,45 @@
-﻿#pragma warning disable CS1591
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Reolin.Data;
+using System.Linq;
+using System.Data.Entity;
 
-namespace Reolin.Web.Api.Controllers
+namespace GeoService.Controllers
 {
-
-    public class CityModel
-    {
-        public string Name { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-    }
-
-    [EnableCors("AllowAll")]
+    #pragma warning disable CS1591
     public class GeoServiceController : Controller
     {
-        private Dictionary<string, List<CityModel>> _countries { get; set; }
+        private DataContext _context;
 
-
-        public GeoServiceController()
+        public GeoServiceController(DataContext context)
         {
-            _countries = new Dictionary<string, List<CityModel>>();
-            _countries["iran"] = new List<CityModel>();
-            _countries["afghanistan"] = new List<CityModel>();
-
-            _countries["iran"].Add(new CityModel() { Name = "Qom", Latitude = 34.65001548, Longitude = 50.95000606 });
-            _countries["iran"].Add(new CityModel() { Name = "Tehran", Latitude = 35.67194277, Longitude = 51.42434403 });
-
-
-            _countries["afghanistan"].Add(new CityModel() { Name = "Baghlan", Latitude = 36.13933026, Longitude = 68.69925858 });
-            _countries["afghanistan"].Add(new CityModel() { Name = "Kabul", Latitude = 35.67194277, Longitude = 51.42434403 });
-
-        }
-
-        [Route("[controller]/[action]")]
-        [HttpGet]
-        public IActionResult Cities(string country)
-        {
-            return Ok(_countries[country]);
+            this._context = context;
         }
 
         [HttpGet]
-        [Route("[controller]/[action]")]
-        public IActionResult Countries()
+        [Route("/Countries")]
+        public async Task<IActionResult> Countries()
         {
-            return Ok(_countries.Keys);
+            var data = await _context.GeoInfos.Select(c => c.Country).Distinct().ToListAsync();
+            return Ok(data);
+        }
+
+        [HttpGet]
+        [Route("/{country}/cities")]
+        public async Task<IActionResult> Cities(string country)
+        {
+            var data = await _context.GeoInfos.Where(g => g.Country == country)
+                .Select(c => new
+                {
+                    Name = c.City,
+                    Latitude = c.Latitude,
+                    Longitude = c.Longitude
+                })
+                .ToListAsync();
+
+            return Ok(data);
         }
     }
 }
+
+#pragma warning restore CS1591

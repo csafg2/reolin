@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Reolin.Data.Domain
 {
@@ -12,6 +13,10 @@ namespace Reolin.Data.Domain
         public int UserId { get; set; }
         public int ProfileId { get; set; }
         public Profile Profile { get; set; }
+
+        public int? ParentId { get; set; }
+        public Comment Parent { get; set; }
+        public List<Comment> Replies { get; set; }
     }
 
 }

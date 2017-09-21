@@ -111,10 +111,10 @@ D:\projects\repos\reolin\Reolin.Web\bin\Debug\net461\System.Xml.ReaderWriter.dll
 D:\projects\repos\reolin\Reolin.Web\bin\Debug\net461\System.Xml.XmlDocument.dll
 D:\projects\repos\reolin\Reolin.Web\bin\Debug\net461\System.Xml.XPath.dll
 D:\projects\repos\reolin\Reolin.Web\bin\Debug\net461\System.Xml.XPath.XDocument.dll
+D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.csproj.Reolin.Web.exe.config
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.exe
 D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.pdb
-D:\projects\repos\reolin\Reolin.Web\obj\Debug\net461\Reolin.Web.csprojResolveAssemblyReference.cache

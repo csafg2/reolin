@@ -9,18 +9,29 @@ namespace Reolin.Web.Api.Controllers
 {
     public class FileController : BaseController
     {
+        private IFileService _service;
+
+        public FileController(IFileService fileService)
+        {
+            this._service = fileService;
+        }
+
+        /// <summary>
+        /// ارسال فایل
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
         [HttpPost]
+        [Route("[controller]/[action]")]
         public async Task<IActionResult> Upload(ICollection<IFormFile> files)
         {
-            return Json(new { Me = "YOU!"});
-            //var file = Request.Form.Files[0];
-            //var service = new FileService(@"E:\data", new DirectoryProvider());
-            //using (var stream = file.OpenReadStream())
-            //{
-            //    stream.Position = 0;
-            //    string path = await service.SaveAsync(stream, file.FileName);
-            //    return Ok(path);
-            //}
+            var file = Request.Form.Files[0];
+            using (var stream = file.OpenReadStream())
+            {
+                stream.Position = 0;
+                string path = await _service.SaveAsync(stream, file.FileName);
+                return Ok(path);
+            }
         }
     }
 }

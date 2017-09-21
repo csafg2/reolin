@@ -30,7 +30,7 @@ namespace Reolin.Data.Domain
         public User User { get; set; }
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
-       
+        public string IconUrl { get; set; }
 
         public List<ProfileNetwork> Networks { get; set; }
 
@@ -44,7 +44,8 @@ namespace Reolin.Data.Domain
                 Name = source.Name,
                 Description = source.Description,
                 Latitude = source.Address.Location.Latitude,
-                Longitude = source.Address.Location.Longitude
+                Longitude = source.Address.Location.Longitude,
+                IsWork = source.Type == ProfileType.Work
             };
         }
     }

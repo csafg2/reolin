@@ -6,15 +6,15 @@ namespace Reolin.Web.Api
 {
 #pragma warning disable CS1591
     public class Program
-
     {
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls("http://*:80")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseSetting("detailedErrors", "true")
-                .UseIISIntegration()
+                //.UseIISIntegration()
                 .UseStartup<Startup>()
                 .CaptureStartupErrors(true)
                 .Build();

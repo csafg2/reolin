@@ -50,15 +50,18 @@ namespace Reolin.Web.Api
         {
             app.UseStaticFiles();
 
-            app.UseExceptionHandler("/Error/SomeThingWentWrong");
-
+            
             loggerFactory.UseSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
-
+            app.UseDeveloperExceptionPage();
             // comment this entire "if statement" in production
-            if (env.IsDevelopment())
-            {
-                loggerFactory.AddDebug();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    loggerFactory.AddDebug();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error/SomeThingWentWrong");
+            //}
 
             //app.UseDeveloperExceptionPage();
 

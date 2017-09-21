@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Reolin.Data;
 using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
@@ -16,16 +17,15 @@ using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Threading.Tasks;
 using static Reolin.Web.ViewModels.ProfileCreateModel;
 
 namespace Reolin.Web.Api.Controllers
 {
-    [InvalidOperationSerializerFilter]
-    [EnableCors("AllowAll")]
     [RequireValidModel]
+    [EnableCors("AllowAll")]
+    [InvalidOperationSerializerFilter]
     public class ProfileController : BaseController
     {
         private readonly IProfileService _profileService;
@@ -34,6 +34,7 @@ namespace Reolin.Web.Api.Controllers
         private readonly IGeoService _geoService = new FakeGeoService();
         private readonly IImageCategoryService _imageCategoryService;
 
+        private DataContext _context = new DataContext();
         public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService, IImageCategoryService imageCategoryService)
         {
             this._profileService = service;
@@ -165,7 +166,8 @@ namespace Reolin.Web.Api.Controllers
                     City = model.City,
                     Country = model.Country,
                     JobCategoryId = model.JobCategoryId,
-                    SubJobCategoryId = model.SubJobCategoryId
+                    SubJobCategoryId = model.SubJobCategoryId,
+                    
                 });
 
 
@@ -210,6 +212,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> GetInfo(int id)
         {
             var result = await this.ProfileService.QueryInfoAsync(id);
+            
             return Ok(result);
         }
 
@@ -587,6 +590,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="id">the id of profile</param>
         /// <returns></returns>
         [HttpGet]
+        [Route("/[controller]/[action]")]
         public async Task<IActionResult> Location(int id)
         {
             var location = (await this.ProfileService.GetLocation(id)).Location;
@@ -595,6 +599,30 @@ namespace Reolin.Web.Api.Controllers
                 Latitude = location.Latitude,
                 Longitude = location.Longitude
             });
+        }
+
+        /// <summary>
+        /// ست کردن آیکون پروفایل
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <summary>
+        /// Get all certificates for profile
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<ActionResult> SetIcon(SetProfileIconModel model)
+        {
+            var profile = await _context.Profiles.FirstOrDefaultAsync(c => c.Id == model.ProfileId);
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            profile.IconUrl = model.IconUrl;
+            await this._context.SaveChangesAsync();
+            return Ok(profile);
         }
     }
 }

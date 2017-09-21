@@ -15,8 +15,7 @@ namespace Reolin.Web.Api.Infra.AuthorizationRequirments
     public class ValidTokenRequirment : AuthorizationHandler<ValidTokenRequirment>, IAuthorizationRequirement
     {
         private IJwtManager _jwtManager;
-
-
+        
         public ValidTokenRequirment(IJwtManager manager)
         {
             _jwtManager = manager;

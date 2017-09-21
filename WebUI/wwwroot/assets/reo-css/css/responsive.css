@@ -1,0 +1,620 @@
+﻿/*standard reponsive class , this files make responsive layoot website for standard sizes */
+
+/*first one----Mobile devices*/
+@media screen and ( max-width:480px ) {
+    .place_form {
+        width: 380px;
+    }
+
+    .qr-code {
+        display: none;
+    }
+
+    .place_form h3 {
+        padding: 20px 10px;
+    }
+
+
+    /*index.html*/
+    .input-group .form-control
+    {
+        width:90%!important;
+        height:25px!important;
+    }
+    .search input[type=submit]
+    {
+        margin-left: -10px!important;
+    }
+    .topheader ul
+    {
+        margin-right:0px!important;
+    }
+    .topheader ul li
+    {
+        padding:0px!important;
+    }
+   
+    .suggest
+    {
+    height: 40px!important;
+    width: 40px!important;
+    }
+    .btn_cat button
+    {
+        height:25px;
+    }
+
+    .start_descrition {
+        left: -5px !important;
+        top:50px!important;
+    }
+    .start_descrition h1
+    {
+       margin-top: 2px;
+    }
+
+    .search_promo input {
+        width: 260px !important;
+    }
+ 
+
+    .layoot-logo {
+        height: 30px !important;
+    }
+
+    /*suggest.html*/
+    .hidden-top-10 {
+        display: none;
+    }
+    .lan-suggest
+    {
+        height:18px!important;
+        width:18px;
+    }
+       .user-suggest
+    {
+        height:18px!important;
+        width:18px;
+    }
+          .download-suggest
+    {
+        height:18px!important;
+        width:18px;
+    }
+          .layoot-logo-suggest
+{
+  height:25px;margin-top:15px;
+}
+
+          .suggest-icon
+          {
+                  margin-top: 7px!important;
+          }
+          .suggest-button
+{
+    height:23px!important;
+}
+.suggest-search input[type=submit]
+{
+    margin-left:0px!important;
+    margin-top:-3px!important;
+}
+.category
+{
+    text-align:center;
+}
+.category ul li
+{
+    width:65px;
+}
+.category ul li a
+{
+    font-size:15px!important;
+}
+.suggest-category
+{
+      height: 35px;
+    border: 1px solid #555;
+    width: 100%;
+    margin: auto;
+    background-color: #fff;
+    position: fixed;
+    bottom: 30px;
+    right: 0px;
+}
+.suggest-content
+{
+    background-color:#fff;
+}
+.suggest-main
+{
+    margin-top:1em;
+}
+.profileplace img
+{
+    height: 180px!important;
+}
+.menuright ul li
+{
+    height:285px;
+}
+.responsive-top-10
+{
+    display:inline-block!important;
+}
+.suggest-body-content
+{
+    height: 435px;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 10;
+}
+    /*register.html*/
+    .topheader {
+        float: unset !important;
+        text-align: center;
+        display: block;
+    }
+
+    .form-login-responsive {
+        width: 90%;
+    }
+
+    .sitename h1 {
+        font-size: 35px;
+    }
+    /*register-cv.html*/
+
+    .register-cv-form {
+        width: 90%;
+        height: 650px;
+    }
+
+    .register-input label {
+        width: 100%;
+    }
+
+    .register-input input {
+        width: 80%;
+        width: 80%;
+        margin: 0.5em 0em 0.5em 0em;
+    }
+
+    .regcv-select {
+        margin: 0.5em 0em 0.5em 0em;
+        margin-left: 0px !important;
+    }
+
+    .select-phone {
+        margin: 0.5em 0em 0.5em 0em;
+    }
+
+    .input-regcv-username {
+        width: 72% !important;
+        margin-left: 15px !important;
+    }
+
+    .input-regcv-pass {
+        width: 72% !important;
+        margin-left: 15px !important;
+    }
+
+    .input-regcv-repass {
+        width: 72% !important;
+        margin-left: 15px !important;
+    }
+
+    .login-btn {
+        width: 120px !important;
+        padding: 8px !important;
+        margin-top: 1em !important;
+    }
+
+    .register-body label {
+        margin-left: 15px;
+    }
+
+    .select-city-style {
+        margin-left: 5px !important;
+    }
+    /*register-work.html*/
+    .perimeter {
+        margin-top: 0.5em;
+        width: 20%;
+    }
+
+    .job-cat {
+        margin-top: 0.5em;
+        margin-left: 0px !important;
+    }
+
+    .reg-work-phone {
+        margin-bottom: 0.3em;
+    }
+
+    .overflow-y {
+        overflow: scroll;
+    }
+    /*login.html*/
+    .login-form-margin {
+        margin-top: 5px;
+    }
+
+    .login-position {
+        text-align: center;
+    }
+
+    .logo-center {
+        margin-right: 0px !important;
+    }
+
+
+    /*company-profile.html*/
+    .profile-company-body
+    {
+        width:100%;
+        margin:auto;
+    }
+
+    .profile-social
+    {
+        width:100%!important;
+    }
+    .company-profile-avatar
+    {
+        border:1px solid #ccc;
+        padding:5px;
+        height:225px;
+    }
+    .company-logo-responsive
+    {
+        text-align:center;
+    }
+     .company-logo-responsive img
+     {
+         height:120px;
+     }
+     .company-like
+     {
+       height: 40px;
+    width: 100%;
+    text-align: center;
+     }
+     .company-like a i
+     {
+    font-size: 30px;
+     }
+     .compnay-distance
+     {
+     width: 100%;
+    position: relative;
+    height: 130px;
+    top: 140px;
+     }
+     .company-awards-responsive
+     {
+         text-align:center;
+     }
+     .company-awards-responsive img
+     {
+         height: 60px;
+    position: relative;
+    right: 30px;
+    top: 100px;
+     }
+     .responsive-company-1
+     {
+         border-bottom:1px solid #ccc;
+         height:170px;
+         background:#fff;
+     }
+     .company-name-responsive
+     {
+         padding-left:0px;
+         font-size:18px;
+         margin-bottom:0px;
+     }
+     .show-city-country
+     {
+         font-size:12px;
+     }
+     .tab-label
+     {
+         display:none!important;
+     }
+     .company-address
+     {
+            margin: 5px 0px;
+     }
+     .tablinks img
+     {
+         height:33px!important;
+     }
+
+     ul.tab
+     {
+         height:45px!important;
+     }
+     .notif
+     {
+
+    font-size: 10px;
+    right: -15px;
+    font-weight: 100;
+    top: -13px;
+     }
+     .notif-cv{
+      font-size: 10px;
+    right: 0px;
+    font-weight: 100;
+   
+     }
+     .related-body ul
+     {
+        padding-left: 25px;
+     }
+     .company-explanation
+     {
+    height: 80px;
+    margin-bottom: 20px;
+     }
+     .profile-send-request
+     {
+         margin-top:0px!important;
+     }
+     .footer ul
+     {
+         margin-right:20px;
+     }
+     .company-profile-avatar
+     {
+         display:block!important;
+     }
+
+    /*profile-cv.html*/
+    .request
+    {
+        display:inline-block;
+    }
+    .request-related
+    {
+        width:60%;
+        margin-bottom:1em;
+    }
+    .request-type
+    {
+       width:60%;
+        margin-bottom:1em;
+        margin-left:0px;
+    }
+    .request-year
+    {
+      width:60%;
+        margin-bottom:1em;
+        margin-left:0px;
+    }
+    .request-explain
+    {
+    width:60%;
+        margin-bottom:1em;
+        margin-left:0px;
+        float:left;
+    }
+   .action
+{
+    opacity:1;
+
+}
+.action i
+{
+    display:inline-block!important;
+}
+.accept-item:hover .action
+{
+    opacity:1;
+}
+.action i
+{
+    font-size:18px;
+}
+    .accept-item ul li i
+    {
+        display:none;
+    }
+    .profiletab
+ {
+        width:100%!important;
+    }
+    .profilecv-body
+    {
+        width:90%;
+    }
+    .user-profile-avatar
+{
+    border:1px solid #ccc;
+    padding:5px;
+    height:130px;
+}
+.responsive-profilename
+{
+    display:block;
+}
+.responsive-name
+{
+    width:100%;
+    font-size:14px;
+    margin-bottom:3px;
+}
+.responsive-major
+{
+  width:100%;
+    font-size:12px;
+      margin-bottom:3px;
+}
+.settingicon
+{
+  margin-top: -25px;
+}
+.group-search
+{
+        width: 80%;
+    margin: auto;
+    margin-left: 40px;
+    margin-right:0px!important;
+}
+.margin-searchbox
+{
+    margin-top:10px!important;
+    margin-bottom:10px!important;
+}
+.search-height
+{
+    height:23px!important;
+}
+.group-search input[type=submit]
+{
+    margin-left:-3px!important;
+    margin-top:-3px;
+}
+.responsive-location-name
+{
+ width:100%;
+    font-size:10px;
+      margin-bottom:3px;
+}
+.image-userprofile-responsive
+{
+    width: 80px;
+    height: 85px;
+}
+.responsive-award
+{
+    text-align:center;
+}
+.responsive-award img
+{
+   width: 50px;
+    height: 50px;
+}
+.responsive-contact a
+{
+        color: #555;
+    font-size: 11px;
+    padding: 3px;
+    border: 2px solid #ccc;
+    line-height: 2;
+}
+.show-contact-me
+{
+    font-size:11px;
+    color:#999;
+}
+.toggle-contact
+{
+    display:none;
+    transition:all 0.4s ease-in-out;
+    -webkit-transition:all 0.4s ease-in-out;
+    -moz-transition:all 0.4s ease-in-out;
+}
+.request-related-cv
+{
+    width: 60%;
+    margin-left:8px;
+}
+.request-type-cv
+{
+   width: 60%;
+    margin-left:8px;
+}
+.request-year-cv
+{
+    width: 60%;
+    margin-left:8px;
+}
+.request-explain-cv
+{
+    width: 60%;
+    margin-left:8px;
+}
+.profile-left-tab
+{
+    margin-top: 10px!important;
+}
+.user-profile-avatar
+{
+    display:block;
+}
+.awards-item
+{
+    height:70px;
+}
+.certificate img
+{
+    height:60px;
+}
+.year
+{
+    width:15%;
+}
+.year p
+{
+    font-size: 11px;
+    line-height: 4;
+}
+.awards-body
+{
+    box-shadow:unset!important;
+}
+.instagram
+{
+    width:30px;
+    height:30px;
+}
+.facebook
+{
+  width:30px;
+    height:30px;
+}
+.google
+{
+  width:30px;
+  height:30px;
+}
+.telegram
+{
+ width:30px;
+    height:30px;
+}
+.youtube
+{
+ width:30px;
+    height:30px;
+}
+.linkedin
+{
+ width:30px;
+    height:30px;
+}
+
+}
+
+
+
+
+
+
+
+
+@media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 992px) 
+  and (-webkit-min-device-pixel-ratio: 1) 
+{
+       .profilecv-body
+    {
+        width:90%;
+    }
+}
+
+
+

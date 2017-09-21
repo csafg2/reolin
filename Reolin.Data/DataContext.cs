@@ -26,7 +26,7 @@ namespace Reolin.Data
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ProfileNetwork> ProfileNetworks { get; set; }
         public DbSet<SocialNetwork> SocialNetworks { get; set; }
-
+        public DbSet<GeoInfo> GeoInfos { get; set; }
 
         public DataContext(): base("Default")
         {

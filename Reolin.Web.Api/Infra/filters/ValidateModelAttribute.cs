@@ -15,32 +15,33 @@ namespace Reolin.Web.Api.Infra.Filters
 {
     public class CheckPermissionAttribute : Attribute, IAsyncActionFilter
     {
-        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            DataContext dbContext = (DataContext)context.HttpContext.RequestServices.GetService(typeof(DataContext));
-            var model = context.ActionArguments["model"];
-            if (model == null)
-            {
-                return;
-            }
+            return Task.FromResult(0);
+            //DataContext dbContext = (DataContext)context.HttpContext.RequestServices.GetService(typeof(DataContext));
+            //var model = context.ActionArguments["model"];
+            //if (model == null)
+            //{
+            //    return;
+            //}
 
-            PropertyInfo info = model.GetType().GetProperty("ProfileId");
+            //PropertyInfo info = model.GetType().GetProperty("ProfileId");
 
-            if (info == null)
-            {
-                return;
-            }
+            //if (info == null)
+            //{
+            //    return;
+            //}
 
-            int profileId = (int)info.GetValue(model);
+            //int profileId = (int)info.GetValue(model);
             
-            int userId = int.Parse(context.HttpContext.User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault().Value);
+            //int userId = int.Parse(context.HttpContext.User.Claims.Where(c => c.Type == JwtConstantsLookup.ID_CLAIM_TYPE).FirstOrDefault().Value);
 
-            var ids = await dbContext.Profiles.Where(p => p.UserId == userId).Select(p => p.Id).ToArrayAsync();
+            //var ids = await dbContext.Profiles.Where(p => p.UserId == userId).Select(p => p.Id).ToArrayAsync();
 
-            if (!ids.Any(i => i == profileId))
-            {
-                context.Result = new UnauthorizedResult();
-            }
+            //if (!ids.Any(i => i == profileId))
+            //{
+            //    context.Result = new UnauthorizedResult();
+            //}
         }
     }
 

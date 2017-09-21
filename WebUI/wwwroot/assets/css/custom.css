@@ -1,0 +1,417 @@
+/* here you can put your own css to customize and override the theme */
+
+#map {
+    opacity: 0.7;
+}
+
+.c-main-container {
+    width: 88%;
+}
+
+.mid-cell {
+    height: 270px;
+    text-align: center;
+    margin: 1%;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 49.5%;
+}
+
+    .mid-cell:not(:first-child) {
+        margin-left: .5%;
+    }
+
+.slideMenu {
+    background: white;
+    z-index: 2000;
+    box-shadow: 1px 1px 10px 1px black;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.searchItem {
+    border-bottom: 1px solid #d5cfcf;
+    margin-top: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 1%;
+}
+
+    .searchItem span {
+        border-radius: 10px;
+    }
+
+    .searchItem div {
+        color: gray;
+    }
+
+        .searchItem div:hover {
+            color: #359a68;
+        }
+
+.certificateItem {
+    display: block;
+    margin-left: 5%;
+}
+
+.mainButton {
+    border: 1px solid #e8e2e2;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100%;
+}
+
+
+#certButton {
+    padding: 0px;
+    float: left;
+    clear: right;
+    width: 58%;
+    height: 100%;
+}
+
+#suggestionModalButton {
+    width: 42%;
+    padding: 0px;
+}
+
+.serviceBox {
+    border: 1px solid #d5cfcf;
+    padding: 3%;
+    background-color: white;
+}
+
+.commentBoxItem {
+    border-bottom: 1px dashed gray;
+}
+
+.commentBox {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 3%;
+    padding-right: 8%;
+    padding-left: 8%;
+    margin-top: 10%;
+}
+
+.respIcon {
+    max-width: 60%;
+    max-height: 60%;
+}
+
+.staffBox {
+    border: 1px solid gray;
+    padding-right: 7%;
+    padding-left: 7%;
+    background-color: white;
+    color: black;
+}
+
+    .staffBox a {
+        color: black;
+    }
+
+.tabIcon {
+    max-height: 800%;
+    max-height: 80%;
+}
+
+
+.themeColor {
+    color: #359a68;
+    border-color: gray !important;
+}
+
+.tabItem {
+    width: 19%;
+    margin-left: .3%;
+    text-align: center;
+}
+
+    .tabItem a {
+        width: 100%;
+    }
+
+.profileBox {
+    background: white;
+    width: 110%;
+    margin-left: -5%;
+    margin-bottom: 10px;
+    padding-top: 2%;
+}
+
+.mix-block {
+    background: white;
+}
+
+.badge {
+    z-index: 200;
+}
+
+.personalPageTabItem {
+    width: 32%;
+}
+
+    .personalPageTabItem a {
+        width: 100%;
+    }
+
+.mainBody {
+    background-image: url('../img/main-bg.png');
+}
+
+.whiteBox {
+    background: white;
+}
+
+
+.top10Container {
+    margin-top: -1% !important;
+    width: 13%;
+    border: 1px solid gray;
+    border-top: none;
+    background: #f5f4f4;
+}
+
+.pricing {
+    box-shadow: -2px 2px 2px gray;
+    -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+}
+
+.top10Container .pricing {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: none;
+    padding: 4%;
+}
+
+
+.suggestLine {
+    clear: both;
+    width: 100%;
+    border: 1px solid #d5cfcf;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.staffBox .row {
+    margin-top: 10px;
+}
+
+.slick-next, .slick-prev {
+    background-color: #e1e1e1;
+    width: 30px;
+    
+    border-radius: 15px;
+    z-index: 999;
+    margin-top: -.45%;
+    border-top: 1px solid rgba(148,148,148,.4);
+    border-bottom: 1px solid rgba(148,148,148,.4);
+    height: 87%;
+}
+
+    .slick-prev:hover, .slick-next:hover {
+        background: red;
+    }
+
+.registerForm {
+    -webkit-box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    box-shadow: 2px 2px 49px 0px rgba(0,0,0,0.75) !important;
+    background: transparent;
+    width: 44%;
+}
+
+    .registerForm input[type=text]:focus, .registerForm input[type=password]:focus {
+        border: 1px solid rgba(32,194,0,1);
+    }
+
+    .registerForm input[type=text], .registerForm input[type=password] {
+        -webkit-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75);
+    }
+
+#tab-3 li {
+    float: none;
+    margin-top: 2px;
+}
+
+.socialItem img {
+    width: 50px;
+}
+
+.bottomBorder {
+    border-bottom: 2px solid rgba(32,194,0,1);
+}
+
+
+.suggestionItem:not(:first-child) {
+    margin-left: -2.2% !important;
+    width:26% !important;
+}
+
+.sugges-share {
+    max-height: 32px;
+    max-width: 32px;
+}
+
+.selectLocationButton {
+    float: right;
+}
+
+    .selectLocationButton img {
+        float: right;
+        max-width: 42px;
+        max-height: 42px;
+    }
+
+.registerSeparator {
+    width: 100%;
+    border: 1px solid #349967;
+    margin-top: 15px;
+}
+
+.search-category ul {
+    background: rgba(148,148,148, .6) !important;
+    background: -moz-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(148,148,148,1)), color-stop(34%, rgba(219,219,219,0.89)), color-stop(70%, rgba(209,209,209,0.77)), color-stop(100%, rgba(102,102,102,0.67))) !important;
+    background: -webkit-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    background: -o-linear-gradient(top, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    background: linear-gradient(to bottom, rgba(148,148,148,1) 0%, rgba(219,219,219,0.89) 34%, rgba(209,209,209,0.77) 70%, rgba(102,102,102,0.67) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#949494', endColorstr='#666666', GradientType=0 );
+}
+
+.search-category a {
+    color: white !important;
+}
+
+.categoryItem a {
+    font-size: 14px;
+    margin-top: 0px;
+    border-radius: 0px 8px 8px 0px;
+    color: white;
+    background: rgba(85, 211, 169, .6);
+    padding: 2px 6px 2px 6px;
+    text-shadow: 1px 1px 0px gray;
+}
+
+.categoryItem {
+    margin-top: 4px;
+}
+
+.searchCategoryContainer {
+    width: 70%;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 280px;
+    display: block;
+    background-color: rgba(239, 239, 239, .8);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+.activeCategoryItem {
+    background-color: #55d2a8 !important;
+}
+
+
+.filterGroup a {
+    border: 1px solid #d5cfcf;
+}
+
+.leftOpener, .rightOpener {
+    background: transparent;
+    display: inline;
+}
+
+.toolsMenu li {
+    width: 55px;
+}
+
+#searchBox {
+    -webkit-box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 22px -1px rgba(0,0,0,0.75);
+}
+
+.tabButton {
+    height: 80px;
+}
+
+.socialContainer div {
+    float: left;
+    margin-left: 9px;
+}
+
+    .socialContainer div img {
+        max-height: 45px;
+    }
+
+        .socialContainer div img:hover {
+            border: 1px solid #09a2b7;
+            border-radius: 51px !important;
+        }
+
+.badge {
+    position: absolute;
+    top: 15% !important;
+    right: 16% !important;
+}
+
+.tab-style-1 ul.nav-tabs .active > a, .tab-style-1 ul.nav-tabs .active > a:hover, .tab-style-1 ul.nav-tabs .active > a:focus {
+    border: none !important;
+    background: #e5e0e0 !important;
+}
+
+.suggestPage_Menu li {
+    width: 50px;
+}
+
+.locationLinks a {
+    color: rgba(102,102,102,0.67);
+}
+
+.activeLocationFilter {
+    color: #359a68 !important;
+}
+
+.top10Container .img-responsive {
+    height: 90px;
+}
+
+.register_Continue {
+    -webkit-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    box-shadow: 0px 0px 23px -1px rgba(0,0,0,0.75) !important;
+    color: gray !important;
+    width: 25%;
+    margin-right: -12px;
+}
+
+.personalPageTabItem .badge {
+    top: 7% !important;
+    right: 25% !important;
+}
+
+.tab-style-1 ul.nav-tabs > li {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.rightLabel {
+    text-align: right !important;
+}
+
+
+.shadowedBox {
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) !important;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75) !important;
+}

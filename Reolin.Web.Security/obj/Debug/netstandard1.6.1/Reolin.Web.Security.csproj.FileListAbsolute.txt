@@ -1,9 +1,9 @@
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\netstandard1.6.1\Reolin.Web.Security.deps.json
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\netstandard1.6.1\Reolin.Web.Security.dll
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\netstandard1.6.1\Reolin.Web.Security.pdb
+D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.dll
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.pdb
-D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\netstandard1.6.1\Reolin.Web.Security.csprojResolveAssemblyReference.cache

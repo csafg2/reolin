@@ -35,16 +35,18 @@ namespace Reolin.Data.Seeds
 
         internal static void AddDefaultNetworks(this DataContext source)
         {
-            string[] networks = new string[] { "Facebook", "gmail", "telegram" };
+            SocialNetwork[] networks = new SocialNetwork[]
+            {
+                new SocialNetwork() { Name =  "Facebook", IconPath = "/files/facebook.png" },
+                new SocialNetwork() { Name =  "gmail", IconPath = "/files/gmail.png" },
+                new SocialNetwork() { Name =  "telegram", IconPath = "/files/telegrm.png" }
+            };
 
             foreach (var item in networks)
             {
-                if (!source.SocialNetworks.Any(s => s.Name == item))
+                if (!source.SocialNetworks.Any(s => s.Name == item.Name))
                 {
-                    source.SocialNetworks.Add(new SocialNetwork()
-                    {
-                        Name = item
-                    });
+                    source.SocialNetworks.Add(item);
                 }
             }
 

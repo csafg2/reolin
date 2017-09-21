@@ -10,6 +10,10 @@ namespace Reolin.Data.EntityFramework.Config
         {
             this.HasKey(c => c.Id);
             this.Property(c => c.Body).IsRequired();
+
+            this.HasMany(c => c.Replies)
+                .WithOptional(c => c.Parent)
+                .HasForeignKey(c => c.ParentId);
         }
     }
 }

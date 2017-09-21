@@ -6,6 +6,15 @@ using System.Data.Entity.Spatial;
 
 namespace Reolin.Web.ViewModels
 {
+    public class SetProfileIconModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "invalid id")]
+        public int ProfileId { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "icon url is required")]
+        public string IconUrl { get; set; }
+    }
+
     public class AddRelatedTypeModel
     {
         public int ProfileId { get; set; }

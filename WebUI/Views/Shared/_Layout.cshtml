@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,10 +7,146 @@
     <base href="~/" />
 
     <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
-</head>
-<body>
-    @RenderBody()
 
-    @RenderSection("scripts", required: false)
+    <meta name="referrer" content="no-referrer">
+
+    <link href="~/content/font/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/content/css/bootstrap.css">
+    <!--Main styles-->
+    <link rel="stylesheet" type="text/css" href="/content/css/main.css">
+    <!--Adaptive styles-->
+    <link rel="stylesheet" type="text/css" href="/content/css/adaptive.css">
+    <!--Swipe menu-->
+    <link rel="stylesheet" type="text/css" href="/content/css/pushy.css">
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="/content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--animation css-->
+    <link rel="stylesheet" type="text/css" href="/content/css/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="/content/css/cs-select.css" />
+    <link rel="stylesheet" type="text/css" href="/content/css/cs-skin-border.css" />
+    <link rel="stylesheet" type="text/css" href="/content/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/content/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/content/css/stylesheet.css" />
+    <link href="/content/css/responsive.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body onload="" class="promo back">
+
+    @*@Html.Partial("ProfileIdField")*@
+    <!--navigation swipe-->
+    <div class="add_place none" id="pl">
+        <div class="place_form">
+            <i class="fa fa-times close_window" id="close"></i>
+            <h3>Layoot Multiple Platform,Scan and Download Your App!</h3>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="ios">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="/content/img/ios.png" height="100" width="100" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="/content/img/qr.png" height="150" width="150" alt="" />
+                        </div>
+                    </div>
+                    <div class="android">
+                        <div class="col-md-4" style="padding-top:25px">
+                            <img src="/content/img/android.png" height="100px" width="100px" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <img src="/content/img/qr.png" height="150px" width="150px" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+    <div class="headmenu">
+        <div class="">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 pull-right">
+                    <div class="topheader" id="shiftheader">
+                        <ul>
+
+                            <li class="has-submenu">
+                                <a href="#" class="language"></a>
+                                <ul class="sub-menu">
+                                    <li><a href="#">فارسی</a></li>
+                                    <li><a href="#">enlish</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" id="ad" class="download">
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 pull-right ">
+                    <div class="sitename wow fadeInDown">
+                        <h1>
+
+                            <img class="register-cv-logo" src="/content/img/layoot.png" alt="Layoot Logo" />
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs  pull-left">
+                    <div>
+                        <a href="Suggest.html" class="suggest">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer">
+                    <ul>
+                        <li>
+                            <a href="#">Privacy</a>
+
+                        </li>
+                        <li>
+                            <a href="#">help</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/content/js/jquery.min.js"></script>
+    <script src="/content/js/Custom.js"></script>
+    <!--scroll animate block-->
+    <script src="/content/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--Other main scripts-->
+    <script src="/content/js/all_scr.js"></script>
+    <!--Bootstrap js-->
+    <script src="/content/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

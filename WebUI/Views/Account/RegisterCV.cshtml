@@ -1,0 +1,105 @@
+﻿<div class="position">
+    <div class="login-form register-cv-form ">
+        <div class="login-head">
+            <h3 class="register-cv-title">Create Your Personal CV</h3>
+            <span>
+                <i class="fa fa-arrow-left"></i>
+                <a href="/Account/register" class="register-cv-back">back to register</a>
+            </span>
+            <input id="Text1" class="secret-input" type="text" />
+        </div>
+        <div class="login-body">
+            <section class="content bgcolor-8">
+                <div class="register-input">
+
+                    <label class="lable-regcv" for="fullname" >Enter Your Full Name</label>
+                    <input class="input-regcv" id="FullName" type="text" value="sample" />
+                    <div class="majorcategory main-category">
+                        <label for="fullname">Select Your Main Category</label>
+                        <select id="SubCategory" class="regcv-select"></select>
+                    </div>
+
+                    <div class="majorcategory">
+                        <label for="fullname">Select Your Major Category</label>
+                        <select id="MajorCategory" class="regcv-select"></select>
+                    </div>
+                    <div class="city-country">
+                        <label for="fullname">Set Your City & Country</label>
+                        <select id="CityList" class="select-city-style">
+                            <option>City</option>
+                        </select>
+                        <select class="regcv-select" id="Country">
+                            <option>Country</option>
+                        </select>
+                    </div>
+                    <label for="phonenumber">Enter Your Phone Number</label>
+                    <input id="PhoneNumber" class="select-phone" type="tel" value="98273492" />
+                </div>
+                <hr />
+                <div class="register-body">
+                    <label for="fullname" class="lable-regcv-username">Username</label>
+                    <input id="UserName" class="input-regcv-username" type="text" />
+
+                    <label for="fullname" class="lable-regcv-username">Email</label>
+                    <input id="Email" class="input-regcv-username" type="text" />
+
+                    <label for="fullname" class="lable-regcv-pass">Password</label>
+                    <input id="Password" class="input-regcv-pass" type="text"  value="123434"/>
+
+                    <label for="fullname" class="lable-regcv-repass">Re-En Password</label>
+                    <input id="ConfirmPassword" class="input-regcv-repass" type="text" value="123434" />
+                </div>
+                <div class="">
+                    <input id="RegisterButton" class="login-btn register-cv-btn" type="button" value="continue" />
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="~/lib/WebClient/Helpers/URLS.js"></script>
+</div>
+
+@section Scripts {
+    
+    <script>
+        var URLs = Reolin.Web.Client.URLs;
+        
+        $.getJSON(URLs.GetJobCategories, null, function (d) {
+            for (categoryItem in d) {
+                var item = { name: d[categoryItem].name, id: d[categoryItem].id };
+                $("#MajorCategory").append("<option value=" + item.id + ">" + item.name + "</option>")
+            }
+        });
+
+        $.getJSON(URLs.GetSubJobCategories, null, function (d) {
+            for (c in d) {
+                var item = { name: d[c].name, id: d[c].id };
+
+                $("#SubCategory").append("<option value=" + item.id + ">" + item.name + "</option>");
+            }
+        });
+
+        $.getJSON(countryUrl, null, function (d) {
+            for (c in d) {
+                $("#Country").append("<option>" + d[c] + "</option>");
+            }
+        });
+
+        $("#Country").change(function (e) {
+            var countryName = this.value;
+
+            if (countryName == "Country")
+                return;
+
+            $.getJSON(citiesUrl, { country: countryName }, function (d) {
+                $("#CityList").html("");
+
+                for (c in d) {
+                    var cityItem = { name: d[c].name, latitude: d[c].latitude, longitude: d[c].longitude };
+
+                    $("#CityList").append("<option data-lat=" + cityItem.latitude + " data-long=" + cityItem.longitude +">" + cityItem.name + "</option>");
+                }
+            });
+
+        });
+    </script>
+}

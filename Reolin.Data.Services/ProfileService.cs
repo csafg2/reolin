@@ -194,7 +194,11 @@ namespace Reolin.Data.Services
 
         public async Task<ProfileInfoDTO> QueryInfoAsync(int id)
         {
-            var result = await this.Context.Profiles.Include("Address").FirstOrDefaultAsync(p => p.Id == id);
+            var result = await this.Context
+                .Profiles
+                .Include("Address")
+                .FirstOrDefaultAsync(p => p.Id == id);
+            
             return result;
         }
 
@@ -441,10 +445,10 @@ namespace Reolin.Data.Services
                     City = p.Address.City,
                     Country = p.Address.Country,
                     LikeCount = p.ReceivedLikes.Count,
-                    Name = p.Name
+                    Name = p.Name,
+                    IsWork = p.Type == ProfileType.Work
                 }).FirstOrDefaultAsync();
-
-
+            
             return profile;
 
         }
