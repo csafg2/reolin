@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -87,7 +88,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequireValidModel]
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> AddDescription(ProfileAddDescriptionModel model)
@@ -107,7 +108,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="file">image file</param>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequireValidModel]
         [RequestFormSizeLimit(3000)]
         [Route("/[controller]/[action]")]
@@ -136,7 +137,7 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="profileId">the Id of profile which has been liked</param>
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("/User/LikeProfile/{profileId}")]
         public async Task<IActionResult> Like(int profileId)
         {
@@ -181,7 +182,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> CreatePersonal(ProfileCreateModel model)
         {
             Profile result = await this.ProfileService.CreatePersonalAsync(this.GetUserId(),
@@ -206,7 +207,7 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="id">profieId</param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("/[Controller]/[action]/{id}")]
         [HttpGet]
         public async Task<IActionResult> GetInfo(int id)
@@ -380,7 +381,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/[controller]/[action]")]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> LatestComments(int id)
         {
             var data = await this.ProfileService.GetLatestComments(id);
@@ -394,7 +395,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequireValidModel]
         public async Task<IActionResult> AddTag(AddTagModel model)
         {

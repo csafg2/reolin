@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -101,9 +102,9 @@ namespace Reolin.Web.Api.Controllers
         /// Logout the user, the jwt MUST BE valid and present in the requst header
         /// </summary>
         /// <returns></returns>
-        [Authorize]
         [HttpPost]
         [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Logout()
         {
             JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();

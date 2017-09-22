@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
 using Reolin.Data.Domain;
@@ -34,7 +35,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult Create(CreateCommentModel model)
         {
@@ -58,7 +59,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult Reply(CommentReplyModel model)
         {
@@ -82,8 +83,8 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="commentId"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Authorize]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult GetReplies(int commentId)
         {
@@ -95,8 +96,8 @@ namespace Reolin.Web.Api.Controllers
         /// </summary>
         /// <param name="profileId"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Authorize]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult GetComments(int profileId)
         {
