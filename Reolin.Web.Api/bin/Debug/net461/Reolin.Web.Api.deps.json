@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.6.1/win7-x86",
-    "signature": "0204d3d26039e6a3c935d60a00d9f6e6bdb7a9f7"
+    "signature": "c5044b68488a3396fd64b0070e3d0577e319677a"
   },
   "compilationOptions": {
     "defines": [
@@ -39,6 +39,7 @@
           "Microsoft.Extensions.Logging.Debug": "2.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
+          "Microsoft.SqlServer.Types": "11.0.2",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "Reolin.Data.Domain": "1.0.0",
@@ -1782,6 +1783,11 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "compile": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0",
@@ -2255,6 +2261,7 @@
           "Microsoft.Extensions.Logging.Debug": "2.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
+          "Microsoft.SqlServer.Types": "11.0.2",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "Reolin.Data.Domain": "1.0.0",
@@ -3396,6 +3403,11 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "runtime": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0",
@@ -4602,6 +4614,13 @@
       "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.SqlServer.Types/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tusOUD4s/zkjRs25wD2TrzClQeSgQvvz5YSsG3bEbiogXm7+H5I6PBUy1RixWyLzlZpn3kxrLGyoId5+no9g0w==",
+      "path": "microsoft.sqlserver.types/11.0.2",
+      "hashPath": "microsoft.sqlserver.types.11.0.2.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
       "type": "package",

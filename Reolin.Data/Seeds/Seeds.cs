@@ -35,6 +35,13 @@ namespace Reolin.Data.Seeds
 
         internal static void AddDefaultNetworks(this DataContext source)
         {
+            var oldNetworks = source.SocialNetworks;
+            foreach(var item in oldNetworks)
+            {
+                source.SocialNetworks.Remove(item);
+            }
+            source.SaveChanges();
+
             SocialNetwork[] networks = new SocialNetwork[]
             {
                 new SocialNetwork() { Name =  "Facebook", IconPath = "/files/facebook.png" },

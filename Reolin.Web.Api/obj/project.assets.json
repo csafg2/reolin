@@ -1492,6 +1492,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -4184,6 +4193,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.SqlServer.Types/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.SqlServer.Types.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -6627,6 +6645,24 @@
         "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json"
+      ]
+    },
+    "Microsoft.SqlServer.Types/11.0.2": {
+      "sha512": "tusOUD4s/zkjRs25wD2TrzClQeSgQvvz5YSsG3bEbiogXm7+H5I6PBUy1RixWyLzlZpn3kxrLGyoId5+no9g0w==",
+      "type": "package",
+      "path": "microsoft.sqlserver.types/11.0.2",
+      "files": [
+        "content/SqlServerTypes/Loader.cs",
+        "content/SqlServerTypes/readme.htm",
+        "lib/net20/Microsoft.SqlServer.Types.dll",
+        "microsoft.sqlserver.types.11.0.2.nupkg.sha512",
+        "microsoft.sqlserver.types.nuspec",
+        "nativeBinaries/x64/SqlServerSpatial110.dll",
+        "nativeBinaries/x64/msvcr100.dll",
+        "nativeBinaries/x86/SqlServerSpatial110.dll",
+        "nativeBinaries/x86/msvcr100.dll",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
       ]
     },
     "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
@@ -9848,6 +9884,7 @@
       "Microsoft.Extensions.Logging.Debug >= 2.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 2.0.0",
       "Microsoft.Extensions.PlatformAbstractions >= 1.1.0",
+      "Microsoft.SqlServer.Types >= 11.0.2",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
       "Reolin.Data.Domain >= 1.0.0",
@@ -9944,6 +9981,10 @@
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "Microsoft.SqlServer.Types": {
+            "target": "Package",
+            "version": "11.0.2"
           },
           "Microsoft.AspNetCore.Server.Kestrel": {
             "target": "Package",

@@ -13,8 +13,8 @@ namespace Reolin.Data.Migrations
         protected override void Seed(DataContext context)
         {
             context.AddDefaultNetworks();
-            context.AddDefaultJobCategories();
-            context.AddDefaultJobSubCategoies();
+            //context.AddDefaultJobCategories();
+            //context.AddDefaultJobSubCategoies();
         }
     }
 }

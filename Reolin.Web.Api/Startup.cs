@@ -14,6 +14,9 @@ namespace Reolin.Web.Api
     {
         public Startup(IHostingEnvironment env)
         {
+            System.Console.WriteLine(env.ContentRootPath);
+            SqlServerTypes.Utilities.LoadNativeAssemblies(env.ContentRootPath);
+
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -29,6 +32,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.UseJwtValidation();
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));

@@ -5,30 +5,21 @@ using Reolin.Data;
 using Reolin.Data.Domain;
 using Reolin.Web.Api.Infra.mvc;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Data.Entity;
+using Reolin.Web.ViewModels.ViewModels;
 
 namespace Reolin.Web.Api.Controllers
 {
-    public class CreateCommentModel
-    {
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Comment body is required")]
-        public string Body { get; set; }
-
-        [Range(1, int.MaxValue, ErrorMessage = "invalid profile id")]
-        public int ProfileId { get; set; }
-    }
-
-    public class CommentReplyModel: CreateCommentModel
-    {
-        [Range(1, int.MaxValue, ErrorMessage = "invalid comment id")]
-        public int CommentId { get; set; }
-    }
-
     public class CommentController: BaseController
     {
-        DataContext context = new DataContext();
+        private readonly DataContext _context;
 
+        public CommentController(DataContext context)
+        {
+            this._context = context;
+        }
         /// <summary>
         /// ارسال کامنت جدید
         /// </summary>
@@ -39,7 +30,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public ActionResult Create(CreateCommentModel model)
         {
-            context.Comments.Add(new Comment()
+            _context.Comments.Add(new Comment()
             {
                 Body = model.Body,
                 Date = DateTime.Now,
@@ -48,7 +39,7 @@ namespace Reolin.Web.Api.Controllers
                 UserId = this.GetUserId()
             });
 
-            context.SaveChanges();
+            _context.SaveChanges();
 
             return Ok();
         }
@@ -63,7 +54,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public ActionResult Reply(CommentReplyModel model)
         {
-            context.Comments.Add(new Comment()
+            _context.Comments.Add(new Comment()
             {
                 Body = model.Body,
                 Date = DateTime.Now,
@@ -71,10 +62,10 @@ namespace Reolin.Web.Api.Controllers
                 ProfileId = model.ProfileId,
                 UserId = this.GetUserId(),
                 ParentId = model.CommentId
-            }); 
+            });
 
 
-            context.SaveChanges();
+            _context.SaveChanges();
             return Ok();
         }
 
@@ -84,11 +75,10 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="commentId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult GetReplies(int commentId)
         {
-            return Ok(context.Comments.Where(c => c.ParentId == commentId));
+            return Ok(_context.Comments.Where(c => c.ParentId == commentId));
         }
 
         /// <summary>
@@ -97,11 +87,31 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="profileId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("[controller]/[action]")]
         public ActionResult GetComments(int profileId)
         {
-            return Ok(context.Comments.Where(c => c.ProfileId == profileId));
+            return Ok(_context.Comments.Where(c => c.ProfileId == profileId && c.Confirmed == true));
+        }
+
+        /// <summary>
+        /// تایید کامنت
+        /// </summary>
+        /// <param name="commentId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("[controller]/[action]")]
+        public async Task<ActionResult> Confirm(int commentId)
+        {
+            var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == commentId);
+            if(comment == null)
+            {
+                return NotFound();
+            }
+
+            comment.Confirmed = true;
+            await this._context.SaveChangesAsync();
+            return Ok();
         }
     }
 }

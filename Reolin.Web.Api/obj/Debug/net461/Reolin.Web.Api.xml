@@ -37,14 +37,14 @@
             <param name="roles"></param>
             <returns></returns>
         </member>
-        <member name="M:Reolin.Web.Api.Controllers.CommentController.Create(Reolin.Web.Api.Controllers.CreateCommentModel)">
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.Create(Reolin.Web.ViewModels.ViewModels.CreateCommentModel)">
             <summary>
             ارسال کامنت جدید
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Reolin.Web.Api.Controllers.CommentController.Reply(Reolin.Web.Api.Controllers.CommentReplyModel)">
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.Reply(Reolin.Web.ViewModels.ViewModels.CommentReplyModel)">
             <summary>
             پاسخ به کامنت
             </summary>
@@ -63,6 +63,13 @@
             دریافت کامنت های یک پروفایل
             </summary>
             <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.Confirm(System.Int32)">
+            <summary>
+            تایید کامنت
+            </summary>
+            <param name="commentId"></param>
             <returns></returns>
         </member>
         <member name="T:Reolin.Web.Api.Controllers.ErrorController">
@@ -334,6 +341,18 @@
             <returns></returns>
             <summary>
             Get all certificates for profile
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.SocialNetworkController.List">
+            <summary>
+            لیست شبکه های اجتماعی با جزئیات
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.SocialNetworkController.GetProfileNetworks(System.Int32)">
+            <summary>
+            لیست شبکه های اجتماعی با جزئیات
             </summary>
             <returns></returns>
         </member>

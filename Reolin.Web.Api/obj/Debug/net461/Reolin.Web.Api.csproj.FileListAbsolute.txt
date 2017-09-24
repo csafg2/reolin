@@ -385,3 +385,4 @@ D:\projects\repos\reolin\Reolin.Web.Api\bin\Debug\net461\Microsoft.Extensions.Lo
 D:\projects\repos\reolin\Reolin.Web.Api\bin\Debug\net461\Microsoft.VisualStudio.Web.BrowserLink.dll
 D:\projects\repos\reolin\Reolin.Web.Api\bin\Debug\net461\config.json
 D:\projects\repos\reolin\Reolin.Web.Api\bin\Debug\net461\appsettings.json
+D:\projects\repos\reolin\Reolin.Web.Api\bin\Debug\net461\Microsoft.SqlServer.Types.dll

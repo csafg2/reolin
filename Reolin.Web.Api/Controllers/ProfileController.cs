@@ -35,13 +35,14 @@ namespace Reolin.Web.Api.Controllers
         private readonly IGeoService _geoService = new FakeGeoService();
         private readonly IImageCategoryService _imageCategoryService;
 
-        private DataContext _context = new DataContext();
-        public ProfileController(IProfileService service, IMemoryCache cache, IFileService fileService, IImageCategoryService imageCategoryService)
+        private DataContext _context;
+        public ProfileController(DataContext context, IProfileService service, IMemoryCache cache, IFileService fileService, IImageCategoryService imageCategoryService)
         {
             this._profileService = service;
             this._fileService = fileService;
             this._cache = cache;
             this._imageCategoryService = imageCategoryService;
+            this._context = context;
         }
 #pragma warning restore CS1591 
 

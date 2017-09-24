@@ -20,6 +20,8 @@ namespace Reolin.Web.Api
                 .Build();
 
             host.Run();
+
+
         }
     }
 #pragma warning restore CS1591

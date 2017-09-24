@@ -63,8 +63,8 @@ namespace ServiceTest_
         [TestMethod]
         public void User_AddCommentAsync()
         {
-            int userId = context.Users.First().Id;
-            int profileId = 21;
+            int userId = 15;
+            int profileId = 1;
             int r = 0;
             for (int i = 0; i < 10; i++)
             {
