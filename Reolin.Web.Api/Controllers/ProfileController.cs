@@ -154,6 +154,7 @@ namespace Reolin.Web.Api.Controllers
         /// <returns>the address in which the profile info is create an accessible to consume</returns>
         [HttpPost]
         [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
 
