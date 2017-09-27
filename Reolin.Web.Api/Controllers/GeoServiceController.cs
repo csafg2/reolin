@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GeoService.Controllers
 {
-    #pragma warning disable CS1591
+#pragma warning disable CS1591
+    [EnableCors("AllowAll")]
     public class GeoServiceController : Controller
     {
         private DataContext _context;

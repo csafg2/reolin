@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Reolin.Web.Api.Infra.IO;
 
 namespace Reolin.Web.Api.Controllers
 {
+    [EnableCors("AllowAll")]
+
     public class FileController : BaseController
     {
         private IFileService _service;

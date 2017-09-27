@@ -4,10 +4,13 @@ using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Cors;
 
 namespace Reolin.Web.Api.Controllers
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+    [EnableCors("AllowAll")]
     public class SuggestionController : BaseController
     {
         private ISuggestionService _service;

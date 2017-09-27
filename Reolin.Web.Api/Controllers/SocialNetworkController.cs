@@ -1,12 +1,15 @@
 ﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
+
+    [EnableCors("AllowAll")]
     public class SocialNetworkController : Controller
     {
         private DataContext _context;

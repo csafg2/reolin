@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
 using Reolin.Data.Domain;
 using Reolin.Web.Api.Infra.mvc;
+using Reolin.Web.ViewModels.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using Reolin.Web.ViewModels.ViewModels;
 
 namespace Reolin.Web.Api.Controllers
 {
-    public class CommentController: BaseController
+    [EnableCors("AllowAll")]
+    public class CommentController : BaseController
     {
         private readonly DataContext _context;
 
@@ -104,7 +106,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<ActionResult> Confirm(int commentId)
         {
             var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == commentId);
-            if(comment == null)
+            if (comment == null)
             {
                 return NotFound();
             }
