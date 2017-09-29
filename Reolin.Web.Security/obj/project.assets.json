@@ -5414,7 +5414,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hassan\\.nuget\\packages\\": {}
+    "C:\\Users\\Hassan\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5429,6 +5430,9 @@
       "outputPath": "D:\\projects\\repos\\reolin\\Reolin.Web.Security\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Hassan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

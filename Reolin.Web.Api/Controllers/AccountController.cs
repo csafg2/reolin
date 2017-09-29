@@ -87,7 +87,7 @@ namespace Reolin.Web.Api.Controllers
                     expiresIn = Options.Expiration
                 });
             }
-            catch(SecurityTokenInvalidTokenException ex)
+            catch (SecurityTokenInvalidTokenException ex)
             {
                 return StatusCode(403, ex.Message);
             }
@@ -129,7 +129,7 @@ namespace Reolin.Web.Api.Controllers
             try
             {
                 await this.UserManager.CreateAsync(model.UserName, model.Password, model.Email);
-                return Ok(new {model.UserName, model.Email });
+                return Ok(new { model.UserName, model.Email });
             }
             catch (IdentityException ex)
             {
