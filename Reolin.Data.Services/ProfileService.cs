@@ -4,13 +4,13 @@ using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Data.Entity;
-using static Reolin.Data.DataContext.StoreProcedures;
-using System.Data.SqlClient;
 using System.Data.Entity.Spatial;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+using static Reolin.Data.DataContext.StoreProcedures;
 
 namespace Reolin.Data.Services
 {
@@ -62,7 +62,7 @@ namespace Reolin.Data.Services
                                                 new SqlParameter("ProfileId", (long)profileId),
                                                 tagParameter);
             }
-            
+
         }
 
         private List<SqlParameter> GetTagSqlParams(IEnumerable<string> tags)
@@ -198,7 +198,7 @@ namespace Reolin.Data.Services
                 .Profiles
                 .Include("Address")
                 .FirstOrDefaultAsync(p => p.Id == id);
-            
+
             return result;
         }
 
@@ -448,7 +448,7 @@ namespace Reolin.Data.Services
                     Name = p.Name,
                     IsWork = p.Type == ProfileType.Work
                 }).FirstOrDefaultAsync();
-            
+
             return profile;
 
         }
@@ -504,7 +504,7 @@ namespace Reolin.Data.Services
                     Description = i.Description,
                     Subject = i.Subject,
                     Path = i.Path
-                }).ToListAsync(); 
+                }).ToListAsync();
         }
 
         public Task<List<RequestRelatedProfile>> GetRequestRelatedProfiles(int profileId)
@@ -513,7 +513,7 @@ namespace Reolin.Data.Services
                 .Select(r => new RequestRelatedProfile()
                 {
                     Date = r.Date,
-                    Id = r.Id,
+                    Id = r.SourceProfileId,
                     Description = r.Description,
                     Type = r.RelatedType.Type,
                     Name = r.SourceProfile.Name,
