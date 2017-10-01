@@ -72,6 +72,20 @@
             <param name="commentId"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.EducationController.Create(Reolin.Web.ViewModels.ViewModels.EducationCreateModel)">
+            <summary>
+            Create new Education record for this profile
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.EducationController.Get(Reolin.Web.ViewModels.ViewModels.EducationGetModel)">
+            <summary>
+            Get profile`s education info
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:Reolin.Web.Api.Controllers.ErrorController">
             <summary>
             Global Exception handler to prevent any unhandled exception to be serialized down to client

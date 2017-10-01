@@ -99,6 +99,10 @@
       <Project>{7e94a2fc-f1f9-47a8-8df8-014707618fe2}</Project>
       <Name>Reolin.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reolin.Web.ViewModels\Reolin.Web.ViewModels.csproj">
+      <Project>{893b78e4-ccc8-4c0b-a93d-ba01b7a2cf17}</Project>
+      <Name>Reolin.Web.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{96c280ca-ae2e-4c94-99ee-14a1f512ce9e}</Project>
       <Name>Utilities</Name>

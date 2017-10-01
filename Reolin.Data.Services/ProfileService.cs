@@ -513,11 +513,12 @@ namespace Reolin.Data.Services
                 .Select(r => new RequestRelatedProfile()
                 {
                     Date = r.Date,
-                    Id = r.SourceProfileId,
+                    SourceId = r.SourceProfileId,
                     Description = r.Description,
                     Type = r.RelatedType.Type,
                     Name = r.SourceProfile.Name,
-                    Confirmed = r.Confirmed
+                    Confirmed = r.Confirmed,
+                    Id = r.Id
                 })
                 .ToListAsync();
         }

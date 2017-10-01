@@ -1,5 +1,6 @@
 ﻿using EntityFramework.Extensions;
 using Reolin.Data.Domain;
+using Reolin.Data.DTO;
 using Reolin.Data.Services.Core;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Reolin.Data.DTO;
 
 namespace Reolin.Data.Services
 {
@@ -33,7 +33,7 @@ namespace Reolin.Data.Services
                 return _context;
             }
         }
-        
+
         public async Task<int> CreateAsync(User user)
         {
             if (user.Roles == null || user.Roles.Count < 1)
@@ -75,7 +75,7 @@ namespace Reolin.Data.Services
         }
 
 
-        
+
         public Task<int> DeleteAsync(int id)
         {
             return this.Context.Users.Where(u => u.Id == id).DeleteAsync();
@@ -117,7 +117,7 @@ namespace Reolin.Data.Services
 
             return this.Context.Users.Include(u => u.Profiles).FirstOrDefaultAsync(u => u.UserName == userName);
         }
-        
+
         public async Task<int> AddToRole(int userId, int roleId)
         {
             User user = await this.Context.Users.FirstOrDefaultAsync(u => u.Id == userId);
@@ -182,7 +182,7 @@ namespace Reolin.Data.Services
         {
             return this.Query(u => u.UserName == userName, includes).FirstOrDefaultAsync();
         }
-        
+
 
         public Task<int> SetUserInfo(int userId, string firstName, string lastName)
         {
@@ -209,12 +209,14 @@ namespace Reolin.Data.Services
                         Description = p.Description,
                         Latitude = p.Address.Location.Latitude,
                         Longitude = p.Address.Location.Longitude,
-                        Name = p.Name
+                        Name = p.Name,
+                        City = p.Address.City,
+                        Country = p.Address.Country
                     }).ToListAsync();
 
         }
 
-        
+
         public void Dispose()
         {
             if (_context != null)

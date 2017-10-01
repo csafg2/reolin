@@ -82,3 +82,6 @@ D:\projects\repos\reolin\ServiceTest\bin\Debug\System.Data.EntityFramework.Confi
 D:\projects\repos\reolin\ServiceTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.dll
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.pdb
+D:\projects\repos\reolin\ServiceTest\bin\Debug\Reolin.Web.ViewModels.dll
+D:\projects\repos\reolin\ServiceTest\bin\Debug\Reolin.Web.ViewModels.pdb
+D:\projects\repos\reolin\ServiceTest\bin\Debug\Reolin.Web.ViewModels.dll.config

@@ -1,14 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Reolin.Data;
+using Reolin.Data.Domain;
 using Reolin.Data.DTO;
 using Reolin.Data.Services;
-using System.Linq;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using Reolin.Data.Services.Core;
 using System;
-using Reolin.Data.Domain;
+using System.Data.Entity;
+using System.Linq;
 
 namespace ServiceTest
 {
@@ -22,9 +20,27 @@ namespace ServiceTest
         {
             this._context = new DataContext();
             this._service = new ProfileService(_context);
-            
+
         }
-        
+
+
+        [TestMethod]
+        public void CreateEducaiton_Test()
+        {
+            int profileId = 15;
+            var profile = _context.Profiles.First(p => p.Id == profileId);
+            var edu = new Education()
+            {
+                Field = "math",
+                GraduationYear = 1970,
+                Level = "pro",
+                Major = "some stuff",
+                University = "University of fuck"
+            };
+            profile.Education = edu;
+            int result = _context.SaveChanges();
+            Assert.IsTrue(result > 0);
+        }
 
         [TestMethod]
         public void Profile_GetAddress()
@@ -67,9 +83,9 @@ namespace ServiceTest
             int r = this._service.AddRelatedType(profielId, "Employee").Result;
             Assert.IsTrue(r > 0);
         }
-             
-        
-           
+
+
+
         [TestMethod]
         public void Profile_AddRelated()
         {
@@ -128,8 +144,8 @@ namespace ServiceTest
 
             var profiles = _service
                 .SearchByCategoriesTagsAndDistance(jobCategory, subJobCategory, "B", 87, 87).Result;
-                
-                
+
+
             Assert.IsTrue(profiles.Count > 0);
         }
 
@@ -299,7 +315,7 @@ namespace ServiceTest
         [TestMethod]
         public void Profile_AddComment()
         {
-            
+
         }
 
         [TestMethod]
@@ -344,7 +360,7 @@ namespace ServiceTest
                 .Profiles
                    .Include(p => p.ImageCategories)
                      .First();
-            
+
             var catId = _context.ImageCategories.First(imc => imc.ProfileId == profile.Id).Id;
 
             int result = _service

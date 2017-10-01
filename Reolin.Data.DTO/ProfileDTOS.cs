@@ -13,6 +13,7 @@ namespace Reolin.Data.DTO
         public string Description { get; set; }
         public string Type { get; set; }
         public bool Confirmed { get; set; }
+        public int SourceId { get; set; }
     }
 
     public class ProfileBasicInfoDTO

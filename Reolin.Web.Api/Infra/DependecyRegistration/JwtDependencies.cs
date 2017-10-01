@@ -37,7 +37,7 @@ namespace Reolin.Web.Api.Infra.DependecyRegistration
                 ConnectionMultiplexer mutex = ConnectionMultiplexer.Connect("localhost");
                 return new RedisJwtStore(mutex);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return new InMemoryJwtStore();
             }

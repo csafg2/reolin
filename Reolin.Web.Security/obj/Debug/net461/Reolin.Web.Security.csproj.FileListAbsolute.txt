@@ -6,7 +6,6 @@ D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\net461\Newtonsoft.Json.dl
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\net461\StackExchange.Redis.dll
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\net461\System.IdentityModel.Tokens.Jwt.dll
 D:\projects\repos\reolin\Reolin.Web.Security\bin\Debug\net461\System.Security.Claims.dll
-D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.AssemblyInfo.cs
