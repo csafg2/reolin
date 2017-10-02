@@ -43,8 +43,8 @@ namespace Reolin.Data.Domain
                 Country = source.Address?.Country,
                 Name = source.Name,
                 Description = source.Description,
-                Latitude = source.Address.Location.Latitude,
-                Longitude = source.Address.Location.Longitude,
+                Latitude = source.Address?.Location.Latitude,
+                Longitude = source.Address?.Location.Longitude,
                 IsWork = source.Type == ProfileType.Work
             };
         }

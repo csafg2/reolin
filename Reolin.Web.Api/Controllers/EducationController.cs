@@ -1,6 +1,7 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
 using Reolin.Data.Domain;
@@ -10,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
-
-
+    [EnableCors("AllowAll")]
     public class EducationController : ControllerBase
     {
         private readonly DataContext _context;
