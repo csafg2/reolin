@@ -1,4 +1,3 @@
-using Reolin.Data.Seeds;
 using System.Data.Entity.Migrations;
 
 namespace Reolin.Data.Migrations
@@ -12,7 +11,7 @@ namespace Reolin.Data.Migrations
 
         protected override void Seed(DataContext context)
         {
-            context.AddDefaultNetworks();
+            //context.AddDefaultNetworks();
             //context.AddDefaultJobCategories();
             //context.AddDefaultJobSubCategoies();
         }

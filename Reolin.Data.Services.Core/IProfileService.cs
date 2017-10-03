@@ -57,7 +57,7 @@ namespace Reolin.Data.Services.Core
         Task<Profile> CreatePersonalAsync(int userId, CreateProfileDTO dto);
 
         Task<Profile> CreateWorkAsync(int userId, CreateProfileDTO dto);
-    
+
 
         Task<ProfileInfoDTO> QueryInfoAsync(int id);
 
@@ -70,7 +70,7 @@ namespace Reolin.Data.Services.Core
 
         Task<List<CommentDTO>> GetLatestComments(int profileId);
 
-        Task<int> EditEducation(int profileId, EducationEditDTO dto);
+        //Task<int> EditEducation(int profileId, EducationEditDTO dto);
 
         Task<int> AddSkill(int profileId, string skill);
 

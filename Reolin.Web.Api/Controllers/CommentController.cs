@@ -85,15 +85,46 @@ namespace Reolin.Web.Api.Controllers
         }
 
         /// <summary>
-        /// دریافت کامنت های یک پروفایل
+        /// دریافت کامنت های تایید نشده
         /// </summary>
         /// <param name="profileId"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]/[action]")]
+        public ActionResult GetUnconfirmedComments(int profileId)
+        {
+            var comments = _context
+               .Comments
+               .Where(c => c.ProfileId == profileId)
+               .Select(c => new
+               {
+                   Comment = c,
+                   SenderName = c.User.UserName
+               });
+
+            return Ok(comments);
+        }
+
+        /// <summary>
+        /// دریافت کامنت های تایید نشده
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <returns></returns>
+
+        [HttpGet]
+        [Route("[controller]/[action]")]
         public ActionResult GetComments(int profileId)
         {
-            return Ok(_context.Comments.Where(c => c.ProfileId == profileId && c.Confirmed == true));
+            var comments = _context
+                .Comments
+                .Where(c => c.ProfileId == profileId && c.Confirmed == true)
+                .Select(c => new
+                {
+                    Comment = c,
+                    SenderName = c.User.UserName
+                });
+
+            return Ok(comments);
         }
 
         /// <summary>

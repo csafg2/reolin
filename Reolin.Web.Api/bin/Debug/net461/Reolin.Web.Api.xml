@@ -58,9 +58,16 @@
             <param name="commentId"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.GetUnconfirmedComments(System.Int32)">
+            <summary>
+            دریافت کامنت های تایید نشده
+            </summary>
+            <param name="profileId"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.CommentController.GetComments(System.Int32)">
             <summary>
-            دریافت کامنت های یک پروفایل
+            دریافت کامنت های تایید نشده
             </summary>
             <param name="profileId"></param>
             <returns></returns>
@@ -84,6 +91,13 @@
             Get profile`s education info
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.EducationController.EditEducation(Reolin.Data.DTO.EducationEditDTO)">
+            <summary>
+            modify education info of the profile
+            </summary>
+            <param name="dto"></param>
             <returns></returns>
         </member>
         <member name="T:Reolin.Web.Api.Controllers.ErrorController">
@@ -190,13 +204,6 @@
             Updates specified fields
             </summary>
             <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Reolin.Web.Api.Controllers.ProfileController.EditEducation(Reolin.Data.DTO.EducationEditDTO)">
-            <summary>
-            modify education info of the profile
-            </summary>
-            <param name="dto"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddSkill(Reolin.Web.ViewModels.ProfileAddSkillModel)">

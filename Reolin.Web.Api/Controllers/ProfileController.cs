@@ -53,7 +53,7 @@ namespace Reolin.Web.Api.Controllers
                 return _imageCategoryService;
             }
         }
-        
+
         private IProfileService ProfileService
         {
             get
@@ -147,6 +147,7 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
+
         /// <summary>
         /// Creates a new Work Profile for specified user
         /// </summary>
@@ -170,7 +171,7 @@ namespace Reolin.Web.Api.Controllers
                     Country = model.Country,
                     JobCategoryId = model.JobCategoryId,
                     SubJobCategoryId = model.SubJobCategoryId,
-                    
+
                 });
 
 
@@ -215,7 +216,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> GetInfo(int id)
         {
             var result = await this.ProfileService.QueryInfoAsync(id);
-            
+
             return Ok(result);
         }
 
@@ -268,19 +269,6 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.EditProfile(model.ProfileId, model.City, model.Country, model.Name);
 
             return Ok();
-        }
-
-        /// <summary>
-        /// modify education info of the profile
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        [Route("[controller]/[action]")]
-        [HttpPost]
-        public async Task<IActionResult> EditEducation(EducationEditDTO dto)
-        {
-            int result = await this.ProfileService.EditEducation(dto.ProfileId, dto);
-            return Ok(result);
         }
 
 

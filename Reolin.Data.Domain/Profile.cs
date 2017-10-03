@@ -26,7 +26,7 @@ namespace Reolin.Data.Domain
         public List<Related> RelatedTos { get; set; }
         public List<RelatedType> RelatedTypes { get; set; }
         public List<Suggestion> Suggestions { get; set; }
-        public Education Education { get; set; }
+        public List<Education> Educations { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }

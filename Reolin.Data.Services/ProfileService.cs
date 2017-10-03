@@ -263,48 +263,48 @@ namespace Reolin.Data.Services
                             .ToListAsync();
         }
 
-        public async Task<int> EditEducation(int profileId, EducationEditDTO dto)
-        {
-            var profile = await this.Context
-                .Profiles
-                    .Include("Education")
-                        .FirstOrDefaultAsync(p => p.Id == profileId);
+        //public async Task<int> EditEducation(int profileId, EducationEditDTO dto)
+        //{
+        //    var profile = await this.Context
+        //        .Profiles
+        //            .Include("Education")
+        //                .FirstOrDefaultAsync(p => p.Id == profileId);
 
-            if (profile == null)
-            {
-                throw new InvalidOperationException($"no profile with id '{profile}' found. ");
-            }
-            else if (profile.Type == ProfileType.Work)
-            {
-                throw new InvalidOperationException($"only personal profiles should have edu info");
-            }
+        //    if (profile == null)
+        //    {
+        //        throw new InvalidOperationException($"no profile with id '{profile}' found. ");
+        //    }
+        //    else if (profile.Type == ProfileType.Work)
+        //    {
+        //        throw new InvalidOperationException($"only personal profiles should have edu info");
+        //    }
 
-            return await UpdateOrCreateEducation(profile, dto);
-        }
+        //    return await UpdateOrCreateEducation(profile, dto);
+        //}
 
-        private Task<int> UpdateOrCreateEducation(Profile profile, EducationEditDTO dto)
-        {
-            if (profile.Education == null)
-            {
-                profile.Education = new Education()
-                {
-                    Field = dto.Field,
-                    GraduationYear = dto.GraduationYear,
-                    Level = dto.Level,
-                    University = dto.University
-                };
-            }
-            else
-            {
-                Education edu = profile.Education;
-                edu.Field = dto.Field;
-                edu.GraduationYear = dto.GraduationYear;
-                edu.Level = dto.Level;
-                edu.University = dto.University;
-            }
+        //private Task<int> UpdateOrCreateEducation(Profile profile, EducationEditDTO dto)
+        //{
+        //    if (profile.Education == null)
+        //    {
+        //        profile.Education = new Education()
+        //        {
+        //            Field = dto.Field,
+        //            GraduationYear = dto.GraduationYear,
+        //            Level = dto.Level,
+        //            University = dto.University
+        //        };
+        //    }
+        //    else
+        //    {
+        //        Education edu = profile.Education;
+        //        edu.Field = dto.Field;
+        //        edu.GraduationYear = dto.GraduationYear;
+        //        edu.Level = dto.Level;
+        //        edu.University = dto.University;
+        //    }
 
-            return Context.SaveChangesAsync();
-        }
+        //    return Context.SaveChangesAsync();
+        //}
 
         public async Task<int> AddSkill(int profileId, string skill)
         {
@@ -446,7 +446,7 @@ namespace Reolin.Data.Services
                     Country = p.Address.Country,
                     LikeCount = p.ReceivedLikes.Count,
                     Name = p.Name,
-                    IsWork = p.Type == ProfileType.Work
+                    IsWork = p.Type == ProfileType.Work,
                 }).FirstOrDefaultAsync();
 
             return profile;

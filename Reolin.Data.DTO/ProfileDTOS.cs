@@ -30,7 +30,8 @@ namespace Reolin.Data.DTO
     {
         [Required(ErrorMessage = "ProfileId is required")]
         [Range(1, int.MaxValue)]
-        public int ProfileId { get; set; }
+        public int Id { get; set; }
+        public string Major { get; set; }
         public string Level { get; set; }
         public string Field { get; set; }
         [Range(1950, 2017)]
@@ -54,7 +55,7 @@ namespace Reolin.Data.DTO
     }
 
 
-    public class RelatedProfileDTO 
+    public class RelatedProfileDTO
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -67,8 +68,8 @@ namespace Reolin.Data.DTO
         public string Name { get; set; }
     }
 
-    
-    public class ProfileRedisCacheDTO: ProfileByTagDTO
+
+    public class ProfileRedisCacheDTO : ProfileByTagDTO
     {
         public int Id { get; set; }
         public IEnumerable<TagDTO> Tags { get; set; }
@@ -79,7 +80,7 @@ namespace Reolin.Data.DTO
         public double? DistanceWithSource { get; set; }
     }
 
-    public class ProfileInfoDTO: ProfileByTagDTO
+    public class ProfileInfoDTO : ProfileByTagDTO
     {
         public int? Id { get; set; }
         public string City { get; set; }

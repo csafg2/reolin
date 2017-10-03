@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 namespace Reolin.Data.EntityFramework.Config
 {
 
-    public class ProfileConfig: EntityTypeConfiguration<Profile>
+    public class ProfileConfig : EntityTypeConfiguration<Profile>
     {
         public ProfileConfig()
         {
@@ -40,7 +40,7 @@ namespace Reolin.Data.EntityFramework.Config
             // #tags must be extracted from profile description string
             this.HasMany(p => p.Tags)
                 .WithMany(t => t.Profiles)
-                .Map(t =>  t.MapLeftKey("ProfileId")
+                .Map(t => t.MapLeftKey("ProfileId")
                         .MapRightKey("TagId")
                         .ToTable("ProfileTag"));
 
@@ -64,7 +64,7 @@ namespace Reolin.Data.EntityFramework.Config
             //// take a restaurent for example: it might have a certificate from fucking secretary of health or what ever
             //this.HasMany(p => p.Certificates)
             //    .WithRequired(c => c.Profile)
-            
+
 
 
             // a profile record must have an address (location, etc..)
@@ -98,8 +98,10 @@ namespace Reolin.Data.EntityFramework.Config
                 .HasForeignKey(c => c.ProfileId)
                 .WillCascadeOnDelete(false);
 
-            this.HasOptional(p => p.Education)
-                .WithRequired(e => e.Profile);
+            this.HasMany(p => p.Educations)
+                .WithOptional(e => e.Profile)
+                .HasForeignKey(e => e.ProfileId)
+                .WillCascadeOnDelete(true);
         }
     }
 }
