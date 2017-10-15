@@ -3,7 +3,7 @@ namespace Reolin.Data.Domain
 {
     public class Education
     {
-        public int Id { get; set; }
+        public int EduId { get; set; }
         public string Level { get; set; }
         public string Major { get; set; }
         public string Field { get; set; }

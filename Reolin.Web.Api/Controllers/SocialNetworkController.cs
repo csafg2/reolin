@@ -48,7 +48,7 @@ namespace Reolin.Web.Api.Controllers
             var networks = await _context
                         .Profiles
                             .Where(p => p.Id == profileId)
-                                .Select(p => p.Networks)
+                                .SelectMany(p => p.Networks)
                                 .ToListAsync();
             return Ok(networks);
         }

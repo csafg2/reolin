@@ -447,6 +447,7 @@ namespace Reolin.Data.Services
                     LikeCount = p.ReceivedLikes.Count,
                     Name = p.Name,
                     IsWork = p.Type == ProfileType.Work,
+                    IconUrl = p.IconUrl
                 }).FirstOrDefaultAsync();
 
             return profile;

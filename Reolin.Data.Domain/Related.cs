@@ -9,7 +9,7 @@ namespace Reolin.Data.Domain
     {
         public int Id { get; set; }
         public bool Confirmed { get; set; }
-
+        public bool IsHistory { get; set; }
         public Profile TargetProfile { get; set; }
         public int TargetProfileId { get; set; }
 
@@ -21,5 +21,7 @@ namespace Reolin.Data.Domain
 
         public RelatedType RelatedType { get; set; }
         public int RelatedTypeId { get; set; }
+
+        public bool History { get; set; }
     }
 }

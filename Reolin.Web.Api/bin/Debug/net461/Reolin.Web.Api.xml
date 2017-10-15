@@ -79,6 +79,20 @@
             <param name="commentId"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.LogicalDelete(System.Int32)">
+            <summary>
+            Move Comment to history tab
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.CommentController.PhysicalDelete(System.Int32)">
+            <summary>
+            Physically remove the comment from
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.EducationController.Create(Reolin.Web.ViewModels.ViewModels.EducationCreateModel)">
             <summary>
             Create new Education record for this profile
@@ -211,6 +225,13 @@
             Add a skill to the specified profile
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetSkills(System.Int32)">
+            <summary>
+            get the list of skills
+            </summary>
+            <param name="profileId"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddNetwork(Reolin.Web.ViewModels.ProfileAddNetworkModel)">
@@ -363,6 +384,27 @@
             <summary>
             Get all certificates for profile
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.RelationsController.MoveToHistory(System.Int32)">
+            <summary>
+            Move relation to history.
+            </summary>
+            <param name="relationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.RelationsController.Delete(System.Int32)">
+            <summary>
+            Delete relation
+            </summary>
+            <param name="relationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.RelationsController.GetRelationRequests(System.Int32)">
+            <summary>
+            Get relation requests
+            </summary>
+            <param name="profileId"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.SocialNetworkController.List">

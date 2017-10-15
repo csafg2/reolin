@@ -7,7 +7,7 @@ namespace System.Data.EntityFramework.Config
     {
         public EducationConfig()
         {
-            this.HasKey(e => e.Id);
+            this.HasKey(e => e.EduId);
         }
     }
 }

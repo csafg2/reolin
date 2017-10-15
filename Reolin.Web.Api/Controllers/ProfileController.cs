@@ -288,6 +288,22 @@ namespace Reolin.Web.Api.Controllers
 
 
         /// <summary>
+        /// get the list of skills
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> GetSkills(int profileId)
+        {
+            var skills = await _context.Skills.Where(s => s.Profiles.Any(p => p.Id == profileId)).ToListAsync();
+
+            return Ok(skills);
+        }
+
+
+
+        /// <summary>
         /// add a new network to networks collection of the user
         /// </summary>
         /// <param name="model"></param>

@@ -67,7 +67,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<ActionResult> Get(EducationGetModel model)
         {
-            var edu = await _context.Educations.Where(p => p.Id == model.ProfileId).ToListAsync();
+            var edu = await _context.Educations.Where(p => p.ProfileId == model.ProfileId).ToListAsync();
 
             return Ok(edu);
         }
@@ -82,7 +82,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> EditEducation(EducationEditDTO dto)
         {
-            var edu = await _context.Educations.FirstOrDefaultAsync(e => e.Id == dto.Id);
+            var edu = await _context.Educations.FirstOrDefaultAsync(e => e.EduId == dto.Id);
             if (edu == null)
             {
                 return NotFound();

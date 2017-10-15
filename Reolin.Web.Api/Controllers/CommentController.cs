@@ -99,7 +99,8 @@ namespace Reolin.Web.Api.Controllers
                .Select(c => new
                {
                    Comment = c,
-                   SenderName = c.User.UserName
+                   SenderName = c.User.UserName,
+                   IconUrl = c.Profile.IconUrl
                });
 
             return Ok(comments);
@@ -121,7 +122,8 @@ namespace Reolin.Web.Api.Controllers
                 .Select(c => new
                 {
                     Comment = c,
-                    SenderName = c.User.UserName
+                    SenderName = c.User.UserName,
+                    IconUrl = c.Profile.IconUrl
                 });
 
             return Ok(comments);
@@ -145,6 +147,51 @@ namespace Reolin.Web.Api.Controllers
 
             comment.Confirmed = true;
             await this._context.SaveChangesAsync();
+            return Ok();
+        }
+
+        /// <summary>
+        /// Move Comment to history tab
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> LogicalDelete(int id)
+        {
+            var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            comment.IsHistory = true;
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Physically remove the comment from
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> PhysicalDelete(int id)
+        {
+            var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            _context.Comments.Remove(comment);
+
+            await _context.SaveChangesAsync();
+
             return Ok();
         }
     }

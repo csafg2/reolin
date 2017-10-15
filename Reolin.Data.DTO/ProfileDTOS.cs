@@ -24,6 +24,7 @@ namespace Reolin.Data.DTO
         public int LikeCount { get; set; }
         public string Name { get; set; }
         public bool IsWork { get; set; }
+        public string IconUrl { get; set; }
     }
 
     public class EducationEditDTO

@@ -17,6 +17,7 @@ namespace Reolin.Data.Domain
         public int? ParentId { get; set; }
         public Comment Parent { get; set; }
         public List<Comment> Replies { get; set; }
-    }
 
+        public bool IsHistory { get; set; }
+    }
 }
