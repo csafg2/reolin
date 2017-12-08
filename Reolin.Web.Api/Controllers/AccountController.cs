@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Reolin.Data;
 using Reolin.Web.Api.Helpers;
 using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.mvc;
@@ -12,6 +13,7 @@ using Reolin.Web.Security.Membership.Core;
 using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
@@ -29,12 +31,17 @@ namespace Reolin.Web.Api.Controllers
         private readonly IUserSecurityManager _userManager;
         private readonly IOptions<TokenProviderOptions> _tokenOptionsWrapper;
         private readonly IJwtManager _jwtManager;
+        private readonly DataContext _context;
 
-        public AccountController(IUserSecurityManager userManager, IOptions<TokenProviderOptions> options, IJwtManager jwtManager)
+        public AccountController(IUserSecurityManager userManager, 
+            IOptions<TokenProviderOptions> options,
+            IJwtManager jwtManager,
+            DataContext context)
 #pragma warning restore CS1591
         {
             this._userManager = userManager;
             this._jwtManager = jwtManager;
+            this._context = context;
             this._tokenOptionsWrapper = options;
         }
 
@@ -107,9 +114,9 @@ namespace Reolin.Web.Api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Logout()
         {
-            JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
+            //JwtSecurityToken requestToken = this.HttpContext.Request.GetRequestToken();
 
-            this.JwtManager.InvalidateToken(requestToken.Claims.GetUsernameClaim().Value, requestToken.Id);
+            //this.JwtManager.InvalidateToken(requestToken.Claims.GetUsernameClaim().Value, requestToken.Id);
 
             return Ok();
         }
@@ -156,7 +163,14 @@ namespace Reolin.Web.Api.Controllers
                 return WriteError(result);
             }
 
-            this.Options.Claims = GetPerUserClaims(result.User.UserName, result.User.Id, result.User.Roles.Select(r => r.Name));
+            var profileId = await this._context
+                .Profiles
+                .Where(p => p.User.UserName == model.UserName)
+                .OrderByDescending(p => p.Id)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
+            
+            this.Options.Claims = GetPerUserClaims(result.User.UserName, result.User.Id, profileId, result.User.Roles.Select(r => r.Name));
 
             return Ok(new
             {
@@ -183,7 +197,7 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
-        private List<Claim> GetPerUserClaims(string userName, int userId, IEnumerable<string> roles)
+        private List<Claim> GetPerUserClaims(string userName, int userId, int defaultProfileId, IEnumerable<string> roles)
         {
             return new List<Claim>()
                    {
@@ -191,7 +205,8 @@ namespace Reolin.Web.Api.Controllers
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString(), ClaimValueTypes.Integer64),
                         new Claim(Role_CLAIM_TYPE, GetRoleString(roles), ROLE_VALUE_TYPE),
-                        new Claim(ID_CLAIM_TYPE, userId.ToString(), ClaimValueTypes.Integer32)
+                        new Claim(ID_CLAIM_TYPE, userId.ToString(), ClaimValueTypes.Integer32),
+                        new Claim("Profile", defaultProfileId.ToString(), ClaimValueTypes.Integer32)
                    };
         }
 

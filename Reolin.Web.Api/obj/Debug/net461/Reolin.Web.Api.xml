@@ -150,6 +150,22 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.SetPhoneNumber(System.Int32,System.String)">
+            <summary>
+            Set address
+            </summary>
+            <param name="profileId"></param>
+            <param name="phoneNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.SetAddressNumber(System.Int32,System.String)">
+            <summary>
+            Set address
+            </summary>
+            <param name="profileId"></param>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetByTag(System.String)">
             <summary>
             Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
@@ -247,6 +263,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.OptionalFind(Reolin.Web.Api.Models.OptionalSearch)">
+            <summary>
+            search for morteza pear
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.Find(Reolin.Web.ViewModels.ProfileSearchModel)">
             <summary>
             Finds matched profiels first filters by job categories (AND operation) 
@@ -256,11 +279,25 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.ByName(Reolin.Web.Api.Models.SearchByNameQuery)">
+            <summary>
+            find by name and distance
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.BasicInfo(System.Int32)">
             <summary>
             returns basic information about the profile by it`s id
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetAddres(System.Int32)">
+            <summary>
+            Get the address of profile
+            </summary>
+            <param name="profielId"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.LatestComments(System.Int32)">
@@ -419,6 +456,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.SuggestionController.Top">
+            <summary>
+            get top 20
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.SuggestionController.Create(Reolin.Data.DTO.SuggestionCreateModel)">
             <summary>
             add a suggestion for this profile, tags should will be separated by # sign
@@ -431,6 +474,13 @@
             get all suggestions for the specified profile
             </summary>
             <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.SuggestionController.Search(Reolin.Web.Api.Models.SearchSuggestionModel)">
+            <summary>
+            search categorories
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="T:Reolin.Web.Api.Controllers.UserController">
@@ -665,6 +715,27 @@
             Finds and instantiates all classes that implement "IUserValidator"
             </summary>
             <returns>a list of "IUserValidator" objects</returns>
+        </member>
+        <member name="M:Reolin.Data.Domain.ExpController.GetExp(System.Int32)">
+            <summary>
+            get exp
+            </summary>
+            <param name="profileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Data.Domain.ExpController.SetAboutMe(Reolin.Web.ViewModels.AddAboutModel)">
+            <summary>
+            set about me
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Data.Domain.ExpController.AddExp(Reolin.Web.ViewModels.AddExpModel)">
+            <summary>
+            add experience
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

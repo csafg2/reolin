@@ -7,6 +7,7 @@ namespace Reolin.Data
 {
     public class DataContext : DbContext
     {
+        public DbSet<Experience> Experiences { get; set; }
         public DbSet<Academy> Academies { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Certificate> Certificates { get; set; }

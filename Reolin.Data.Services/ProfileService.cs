@@ -81,17 +81,20 @@ namespace Reolin.Data.Services
             return tagNames;
         }
 
-        public IQueryable<ProfileByTagDTO> GetByTagAsync(string tag)
+        public IQueryable<ProfileSearchResult> GetByTagAsync(string tag)
         {
             return this.Context
                     .Profiles
                         .Where(p => p.Tags.Any(t => t.Name.Contains(tag)))
-                        .Select(p => new ProfileByTagDTO
+                        .Select(p => new ProfileSearchResult
                         {
-                            Name = p.Name,
+                            Id = p.Id,
+                            City = p.Address.City,
+                            Country = p.Address.Country,
                             Description = p.Description,
                             Latitude = p.Address.Location.Latitude,
-                            Longitude = p.Address.Location.Longitude
+                            Longitude = p.Address.Location.Longitude,
+                            Name = p.Name
                         });
         }
 
@@ -380,22 +383,74 @@ namespace Reolin.Data.Services
             return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name, IsSubCategory = j.IsSubCategory }).ToListAsync();
         }
 
-        public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
+        public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
         {
-            return Search(p => p.JobCategories.Any(j => j.Id == subCatId),
-              searchTerm,
-              sourceLatitude,
-              sourceLongitude,
-              distance);
+            Expression<Func<Profile, bool>> filter = p => true;
+            
+            if (subCatId != null)
+            {
+                filter = p => p.JobCategories.Any(j => j.Id == subCatId);
+            }
+
+            DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
+            return this.Context.
+                Profiles
+                .Where(filter)
+                .Where(p =>
+                    p.JobCategories.Any(j => j.Id == subCatId)
+                    ||
+                    p.Name.Contains(searchTerm)
+                    ||
+                p.Tags.Any(t => t.Name.Contains(searchTerm)))
+                .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
+                .Select(p => new ProfileSearchResult()
+                {
+                    Id = p.Id,
+                    City = p.Address.City,
+                    Country = p.Address.Country,
+                    Description = p.Description,
+                    Latitude = p.Address.Location.Latitude,
+                    Longitude = p.Address.Location.Longitude,
+                    Name = p.Name,
+                    DistanceWithSource = p.Address.Location.Distance(sourceLocation)
+                })
+                .ToListAsync();
         }
 
-        public Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
+        public Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
         {
-            return Search(p => p.JobCategories.Any(jc => jc.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId),
-                searchTerm,
-                sourceLatitude,
-                sourceLongitude,
-                distance);
+            Expression<Func<Profile, bool>> filter = p => true;
+            if (mainCatId != null && subCatId != null)
+            {
+                filter = p => p.JobCategories.Any(j => j.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId);
+            }
+            else if(mainCatId != null)
+            {
+                filter = p => p.JobCategories.Any(j => j.Id == mainCatId);
+            }
+            else if(subCatId != null)
+            {
+                filter = p => p.JobCategories.Any(j => j.Id == subCatId);
+            }
+
+            DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
+            return this.Context.
+                Profiles
+                .Where(filter)
+                .Where(p => p.Name.Contains(searchTerm) || p.Tags.Any(t => t.Name.Contains(searchTerm)))
+                .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
+                .Select(p => new ProfileSearchResult()
+                {
+                    Id = p.Id,
+                    City = p.Address.City,
+                    Country = p.Address.Country,
+                    Description = p.Description,
+                    Latitude = p.Address.Location.Latitude,
+                    Longitude = p.Address.Location.Longitude,
+                    Name = p.Name,
+                    DistanceWithSource = p.Address.Location.Distance(sourceLocation)
+                })
+                .ToListAsync();
         }
 
         private Task<List<ProfileSearchResult>> Search(Expression<Func<Profile, bool>> categoryPredicate, string searchTerm, double sourceLatitude, double sourceLongitude, int distance)
@@ -447,7 +502,11 @@ namespace Reolin.Data.Services
                     LikeCount = p.ReceivedLikes.Count,
                     Name = p.Name,
                     IsWork = p.Type == ProfileType.Work,
-                    IconUrl = p.IconUrl
+                    IconUrl = p.IconUrl,
+                    Lat = p.Address.Location.Latitude,
+                    Long = p.Address.Location.Longitude,
+                    Address = p.Address.AddressString,
+                    AboutMe = p.AboutMe
                 }).FirstOrDefaultAsync();
 
             return profile;
@@ -515,6 +574,7 @@ namespace Reolin.Data.Services
                 {
                     Date = r.Date,
                     SourceId = r.SourceProfileId,
+                    SourceIcon = r.SourceProfile.IconUrl,
                     Description = r.Description,
                     Type = r.RelatedType.Type,
                     Name = r.SourceProfile.Name,

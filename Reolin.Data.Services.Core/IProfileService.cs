@@ -35,7 +35,7 @@ namespace Reolin.Data.Services.Core
         /// </summary>
         /// <param name="tag">tag text</param>
         /// <returns></returns>
-        IQueryable<ProfileByTagDTO> GetByTagAsync(string tag);
+        IQueryable<ProfileSearchResult> GetByTagAsync(string tag);
 
         /// <summary>
         /// attachs an imaged to specified profile record
@@ -78,8 +78,8 @@ namespace Reolin.Data.Services.Core
         Task<List<JobCategoryInfoDTO>> QueryJobCategories();
 
 
-        Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int mainCatId, int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
-        Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
+        Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
+        Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
 
         Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId);
         Task<int> AddRelatedType(int profileId, string relatedType);

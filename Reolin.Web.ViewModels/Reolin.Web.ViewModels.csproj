@@ -57,6 +57,7 @@
     <Compile Include="SuggestionModels.cs" />
     <Compile Include="ViewModels\CommentModels.cs" />
     <Compile Include="ViewModels\Education.cs" />
+    <Compile Include="ViewModels\profile\AddExpModel.cs" />
     <Compile Include="ViewModels\profile\AddImageViewModel.cs" />
     <Compile Include="ViewModels\profile\CreateProfessionalProfileModel.cs" />
     <Compile Include="ViewModels\profile\ProfileAddDescriptionModel.cs" />

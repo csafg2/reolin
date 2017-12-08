@@ -1,6 +1,7 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -32,7 +33,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.UseJwtValidation();
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
@@ -46,15 +47,25 @@ namespace Reolin.Web.Api
             services.AddMemoryCache();
             services.AddLogging();
             services.AddUserManager(Configuration.GetConnectionString("Default"));
+            System.Console.WriteLine(Configuration.GetConnectionString("Default"));
             services.AddMvcWithConfig();
             services.AddSwaggerAndConfigure();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseStaticFiles();
+            var provider = new FileExtensionContentTypeProvider();
 
-            
+            // Add new mappings
+            provider.Mappings["."] = "text/plain";
+
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                ContentTypeProvider = provider
+            });
+
+
             loggerFactory.UseSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
             app.UseDeveloperExceptionPage();
             // comment this entire "if statement" in production

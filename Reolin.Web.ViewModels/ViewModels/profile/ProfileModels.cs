@@ -46,8 +46,8 @@ namespace Reolin.Web.ViewModels
         public int? JobCategoryId { get; set; }
 
         //[Required(ErrorMessage = "SubJobCategoryID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Not valid value for SubJobCategoryId")]
-        public int SubJobCategoryId { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "Not valid value for SubJobCategoryId")]
+        public int? SubJobCategoryId { get; set; }
 
         
         [Required(ErrorMessage = "SearchTerm is required", AllowEmptyStrings = false)]
@@ -71,11 +71,8 @@ namespace Reolin.Web.ViewModels
     public class ProfileAddNetworkModel
     {
         [Range(1, int.MaxValue, ErrorMessage = "ProfileId is not valid")]
-        [Required(ErrorMessage = "ProfileId is required")]
-        public int ProfielId { get; set; }
+        public int ProfileId { get; set; }
 
-
-        [Required(ErrorMessage = "SocialNetworkId is required")]
         [Range(1, int.MaxValue, ErrorMessage = "SocialnetworkId is required")]
         public int SocialNetworkId { get; set; }
 
@@ -87,8 +84,7 @@ namespace Reolin.Web.ViewModels
 
     public class ProfileAddSkillModel
     {
-        [Required(ErrorMessage = "ProfileId is required")]
-        [Range(0, int.MaxValue, ErrorMessage = "Id is not valid")]
+        [Range(1, int.MaxValue, ErrorMessage = "Id is not valid")]
         public int ProfileId { get; set; }
 
         [Required(ErrorMessage = "Skillname is required", AllowEmptyStrings = false)]
@@ -98,7 +94,6 @@ namespace Reolin.Web.ViewModels
 
     public class ProfileEditModel
     {
-        [Required(ErrorMessage = "ProfileId to be edited")]
         [Range(1, int.MaxValue)]
         public int ProfileId { get; set; }
 
@@ -133,8 +128,7 @@ namespace Reolin.Web.ViewModels
     {
         [Required(ErrorMessage = "Profile Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
-
-        //[Required(ErrorMessage = "Description text is mandatory", AllowEmptyStrings = false)]
+        
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Latitude is Mandatory")]
@@ -167,8 +161,7 @@ namespace Reolin.Web.ViewModels
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);
         }
-
-
+        
         public class AddImageCategoryModel
         {
             public int ProfileId { get; set; }
@@ -176,6 +169,5 @@ namespace Reolin.Web.ViewModels
             [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
             public string Name { get; set; }
         }
-
     }
 }

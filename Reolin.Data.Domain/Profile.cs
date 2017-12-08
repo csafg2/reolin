@@ -1,8 +1,16 @@
 using Reolin.Data.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace Reolin.Data.Domain
 {
+    public class Experience
+    {
+        public int Id { get; set; }
+        public int ProfileId { get; set; }
+        public Profile Profile { get; set; }
+        public string Value { get; set; }
+    }
 
     public class Profile
     {
@@ -31,7 +39,8 @@ namespace Reolin.Data.Domain
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
         public string IconUrl { get; set; }
-
+        public string AboutMe { get; set; }
+        public List<Experience> Experiences { get; set; }
         public List<ProfileNetwork> Networks { get; set; }
 
         public static implicit operator ProfileInfoDTO(Profile source)

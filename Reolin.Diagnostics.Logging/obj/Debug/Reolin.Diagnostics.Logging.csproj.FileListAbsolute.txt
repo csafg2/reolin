@@ -149,7 +149,6 @@ D:\projects\repos\reolin\Reolin.Diagnostics.Logging\bin\Debug\Microsoft.Extensio
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\bin\Debug\Microsoft.Extensions.Primitives.xml
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.dll
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.pdb

@@ -50,6 +50,7 @@ namespace Reolin.Web.Api.Controllers
                             .Where(p => p.Id == profileId)
                                 .SelectMany(p => p.Networks)
                                 .ToListAsync();
+
             return Ok(networks);
         }
     }

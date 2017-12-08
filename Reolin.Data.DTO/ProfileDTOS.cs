@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 
 namespace Reolin.Data.DTO
 {
@@ -14,6 +15,7 @@ namespace Reolin.Data.DTO
         public string Type { get; set; }
         public bool Confirmed { get; set; }
         public int SourceId { get; set; }
+        public string SourceIcon { get; set; }
     }
 
     public class ProfileBasicInfoDTO
@@ -25,12 +27,16 @@ namespace Reolin.Data.DTO
         public string Name { get; set; }
         public bool IsWork { get; set; }
         public string IconUrl { get; set; }
+        public double? Long { get; set; }
+        public double? Lat { get; set; }
+        public string Address { get; set; }
+        public string AboutMe { get; set; }
     }
 
     public class EducationEditDTO
     {
-        [Required(ErrorMessage = "ProfileId is required")]
         [Range(1, int.MaxValue)]
+        [Required(ErrorMessage = "ProfileId is required")]
         public int Id { get; set; }
         public string Major { get; set; }
         public string Level { get; set; }
@@ -74,6 +80,10 @@ namespace Reolin.Data.DTO
     {
         public int Id { get; set; }
         public IEnumerable<TagDTO> Tags { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public int LikeCount { get; set; }
+        public double? DistanceWithSource { get; set; }
     }
 
     public class ProfileSearchResult : ProfileInfoDTO

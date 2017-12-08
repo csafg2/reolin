@@ -67,7 +67,6 @@
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="Role.cs" />
-    <Compile Include="GeographyHelper.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Like.cs" />
     <Compile Include="Profile.cs" />

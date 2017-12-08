@@ -14,10 +14,12 @@ using Reolin.Web.Api.Infra.Filters;
 using Reolin.Web.Api.Infra.GeoServices;
 using Reolin.Web.Api.Infra.IO;
 using Reolin.Web.Api.Infra.mvc;
+using Reolin.Web.Api.Models;
 using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Threading.Tasks;
 using static Reolin.Web.ViewModels.ProfileCreateModel;
@@ -62,6 +64,68 @@ namespace Reolin.Web.Api.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Set address
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [RequireValidModel]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> SetPhoneNumber(int profileId, string phoneNumber)
+        {
+            var profile = await this._context
+                .Profiles
+                .Include(p => p.Address)
+                .FirstOrDefaultAsync(p => p.Id == profileId);
+            
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            
+            profile.PhoneNumber = phoneNumber;
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Set address
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [RequireValidModel]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> SetAddressNumber(int profileId, string address)
+        {
+            var profile = await this._context
+                .Profiles
+                .Include(p =>p.Address)
+                .FirstOrDefaultAsync(p => p.Id == profileId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            if (profile.Address == null)
+            {
+                profile.Address = new Address();
+            }
+
+            profile.Address.AddressString = address;
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         /// <summary>
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
@@ -70,7 +134,6 @@ namespace Reolin.Web.Api.Controllers
         [HttpGet]
         [Route("/[controller]/[action]")]
         //[OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<ProfileByTagDTO>))]
         public async Task<IActionResult> GetByTag(string tag)
         {
             if (string.IsNullOrEmpty(tag))
@@ -79,7 +142,11 @@ namespace Reolin.Web.Api.Controllers
                 return BadRequest(this.ModelState);
             }
 
-            var result = await this.ProfileService.GetByTagAsync(tag).ToListAsync();
+            var result = await this.ProfileService.GetByTagAsync(tag)
+                .OrderByDescending(p => p.Id)
+                .Take(20)
+                .ToListAsync();
+
             return Ok(result);
         }
 
@@ -142,9 +209,21 @@ namespace Reolin.Web.Api.Controllers
         [Route("/User/LikeProfile/{profileId}")]
         public async Task<IActionResult> Like(int profileId)
         {
-            await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
+            var senderId = this.GetUserId();
+            var likeCount = await this._context
+               .Likes
+               .Where(l => l.TargetProfileId == profileId)
+               .CountAsync();
 
-            return Ok();
+
+            if (await _context.Likes.AnyAsync(l => l.SenderId == senderId && l.TargetProfileId == profileId))
+            {
+                return Json(new { Count = likeCount });
+            }
+
+            await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
+           
+            return Json(new { Count = ++likeCount });
         }
 
 
@@ -253,10 +332,10 @@ namespace Reolin.Web.Api.Controllers
             var data = await this
                 .ProfileService
                 .GetInRangeAsync(model.Tag, model.SearchRadius, model.SourceLatitude, model.SourceLongitude);
+
             return Ok(data);
         }
-
-
+        
         /// <summary>
         /// Updates specified fields
         /// </summary>
@@ -271,7 +350,6 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
-
         /// <summary>
         /// Add a skill to the specified profile
         /// </summary>
@@ -285,8 +363,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-
-
+        
         /// <summary>
         /// get the list of skills
         /// </summary>
@@ -300,20 +377,21 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(skills);
         }
-
-
-
+        
         /// <summary>
         /// add a new network to networks collection of the user
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [RequireValidModel]
         [Route("[controller]/[action]")]
         public async Task<IActionResult> AddNetwork(ProfileAddNetworkModel model)
         {
-            await this.ProfileService.AddSocialNetwork(model.ProfielId, model.SocialNetworkId, model.Description, model.Url);
+            await this.ProfileService.AddSocialNetwork(model.ProfileId,
+                model.SocialNetworkId,
+                model.Description,
+                model.Url);
 
             return Ok();
         }
@@ -329,6 +407,42 @@ namespace Reolin.Web.Api.Controllers
             return Ok(await this.ProfileService.QueryJobCategories());
         }
 
+        /// <summary>
+        /// search for morteza pear
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> OptionalFind(OptionalSearch query)
+        {
+            DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(query.SoruceLong, query.SourceLat);
+            var result = await this._context
+                .Profiles
+                .Where(p => 
+                    p.JobCategories.Any(jc => jc.Id == query.JobCategoryId) 
+                        || 
+                    p.JobCategories.Any(j => j.Id == query.SubJobCategoryId))
+                .Where(p => p.Name.Contains(query.SearchTerm) || p.Tags.Any(t => t.Name.Contains(query.SearchTerm)))
+                .Where(p => p.Address.Location.Distance(sourceLocation) < query.Distance)
+                .Select(p => new ProfileSearchResult()
+                {
+                    Id = p.Id,
+                    City = p.Address.City,
+                    Country = p.Address.Country,
+                    Description = p.Description,
+                    Latitude = p.Address.Location.Latitude,
+                    Longitude = p.Address.Location.Longitude,
+                    Name = p.Name,
+                    DistanceWithSource = p.Address.Location.Distance(sourceLocation)
+                })
+                .OrderByDescending(p => p.Id)
+                .Take(50)
+                .ToListAsync();
+
+            return Ok(result);
+        }
+        
 
         /// <summary>
         /// Finds matched profiels first filters by job categories (AND operation) 
@@ -365,6 +479,36 @@ namespace Reolin.Web.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// find by name and distance
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> ByName(SearchByNameQuery query)
+        {
+            var source = GeoHelpers.FromLongitudeLatitude(query.Longitude, query.Lat);
+            var result = await this._context
+                            .Profiles
+                            .Where(p => (p.Address.Location.Distance(source) <= query.Radius)
+                                    && p.Name.Contains(query.Name))
+                                .Select(p => new ProfileRedisCacheDTO()
+                                {
+                                    Id = p.Id,
+                                    Description = p.Description,
+                                    Latitude = p.Address.Location.Latitude,
+                                    Longitude = p.Address.Location.Longitude,
+                                    Name = p.Name,
+                                    City = p.Address.City,
+                                    Country = p.Address.Country,
+                                    LikeCount = p.ReceivedLikes.Count(),
+                                    DistanceWithSource = p.Address.Location.Distance(source)
+                                }).ToListAsync();
+
+            return Ok(result);
+        }
+
 
         /// <summary>
         /// returns basic information about the profile by it`s id
@@ -379,6 +523,22 @@ namespace Reolin.Web.Api.Controllers
             return Ok(data);
         }
 
+
+        /// <summary>
+        /// Get the address of profile
+        /// </summary>
+        /// <param name="profielId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<ActionResult> GetAddres(int profielId)
+        {
+            var profile = await this._context
+                .Profiles
+                .Include(p => p.Address)
+                .FirstOrDefaultAsync(p => p.Id == profielId);
+            return Ok(new { Address = profile.Address.AddressString });
+        }
 
         /// <summary>
         /// retrieve latest comments for prfile page
@@ -409,7 +569,6 @@ namespace Reolin.Web.Api.Controllers
             return Ok();
         }
 
-
         /// <summary>
         /// return profile tags
         /// </summary>
@@ -419,7 +578,7 @@ namespace Reolin.Web.Api.Controllers
         [Route("/[controller]/[action]")]
         public async Task<IActionResult> GetTags(int id)
         {
-            return Ok(await this.ProfileService.GetTags(id));
+            return Ok(await ProfileService.GetTags(id));
         }
 
         /// <summary>
@@ -437,7 +596,6 @@ namespace Reolin.Web.Api.Controllers
             });
         }
 
-
         /// <summary>
         /// Get all related types
         /// </summary>
@@ -450,7 +608,6 @@ namespace Reolin.Web.Api.Controllers
             var data = await this.ProfileService.GetRelatedTypes(id);
             return Ok(data);
         }
-
 
         /// <summary>
         /// send a relation request to the target profile
@@ -477,8 +634,7 @@ namespace Reolin.Web.Api.Controllers
         {
             return Ok(await this.ProfileService.GetImages(id));
         }
-
-
+        
         /// <summary>
         /// add a new imageCategory to ImageCategory collection of the profile
         /// </summary>
@@ -491,8 +647,7 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.AddImageCategory(model.ProfileId, model.Name);
             return Ok();
         }
-
-
+        
         /// <summary>
         /// get all Image categories
         /// </summary>
@@ -517,8 +672,7 @@ namespace Reolin.Web.Api.Controllers
             var data = await this.ProfileService.GetRequestRelatedProfiles(id);
             return Ok(data);
         }
-
-
+        
         /// <summary>
         /// Add a certificate to profile
         /// </summary>
@@ -532,8 +686,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-
-
+        
         /// <summary>
         /// Get all certificates for profile
         /// </summary>
@@ -559,8 +712,7 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.AddRelatedType(model.ProfileId, model.Type);
             return Ok();
         }
-
-
+        
         /// <summary>
         /// Deletes a relation request
         /// </summary>
@@ -574,9 +726,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-
-
-
+        
         /// <summary>
         /// Confirm a request
         /// </summary>
@@ -617,18 +767,21 @@ namespace Reolin.Web.Api.Controllers
         /// Get all certificates for profile
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("/[controller]/[action]")]
         public async Task<ActionResult> SetIcon(SetProfileIconModel model)
         {
-            var profile = await _context.Profiles.FirstOrDefaultAsync(c => c.Id == model.ProfileId);
+            var profile = await _context
+                .Profiles
+                .FirstOrDefaultAsync(c => c.Id == model.ProfileId);
+
             if (profile == null)
             {
                 return NotFound();
             }
 
             profile.IconUrl = model.IconUrl;
-            await this._context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return Ok(profile);
         }
     }

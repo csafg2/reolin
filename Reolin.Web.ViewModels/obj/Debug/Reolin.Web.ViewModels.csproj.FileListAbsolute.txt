@@ -10,6 +10,7 @@ C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.ViewModels\bin\Debug\Utilities.pd
 C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csprojResolveAssemblyReference.cache
 C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.dll
 C:\Users\Hassan\Source\Repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.pdb
+D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\Reolin.Web.ViewModels.dll.config
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\Reolin.Web.ViewModels.dll
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\Reolin.Web.ViewModels.pdb
@@ -20,6 +21,5 @@ D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\EntityFramework.xml
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\EntityFramework.SqlServer.xml
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\Utilities.pdb
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csprojResolveAssemblyReference.cache
-D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.dll
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.pdb

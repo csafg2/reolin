@@ -95,7 +95,7 @@ namespace Reolin.Web.Api.Controllers
         {
             var comments = _context
                .Comments
-               .Where(c => c.ProfileId == profileId)
+               .Where(c => c.ProfileId == profileId && !c.Confirmed)
                .Select(c => new
                {
                    Comment = c,
@@ -103,7 +103,9 @@ namespace Reolin.Web.Api.Controllers
                    IconUrl = c.Profile.IconUrl
                });
 
-            return Ok(comments);
+
+
+            return Json(comments);
         }
 
         /// <summary>
