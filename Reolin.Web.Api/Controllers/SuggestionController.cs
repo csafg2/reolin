@@ -12,6 +12,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Dynamic;
 using Reolin.Data.Domain;
+using Newtonsoft.Json;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -56,6 +57,7 @@ namespace Reolin.Web.Api.Controllers
                     s.DateCreated,
                     s.Title,
                     s.ProfileId,
+                    s.Image,
                     Icon = s.Profile.IconUrl,
                     City = s.Profile.Address.City,
                     Country = s.Profile.Address.Country
@@ -65,7 +67,6 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(result);
         }
-
 
         /// <summary>
         /// add a suggestion for this profile, tags should will be separated by # sign
@@ -95,7 +96,25 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> GetSuggestions(int profileId)
         {
-            return Ok(await this.Service.GetSuggestions(profileId));
+            var result = await this._dataContext
+                          .Suggestions
+                          .Where(s => s.ProfileId == profileId)
+                          .Select(s => new
+                          {
+                              Id = s.Id,
+                              Image = s.Image,
+                              ProfileId = s.ProfileId,
+                              Profile = new
+                              {
+                                  Id = s.ProfileId,
+                                  IsWork = s.Profile.Type == ProfileType.Work
+                              },
+                              Title = s.Title,
+                              Tags = s.Tags.Select(t => new { t.Id, t.Name })
+                          })
+                          .ToListAsync();
+
+            return Json(result);
         }
 
         /// <summary>
@@ -113,7 +132,7 @@ namespace Reolin.Web.Api.Controllers
                 q = q.Where(s => s.Profile.JobCategories
                          .Any(c => c.IsSubCategory == true && c.Id == model.SubCategoryId));
             }
-        
+
             var result = await q
                 .Where(s => s.Description.Contains(model.Query) || s.Profile.Tags.Any(t => t.Name.Contains(model.Query)))
                 .OrderByDescending(s => s.DateCreated)
@@ -124,13 +143,13 @@ namespace Reolin.Web.Api.Controllers
                     s.DateCreated,
                     s.Title,
                     s.ProfileId,
-                    Icon = s.Profile.IconUrl,
+                    s.Image,
                     City = s.Profile.Address.City,
                     Country = s.Profile.Address.Country
                 })
                 .Take(20)
                 .ToListAsync();
-            
+
             return Ok(result);
         }
     }

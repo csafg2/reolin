@@ -89,6 +89,7 @@ namespace Reolin.Data.DTO
     public class ProfileSearchResult : ProfileInfoDTO
     {
         public double? DistanceWithSource { get; set; }
+        public string Icon { get; set; }
     }
 
     public class ProfileInfoDTO : ProfileByTagDTO
@@ -97,6 +98,7 @@ namespace Reolin.Data.DTO
         public string City { get; set; }
         public string Country { get; set; }
         public bool IsWork { get; set; }
+        public string Icon { get; set; }
     }
 
     public class CreateProfileDTO : ProfileByTagDTO

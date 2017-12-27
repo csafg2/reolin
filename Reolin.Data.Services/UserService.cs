@@ -211,9 +211,9 @@ namespace Reolin.Data.Services
                         Longitude = p.Address.Location.Longitude,
                         Name = p.Name,
                         City = p.Address.City,
-                        Country = p.Address.Country
+                        Country = p.Address.Country,
+                        Icon = p.IconUrl
                     }).ToListAsync();
-
         }
 
 

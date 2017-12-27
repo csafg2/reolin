@@ -9,6 +9,6 @@ namespace Reolin.Data.Services.Core
     {
         Task<Suggestion> AddSuggestion(SuggestionCreateModel model);
         Task<int> AddTag(int suggestionId, string tag);
-        Task<List<Suggestion>> GetSuggestions(int profileId);
+        //Task<List<SuggestionModel>> GetSuggestions(int profileId)
     }
 }

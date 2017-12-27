@@ -94,7 +94,8 @@ namespace Reolin.Data.Services
                             Description = p.Description,
                             Latitude = p.Address.Location.Latitude,
                             Longitude = p.Address.Location.Longitude,
-                            Name = p.Name
+                            Name = p.Name,
+                            Icon = p.IconUrl
                         });
         }
 

@@ -14,5 +14,7 @@ namespace Reolin.Data.Domain
         public List<Tag> Tags { get; set; }
         public Profile Profile { get; set; }
         public int ProfileId { get; set; }
+
+        public string Image { get; set; }
     }
 }

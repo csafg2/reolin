@@ -82,6 +82,8 @@ namespace Reolin.Web.Api
 
             //app.UseJwtValidation();
             app.UseMvcWithDefaultRoute();
+                
+                
 
             app.UseSwagger();
             app.UseSwaggerUi();

@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Collections.Generic;
 
 namespace Reolin.Data.Services
 {
@@ -38,7 +37,7 @@ namespace Reolin.Data.Services
                 await Context.SaveChangesAsync();
             }
 
-            Suggestion suggestion = this.Context.Suggestions.Include(s => s.Tags).First(s => s.Id == suggestionId);
+            var suggestion = this.Context.Suggestions.Include(s => s.Tags).First(s => s.Id == suggestionId);
             suggestion.Tags.Add(tagItem);
             return await Context.SaveChangesAsync();
         }
@@ -52,18 +51,14 @@ namespace Reolin.Data.Services
                 From = model.From,
                 To = model.To,
                 Title = model.Title,
-                Description = model.Description
+                Description = model.Description,
+                Image = model.FilePath
             };
 
             this.Context.Suggestions.Add(suggestion);
 
             await Context.SaveChangesAsync();
             return suggestion;
-        }
-
-        public Task<List<Suggestion>> GetSuggestions(int profileId)
-        {
-            return _context.Suggestions.Where(s => s.ProfileId == profileId).ToListAsync();
         }
     }
 }

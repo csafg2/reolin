@@ -390,8 +390,8 @@ namespace Reolin.Web.Api.Controllers
         {
             await this.ProfileService.AddSocialNetwork(model.ProfileId,
                 model.SocialNetworkId,
-                model.Description,
-                model.Url);
+                model.Url,
+                model.Description);
 
             return Ok();
         }

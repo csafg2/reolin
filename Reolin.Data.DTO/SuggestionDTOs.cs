@@ -11,6 +11,7 @@ namespace Reolin.Data.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
+        public string FilePath { get; set; }
         public int ProfileId { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }

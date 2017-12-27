@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Reolin.Data;
+using Reolin.Data.Domain;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,8 +50,14 @@ namespace Reolin.Web.Api.Controllers
                         .Profiles
                             .Where(p => p.Id == profileId)
                                 .SelectMany(p => p.Networks)
+                                .Select(n => new
+                                {
+                                    Network = n.Netowrk,
+                                    Url = n.Url,
+                                    Description = n.Description
+                                })
                                 .ToListAsync();
-
+            
             return Ok(networks);
         }
     }

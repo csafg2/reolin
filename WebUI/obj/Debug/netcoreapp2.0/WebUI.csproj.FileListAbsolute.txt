@@ -1,0 +1,13 @@
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\x86\e_sqlite3.dll
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\x64\e_sqlite3.dll
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\WebUI.deps.json
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\WebUI.runtimeconfig.json
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\WebUI.runtimeconfig.dev.json
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\WebUI.dll
+D:\projects\repos\reolin\WebUI\bin\Debug\netcoreapp2.0\WebUI.pdb
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.csprojResolveAssemblyReference.cache
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.csproj.CoreCompileInputs.cache
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.AssemblyInfoInputs.cache
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.AssemblyInfo.cs
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.dll
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.pdb

@@ -152,3 +152,4 @@ D:\projects\repos\reolin\Reolin.Diagnostics.Logging\bin\Debug\System.Runtime.Com
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.dll
 D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.pdb
+D:\projects\repos\reolin\Reolin.Diagnostics.Logging\obj\Debug\Reolin.Diagnostics.Logging.csprojResolveAssemblyReference.cache
