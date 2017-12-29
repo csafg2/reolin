@@ -13,6 +13,7 @@ using System.Data.Entity;
 using System.Dynamic;
 using Reolin.Data.Domain;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -133,8 +134,12 @@ namespace Reolin.Web.Api.Controllers
                          .Any(c => c.IsSubCategory == true && c.Id == model.SubCategoryId));
             }
 
+            if(string.IsNullOrEmpty(model.Query))
+            {
+                q = q.Where(s => s.Description.Contains(model.Query) || s.Profile.Tags.Any(t => t.Name.Contains(model.Query)));
+            }
+
             var result = await q
-                .Where(s => s.Description.Contains(model.Query) || s.Profile.Tags.Any(t => t.Name.Contains(model.Query)))
                 .OrderByDescending(s => s.DateCreated)
                 .Select(s => new
                 {

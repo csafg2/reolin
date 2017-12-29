@@ -72,6 +72,13 @@ namespace Reolin.Web.Api.Controllers
             var requests = await _context
                 .Relations
                 .Where(r => r.TargetProfileId == profileId && r.Confirmed == false)
+                .Select(r => new
+                {
+                    Request = r,
+                    SourceIcon = r.SourceProfile.IconUrl,
+                    SourceName = r.SourceProfile.Name,
+                    SourceIsWork = r.SourceProfile.Type == Data.Domain.ProfileType.Work
+                })
                 .ToListAsync();
 
             return Ok(requests);

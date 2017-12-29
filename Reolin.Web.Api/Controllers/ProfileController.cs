@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using static Reolin.Web.ViewModels.ProfileCreateModel;
 
@@ -136,16 +137,32 @@ namespace Reolin.Web.Api.Controllers
         //[OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
         public async Task<IActionResult> GetByTag(string tag)
         {
+            List<ProfileSearchResult> result = null;
+
             if (string.IsNullOrEmpty(tag))
             {
-                ModelState.AddModelError("Error", "Tag is required");
-                return BadRequest(this.ModelState);
+                result = await this._context.Profiles.OrderByDescending(p => p.Id)
+                    .Select(p => new ProfileSearchResult()
+                    {
+                        Id = p.Id,
+                        City = p.Address.City,
+                        Country = p.Address.Country,
+                        Description = p.Description,
+                        Latitude = p.Address.Location.Latitude,
+                        Longitude = p.Address.Location.Longitude,
+                        Name = p.Name,
+                        Icon = p.IconUrl
+                    })
+                    .Take(20)
+                    .ToListAsync();
             }
-
-            var result = await this.ProfileService.GetByTagAsync(tag)
+            else
+            {
+                result = await this.ProfileService.GetByTagAsync(tag)
                 .OrderByDescending(p => p.Id)
                 .Take(20)
                 .ToListAsync();
+            }
 
             return Ok(result);
         }
@@ -489,10 +506,17 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> ByName(SearchByNameQuery query)
         {
             var source = GeoHelpers.FromLongitudeLatitude(query.Longitude, query.Lat);
+            Expression<Func<Profile, bool>> filter = p => 
+                (p.Address.Location.Distance(source) <= query.Radius) && p.Name.Contains(query.Name);
+
+            if (string.IsNullOrEmpty(query.Name))
+            {
+                filter = p => true;
+            }
+
             var result = await this._context
                             .Profiles
-                            .Where(p => (p.Address.Location.Distance(source) <= query.Radius)
-                                    && p.Name.Contains(query.Name))
+                            .Where(filter)
                                 .Select(p => new ProfileRedisCacheDTO()
                                 {
                                     Id = p.Id,
@@ -504,7 +528,9 @@ namespace Reolin.Web.Api.Controllers
                                     Country = p.Address.Country,
                                     LikeCount = p.ReceivedLikes.Count(),
                                     DistanceWithSource = p.Address.Location.Distance(source)
-                                }).ToListAsync();
+                                })
+                                .Take(20)
+                                .ToListAsync();
 
             return Ok(result);
         }

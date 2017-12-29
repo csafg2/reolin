@@ -18,7 +18,7 @@ namespace Reolin.Web.Api.Models
 
     public class SearchByNameQuery
     {
-        [Required(AllowEmptyStrings = false, ErrorMessage = "name must be specified")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "name must be specified")]
         public string Name { get; set; }
         public double Lat { get; set; }
         public double Longitude { get; set; }
