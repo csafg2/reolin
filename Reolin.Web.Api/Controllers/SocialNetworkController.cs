@@ -52,6 +52,7 @@ namespace Reolin.Web.Api.Controllers
                                 .SelectMany(p => p.Networks)
                                 .Select(n => new
                                 {
+                                    NetworkId = n.Netowrk.Id,
                                     NetworkName = n.Netowrk.Name,
                                     IconPath = n.Netowrk.IconPath,
                                     Url = n.Url,

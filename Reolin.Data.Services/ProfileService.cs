@@ -413,6 +413,7 @@ namespace Reolin.Data.Services
                     Latitude = p.Address.Location.Latitude,
                     Longitude = p.Address.Location.Longitude,
                     Name = p.Name,
+                    LikeCount = p.ReceivedLikes.Count,
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation)
                 })
                 .ToListAsync();
@@ -449,6 +450,7 @@ namespace Reolin.Data.Services
                     Latitude = p.Address.Location.Latitude,
                     Longitude = p.Address.Location.Longitude,
                     Name = p.Name,
+                    LikeCount = p.ReceivedLikes.Count,
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation)
                 })
                 .ToListAsync();

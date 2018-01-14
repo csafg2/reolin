@@ -124,7 +124,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/[action]")]
+        //[Route("[controller]/[action]")]
         public async Task<IActionResult> Search(SearchSuggestionModel model)
         {
             var q = this._dataContext.Suggestions.AsQueryable();
@@ -134,7 +134,7 @@ namespace Reolin.Web.Api.Controllers
                          .Any(c => c.IsSubCategory == true && c.Id == model.SubCategoryId));
             }
 
-            if(string.IsNullOrEmpty(model.Query))
+            if (!string.IsNullOrEmpty(model.Query))
             {
                 q = q.Where(s => s.Description.Contains(model.Query) || s.Profile.Tags.Any(t => t.Name.Contains(model.Query)));
             }

@@ -90,6 +90,7 @@ namespace Reolin.Data.DTO
     {
         public double? DistanceWithSource { get; set; }
         public string Icon { get; set; }
+        public int LikeCount { get; set; }
     }
 
     public class ProfileInfoDTO : ProfileByTagDTO

@@ -82,12 +82,12 @@ namespace Reolin.Web.Api.Controllers
                 .Profiles
                 .Include(p => p.Address)
                 .FirstOrDefaultAsync(p => p.Id == profileId);
-            
+
             if (profile == null)
             {
                 return NotFound();
             }
-            
+
             profile.PhoneNumber = phoneNumber;
             await _context.SaveChangesAsync();
 
@@ -108,7 +108,7 @@ namespace Reolin.Web.Api.Controllers
         {
             var profile = await this._context
                 .Profiles
-                .Include(p =>p.Address)
+                .Include(p => p.Address)
                 .FirstOrDefaultAsync(p => p.Id == profileId);
 
             if (profile == null)
@@ -239,7 +239,7 @@ namespace Reolin.Web.Api.Controllers
             }
 
             await this.ProfileService.AddLikeAsync(this.GetUserId(), profileId);
-           
+
             return Json(new { Count = ++likeCount });
         }
 
@@ -352,7 +352,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(data);
         }
-        
+
         /// <summary>
         /// Updates specified fields
         /// </summary>
@@ -380,7 +380,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-        
+
         /// <summary>
         /// get the list of skills
         /// </summary>
@@ -394,7 +394,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(skills);
         }
-        
+
         /// <summary>
         /// add a new network to networks collection of the user
         /// </summary>
@@ -436,9 +436,9 @@ namespace Reolin.Web.Api.Controllers
             DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(query.SoruceLong, query.SourceLat);
             var result = await this._context
                 .Profiles
-                .Where(p => 
-                    p.JobCategories.Any(jc => jc.Id == query.JobCategoryId) 
-                        || 
+                .Where(p =>
+                    p.JobCategories.Any(jc => jc.Id == query.JobCategoryId)
+                        ||
                     p.JobCategories.Any(j => j.Id == query.SubJobCategoryId))
                 .Where(p => p.Name.Contains(query.SearchTerm) || p.Tags.Any(t => t.Name.Contains(query.SearchTerm)))
                 .Where(p => p.Address.Location.Distance(sourceLocation) < query.Distance)
@@ -459,7 +459,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok(result);
         }
-        
+
 
         /// <summary>
         /// Finds matched profiels first filters by job categories (AND operation) 
@@ -492,7 +492,7 @@ namespace Reolin.Web.Api.Controllers
                             model.SourceLongitude,
                             model.Distance);
             }
-
+            
             return Ok(result);
         }
 
@@ -506,7 +506,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> ByName(SearchByNameQuery query)
         {
             var source = GeoHelpers.FromLongitudeLatitude(query.Longitude, query.Lat);
-            Expression<Func<Profile, bool>> filter = p => 
+            Expression<Func<Profile, bool>> filter = p =>
                 (p.Address.Location.Distance(source) <= query.Radius) && p.Name.Contains(query.Name);
 
             if (string.IsNullOrEmpty(query.Name))
@@ -592,6 +592,22 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> AddTag(AddTagModel model)
         {
             await this.ProfileService.AddTagAsync(model.ProfileId, new[] { model.Tag });
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> RemoveTag(int profileId, int tagId)
+        {
+            var profile = await this._context.Profiles.Include(p => p.Tags).FirstOrDefaultAsync(p => p.Id == profileId);
+            var tag = profile.Tags.FirstOrDefault(t => t.Id == tagId);
+            if (tag != null)
+            {
+                profile.Tags.Remove(tag);
+                await this._context.SaveChangesAsync();
+            }
             return Ok();
         }
 
@@ -660,7 +676,7 @@ namespace Reolin.Web.Api.Controllers
         {
             return Ok(await this.ProfileService.GetImages(id));
         }
-        
+
         /// <summary>
         /// add a new imageCategory to ImageCategory collection of the profile
         /// </summary>
@@ -673,7 +689,7 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.AddImageCategory(model.ProfileId, model.Name);
             return Ok();
         }
-        
+
         /// <summary>
         /// get all Image categories
         /// </summary>
@@ -698,7 +714,7 @@ namespace Reolin.Web.Api.Controllers
             var data = await this.ProfileService.GetRequestRelatedProfiles(id);
             return Ok(data);
         }
-        
+
         /// <summary>
         /// Add a certificate to profile
         /// </summary>
@@ -712,7 +728,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-        
+
         /// <summary>
         /// Get all certificates for profile
         /// </summary>
@@ -738,7 +754,7 @@ namespace Reolin.Web.Api.Controllers
             await this.ProfileService.AddRelatedType(model.ProfileId, model.Type);
             return Ok();
         }
-        
+
         /// <summary>
         /// Deletes a relation request
         /// </summary>
@@ -752,7 +768,7 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
-        
+
         /// <summary>
         /// Confirm a request
         /// </summary>
