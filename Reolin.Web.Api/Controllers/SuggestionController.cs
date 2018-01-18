@@ -131,7 +131,9 @@ namespace Reolin.Web.Api.Controllers
             if (model.SubCategoryId != null)
             {
                 q = q.Where(s => s.Profile.JobCategories
-                         .Any(c => c.IsSubCategory == true && c.Id == model.SubCategoryId));
+                         .Any(c => c.IsSubCategory == true
+                                && 
+                              c.Id == model.SubCategoryId));
             }
 
             if (!string.IsNullOrEmpty(model.Query))
@@ -148,9 +150,9 @@ namespace Reolin.Web.Api.Controllers
                     s.DateCreated,
                     s.Title,
                     s.ProfileId,
-                    s.Image,
+                    s.Profile.IconUrl,
                     City = s.Profile.Address.City,
-                    Country = s.Profile.Address.Country
+                    Country = s.Profile.Address.Country,
                 })
                 .Take(20)
                 .ToListAsync();

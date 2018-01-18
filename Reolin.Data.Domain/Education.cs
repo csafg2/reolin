@@ -10,6 +10,6 @@ namespace Reolin.Data.Domain
         public int GraduationYear { get; set; }
         public string University { get; set; }
         public Profile Profile { get; set; }
-        public int? ProfileId { get; set; }
+        public int? ProfileId { get; set; } 
     }
 }

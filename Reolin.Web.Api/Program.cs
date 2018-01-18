@@ -11,8 +11,8 @@ namespace Reolin.Web.Api
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-
-                .UseKestrel()
+                   .UseKestrel(o => o.Listen(IPAddress.Any, 443,
+                            op => op.UseHttps("certificate_combined.pfx", "Hassan@1")))
                 .UseUrls("http://*:80")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseSetting("detailedErrors", "true")

@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CS1591
+using EntityFramework.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -92,9 +93,20 @@ namespace Reolin.Web.Api.Controllers
             edu.Major = dto.Major;
             edu.GraduationYear = dto.GraduationYear;
             edu.University = dto.University;
+            edu.Field = dto.Field;
 
             await _context.SaveChangesAsync();
 
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _context.Educations.Where(i => i.EduId == id).DeleteAsync();
             return Ok();
         }
     }

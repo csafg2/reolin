@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using EntityFramework.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,28 @@ namespace Reolin.Data.Domain
             this._context = context;
         }
 
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var data = await this._context.Experiences.Where(e => e.Id == id).DeleteAsync();
+            return Json(data);
+        }
 
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Edit(int id, string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return BadRequest("fuck you");
+            }
+
+            var data = await this._context.Experiences.FirstOrDefaultAsync(e => e.Id == id);
+            data.Value = value;
+            await this._context.SaveChangesAsync();
+            return Json(data);
+        }
 
         /// <summary>
         /// get exp
@@ -75,7 +97,7 @@ namespace Reolin.Data.Domain
         public async Task<IActionResult> AddExp(AddExpModel model)
         {
             var profile = await this._context.Profiles.Include(p => p.Experiences).FirstOrDefaultAsync(p => p.Id == model.ProfileId);
-            if(profile == null)
+            if (profile == null)
             {
                 return NotFound();
             }

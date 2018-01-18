@@ -10,8 +10,8 @@ namespace ServiceTest
     [TestClass]
     public class SuggestionTests
     {
-        private DataContext _context = new DataContext();
-        private ISuggestionService _service;
+        private readonly DataContext _context = new DataContext();
+        private readonly ISuggestionService _service;
 
         public SuggestionTests()
         {

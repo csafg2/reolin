@@ -50,7 +50,7 @@ namespace Reolin.Web.ViewModels
         public int? SubJobCategoryId { get; set; }
 
         
-        [Required(ErrorMessage = "SearchTerm is required", AllowEmptyStrings = false)]
+        //[Required(ErrorMessage = "SearchTerm is required", AllowEmptyStrings = false)]
         public string SearchTerm { get; set; }
 
 

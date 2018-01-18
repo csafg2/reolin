@@ -18,6 +18,7 @@ using Reolin.Web.Api.Models;
 using Reolin.Web.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Linq;
@@ -254,7 +255,6 @@ namespace Reolin.Web.Api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
-
             Profile result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
@@ -492,7 +492,7 @@ namespace Reolin.Web.Api.Controllers
                             model.SourceLongitude,
                             model.Distance);
             }
-            
+
             return Ok(result);
         }
 
@@ -826,5 +826,102 @@ namespace Reolin.Web.Api.Controllers
             await _context.SaveChangesAsync();
             return Ok(profile);
         }
+
+        [Route("/[controller]/[action]")]
+        [HttpPost]
+        public async Task<ActionResult> SetCityAndState(SetCityStateModel model)
+        {
+            var profile = await _context
+                .Profiles
+                .Include(p => p.Address)
+                .FirstOrDefaultAsync(c => c.Id == model.ProfileId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            profile.Address.City = model.City;
+            profile.Address.Country = model.Country;
+
+            await _context.SaveChangesAsync();
+            return Ok(profile);
+        }
+
+
+        [Route("/[controller]/[action]")]
+        [HttpPost]
+        public async Task<ActionResult> SetLatLong(SetLatLongMode model)
+        {
+            var profile = await _context
+                .Profiles
+                .Include(p => p.Address)
+                .FirstOrDefaultAsync(c => c.Id == model.ProfileId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            profile.Address.Location = GeoHelpers.FromLongitudeLatitude(model.Long, model.Lat);
+
+            await _context.SaveChangesAsync();
+            return Ok(profile);
+        }
+
+
+        [Route("/[controller]/[action]")]
+        [HttpPost]
+        public async Task<ActionResult> SetFirstNameLastName(SetFirstNameLastName model)
+        {
+            var profile = await _context
+                .Users
+                .FirstOrDefaultAsync(c => c.Id == model.UserId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+
+            profile.FirstName = model.FirstName;
+            profile.LastName = model.LastName;
+
+            await _context.SaveChangesAsync();
+            return Ok(profile);
+        }
+    }
+
+    public class SetFirstNameLastName
+    {
+        public int UserId { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Name is required")]
+        public string FirstName { get; set; }
+
+        
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Name is required")]
+        public string LastName { get; set; }
+    }
+
+    public class SetLatLongMode
+    {
+        public int ProfileId { get; set; }
+        public double Lat { get; set; }
+        public double Long
+        {
+            get; set;
+        }
+
+    }
+
+    public class SetCityStateModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid ProfileID")]
+        public int ProfileId { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "invalid city")]
+        public string City { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "invalid State")]
+        public string Country { get; set; }
     }
 }

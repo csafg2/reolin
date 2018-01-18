@@ -8,4 +8,3 @@ D:\projects\repos\reolin\Reolin.Data.DTO\bin\Debug\Reolin.Data.DTO.pdb
 D:\projects\repos\reolin\Reolin.Data.DTO\obj\Debug\Reolin.Data.DTO.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Data.DTO\obj\Debug\Reolin.Data.DTO.dll
 D:\projects\repos\reolin\Reolin.Data.DTO\obj\Debug\Reolin.Data.DTO.pdb
-D:\projects\repos\reolin\Reolin.Data.DTO\obj\Debug\Reolin.Data.DTO.csprojResolveAssemblyReference.cache

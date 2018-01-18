@@ -36,10 +36,12 @@ namespace Reolin.Web.Api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult> RemoveNetwork(RemoveProfileNetwork model)
         {
-            await this._context.ProfileNetworks.Where(p => p.ProfileId == model.ProfileId && p.NetworkId == model.NetworkId)
+            var result = await this._context
+                .ProfileNetworks
+                .Where(p => p.ProfileId == model.ProfileId && p.NetworkId == model.NetworkId)
                 .DeleteAsync();
 
-            return Ok();
+            return Ok(result);
         }
     }
 }

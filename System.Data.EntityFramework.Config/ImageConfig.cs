@@ -11,7 +11,8 @@ namespace Reolin.Data.EntityFramework.Config
             
             this.HasMany(im => im.Tags)
                 .WithOptional(t => t.Image)
-                .HasForeignKey(t => t.ImageId);
+                .HasForeignKey(t => t.ImageId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

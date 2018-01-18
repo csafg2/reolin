@@ -386,23 +386,25 @@ namespace Reolin.Data.Services
 
         public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
         {
-            Expression<Func<Profile, bool>> filter = p => true;
-            
+            var query = this.Context.Profiles.AsQueryable();
+
             if (subCatId != null)
             {
-                filter = p => p.JobCategories.Any(j => j.Id == subCatId);
+                query = query.Where(p => p.JobCategories.Any(j => j.Id == subCatId));
             }
 
-            DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
-            return this.Context.
-                Profiles
-                .Where(filter)
-                .Where(p =>
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p =>
                     p.JobCategories.Any(j => j.Id == subCatId)
                     ||
                     p.Name.Contains(searchTerm)
                     ||
-                p.Tags.Any(t => t.Name.Contains(searchTerm)))
+                    p.Tags.Any(t => t.Name.Contains(searchTerm)));
+            }
+
+            var sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
+            return query
                 .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
                 .Select(p => new ProfileSearchResult()
                 {
@@ -416,6 +418,7 @@ namespace Reolin.Data.Services
                     LikeCount = p.ReceivedLikes.Count,
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation)
                 })
+                .Take(20)
                 .ToListAsync();
         }
 
@@ -426,20 +429,26 @@ namespace Reolin.Data.Services
             {
                 filter = p => p.JobCategories.Any(j => j.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId);
             }
-            else if(mainCatId != null)
+            else if (mainCatId != null)
             {
                 filter = p => p.JobCategories.Any(j => j.Id == mainCatId);
             }
-            else if(subCatId != null)
+            else if (subCatId != null)
             {
                 filter = p => p.JobCategories.Any(j => j.Id == subCatId);
             }
 
+            var query = this.Context.Profiles.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(searchTerm) || p.Tags.Any(t => t.Name.Contains(searchTerm)));
+            }
+
             DbGeography sourceLocation = GeoHelpers.FromLongitudeLatitude(sourceLongitude, sourceLatitude);
-            return this.Context.
-                Profiles
+            return
+                query
                 .Where(filter)
-                .Where(p => p.Name.Contains(searchTerm) || p.Tags.Any(t => t.Name.Contains(searchTerm)))
                 .Where(p => p.Address.Location.Distance(sourceLocation) < distance)
                 .Select(p => new ProfileSearchResult()
                 {
