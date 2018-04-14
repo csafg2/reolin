@@ -17,7 +17,5 @@ namespace Reolin.Web.Controllers
             ViewBag.TargetProfileId = id;
             return View();
         }
-
-
     }
 }

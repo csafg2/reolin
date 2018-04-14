@@ -37,3 +37,4 @@ D:\projects\repos\reolin\Reolin.Web.Security.Membership\obj\Debug\net461\Reolin.
 D:\projects\repos\reolin\Reolin.Web.Security.Membership\obj\Debug\net461\Reolin.Web.Security.Membership.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Web.Security.Membership\obj\Debug\net461\Reolin.Web.Security.Membership.dll
 D:\projects\repos\reolin\Reolin.Web.Security.Membership\obj\Debug\net461\Reolin.Web.Security.Membership.pdb
+D:\projects\repos\reolin\Reolin.Web.Security.Membership\obj\Debug\net461\Reolin.Web.Security.Membership.csproj.CopyComplete

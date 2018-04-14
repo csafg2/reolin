@@ -9,8 +9,8 @@ namespace Reolin.Data.Domain
         public string Name { get; set; }
         public List<Profile> Profiles { get; set; }
         
-        public int? ImageId { get; set; }
-        public Image Image { get; set; }
+        //public int? ImageId { get; set; }
+        public List<Image> Images { get; set; }
         public List<Suggestion> Suggestions { get; set; }
     }
 }

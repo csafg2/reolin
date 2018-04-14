@@ -1,13 +1,28 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Reolin.Data.Domain;
 using Reolin.Data.Services.Core;
 using Reolin.Web.Api.Infra.mvc;
+using Reolin.Web.Security.Membership.Core;
 using Reolin.Web.ViewModels;
 using Reolin.Web.ViewModels.ViewModels.User;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace Reolin.Web.Api.Controllers
 {
+    public class ChangePassword
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Old pass is required")]
+        public string OldPassword { get; set; }
+
+        [Compare("ConfirmNewPassword")]
+        public string NewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
+
+        public int Id { get; set; }
+    }
+
     /// <summary>
     /// User related apis 
     /// </summary>
@@ -15,11 +30,13 @@ namespace Reolin.Web.Api.Controllers
     public class UserController : BaseController
     {
         private readonly IUserService _service;
+        private readonly IUserSecurityManager _userSecurityManager;
 
 #pragma warning disable CS1591
-        public UserController(IUserService service)
+        public UserController(IUserService service, IUserSecurityManager userSecurityManager)
         {
             this._service = service;
+            this._userSecurityManager = userSecurityManager;
         }
 #pragma warning restore CS1591
 
@@ -29,6 +46,16 @@ namespace Reolin.Web.Api.Controllers
             {
                 return _service;
             }
+        }
+
+
+        [HttpPost]
+        [Route("[controller]/[action]")]
+        public async Task<ActionResult> ChangePassword(ChangePassword model)
+        {
+            await this._userSecurityManager.ChangePasswordAsync(model.Id, model.OldPassword, model.NewPassword);
+
+            return Ok();
         }
 
         /// <summary>

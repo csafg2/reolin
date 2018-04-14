@@ -23,3 +23,4 @@ D:\projects\repos\reolin\Reolin.Data.Domain\obj\Debug\Reolin.Data.Domain.csprojR
 D:\projects\repos\reolin\Reolin.Data.Domain\obj\Debug\Reolin.Data.Domain.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Data.Domain\obj\Debug\Reolin.Data.Domain.dll
 D:\projects\repos\reolin\Reolin.Data.Domain\obj\Debug\Reolin.Data.Domain.pdb
+D:\projects\repos\reolin\Reolin.Data.Domain\obj\Debug\Reolin.Data.Domain.csproj.CopyComplete

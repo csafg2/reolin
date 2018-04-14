@@ -95,7 +95,8 @@ namespace Reolin.Data.Services
                             Latitude = p.Address.Location.Latitude,
                             Longitude = p.Address.Location.Longitude,
                             Name = p.Name,
-                            Icon = p.IconUrl
+                            Icon = p.IconUrl,
+                            Tags = p.Tags.Where(t => t.Name.Contains(tag)).Select(t => new TagDTO { Id = t.Id, Name = t.Name })
                         });
         }
 
@@ -208,20 +209,36 @@ namespace Reolin.Data.Services
 
         public virtual Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong)
         {
+            var query = this.Context.Profiles.AsQueryable();
             var source = GeoHelpers.FromLongitudeLatitude(sourceLong, sourceLat);
-            return this.Context
-                            .Profiles.Include("Tags")
-                            .Where(p => (p.Address.Location.Distance(source) <= radius)
-                                    && (p.Tags.Any(t => t.Name.Contains(tag))))
-                                .Select(p => new ProfileRedisCacheDTO()
-                                {
-                                    Id = p.Id,
-                                    Description = p.Description,
-                                    Latitude = p.Address.Location.Latitude,
-                                    Longitude = p.Address.Location.Longitude,
-                                    Tags = p.Tags.Select(t => new TagDTO() { Id = t.Id, Name = t.Name }),
-                                    Name = p.Name
-                                }).ToListAsync();
+
+            if (!string.IsNullOrEmpty(tag))
+            {
+                query = query.Where(p => (p.Address.Location.Distance(source) <= radius)
+                                    && (p.Tags.Any(t => t.Name.Contains(tag))));
+            }
+
+            return query
+                    .Select(p => new ProfileRedisCacheDTO()
+                    {
+                        Id = p.Id,
+                        Description = p.Description,
+                        Latitude = p.Address.Location.Latitude,
+                        Longitude = p.Address.Location.Longitude,
+                        Tags = p.Tags.Select(t => new TagDTO()
+                        {
+                            Id = t.Id,
+                            Name = t.Name
+                        }),
+                        Name = p.Name,
+                        DistanceWithSource = p.Address.Location.Distance(source),
+                        City = p.Address.City,
+                        Country = p.Address.Country,
+                        LikeCount = p.Likes.Count()
+                    })
+                    .OrderByDescending(p => p.Id)
+                    .Take(20)
+                    .ToListAsync();
         }
 
         public Task<List<Profile>> GetRelatedProfiles(int profileId)
@@ -241,15 +258,17 @@ namespace Reolin.Data.Services
         }
 
 
-        public async Task<int> EditProfile(int profileId, string city, string country, string name)
+        public async Task<int> EditProfile(int profileId, string name)
         {
-            int addressCount = await this.Context.Addresses.Where(a => a.Id == profileId)
-                .UpdateAsync(a => new Address() { City = city, Country = country });
+            int profileCount = await this.Context
+                .Profiles
+                .Where(p => p.Id == profileId)
+                    .UpdateAsync(p => new Profile()
+                    {
+                        Name = name
+                    });
 
-            int profileCount = await this.Context.Profiles.Where(p => p.Id == profileId)
-                            .UpdateAsync(p => new Profile() { Name = name });
-
-            return addressCount + profileCount;
+            return profileCount;
         }
 
         public Task<List<CommentDTO>> GetLatestComments(int profileId)
@@ -416,7 +435,8 @@ namespace Reolin.Data.Services
                     Longitude = p.Address.Location.Longitude,
                     Name = p.Name,
                     LikeCount = p.ReceivedLikes.Count,
-                    DistanceWithSource = p.Address.Location.Distance(sourceLocation)
+                    DistanceWithSource = p.Address.Location.Distance(sourceLocation),
+                    IsWork = p.Type == ProfileType.Work
                 })
                 .Take(20)
                 .ToListAsync();
@@ -460,7 +480,8 @@ namespace Reolin.Data.Services
                     Longitude = p.Address.Location.Longitude,
                     Name = p.Name,
                     LikeCount = p.ReceivedLikes.Count,
-                    DistanceWithSource = p.Address.Location.Distance(sourceLocation)
+                    DistanceWithSource = p.Address.Location.Distance(sourceLocation),
+                    IsWork = p.Type == ProfileType.Work
                 })
                 .ToListAsync();
         }
@@ -518,22 +539,28 @@ namespace Reolin.Data.Services
                     Lat = p.Address.Location.Latitude,
                     Long = p.Address.Location.Longitude,
                     Address = p.Address.AddressString,
-                    AboutMe = p.AboutMe
+                    AboutMe = p.AboutMe,
+                    Description = p.Description,
+                    PhoneNumber = p.PhoneNumber,
+                    Fax = p.Fax
                 }).FirstOrDefaultAsync();
 
             return profile;
 
         }
 
-        public async Task<List<TagDTO>> GetTags(int profileId)
+        public Task<List<TagDTO>> GetTags(int profileId)
         {
-            var profile =
-                await Context
-                .Profiles
-                .Include("Tags")
-                .FirstOrDefaultAsync(p => p.Id == profileId);
-
-            return profile.Tags.Select(t => new TagDTO() { Id = t.Id, Name = t.Name }).ToList();
+            return this.Context.Profiles
+                .Where(p => p.Id == profileId)
+                .SelectMany(p => p.Tags)
+                .Select(t => new TagDTO()
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    ImageCount = t.Images.Count()
+                })
+                .ToListAsync();
         }
 
         public async Task<string> GetPhoneNumbers(int id)

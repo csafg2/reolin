@@ -28,3 +28,4 @@ D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Dat
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.dll
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.pdb
+D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csproj.CopyComplete

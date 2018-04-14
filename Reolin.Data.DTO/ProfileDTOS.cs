@@ -31,6 +31,9 @@ namespace Reolin.Data.DTO
         public double? Lat { get; set; }
         public string Address { get; set; }
         public string AboutMe { get; set; }
+        public string Description { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Fax { get; set; }
     }
 
     public class EducationEditDTO
@@ -73,6 +76,7 @@ namespace Reolin.Data.DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int ImageCount { get; set; }
     }
 
 
@@ -91,6 +95,7 @@ namespace Reolin.Data.DTO
         public double? DistanceWithSource { get; set; }
         public string Icon { get; set; }
         public int LikeCount { get; set; }
+        public IEnumerable<TagDTO> Tags { get; set; }
     }
 
     public class ProfileInfoDTO : ProfileByTagDTO

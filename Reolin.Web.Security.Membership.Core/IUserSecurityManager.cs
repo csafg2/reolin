@@ -30,6 +30,7 @@ namespace Reolin.Web.Security.Membership.Core
         /// <param name="email"></param>
         /// <returns></returns>
         Task<int> CreateAsync(string userName, string password, string email);
+        
 
         /// <summary>
         /// validates the specified password for the username

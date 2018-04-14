@@ -66,7 +66,7 @@ namespace Reolin.Data.Services.Core
         Task<List<Profile>> GetRelatedProfiles(int profileId);
 
         Task<int> UpdateLocaiton(int profileId, double latitude, double longitude);
-        Task<int> EditProfile(int profileId, string city, string country, string name);
+        Task<int> EditProfile(int profileId, string name);
 
         Task<List<CommentDTO>> GetLatestComments(int profileId);
 

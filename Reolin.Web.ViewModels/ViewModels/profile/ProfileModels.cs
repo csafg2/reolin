@@ -99,15 +99,15 @@ namespace Reolin.Web.ViewModels
 
         [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
-        [Required(ErrorMessage = "City is required", AllowEmptyStrings = false)]
-        public string City { get; set; }
-        [Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
-        public string Country { get; set; }
+
+        //[Required(ErrorMessage = "City is required", AllowEmptyStrings = false)]
+        //public string City { get; set; }
+        //[Required(ErrorMessage = "Country is required", AllowEmptyStrings = false)]
+        //public string Country { get; set; }
     }
 
     public class SearchProfilesInRangeModel
     {
-        [Required(ErrorMessage = "Tag to search is required", AllowEmptyStrings = false)]
         public string Tag { get; set; }
         
         [Required(ErrorMessage = "Search Range is required")]

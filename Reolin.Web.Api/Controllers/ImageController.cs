@@ -9,6 +9,7 @@ using EntityFramework.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Reolin.Data.Domain;
+using System.Data.Entity;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -20,6 +21,30 @@ namespace Reolin.Web.Api.Controllers
         {
             this._context = context;
         }
+
+        /// <summary>
+        /// get image by tag
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <param name="tagId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/[controller]/[action]")]
+        public async Task<ActionResult> GetByTag(int profileId, int tagId)
+        {
+            var images = await _context.Images
+                .Where(i => i.ProfileId == profileId && i.Tags.Any(t => t.Id == tagId))
+                .Select(i => new
+                {
+                    i.Id,
+                    i.Path,
+                    i.ProfileId
+                })
+                .ToListAsync();
+
+            return Ok(images);
+        }
+
 
         [HttpPost]
         [Route("/[controller]/[action]")]

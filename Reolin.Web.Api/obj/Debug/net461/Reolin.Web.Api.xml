@@ -132,6 +132,14 @@
             <param name="files"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.ImageController.GetByTag(System.Int32,System.Int32)">
+            <summary>
+            get image by tag
+            </summary>
+            <param name="profileId"></param>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.JobCategoryController.GetAll">
             <summary>
             return a list of available job categories
@@ -148,6 +156,14 @@
             <summary>
             Get all Sub job Categories
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.SetFax(System.Int32,System.String)">
+            <summary>
+            Set Fax
+            </summary>
+            <param name="profileId"></param>
+            <param name="fax"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.SetPhoneNumber(System.Int32,System.String)">

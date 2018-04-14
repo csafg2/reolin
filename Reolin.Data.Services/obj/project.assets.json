@@ -338,9 +338,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj",
       "projectName": "Reolin.Data.Services",
@@ -366,14 +363,14 @@
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj": {
-              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj"
+            "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj"
             },
             "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj": {
               "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj"
             },
-            "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj": {
-              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj"
+            "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data\\Reolin.Data.csproj"
             },
             "D:\\projects\\repos\\reolin\\Utilities\\Utilities.csproj": {
               "projectPath": "D:\\projects\\repos\\reolin\\Utilities\\Utilities.csproj"
@@ -390,17 +387,17 @@
     "frameworks": {
       "net461": {
         "dependencies": {
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.1.3, )"
+          },
           "EntityFramework.Extended": {
             "target": "Package",
-            "version": "6.1.0.168"
+            "version": "[6.1.0.168, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
-            "version": "4.3.0"
-          },
-          "EntityFramework": {
-            "target": "Package",
-            "version": "6.1.3"
+            "version": "[4.3.0, )"
           }
         }
       }

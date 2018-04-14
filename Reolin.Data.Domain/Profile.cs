@@ -38,10 +38,12 @@ namespace Reolin.Data.Domain
         public User User { get; set; }
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
+        public string Fax { get; set; }
         public string IconUrl { get; set; }
         public string AboutMe { get; set; }
         public List<Experience> Experiences { get; set; }
         public List<ProfileNetwork> Networks { get; set; }
+        
 
         public static implicit operator ProfileInfoDTO(Profile source)
         {

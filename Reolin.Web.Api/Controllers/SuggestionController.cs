@@ -63,7 +63,7 @@ namespace Reolin.Web.Api.Controllers
                     City = s.Profile.Address.City,
                     Country = s.Profile.Address.Country
                 })
-                .Take(20)
+                .Take(10)
                 .ToListAsync();
 
             return Ok(result);
@@ -103,6 +103,7 @@ namespace Reolin.Web.Api.Controllers
                           .Select(s => new
                           {
                               Id = s.Id,
+                              Description = s.Description,
                               Image = s.Image,
                               ProfileId = s.ProfileId,
                               Profile = new
@@ -124,7 +125,7 @@ namespace Reolin.Web.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpGet]
-        //[Route("[controller]/[action]")]
+        [Route("[controller]/[action]")]
         public async Task<IActionResult> Search(SearchSuggestionModel model)
         {
             var q = this._dataContext.Suggestions.AsQueryable();
@@ -141,8 +142,10 @@ namespace Reolin.Web.Api.Controllers
                 q = q.Where(s => s.Description.Contains(model.Query) || s.Profile.Tags.Any(t => t.Name.Contains(model.Query)));
             }
 
+            var sourceLocation = GeoHelpers.FromLongitudeLatitude(model.SountLong, model.SourceLat);
+
             var result = await q
-                .OrderByDescending(s => s.DateCreated)
+                .OrderByDescending(s => s.Profile.Address.Location.Distance(sourceLocation))
                 .Select(s => new
                 {
                     s.Id,

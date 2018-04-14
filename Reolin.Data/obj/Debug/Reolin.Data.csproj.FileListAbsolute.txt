@@ -43,3 +43,4 @@ D:\projects\repos\reolin\Reolin.Data\obj\Debug\Reolin.Data.csprojResolveAssembly
 D:\projects\repos\reolin\Reolin.Data\obj\Debug\Reolin.Data.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Data\obj\Debug\Reolin.Data.dll
 D:\projects\repos\reolin\Reolin.Data\obj\Debug\Reolin.Data.pdb
+D:\projects\repos\reolin\Reolin.Data\obj\Debug\Reolin.Data.csproj.CopyComplete

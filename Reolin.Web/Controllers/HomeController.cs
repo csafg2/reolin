@@ -18,6 +18,7 @@ namespace Reolin.Web.Controllers
 
         public IActionResult Error()
         {
+            
             return View();
         }
 

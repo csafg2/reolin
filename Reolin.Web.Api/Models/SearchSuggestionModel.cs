@@ -8,5 +8,9 @@ namespace Reolin.Web.Api.Models
         public string Query { get; set; }
         
         public int? SubCategoryId { get; set; }
+
+        public double SourceLat { get; set; }
+        public double SountLong { get; set; }
+
     }
 }

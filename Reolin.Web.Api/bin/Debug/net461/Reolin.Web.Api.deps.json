@@ -2046,7 +2046,11 @@
           "lib/net451/System.IdentityModel.Tokens.Jwt.dll": {}
         }
       },
-      "System.IO.Compression/4.3.0": {},
+      "System.IO.Compression/4.3.0": {
+        "compile": {
+          "ref/net46/System.IO.Compression.dll": {}
+        }
+      },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
           "System.IO.FileSystem.Primitives": "4.3.0"

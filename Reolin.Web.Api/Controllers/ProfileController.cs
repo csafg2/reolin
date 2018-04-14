@@ -67,6 +67,37 @@ namespace Reolin.Web.Api.Controllers
         }
 
 
+
+
+        /// <summary>
+        /// Set Fax
+        /// </summary>
+        /// <param name="profileId"></param>
+        /// <param name="fax"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [RequireValidModel]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> SetFax(int profileId, string fax)
+        {
+            var profile = await this._context
+                .Profiles
+                .FirstOrDefaultAsync(p => p.Id == profileId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            profile.Fax = fax;
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+
+
         /// <summary>
         /// Set address
         /// </summary>
@@ -152,7 +183,8 @@ namespace Reolin.Web.Api.Controllers
                         Latitude = p.Address.Location.Latitude,
                         Longitude = p.Address.Location.Longitude,
                         Name = p.Name,
-                        Icon = p.IconUrl
+                        Icon = p.IconUrl,
+                        IsWork = p.Type == ProfileType.Work
                     })
                     .Take(20)
                     .ToListAsync();
@@ -362,7 +394,7 @@ namespace Reolin.Web.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProfileEditModel model)
         {
-            await this.ProfileService.EditProfile(model.ProfileId, model.City, model.Country, model.Name);
+            await this.ProfileService.EditProfile(model.ProfileId, model.Name);
 
             return Ok();
         }
@@ -563,7 +595,8 @@ namespace Reolin.Web.Api.Controllers
                 .Profiles
                 .Include(p => p.Address)
                 .FirstOrDefaultAsync(p => p.Id == profielId);
-            return Ok(new { Address = profile.Address.AddressString });
+
+            return Ok(new { Address = profile?.Address?.AddressString });
         }
 
         /// <summary>

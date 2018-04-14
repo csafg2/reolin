@@ -31,3 +31,4 @@ D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Servi
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.dll
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.pdb
+D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.csproj.CopyComplete

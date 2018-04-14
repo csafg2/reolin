@@ -82,6 +82,7 @@ D:\projects\repos\reolin\ServiceTest\bin\Debug\Reolin.Web.Security.Membership.Co
 D:\projects\repos\reolin\ServiceTest\bin\Debug\Reolin.Web.Security.Membership.Core.dll.config
 D:\projects\repos\reolin\ServiceTest\bin\Debug\System.Data.EntityFramework.Config.pdb
 D:\projects\repos\reolin\ServiceTest\bin\Debug\System.Data.EntityFramework.Config.dll.config
+D:\projects\repos\reolin\ServiceTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.dll
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.pdb
-D:\projects\repos\reolin\ServiceTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.csproj.CopyComplete
