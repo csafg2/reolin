@@ -117,12 +117,12 @@ namespace Reolin.Data.Services
             return await this.Context.SaveChangesAsync();
         }
 
-        public Task<int> AddLikeAsync(int senderProfileId, int targetProfileId)
+        public Task<int> AddLikeAsync(int senderUserId, int targetProfileId)
         {
             this.Context.Likes.Add(new Like()
             {
                 TargetProfileId = targetProfileId,
-                SenderId = senderProfileId
+                SenderId = senderUserId
             });
 
             return Context.SaveChangesAsync();
@@ -234,7 +234,7 @@ namespace Reolin.Data.Services
                         DistanceWithSource = p.Address.Location.Distance(source),
                         City = p.Address.City,
                         Country = p.Address.Country,
-                        LikeCount = p.Likes.Count()
+                        LikeCount = p.ReceivedLikes.Count()
                     })
                     .OrderByDescending(p => p.Id)
                     .Take(20)
@@ -403,7 +403,7 @@ namespace Reolin.Data.Services
             return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name, IsSubCategory = j.IsSubCategory }).ToListAsync();
         }
 
-        public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
+        public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000)
         {
             var query = this.Context.Profiles.AsQueryable();
 
@@ -434,15 +434,21 @@ namespace Reolin.Data.Services
                     Latitude = p.Address.Location.Latitude,
                     Longitude = p.Address.Location.Longitude,
                     Name = p.Name,
-                    LikeCount = p.ReceivedLikes.Count,
+                    LikeCount = p.ReceivedLikes.Count(),
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation),
-                    IsWork = p.Type == ProfileType.Work
+                    IsWork = p.Type == ProfileType.Work,
+                    IsLiked = p.ReceivedLikes.Any(l => l.SenderId == userId)
                 })
                 .Take(20)
                 .ToListAsync();
         }
 
-        public Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000)
+        public Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId,
+            int? subCatId, string searchTerm, 
+            double sourceLatitude,
+            double sourceLongitude, 
+            int userId,
+            int distance = 5000)
         {
             Expression<Func<Profile, bool>> filter = p => true;
             if (mainCatId != null && subCatId != null)
@@ -481,7 +487,8 @@ namespace Reolin.Data.Services
                     Name = p.Name,
                     LikeCount = p.ReceivedLikes.Count,
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation),
-                    IsWork = p.Type == ProfileType.Work
+                    IsWork = p.Type == ProfileType.Work,
+                    IsLiked = p.ReceivedLikes.Any(l => l.SenderId == userId)
                 })
                 .ToListAsync();
         }
@@ -532,7 +539,7 @@ namespace Reolin.Data.Services
                     Id = p.Id,
                     City = p.Address.City,
                     Country = p.Address.Country,
-                    LikeCount = p.ReceivedLikes.Count,
+                    LikeCount = p.ReceivedLikes.Count(),
                     Name = p.Name,
                     IsWork = p.Type == ProfileType.Work,
                     IconUrl = p.IconUrl,
@@ -542,7 +549,9 @@ namespace Reolin.Data.Services
                     AboutMe = p.AboutMe,
                     Description = p.Description,
                     PhoneNumber = p.PhoneNumber,
-                    Fax = p.Fax
+                    Fax = p.Fax,
+                    Mobile = p.Mobile,
+                    Postal = p.Postal
                 }).FirstOrDefaultAsync();
 
             return profile;

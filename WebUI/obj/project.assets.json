@@ -12965,9 +12965,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\projects\\repos\\reolin\\WebUI\\WebUI.csproj",
       "projectName": "WebUI",
@@ -12987,6 +12984,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "e:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/orchardcore-preview/api/v3/index.json": {}
       },
@@ -13004,14 +13002,14 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.0-preview2-final"
+            "version": "[2.0.0-preview2-final, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           }
         },
         "imports": [

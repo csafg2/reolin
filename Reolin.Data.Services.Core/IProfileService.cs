@@ -46,7 +46,7 @@ namespace Reolin.Data.Services.Core
         Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath, int[] tags);
 
 
-        Task<int> AddLikeAsync(int senderProfileId, int targetProfileId);
+        Task<int> AddLikeAsync(int senderUserId, int targetProfileId);
 
         /// <summary>
         /// Create a new profile entry with the description, for the specified userId.
@@ -78,8 +78,8 @@ namespace Reolin.Data.Services.Core
         Task<List<JobCategoryInfoDTO>> QueryJobCategories();
 
 
-        Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
-        Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int distance = 5000);
+        Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
+        Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
 
         Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId);
         Task<int> AddRelatedType(int profileId, string relatedType);

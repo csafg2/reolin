@@ -46,9 +46,8 @@ namespace Reolin.Web.Security.Jwt
 
             try
             {
-                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-                SecurityToken validatedToken = null;
-                tokenHandler.ValidateToken(token, validationParams, out validatedToken);
+                var tokenHandler = new JwtSecurityTokenHandler();
+                tokenHandler.ValidateToken(token, validationParams, out SecurityToken validatedToken);
             }
             catch (Exception)
             {

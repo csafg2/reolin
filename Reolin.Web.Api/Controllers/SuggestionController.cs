@@ -14,6 +14,9 @@ using System.Dynamic;
 using Reolin.Data.Domain;
 using Newtonsoft.Json;
 using System.Linq.Expressions;
+using EntityFramework.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Reolin.Web.Api.Controllers
 {
@@ -102,16 +105,16 @@ namespace Reolin.Web.Api.Controllers
                           .Where(s => s.ProfileId == profileId)
                           .Select(s => new
                           {
-                              Id = s.Id,
-                              Description = s.Description,
-                              Image = s.Image,
-                              ProfileId = s.ProfileId,
+                              s.Id,
+                              s.Description,
+                              s.Image,
+                              s.ProfileId,
                               Profile = new
                               {
                                   Id = s.ProfileId,
                                   IsWork = s.Profile.Type == ProfileType.Work
                               },
-                              Title = s.Title,
+                              s.Title,
                               Tags = s.Tags.Select(t => new { t.Id, t.Name })
                           })
                           .ToListAsync();
@@ -132,7 +135,8 @@ namespace Reolin.Web.Api.Controllers
             if (model.SubCategoryId != null)
             {
                 q = q.Where(s => s.Profile.JobCategories
-                         .Any(c => c.IsSubCategory == true
+                         .Any(c =>
+                              c.IsSubCategory == true
                                 && 
                               c.Id == model.SubCategoryId));
             }
@@ -145,7 +149,7 @@ namespace Reolin.Web.Api.Controllers
             var sourceLocation = GeoHelpers.FromLongitudeLatitude(model.SountLong, model.SourceLat);
 
             var result = await q
-                .OrderByDescending(s => s.Profile.Address.Location.Distance(sourceLocation))
+                .Where(s => s.Profile.Address.Location.Distance(sourceLocation) < 100_000)
                 .Select(s => new
                 {
                     s.Id,
@@ -154,13 +158,61 @@ namespace Reolin.Web.Api.Controllers
                     s.Title,
                     s.ProfileId,
                     s.Profile.IconUrl,
-                    City = s.Profile.Address.City,
-                    Country = s.Profile.Address.Country,
+                    s.Profile.Address.City,
+                    s.Profile.Address.Country,
+                    Location = new
+                    {
+                        s.Profile.Address.Location.Latitude,
+                        s.Profile.Address.Location.Longitude
+                    }
                 })
+                //.OrderByDescending(s => s.Distance)
                 .Take(20)
                 .ToListAsync();
 
             return Ok(result);
         }
+
+
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var result = await this._dataContext
+                .Suggestions
+                .Where(s => s.Id == id)
+                .DeleteAsync();
+
+            return Ok(result);
+        }
+
+
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> Edit(SuggestionEditModel model)
+        {
+            var result = await this._dataContext
+                .Suggestions
+                .Where(s => s.Id == model.Id)
+                .UpdateAsync(s => new Suggestion()
+                {
+                    Title = model.Title,
+                    Description = model.Description
+                });
+
+            return Ok(result);
+        }
+    }
+
+    public class SuggestionEditModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid Id")]
+        public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Invalid Text")]
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

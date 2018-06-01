@@ -357,9 +357,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Web.Security.Membership.Core\\Reolin.Web.Security.Membership.Core.csproj",
       "projectName": "Reolin.Web.Security.Membership.Core",
@@ -379,17 +376,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "e:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/orchardcore-preview/api/v3/index.json": {}
       },
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj": {
-              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj"
-            },
             "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj": {
               "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Domain\\Reolin.Data.Domain.csproj"
+            },
+            "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj": {
+              "projectPath": "D:\\projects\\repos\\reolin\\Reolin.Data.Services\\Reolin.Data.Services.csproj"
             }
           }
         }

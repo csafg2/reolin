@@ -14,10 +14,10 @@ namespace Reolin.Web.Api.Controllers
 {
     public class RemoveProfileNetwork
     {
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Profile")]
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid ProfileId")]
         public int ProfileId { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid Network")]
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid NetworkId")]
         public int NetworkId { get; set; }
     }
 

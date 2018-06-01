@@ -5,7 +5,7 @@ namespace Reolin.Data.Domain
     {
         public int Id { get; set; }
 
-        public Profile Sender { get; set; }
+        public User Sender { get; set; }
         public int SenderId { get; set; }
 
         public Profile TargetProfile { get; set; }

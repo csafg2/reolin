@@ -21,7 +21,7 @@ namespace Reolin.Data.Domain
         public List<Profile> Profiles { get; set; }
 
         // thumbs up s that user has done.
-        //public List<Like> Likes { get; set; }
+        public List<Like> Likes { get; set; }
         public List<Role> Roles { get; set; }
         public bool Confirmed { get; set; }
 

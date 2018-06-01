@@ -22,7 +22,7 @@ namespace Reolin.Data.Domain
         public Address Address { get; set; }
         public ProfileType Type { get; set; }
         public List<Tag> Tags { get; set; }
-        public List<Like> Likes { get; set; }
+        //public List<Like> Likes { get; set; }
         public List<Like> ReceivedLikes { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Certificate> Certificates { get; set; }
@@ -38,9 +38,12 @@ namespace Reolin.Data.Domain
         public User User { get; set; }
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
+        public string Mobile { get; set; }
+        public string Postal { get; set; }
         public string Fax { get; set; }
         public string IconUrl { get; set; }
         public string AboutMe { get; set; }
+        
         public List<Experience> Experiences { get; set; }
         public List<ProfileNetwork> Networks { get; set; }
         

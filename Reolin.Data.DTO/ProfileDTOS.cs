@@ -34,6 +34,8 @@ namespace Reolin.Data.DTO
         public string Description { get; set; }
         public string PhoneNumber { get; set; }
         public string Fax { get; set; }
+        public string Postal { get; set; }
+        public string Mobile { get; set; }
     }
 
     public class EducationEditDTO
@@ -88,6 +90,7 @@ namespace Reolin.Data.DTO
         public string Country { get; set; }
         public int LikeCount { get; set; }
         public double? DistanceWithSource { get; set; }
+        public bool IsLiked { get; set; }
     }
 
     public class ProfileSearchResult : ProfileInfoDTO
@@ -96,6 +99,7 @@ namespace Reolin.Data.DTO
         public string Icon { get; set; }
         public int LikeCount { get; set; }
         public IEnumerable<TagDTO> Tags { get; set; }
+        public bool IsLiked { get; set; }
     }
 
     public class ProfileInfoDTO : ProfileByTagDTO

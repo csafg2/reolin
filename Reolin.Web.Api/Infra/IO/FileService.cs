@@ -18,7 +18,6 @@ namespace Reolin.Web.Api.Infra.IO
         private readonly UploadDirectorySettings _config;
         private readonly string _webRootPath;
 
-
         public FileService(IDirectoryProvider provider,
             IHostingEnvironment env,
             IOptions<UploadDirectorySettings> config)
@@ -75,8 +74,9 @@ namespace Reolin.Web.Api.Infra.IO
         private string GetDirectory(string subDirectory)
         {
             //basePath: some thing like  this: e:\files
-            string fullBasePath = Path.Combine(this._webRootPath, this._config.BasePath);
-            string directory = Path.Combine(fullBasePath, subDirectory);
+            var fullBasePath = Path.Combine(this._webRootPath, this._config.BasePath);
+            var directory = Path.Combine(fullBasePath, subDirectory);
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);

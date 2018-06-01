@@ -9924,6 +9924,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "e:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/orchardcore-preview/api/v3/index.json": {}
       },

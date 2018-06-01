@@ -9,11 +9,11 @@ namespace Reolin.Web.Api.Controllers
     public class HttpsController : Controller
     {
         [HttpGet]
-        [Route(".well-known/acme-challenge/M83pb5BDlmKUW5PwP_2dxx0riS9bHoB-gnsAtzUbROY")]
+        [Route(".well-known/acme-challenge/M_5hX9b9BeoNGipbWmgRThRq0aIkxZX_PeZ4ogdqIgo")]
         public ActionResult Get()
         {
             this.HttpContext.Response.ContentType = "text/plain";
-            return Content("M83pb5BDlmKUW5PwP_2dxx0riS9bHoB-gnsAtzUbROY.zzZ2blpp57ntAGjuctXa2jahtLV04hVxn_eTfcEg-fU");
+            return Content("M_5hX9b9BeoNGipbWmgRThRq0aIkxZX_PeZ4ogdqIgo.Np7e89O9cXvnW3hP2YV0PtTjEPODvI3Fs8LUwqzh77c");
         }
     }
 }

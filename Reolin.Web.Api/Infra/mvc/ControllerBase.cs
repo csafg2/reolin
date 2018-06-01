@@ -9,9 +9,23 @@ using System.Security.Claims;
 
 namespace Reolin.Web.Api.Infra.mvc
 {
-
     public abstract class BaseController : Controller
     {
+        protected bool TryGetUserId(out int userId)
+        {
+            try
+            {
+                userId = this.GetUserId();
+                return true;
+            }
+            catch (Exception)
+            {
+                userId = 0;
+                return false;
+            }
+        }
+
+
         /// <summary>
         /// extracts the user if from the request token.
         /// </summary>

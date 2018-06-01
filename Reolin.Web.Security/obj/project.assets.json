@@ -5419,9 +5419,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Web.Security\\Reolin.Web.Security.csproj",
       "projectName": "Reolin.Web.Security",
@@ -5438,19 +5435,20 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netstandard1.6.1",
-        "net461"
+        "net461",
+        "netstandard1.6.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "e:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/orchardcore-preview/api/v3/index.json": {}
       },
       "frameworks": {
-        "netstandard1.6.1": {
+        "net461": {
           "projectReferences": {}
         },
-        "net461": {
+        "netstandard1.6.1": {
           "projectReferences": {}
         }
       },
@@ -5461,45 +5459,45 @@
       }
     },
     "frameworks": {
-      "netstandard1.6.1": {
+      "net461": {
         "dependencies": {
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "[1.2.0, )"
+          },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
-            "version": "5.1.2"
+            "version": "[5.1.2, )"
           },
           "System.Security.Claims": {
             "target": "Package",
-            "version": "4.3.0"
+            "version": "[4.3.0, )"
+          }
+        }
+      },
+      "netstandard1.6.1": {
+        "dependencies": {
+          "NETStandard.Library": {
+            "target": "Package",
+            "version": "[1.6.1, )",
+            "autoReferenced": true
           },
           "StackExchange.Redis": {
             "target": "Package",
-            "version": "1.2.0"
+            "version": "[1.2.0, )"
           },
-          "NETStandard.Library": {
+          "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
-            "version": "1.6.1",
-            "autoReferenced": true
+            "version": "[5.1.2, )"
+          },
+          "System.Security.Claims": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [
           "dnxcore50"
         ]
-      },
-      "net461": {
-        "dependencies": {
-          "System.IdentityModel.Tokens.Jwt": {
-            "target": "Package",
-            "version": "5.1.2"
-          },
-          "System.Security.Claims": {
-            "target": "Package",
-            "version": "4.3.0"
-          },
-          "StackExchange.Redis": {
-            "target": "Package",
-            "version": "1.2.0"
-          }
-        }
       }
     }
   }

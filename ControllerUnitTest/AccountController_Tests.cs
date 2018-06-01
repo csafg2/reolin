@@ -12,6 +12,8 @@ using Reolin.Web.Security.Membership.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
+using Reolin.Web.Api.Models;
 
 namespace ControllerUnitTest
 {
@@ -21,27 +23,58 @@ namespace ControllerUnitTest
         AccountController _controller;
         DataContext _context = new DataContext();
 
-        public void Account_Register()
+        public AccountController_Tests()
         {
             var service = new UserService(_context);
             var manager = new UserSecurityManager(service, CreateValidators(), new SHA1PasswordHasher());
-            this._controller = new AccountController(manager, TokenOptions, new JwtManager(new InMemoryJwtStore(), new JwtProvider()));
+            this._controller = new AccountController(manager, 
+                TokenOptions, 
+                new JwtManager(new InMemoryJwtStore(), new JwtProvider()),
+                new DataContext(@"Server=Layoot.yottagroup.com\SQLEXPRESS; Database =ReolinDb; User Id=sa; Password=rrfa7714@1;"));
         }
-
+        
         [TestMethod]
         public void AccountController_Register()
         {
-            var result = this._controller.Register(new UserRegisterViewModel()
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            for (int i = 0; i < 10; i++)
             {
-                ConfirmPassword = "Hassan@1",
-                Password = "Hassan@1",
-                UserName = "Mohammadli"
-            }).Result;
+                var result = this._controller.Login(new LoginViewModel()
+                {
+                    Password = "213123",
+                    UserName = "Hassan"
+                }).Result;
+            }
+            watch.Stop();
+            var first = watch.Elapsed;
+            watch.Reset();
+            watch.Start();
 
-            Assert.IsTrue(result is OkResult);
+            for (int i = 0; i < 10; i++)
+            {
+                var result = _controller.Login(new LoginViewModel()
+                {
+                    Password = "213123",
+                    UserName = "Hassan"
+                }).Result;
+            }
 
+            watch.Stop();
         }
 
+        [TestMethod]
+        public void Suggestion_Test()
+        {
+            var controller = new SuggestionController(new SuggestionService(_context), _context);
+            var result = controller.Search(new SearchSuggestionModel()
+            {
+                Query = "android",
+                SourceLat = 35.6891975,
+                SountLong = 51.3889736
+            }).Result;
+
+        }
         #region Helpers()
         private static IOptions<TokenProviderOptions> TokenOptions
         {

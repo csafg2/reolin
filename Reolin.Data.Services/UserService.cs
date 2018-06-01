@@ -180,6 +180,7 @@ namespace Reolin.Data.Services
 
         public Task<User> GetByUserName(string userName, params string[] includes)
         {
+            //return this.Context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
             return this.Query(u => u.UserName == userName, includes).FirstOrDefaultAsync();
         }
 

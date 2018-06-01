@@ -12,7 +12,8 @@ namespace Reolin.Web.Api.Infra.Middlewares
             source.AddAuthentication(o => 
             {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(o => 
+            })
+            .AddJwtBearer(o => 
             {
                 o.TokenValidationParameters = JwtConfigs.ValidationParameters;
             });

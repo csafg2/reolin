@@ -1,6 +1,7 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,7 @@ namespace Reolin.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.UseJwtValidation();
             services.ConfigureDirectorySettings(Configuration);
             services.AddDbContext(Configuration.GetConnectionString("Default"));
@@ -58,8 +59,7 @@ namespace Reolin.Web.Api
 
             // Add new mappings
             provider.Mappings["."] = "text/plain";
-
-
+            
             app.UseStaticFiles(new StaticFileOptions()
             {
                 ContentTypeProvider = provider
@@ -81,10 +81,8 @@ namespace Reolin.Web.Api
             //app.UseDeveloperExceptionPage();
 
             //app.UseJwtValidation();
+            //app.UseJwtBearerAuthentication();
             app.UseMvcWithDefaultRoute();
-                
-                
-
             app.UseSwagger();
             app.UseSwaggerUi();
         }

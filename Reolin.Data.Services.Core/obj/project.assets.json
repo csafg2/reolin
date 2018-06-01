@@ -49,9 +49,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\projects\\repos\\reolin\\Reolin.Data.Services.Core\\Reolin.Data.Services.Core.csproj",
       "projectName": "Reolin.Data.Services.Core",
@@ -71,6 +68,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "e:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/orchardcore-preview/api/v3/index.json": {}
       },

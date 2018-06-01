@@ -273,6 +273,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.EditNetwork(Reolin.Web.ViewModels.ProfileAddNetworkModel)">
+            <summary>
+            Edit netowrk
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.AvailableJobCategories">
             <summary>
             Gets a list of all available job categories
@@ -299,7 +306,7 @@
             <summary>
             find by name and distance
             </summary>
-            <param name="query"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.BasicInfo(System.Int32)">

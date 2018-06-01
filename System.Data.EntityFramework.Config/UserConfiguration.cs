@@ -21,6 +21,13 @@ namespace Reolin.Data.EntityFramework.Config
             this.Property(u => u.UserName).HasMaxLength(USERNAME_LENGTH).IsRequired();
             this.Property(u => u.Email).HasMaxLength(EMAIL_LENGTH).IsRequired();
 
+            //where user liked stuff
+            this.HasMany(p => p.Likes)
+                .WithRequired(l => l.Sender)
+                .HasForeignKey(l => l.SenderId)
+                .WillCascadeOnDelete(false);
+
+
             // username has to be unique
             this.Property(u => u.UserName)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
