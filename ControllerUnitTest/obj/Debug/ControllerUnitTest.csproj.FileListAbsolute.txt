@@ -275,7 +275,6 @@ D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Data.Domain.dll
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Data.DTO.dll
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Data.Services.Core.dll
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Data.Services.dll
-D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Api.exe
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Security.dll
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Security.Membership.Core.dll
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Security.Membership.dll
@@ -532,4 +531,5 @@ D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Api.exe.config
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Diagnostics.Logging.pdb
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Diagnostics.Logging.dll.config
 D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.csproj.CopyComplete
+D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Api.exe
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Microsoft.AspNetCore.Server.Kestrel.Https.dll

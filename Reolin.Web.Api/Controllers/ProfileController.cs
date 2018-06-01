@@ -274,14 +274,13 @@ namespace Reolin.Web.Api.Controllers
                .Where(l => l.TargetProfileId == profileId)
                .CountAsync();
 
-
             if (await _context.Likes.AnyAsync(l => l.SenderId == senderId && l.TargetProfileId == profileId))
             {
                 await _context
                     .Likes
                     .Where(l => l.SenderId == senderId && l.TargetProfileId == profileId)
                     .DeleteAsync();
-                return Json(new { Count = likeCount });
+                return Json(new { Count = --likeCount });
             }
             else
             {
@@ -547,9 +546,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> Find(ProfileSearchModel model)
         {
             List<ProfileSearchResult> result = null;
-            //var userId2 = _httpContext.HttpContext.User.Claims;
-            var a = HttpContext.User.Identity.IsAuthenticated;
-            var u = this.User;
+            
             this.TryGetUserId(out int userId);
             if (model.JobCategoryId != null)
             {

@@ -68,6 +68,7 @@ namespace Reolin.Web.Api
 
             loggerFactory.UseSqlLogger(connectionString: Configuration["ConnectionStrings:Log"]);
             app.UseDeveloperExceptionPage();
+            app.UseAuthentication();
             // comment this entire "if statement" in production
             //if (env.IsDevelopment())
             //{
