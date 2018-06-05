@@ -8,3 +8,4 @@ D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.AssemblyInfo.cs
 D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.dll
 D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.pdb
 D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.csproj.CopyComplete
+D:\projects\repos\reolin\Utilities\obj\Debug\net461\Utilities.csprojResolveAssemblyReference.cache

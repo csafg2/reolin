@@ -103,7 +103,7 @@ namespace Reolin.Data.Services
         public async Task<int> AddProfileImageAsync(int profileId, int categoryId, string subject, string descrption, string imagePath, int[] tagsIds)
         {
             var tags = await Context.Tags.Where(t => tagsIds.Contains(t.Id)).ToListAsync();
-            this.Context.Images.Add(new Image()
+            var image = new Image()
             {
                 ProfileId = profileId,
                 Subject = subject,
@@ -112,9 +112,11 @@ namespace Reolin.Data.Services
                 Path = imagePath,
                 UploadDate = DateTime.Now,
                 ImageCategoryId = categoryId
-            });
+            };
+            this.Context.Images.Add(image);
 
-            return await this.Context.SaveChangesAsync();
+            await this.Context.SaveChangesAsync();
+            return image.Id;
         }
 
         public Task<int> AddLikeAsync(int senderUserId, int targetProfileId)
@@ -188,6 +190,7 @@ namespace Reolin.Data.Services
                 Name = dto.Name,
                 PhoneNumber = dto.PhoneNumber,
                 JobCategories = await this.Context.JobCategories.Where(j => j.Id == dto.JobCategoryId || j.Id == dto.SubJobCategoryId).ToListAsync(),
+                PersonalPhone = dto.PersonalPhone,
                 Address = new Address()
                 {
                     City = dto.City,
@@ -403,7 +406,7 @@ namespace Reolin.Data.Services
             return this.Context.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, Name = j.Name, IsSubCategory = j.IsSubCategory }).ToListAsync();
         }
 
-        public Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000)
+        public IQueryable<ProfileSearchResult> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000)
         {
             var query = this.Context.Profiles.AsQueryable();
 
@@ -438,12 +441,10 @@ namespace Reolin.Data.Services
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation),
                     IsWork = p.Type == ProfileType.Work,
                     IsLiked = p.ReceivedLikes.Any(l => l.SenderId == userId)
-                })
-                .Take(20)
-                .ToListAsync();
+                });
         }
 
-        public Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId,
+        public IQueryable<ProfileSearchResult> SearchByCategoriesTagsAndDistance(int? mainCatId,
             int? subCatId, string searchTerm, 
             double sourceLatitude,
             double sourceLongitude, 
@@ -489,8 +490,7 @@ namespace Reolin.Data.Services
                     DistanceWithSource = p.Address.Location.Distance(sourceLocation),
                     IsWork = p.Type == ProfileType.Work,
                     IsLiked = p.ReceivedLikes.Any(l => l.SenderId == userId)
-                })
-                .ToListAsync();
+                });
         }
 
         private Task<List<ProfileSearchResult>> Search(Expression<Func<Profile, bool>> categoryPredicate, string searchTerm, double sourceLatitude, double sourceLongitude, int distance)
@@ -551,7 +551,8 @@ namespace Reolin.Data.Services
                     PhoneNumber = p.PhoneNumber,
                     Fax = p.Fax,
                     Mobile = p.Mobile,
-                    Postal = p.Postal
+                    Postal = p.Postal,
+                    Categories = p.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, IsSubCategory = j.IsSubCategory, Name = j.Name })
                 }).FirstOrDefaultAsync();
 
             return profile;

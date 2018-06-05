@@ -24,5 +24,6 @@ namespace Reolin.Web.Api.Models
         public double Longitude { get; set; }
         [Range(1, 200000, ErrorMessage = "Radius must be in 1-200,000")]
         public int Radius { get; set; }
+        public bool IsWork { get; set; }
     }
 }

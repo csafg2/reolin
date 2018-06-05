@@ -64,7 +64,7 @@ namespace Reolin.Web.ViewModels
 
         [Range(1, 100000)]
         public int Distance { get; set; }
-
+        public bool IsWork { get; set; }
     }
 
 
@@ -128,7 +128,9 @@ namespace Reolin.Web.ViewModels
     {
         [Required(ErrorMessage = "Profile Name is required", AllowEmptyStrings = false)]
         public string Name { get; set; }
-        
+
+        public string PersonalPhone { get; set; }
+
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Latitude is Mandatory")]

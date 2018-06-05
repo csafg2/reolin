@@ -44,9 +44,9 @@ namespace Reolin.Web.Api.Controllers
 
         private DataContext _context;
         public ProfileController(DataContext context,
-            IProfileService service, 
-            IMemoryCache cache, 
-            IFileService fileService, 
+            IProfileService service,
+            IMemoryCache cache,
+            IFileService fileService,
             IImageCategoryService imageCategoryService,
             IHttpContextAccessor httpContextAccessor)
         {
@@ -172,17 +172,38 @@ namespace Reolin.Web.Api.Controllers
         /// Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
         /// </summary>
         /// <param name="tag">the tag text to search for</param>
+        /// <param name="mainCatId"></param>
+        /// <param name="subCatId"></param>
+        /// <param name="isWork"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("/[controller]/[action]")]
         //[OutputCache(Key = "tag", AbsoluteExpiration = 60 * 60, SlidingExpiration = 5 * 60)]
-        public async Task<IActionResult> GetByTag(string tag)
+        public async Task<IActionResult> GetByTag(string tag, int? mainCatId, int? subCatId, bool isWork)
         {
-            List<ProfileSearchResult> result = null;
+            IQueryable<ProfileSearchResult> result = null;
+            var query = this._context.Profiles.AsQueryable();
+
+            if (mainCatId != null && subCatId != null)
+            {
+                query = query.Where(p => p.JobCategories.Any(j => j.Id == mainCatId) && p.JobCategories.Any(j => j.Id == subCatId));
+            }
+            else if (mainCatId != null)
+            {
+                query = query.Where(p => p.JobCategories.Any(j => j.Id == mainCatId));
+            }
+            else if (subCatId != null)
+            {
+                query = query.Where(p => p.JobCategories.Any(j => j.Id == subCatId));
+            }
+            if (isWork)
+            {
+                query = query.Where(p => p.Type == ProfileType.Work);
+            }
 
             if (string.IsNullOrEmpty(tag))
             {
-                result = await this._context.Profiles.OrderByDescending(p => p.Id)
+                result = query.OrderByDescending(p => p.Id)
                     .Select(p => new ProfileSearchResult()
                     {
                         Id = p.Id,
@@ -194,19 +215,28 @@ namespace Reolin.Web.Api.Controllers
                         Name = p.Name,
                         Icon = p.IconUrl,
                         IsWork = p.Type == ProfileType.Work
-                    })
-                    .Take(20)
-                    .ToListAsync();
+                    });
             }
             else
             {
-                result = await this.ProfileService.GetByTagAsync(tag)
-                .OrderByDescending(p => p.Id)
-                .Take(20)
-                .ToListAsync();
+                result = query
+                        .Where(p => p.Tags.Any(t => t.Name.Contains(tag)))
+                        .Select(p => new ProfileSearchResult
+                        {
+                            Id = p.Id,
+                            City = p.Address.City,
+                            Country = p.Address.Country,
+                            Description = p.Description,
+                            Latitude = p.Address.Location.Latitude,
+                            Longitude = p.Address.Location.Longitude,
+                            Name = p.Name,
+                            Icon = p.IconUrl,
+                            Tags = p.Tags.Where(t => t.Name.Contains(tag)).Select(t => new TagDTO { Id = t.Id, Name = t.Name })
+                        })
+                        .OrderByDescending(p => p.Id);
             }
 
-            return Ok(result);
+            return Ok(await result.Take(20).ToListAsync());
         }
 
         /// <summary>
@@ -242,20 +272,22 @@ namespace Reolin.Web.Api.Controllers
         public async Task<ActionResult> AddImage(AddImageToProfileViewModel model, IFormFile file)
         {
             if (file == null)
+            {
                 return BadRequest();
+            }
 
             using (var stream = file.OpenReadStream())
             {
                 // TODO: fix this to accept other info
                 string path = await this._fileService.SaveAsync(stream, file.FileName);
-                int result = await ProfileService
+                int imageId = await ProfileService
                                     .AddProfileImageAsync(model.ProfileId,
                                         model.CategoryId,
                                         model.Subject,
                                         model.Description,
                                         path,
                                         model.TagIds);
-                return Ok(path);
+                return Ok(new { Path = path, ImageId = imageId });
             }
         }
 
@@ -301,7 +333,7 @@ namespace Reolin.Web.Api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> CreateWork(ProfileCreateModel model)
         {
-            Profile result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
+            var result = await this.ProfileService.CreateWorkAsync(this.GetUserId(),
                 new CreateProfileDTO()
                 {
                     PhoneNumber = model.PhoneNumber,
@@ -313,9 +345,8 @@ namespace Reolin.Web.Api.Controllers
                     Country = model.Country,
                     JobCategoryId = model.JobCategoryId,
                     SubJobCategoryId = model.SubJobCategoryId,
-
+                    PersonalPhone = model.PersonalPhone
                 });
-
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
         }
@@ -542,15 +573,14 @@ namespace Reolin.Web.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]/[action]")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Find(ProfileSearchModel model)
         {
-            List<ProfileSearchResult> result = null;
-            
+            IQueryable<ProfileSearchResult> result = null;
+
             this.TryGetUserId(out int userId);
             if (model.JobCategoryId != null)
             {
-                result = await this.ProfileService.SearchByCategoriesTagsAndDistance(
+                result = this.ProfileService.SearchByCategoriesTagsAndDistance(
                             (int)model.JobCategoryId,
                             model.SubJobCategoryId,
                             model.SearchTerm,
@@ -561,7 +591,7 @@ namespace Reolin.Web.Api.Controllers
             }
             else
             {
-                result = await this.ProfileService.SearchBySubCategoryTagsAndDistance(
+                result = this.ProfileService.SearchBySubCategoryTagsAndDistance(
                             model.SubJobCategoryId,
                             model.SearchTerm,
                             model.SourceLatitude,
@@ -570,7 +600,12 @@ namespace Reolin.Web.Api.Controllers
                             model.Distance);
             }
 
-            return Ok(result);
+            if (model.IsWork)
+            {
+                result = result.Where(r => r.IsWork);
+            }
+
+            return Ok(await result.Take(20).ToListAsync());
         }
 
         /// <summary>
@@ -585,15 +620,21 @@ namespace Reolin.Web.Api.Controllers
             var source = GeoHelpers.FromLongitudeLatitude(model.Longitude, model.Lat);
             Expression<Func<Profile, bool>> filter = p =>
                 (p.Address.Location.Distance(source) <= model.Radius) && p.Name.Contains(model.Name);
-            
+
+            var baseQuery = this._context.Profiles.AsQueryable();
             if (string.IsNullOrEmpty(model.Name))
             {
                 filter = p => true;
             }
-            
+
+            if (model.IsWork)
+            {
+                baseQuery = baseQuery.Where(p => p.Type == ProfileType.Work);
+            }
+
             this.TryGetUserId(out int userId);
-            var query = this._context
-                            .Profiles
+
+            var query = baseQuery
                             .Where(filter)
                                 .Select(p => new ProfileRedisCacheDTO()
                                 {
@@ -608,7 +649,7 @@ namespace Reolin.Web.Api.Controllers
                                     DistanceWithSource = p.Address.Location.Distance(source),
                                     IsLiked = p.ReceivedLikes.Any(l => l.SenderId == userId)
                                 });
-            
+
             var result = await query
                                 .Take(20)
                                 .ToListAsync();
@@ -629,6 +670,39 @@ namespace Reolin.Web.Api.Controllers
             var data = await this.ProfileService.GetBasicInfo(id);
             return Ok(data);
         }
+
+
+        /// <summary>
+        /// add a new network to networks collection of the user
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [RequireValidModel]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> UpdateCategory(UpdateProfileCategoryModel model)
+        {
+            var profile = await this._context
+                .Profiles
+                .Include(p => p.JobCategories)
+                .Where(p => p.Id == model.ProfileId)
+                .FirstOrDefaultAsync();
+
+            if (profile.JobCategories == null)
+            {
+                profile.JobCategories = new List<JobCategory>();
+            }
+
+            profile.JobCategories.Clear();
+
+            var mainCat = await this._context.JobCategories.FirstOrDefaultAsync(j => j.Id == model.CatId);
+            var secondCat = await this._context.JobCategories.FirstOrDefaultAsync(j => j.Id == model.SubCatId);
+            profile.JobCategories.AddRange(new[] { mainCat, secondCat });
+
+            await this._context.SaveChangesAsync();
+
+            return Ok();
+        }
+
 
 
         /// <summary>
@@ -1059,5 +1133,18 @@ namespace Reolin.Web.Api.Controllers
         public string City { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "invalid State")]
         public string Country { get; set; }
+    }
+
+
+    public class UpdateProfileCategoryModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "invalid profileId")]
+        public int ProfileId { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "invalid subCatId")]
+        public int SubCatId { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "invalid catId")]
+        public int CatId { get; set; }
     }
 }

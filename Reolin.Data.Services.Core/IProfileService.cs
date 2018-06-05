@@ -78,8 +78,8 @@ namespace Reolin.Data.Services.Core
         Task<List<JobCategoryInfoDTO>> QueryJobCategories();
 
 
-        Task<List<ProfileSearchResult>> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
-        Task<List<ProfileSearchResult>> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
+        IQueryable<ProfileSearchResult> SearchByCategoriesTagsAndDistance(int? mainCatId, int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
+        IQueryable<ProfileSearchResult> SearchBySubCategoryTagsAndDistance(int? subCatId, string searchTerm, double sourceLatitude, double sourceLongitude, int userId, int distance = 5000);
 
         Task<int> AddRelate(int sourceId, int targetId, DateTime date, string description, int relatedTypeId);
         Task<int> AddRelatedType(int profileId, string relatedType);

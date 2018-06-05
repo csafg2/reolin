@@ -36,6 +36,7 @@ namespace Reolin.Data.DTO
         public string Fax { get; set; }
         public string Postal { get; set; }
         public string Mobile { get; set; }
+        public IEnumerable<JobCategoryInfoDTO> Categories { get; set; }
     }
 
     public class EducationEditDTO
@@ -118,6 +119,7 @@ namespace Reolin.Data.DTO
         public string PhoneNumber { get; set; }
         public int? JobCategoryId { get; set; }
         public int? SubJobCategoryId { get; set; }
+        public string PersonalPhone { get; set; }
     }
 
     public class ProfileByTagDTO

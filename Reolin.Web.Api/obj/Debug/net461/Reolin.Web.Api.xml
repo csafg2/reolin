@@ -182,11 +182,14 @@
             <param name="address"></param>
             <returns></returns>
         </member>
-        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetByTag(System.String)">
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetByTag(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean)">
             <summary>
             Get all profiles that are associated with tag, result is cached for 60 * 60 seconds
             </summary>
             <param name="tag">the tag text to search for</param>
+            <param name="mainCatId"></param>
+            <param name="subCatId"></param>
+            <param name="isWork"></param>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.AddDescription(Reolin.Web.ViewModels.ProfileAddDescriptionModel)">
@@ -314,6 +317,12 @@
             returns basic information about the profile by it`s id
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Reolin.Web.Api.Controllers.ProfileController.UpdateCategory(Reolin.Web.Api.Controllers.UpdateProfileCategoryModel)">
+            <summary>
+            add a new network to networks collection of the user
+            </summary>
             <returns></returns>
         </member>
         <member name="M:Reolin.Web.Api.Controllers.ProfileController.GetAddres(System.Int32)">
