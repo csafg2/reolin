@@ -44,6 +44,7 @@ namespace Reolin.Data.Domain
         public string IconUrl { get; set; }
         public string AboutMe { get; set; }
         public string PersonalPhone { get; set; }
+        public string Major { get; set; }
 
         public List<Experience> Experiences { get; set; }
         public List<ProfileNetwork> Networks { get; set; }

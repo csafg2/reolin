@@ -191,6 +191,7 @@ namespace Reolin.Data.Services
                 PhoneNumber = dto.PhoneNumber,
                 JobCategories = await this.Context.JobCategories.Where(j => j.Id == dto.JobCategoryId || j.Id == dto.SubJobCategoryId).ToListAsync(),
                 PersonalPhone = dto.PersonalPhone,
+                Major = dto.Major,
                 Address = new Address()
                 {
                     City = dto.City,
@@ -552,6 +553,7 @@ namespace Reolin.Data.Services
                     Fax = p.Fax,
                     Mobile = p.Mobile,
                     Postal = p.Postal,
+                    Major = p.Major,
                     Categories = p.JobCategories.Select(j => new JobCategoryInfoDTO() { Id = j.Id, IsSubCategory = j.IsSubCategory, Name = j.Name })
                 }).FirstOrDefaultAsync();
 

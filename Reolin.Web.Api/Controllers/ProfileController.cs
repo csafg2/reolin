@@ -372,7 +372,8 @@ namespace Reolin.Web.Api.Controllers
                     Latitude = model.Latitude,// ?? _geoService.GetGeoInfo(model.City, model.Country).Latitude,
                     Longitude = model.Longitude,// ?? _geoService.GetGeoInfo(model.City, model.Country).Longitude,
                     JobCategoryId = model.JobCategoryId,
-                    SubJobCategoryId = model.SubJobCategoryId
+                    SubJobCategoryId = model.SubJobCategoryId,
+                    Major = model.Major
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
@@ -1078,8 +1079,27 @@ namespace Reolin.Web.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("/[controller]/[action]")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> EditMajor(EditMajorModel model)
+        {
+            var result = await this._context.Profiles
+                .Where(p => p.Id == model.ProfileId)
+                .UpdateAsync(p => new Profile() { Major = model.Major });
+
+            return Ok();
+        }
     }
 
+    public class EditMajorModel
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "invalid ProfileId")]
+        public int ProfileId { get; set; }
+
+        public string Major { get; set; }
+    }
     public class SetProfilePropertyModel
     {
         public int ProfileId { get; set; }

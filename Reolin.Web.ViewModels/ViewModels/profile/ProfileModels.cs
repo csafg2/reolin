@@ -159,6 +159,8 @@ namespace Reolin.Web.ViewModels
         [Range(1, int.MaxValue, ErrorMessage = "Not valid SubJobCategoryID")]
         [Required(ErrorMessage = "SubJobCategoryID is required")]
         public int? SubJobCategoryId { get; set; }
+        public string Major { get; set; }
+
         public DbGeography GetLocation()
         {
             return GeoHelpers.FromLongitudeLatitude(this.Longitude, this.Latitude, GeoHelpers.Geo_SRID);
