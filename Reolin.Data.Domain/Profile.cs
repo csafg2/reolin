@@ -48,7 +48,7 @@ namespace Reolin.Data.Domain
 
         public List<Experience> Experiences { get; set; }
         public List<ProfileNetwork> Networks { get; set; }
-        
+        public int? Radius { get; set; }
 
         public static implicit operator ProfileInfoDTO(Profile source)
         {

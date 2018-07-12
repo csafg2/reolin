@@ -24,8 +24,8 @@ D:\projects\repos\reolin\System.Data.EntityFramework.Config\bin\Debug\Reolin.Dat
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\bin\Debug\EntityFramework.xml
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\bin\Debug\EntityFramework.SqlServer.xml
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\bin\Debug\Reolin.Data.DTO.pdb
-D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.dll
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.pdb
 D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csproj.CopyComplete
+D:\projects\repos\reolin\System.Data.EntityFramework.Config\obj\Debug\System.Data.EntityFramework.Config.csprojAssemblyReference.cache

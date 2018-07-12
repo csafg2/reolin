@@ -58,7 +58,6 @@ namespace Reolin.Data.Services.Core
 
         Task<Profile> CreateWorkAsync(int userId, CreateProfileDTO dto);
 
-
         Task<ProfileInfoDTO> QueryInfoAsync(int id);
 
         Task<List<ProfileRedisCacheDTO>> GetInRangeAsync(string tag, double radius, double sourceLat, double sourceLong);
@@ -95,7 +94,7 @@ namespace Reolin.Data.Services.Core
 
         Task<List<RequestRelatedProfile>> GetRequestRelatedProfiles(int profileId);
 
-        Task<int> AddCertificateAsync(int profileId, int year, string description);
+        Task<int> AddCertificateAsync(int profileId, int year, string description, string imageUrl);
         Task<List<Certificate>> GetCertificates(int profileId);
 
         Task<int> DeleteRelationRequest(int id);

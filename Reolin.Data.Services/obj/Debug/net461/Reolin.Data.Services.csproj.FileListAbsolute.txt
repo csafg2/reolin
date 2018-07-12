@@ -25,10 +25,10 @@ D:\projects\repos\reolin\Reolin.Data.Services\bin\Debug\net461\System.Data.Entit
 D:\projects\repos\reolin\Reolin.Data.Services\bin\Debug\net461\Reolin.Data.Services.Core.pdb
 D:\projects\repos\reolin\Reolin.Data.Services\bin\Debug\net461\Reolin.Data.Services.Core.dll.config
 D:\projects\repos\reolin\Reolin.Data.Services\bin\Debug\net461\Utilities.pdb
-D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.dll
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.pdb
 D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.csproj.CopyComplete
+D:\projects\repos\reolin\Reolin.Data.Services\obj\Debug\net461\Reolin.Data.Services.csprojAssemblyReference.cache

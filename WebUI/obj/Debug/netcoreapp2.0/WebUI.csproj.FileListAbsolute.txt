@@ -10,4 +10,4 @@ D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.AssemblyInfoInputs.
 D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.AssemblyInfo.cs
 D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.dll
 D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.pdb
-D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.csprojResolveAssemblyReference.cache
+D:\projects\repos\reolin\WebUI\obj\Debug\netcoreapp2.0\WebUI.csprojAssemblyReference.cache

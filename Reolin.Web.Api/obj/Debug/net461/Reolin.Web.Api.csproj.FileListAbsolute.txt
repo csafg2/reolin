@@ -1,4 +1,3 @@
-D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.AssemblyInfo.cs
@@ -387,3 +386,4 @@ D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.xml
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.pdb
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.exe.config
 D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.csproj.CopyComplete
+D:\projects\repos\reolin\Reolin.Web.Api\obj\Debug\net461\Reolin.Web.Api.csprojAssemblyReference.cache

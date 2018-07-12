@@ -28,10 +28,10 @@ D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\bin\Debug\net461\Re
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\bin\Debug\net461\Reolin.Data.Services.Core.pdb
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\bin\Debug\net461\Reolin.Data.Services.Core.dll.config
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\bin\Debug\net461\Utilities.pdb
-D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.AssemblyInfoInputs.cache
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.AssemblyInfo.cs
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.dll
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.pdb
 D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.csproj.CopyComplete
+D:\projects\repos\reolin\Reolin.Web.Security.Membership.Core\obj\Debug\net461\Reolin.Web.Security.Membership.Core.csprojAssemblyReference.cache

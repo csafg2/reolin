@@ -22,5 +22,5 @@ D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\EntityFramework.SqlServ
 D:\projects\repos\reolin\Reolin.Web.ViewModels\bin\Debug\Utilities.pdb
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.dll
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.pdb
-D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csproj.CopyComplete
+D:\projects\repos\reolin\Reolin.Web.ViewModels\obj\Debug\Reolin.Web.ViewModels.csprojAssemblyReference.cache

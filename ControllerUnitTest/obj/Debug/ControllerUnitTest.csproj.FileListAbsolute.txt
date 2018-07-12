@@ -399,7 +399,6 @@ D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Utilities.pdb
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\System.Data.EntityFramework.Config.pdb
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\System.Data.EntityFramework.Config.dll.config
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.dll
 D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.pdb
@@ -533,3 +532,4 @@ D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Diagnostics.Logging
 D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.csproj.CopyComplete
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Reolin.Web.Api.exe
 D:\projects\repos\reolin\ControllerUnitTest\bin\Debug\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+D:\projects\repos\reolin\ControllerUnitTest\obj\Debug\ControllerUnitTest.csprojAssemblyReference.cache

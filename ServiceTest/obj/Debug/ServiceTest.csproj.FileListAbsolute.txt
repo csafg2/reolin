@@ -34,7 +34,6 @@ C:\Users\Hassan\Source\Repos\reolin\ServiceTest\bin\Debug\Utilities.pdb
 C:\Users\Hassan\Source\Repos\reolin\ServiceTest\obj\Debug\ServiceTest.csprojResolveAssemblyReference.cache
 C:\Users\Hassan\Source\Repos\reolin\ServiceTest\obj\Debug\ServiceTest.dll
 C:\Users\Hassan\Source\Repos\reolin\ServiceTest\obj\Debug\ServiceTest.pdb
-D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.csprojResolveAssemblyReference.cache
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.csproj.CoreCompileInputs.cache
 D:\projects\repos\reolin\ServiceTest\bin\Debug\SqlServerTypes\x64\msvcr100.dll
 D:\projects\repos\reolin\ServiceTest\bin\Debug\SqlServerTypes\x64\SqlServerSpatial110.dll
@@ -86,3 +85,4 @@ D:\projects\repos\reolin\ServiceTest\bin\Debug\ru\Microsoft.VisualStudio.Quality
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.dll
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.pdb
 D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.csproj.CopyComplete
+D:\projects\repos\reolin\ServiceTest\obj\Debug\ServiceTest.csprojAssemblyReference.cache

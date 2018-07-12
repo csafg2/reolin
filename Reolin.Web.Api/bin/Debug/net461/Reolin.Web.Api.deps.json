@@ -7,6 +7,7 @@
     "defines": [
       "TRACE",
       "DEBUG",
+      "NETFRAMEWORK",
       "NET461"
     ],
     "languageVersion": "",
@@ -3777,7 +3778,8 @@
       },
       "Reolin.Data.Domain/1.0.0": {
         "dependencies": {
-          "Reolin.Data.DTO": "1.0.0"
+          "Reolin.Data.DTO": "1.0.0",
+          "System.Configuration": "4.0.0.0"
         },
         "runtime": {
           "Reolin.Data.Domain.dll": {}
@@ -3796,7 +3798,8 @@
           "Reolin.Data.Domain": "1.0.0",
           "Reolin.Data.Services.Core": "1.0.0",
           "System.Data.SqlClient": "4.3.0",
-          "Utilities": "1.0.0"
+          "Utilities": "1.0.0",
+          "System.Runtime.Caching": "4.0.0.0"
         },
         "runtime": {
           "Reolin.Data.Services.dll": {}
@@ -3812,6 +3815,10 @@
         }
       },
       "Reolin.Diagnostics.Logging/1.0.0": {
+        "dependencies": {
+          "System.Transactions": "4.0.0.0",
+          "System.Web": "4.0.0.0"
+        },
         "runtime": {
           "Reolin.Diagnostics.Logging.dll": {}
         }

@@ -81,6 +81,21 @@ namespace Reolin.Web.Api.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> Create(SuggestionCreateModel model)
         {
+            var now = DateTime.Now.Date;
+            var lastSuggestion = await _dataContext.Suggestions.Where(s => s.ProfileId == model.ProfileId)
+                .OrderByDescending(s => s.DateCreated)
+                .Select(s => s.DateCreated)
+                .FirstOrDefaultAsync();
+            var result = now - lastSuggestion;
+            var canCreateNew = result.TotalDays > 7;
+            if (!canCreateNew)
+            {
+                return BadRequest(new
+                {
+                    Error = "You can create suggestions, only once every 7 days"
+                });
+            }
+
             var suggestion = await this.Service.AddSuggestion(model);
             foreach (var item in model.Description.ExtractHashtags())
             {
@@ -137,7 +152,7 @@ namespace Reolin.Web.Api.Controllers
                 q = q.Where(s => s.Profile.JobCategories
                          .Any(c =>
                               c.IsSubCategory == true
-                                && 
+                                &&
                               c.Id == model.SubCategoryId));
             }
 

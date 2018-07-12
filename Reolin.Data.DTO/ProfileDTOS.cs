@@ -122,6 +122,7 @@ namespace Reolin.Data.DTO
         public int? SubJobCategoryId { get; set; }
         public string PersonalPhone { get; set; }
         public string Major { get; set; }
+        public int? Radius { get; set; }
     }
 
     public class ProfileByTagDTO

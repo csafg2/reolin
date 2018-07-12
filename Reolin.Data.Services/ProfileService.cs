@@ -192,6 +192,7 @@ namespace Reolin.Data.Services
                 JobCategories = await this.Context.JobCategories.Where(j => j.Id == dto.JobCategoryId || j.Id == dto.SubJobCategoryId).ToListAsync(),
                 PersonalPhone = dto.PersonalPhone,
                 Major = dto.Major,
+                Radius = dto.Radius,
                 Address = new Address()
                 {
                     City = dto.City,
@@ -635,13 +636,14 @@ namespace Reolin.Data.Services
                 .ToListAsync();
         }
 
-        public Task<int> AddCertificateAsync(int profileId, int year, string description)
+        public Task<int> AddCertificateAsync(int profileId, int year, string description, string imageUrl)
         {
-            Certificate c = new Certificate()
+            var c = new Certificate()
             {
                 Description = description,
                 ProfileId = profileId,
-                Year = year
+                Year = year,
+                ImageUrl = imageUrl
             };
 
             this.Context.Certificates.Add(c);

@@ -287,6 +287,7 @@ namespace Reolin.Web.Api.Controllers
                                         model.Description,
                                         path,
                                         model.TagIds);
+
                 return Ok(new { Path = path, ImageId = imageId });
             }
         }
@@ -345,7 +346,8 @@ namespace Reolin.Web.Api.Controllers
                     Country = model.Country,
                     JobCategoryId = model.JobCategoryId,
                     SubJobCategoryId = model.SubJobCategoryId,
-                    PersonalPhone = model.PersonalPhone
+                    PersonalPhone = model.PersonalPhone,
+                    Radius = model.Radius
                 });
 
             return Created($"/Profile/GetInfo/{result.Id}", (ProfileInfoDTO)result);
@@ -882,7 +884,7 @@ namespace Reolin.Web.Api.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> AddCertificate(CertificateCreateModel model)
         {
-            await this.ProfileService.AddCertificateAsync(model.ProfileId, model.Year, model.Description);
+            await this.ProfileService.AddCertificateAsync(model.ProfileId, model.Year, model.Description, model.ImageUrl);
 
             return Ok();
         }
@@ -897,6 +899,7 @@ namespace Reolin.Web.Api.Controllers
         public async Task<IActionResult> Certificates(int id)
         {
             var data = await this.ProfileService.GetCertificates(id);
+            
             return Ok(data);
         }
 

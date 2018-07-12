@@ -29,6 +29,8 @@ namespace Reolin.Web.ViewModels
 
         [Required(ErrorMessage = "Description is required", AllowEmptyStrings = false)]
         public string Description { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 
     public class AddTagModel
@@ -160,6 +162,9 @@ namespace Reolin.Web.ViewModels
         [Required(ErrorMessage = "SubJobCategoryID is required")]
         public int? SubJobCategoryId { get; set; }
         public string Major { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid raidus")]
+        public int? Radius { get; set; }
 
         public DbGeography GetLocation()
         {

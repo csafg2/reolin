@@ -15,5 +15,6 @@ namespace Reolin.Data.Domain
         //public List<Profile> Profiles { get; set; }        
         public Profile Profile { get; set; }
         public int ProfileId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -12,4 +12,4 @@ D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Securit
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.dll
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.pdb
 D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.csproj.CopyComplete
-D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.csprojResolveAssemblyReference.cache
+D:\projects\repos\reolin\Reolin.Web.Security\obj\Debug\net461\Reolin.Web.Security.csprojAssemblyReference.cache
